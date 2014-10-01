@@ -1,4 +1,8 @@
 beermap
 =======
 
-its a map(s), of beer(s)
+its like a map(s), of beer(s)
+
+check out initial progress at 
+
+http://beerd.ninthlink.me
