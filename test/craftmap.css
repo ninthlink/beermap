@@ -1,0 +1,24 @@
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+#map-canvas {
+	float: left;
+	height: 100%;
+	width: 50%;
+}
+#brewery-data {
+	background-color: #000;
+	box-sizing: border-box;
+	color: #ffffff;
+	float: left;
+	height: 100%;
+	overflow: auto;
+	padding: 0px 40px;
+	width: 50%;
+}
+
