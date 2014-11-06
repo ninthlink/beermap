@@ -25,6 +25,14 @@
 						templateUrl: '/home.html',
 						controller: 'beerMapd'
 					})
+				$urlRouterProvider.otherwise('home');
+			}
+		])
+		.config([
+			'$stateProvider',
+			'$urlRouterProvider',
+			function($stateProvider, $urlRouterProvider) {
+				$stateProvider
 					.state('list', {
 						url: '/list',
 						templateUrl: '/list.html',
@@ -222,7 +230,6 @@
 		$scope.$apply();
 	}
 	
-		
 	breweryList.$inject = ['$scope', '$http', 'locationFactory'];
 	
 	function breweryList($scope, $http, locationFactory){
