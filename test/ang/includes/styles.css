@@ -3,19 +3,25 @@ body {
 	height: 100%;
 	overflow-x: hidden;
 }
-.angular-google-map-container {
+
+
+.map-container,
+.overlay-container {
+	box-sizing: border-box;
 	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
-.col-md-6 .angular-google-map-container {
-	height: 50%;
-	/* remove bootstrap extra gutters too */
-	margin-left: -15px;
-	margin-right: -15px;
-}
-@media (min-width: 992px) {
-	.col-md-6 .angular-google-map-container {
-		height: 100%;
-	}
+
+
+.angular-google-map-container {
+	bottom: 0;
+	left: 0;
+	position: absolute !important;
+	right: 0;
+	top: 99px;
 }
 
 
@@ -28,12 +34,6 @@ body {
 
 .overlay-container {
 	background-color: #fff;
-	left: 0;
-	min-height: 100%;
-	opacity: 1;
 	overflow-x: hidden;
-	position: absolute;
-	top: 0;
-	width: 100%;
 	z-index: 99;
 }
