@@ -12,7 +12,7 @@
 		 * lets name our overall module "beerMap" ?
 		 *
 		 */
-		.module('beerMap', ['ui.router', 'ngAnimate', 'google-maps'.ns()])
+		.module('beerMap', ['ui.router', 'ngAnimate', 'google-maps'.ns(), 'ngSanitize'])
 		
 		/**
 		 * configure Google Maps

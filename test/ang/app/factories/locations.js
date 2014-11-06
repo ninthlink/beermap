@@ -69,8 +69,26 @@
 		o.addMarkerEvents = function( $scope ) {
 			if ( angular.isArray( $scope.markers ) ) {
 				angular.forEach($scope.markers, function(marker) {
+					marker.CSZ = function() {
+						return marker.city +', '+ marker.state +' '+ marker.zip;
+					}
+					marker.fullAddr = function() {
+						return marker.addr +', '+ marker.CSZ();
+					}
+					marker.fullNameLink = function() {
+						var o = '<strong>'+ marker.name +'</strong>';
+						if ( marker.loc !== '' ) {
+							o += ' <small>'+ marker.loc +'</small>';
+						}
+						if ( marker.www != '' ) {
+							o = '<a href="'+ marker.www +'" target="_blank">'+ o +'</a>';
+						}
+						return o;
+					}
 					marker.phoneNumber = function() {
-						return marker.phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
+						var phone = marker.phone;
+						var justnumber = phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
+						return '<a href="tel:'+ justnumber +'">'+ phone +'</a>';
 					}
 					if ( $scope.map !== false ) {
 						marker.onClick = function() {

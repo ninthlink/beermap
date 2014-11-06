@@ -10,8 +10,8 @@
 				<address>
 					<strong><abbr title="{{marker.coords.latitude}}, {{marker.coords.longitude}}">Location</abbr></strong><br />
 					<span>{{marker.addr}}</span><br />
-					<span>{{marker.city}}, {{marker.state}} {{marker.zip}}<br />
-					<span ng-show="marker.phone != ''"><abbr title="Phone">P:</abbr> <a href="tel:{{marker.phoneNumber()}}">{{marker.phone}}</a></span>
+					<span ng-bind-html="marker.CSZ()"></span><br />
+					<span ng-show="marker.phone != ''"><abbr title="Phone">P:</abbr> <span ng-bind-html="marker.phoneNumber()"></span></span>
 				</address>
 			</div>
 			<div class="col-sm-8">

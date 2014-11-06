@@ -27,16 +27,25 @@
 			}
 		}
 		/*
+		// scope columns hardcoded cause alex couldnt figure this out..
 		$scope.cols = [
 			{ n: "#", f: "id" },
 			{ n: "Brewery", f: "name" },
 		];
 		*/
-		console.log('brewery list here :');
 		/**
 		 * Get all brewery location markers from the locationFactory
 		 *
 		 */
 		locationFactory.loadAll($scope);
+		
+		$scope.fullName = function( marker ) {
+			return marker.fullNameLink();
+		};
+		/*
+		function( marker ) {
+			alert('fullnamed');
+		};
+		*/
 	}
 })();
