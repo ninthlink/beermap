@@ -72,7 +72,6 @@
 					marker.phoneNumber = function() {
 						return marker.phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
 					}
-					
 					if ( $scope.map !== false ) {
 						marker.onClick = function() {
 							console.log('onClick '+ marker.id);

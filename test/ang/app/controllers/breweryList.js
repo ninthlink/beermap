@@ -15,7 +15,23 @@
 	function breweryList($scope, $http, locationFactory){
 		$scope.map = false;
 		$scope.markers = [];
-		
+		$scope.llon = false;
+		$scope.sort = 'id';
+		$scope.asc = false;
+		$scope.sortBy = function( what ) {
+			if ( $scope.sort == what ) {
+				// switch directions
+				$scope.asc = !$scope.asc;
+			} else {
+				$scope.sort = what;
+			}
+		}
+		/*
+		$scope.cols = [
+			{ n: "#", f: "id" },
+			{ n: "Brewery", f: "name" },
+		];
+		*/
 		console.log('brewery list here :');
 		/**
 		 * Get all brewery location markers from the locationFactory

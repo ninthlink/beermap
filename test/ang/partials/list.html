@@ -10,6 +10,41 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<p>list here...</p>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" ng-model="llon"> toggle latlng column
+			</label>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th width="5%" scope="row"><span class="clickable" ng-click="sortBy('id')">#<span ng-show="sort == 'id'"><small><span ng-show="!asc" class="glyphicon glyphicon-chevron-down"></span><span ng-show="asc" class="glyphicon glyphicon-chevron-up"></span></small></span></span></th>
+					<th width="20%" scope="row"><span class="clickable" ng-click="sortBy('name')">Brewery<span ng-show="sort == 'name'"><small><span ng-show="!asc" class="glyphicon glyphicon-chevron-down"></span><span ng-show="asc" class="glyphicon glyphicon-chevron-up"></span></small></span></span></th>
+					<th scope="row">Location</th>
+					<th scope="row" ng-show="llon">Lat, Lng</th>
+					<th scope="row"><span class="fa fa-facebook-square" title="Facebook"></span></th>
+					<th scope="row"><span class="fa fa-twitter" title="Twitter"></span></th>
+					<th scope="row"><span class="fa fa-instagram" title="Instagram"></span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="marker in markers | orderBy:sort:asc">
+					<td>{{marker.id}}</td>
+					<td>
+						{{marker.name}} <small>{{marker.loc}}</small><br />
+						<span ng-show="marker.www != ''"><a href="{{marker.www}}" target="_blank">{{marker.www}}</a><br /></span>
+					</td>
+					<td>{{marker.addr}}, {{marker.city}}, {{marker.state}} {{marker.zip}}</td>
+					<td ng-show="llon">{{marker.coords.latitude}}, {{marker.coords.longitude}}</td>
+					<td><span ng-show="marker.fb != ''"><a href="https://www.facebook.com/{{marker.fb}}" target="_blank">{{marker.fb}}</a><br /></span></td>
+					<td><span ng-show="marker.tw != ''"><a href="https://twitter.com/{{marker.tw}}" target="_blank">{{marker.tw}}</a><br /></span></td>
+					<td><span ng-show="marker.ins != ''"><a href="http://instagram.com/{{marker.ins}}" target="_blank">{{marker.ins}}</a><br /></span></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>

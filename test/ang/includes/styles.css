@@ -20,7 +20,8 @@ body {
 
 
 .glyphicon-thumbs-up,
-.glyphicon-remove {
+.glyphicon-remove,
+.clickable {
 	cursor:pointer;
 }
 
