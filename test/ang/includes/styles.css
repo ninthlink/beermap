@@ -1,3 +1,22 @@
+html,
+body {
+	height: 100%;
+}
+.angular-google-map-container {
+	height: 100%;
+}
+.col-md-6 .angular-google-map-container {
+	height: 50%;
+	/* remove bootstrap extra gutters too */
+	margin-left: -15px;
+	margin-right: -15px;
+}
+@media (min-width: 992px) {
+	.col-md-6 .angular-google-map-container {
+		height: 100%;
+	}
+}
+
 .customOverlayClass {
 	background-color: #fff;
 	left: 0;
@@ -6,4 +25,9 @@
 	position: absolute;
 	top: 0;
 	z-index: 99;
+}
+
+.glyphicon-thumbs-up,
+.glyphicon-remove {
+	cursor:pointer;
 }
