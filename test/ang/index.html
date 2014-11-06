@@ -6,10 +6,11 @@
 		<!-- fontawesome for more : http://fortawesome.github.io/Font-Awesome/icons/#web-application -->
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<!-- javascripts -->
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
 		<script src="includes/angular-ui-router.js"></script>
 		<script src="includes/angular-resource.js"></script>
 		<script src="includes/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-animate.min.js"></script>
 		<script src="includes/lodash.compat.min.js"></script>
 		<script src="includes/bluebird.js"></script>
 		<script src="includes/angular-google-maps.min.js"></script>
@@ -18,7 +19,7 @@
 		html, body { height: 100%; }
 		.glyphicon-thumbs-up, .glyphicon-remove { cursor:pointer }
 		.angular-google-map-container { height: 100%; }
-		.col-md-6 .angular-google-map-container { height: 50%; }
+		.col-md-6 .angular-google-map-container { height: 50%; margin-left: -15px; margin-right: -15px; }
 		@media (min-width: 992px) {
 			.col-md-6 .angular-google-map-container { height: 100%; }
 		}
@@ -35,65 +36,35 @@
 						<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="'onClick'"></ui-gmap-markers>
 					</ui-gmap-google-map>
 				</div>
-				<div ng-show="brewon != false" class="col-md-6">
+				<div ng-show="brewon != false" class="col-md-6" ng-init="markers.selected=0">
+					<div ng-repeat="marker in markers">
+					<div id="{{marker.id}}" ng-if="markers.selected == marker.id" class="switch-animation">
 					<div class="page-header">
-						<span class="pull-right"><span class="glyphicon glyphicon-remove" ng-click="brewon.closeRight()"></span></span>
-						<h1>{{brewon.name}} <small>{{brewon.loc}}</small></h1>
+						<span class="pull-right"><span class="glyphicon glyphicon-remove" ng-click="marker.closeRight()"></span></span>
+						<h1>{{marker.name}} <small>{{marker.loc}}</small></h1>
 					</div>
 					<div class="row">
 						<div class="col-sm-4">
 							<address>
 								<strong>Location</strong><br />
-								<span>{{brewon.addr}}</span><br />
-								<span>{{brewon.city}}, {{brewon.state}} {{brewon.zip}}<br />
-								<span ng-show="brewon.phone != ''"><abbr title="Phone">P:</abbr> <a href="tel:{{brewon.phoneNumber()}}">{{brewon.phone}}</a></span>
+								<span>{{marker.addr}}</span><br />
+								<span>{{marker.city}}, {{marker.state}} {{marker.zip}}<br />
+								<span ng-show="marker.phone != ''"><abbr title="Phone">P:</abbr> <a href="tel:{{marker.phoneNumber()}}">{{marker.phone}}</a></span>
 							</address>
 						</div>
 						<div class="col-sm-8">
 							<p>
-								<span ng-show="brewon.www != ''"><span class="fa fa-globe" title="Website"></span> <a href="{{brewon.www}}" target="_blank">{{brewon.www}}</a><br /></span>
-								<span ng-show="brewon.fb != ''"><span class="fa fa-facebook-square" title="Facebook"></span> <a href="https://www.facebook.com/{{brewon.fb}}" target="_blank">{{brewon.fb}}</a><br /></span>
-								<span ng-show="brewon.tw != ''"><span class="fa fa-twitter" title="Twitter"></span> <a href="https://twitter.com/{{brewon.tw}}" target="_blank">{{brewon.tw}}</a><br /></span>
-								<span ng-show="brewon.ins != ''"><span class="fa fa-instagram" title="Instagram"></span> <a href="http://instagram.com/{{brewon.ins}}" target="_blank">{{brewon.ins}}</a><br /></span>
+								<span ng-show="marker.www != ''"><span class="fa fa-globe" title="Website"></span> <a href="{{marker.www}}" target="_blank">{{marker.www}}</a><br /></span>
+								<span ng-show="marker.fb != ''"><span class="fa fa-facebook-square" title="Facebook"></span> <a href="https://www.facebook.com/{{marker.fb}}" target="_blank">{{marker.fb}}</a><br /></span>
+								<span ng-show="marker.tw != ''"><span class="fa fa-twitter" title="Twitter"></span> <a href="https://twitter.com/{{marker.tw}}" target="_blank">{{marker.tw}}</a><br /></span>
+								<span ng-show="marker.ins != ''"><span class="fa fa-instagram" title="Instagram"></span> <a href="http://instagram.com/{{marker.ins}}" target="_blank">{{marker.ins}}</a><br /></span>
 							</p>
 						</div>
 					</div>
+					</div>
+					</div>
 				</div>
 			</div>
-		</script>
-		<script type="text/ng-template" id="/posts.html">
-		<div class="page-header">
-		<h3>
-		<a ng-show="post.link" href="{{post.link}}">
-		{{post.title}}
-		</a>
-		<span ng-hide="post.link">
-		{{post.title}}
-		</span>
-		</h3>
-		</div>
-
-		<div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-		<span class="glyphicon glyphicon-thumbs-up"
-		ng-click="incrementUpvotes(comment)"></span>
-		{{comment.upvotes}} - by {{comment.author}}
-		<span style="font-size:20px; margin-left:10px;">
-		{{comment.body}}
-		</span>
-		</div>
-
-		<form ng-submit="addComment()"
-		style="margin-top:30px;">
-		<h3>Add a new comment</h3>
-
-		<div class="form-group">
-		<input type="text"
-		class="form-control"
-		placeholder="Comment"
-		ng-model="body"></input>
-		</div>
-		<button type="submit" class="btn btn-primary">Post</button>
-		</form>
 		</script>
 	</body>
 </html>

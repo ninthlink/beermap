@@ -1,7 +1,7 @@
 /* https://angular-ui.github.io/angular-google-maps/#!/use */
 (function() {
 	angular
-		.module('beerMap', ['ui.router', 'google-maps'.ns()])
+		.module('beerMap', ['ui.router', 'ngAnimate', 'google-maps'.ns()])
 		.factory('locationFactory', locationFactory)
 		.controller('beerMapd', beerMapd)
 .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
@@ -328,6 +328,7 @@ $urlRouterProvider.otherwise('home');
 		console.log(m);
 		$scope.mapclass = 'col-md-6';
 		$scope.brewon = m;
+		$scope.markers.selected = m.id;
 		$scope.$apply();
 	}
 })();
