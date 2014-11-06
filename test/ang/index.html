@@ -17,9 +17,10 @@
 		<style>
 		html, body { height: 100%; }
 		.glyphicon-thumbs-up, .glyphicon-remove { cursor:pointer }
-		.angular-google-map-container { height: 50%; }
+		.angular-google-map-container { height: 100%; }
+		.col-md-6 .angular-google-map-container { height: 50%; }
 		@media (min-width: 992px) {
-			.angular-google-map-container { height: 100%; }
+			.col-md-6 .angular-google-map-container { height: 100%; }
 		}
 		</style>
 	</head>
@@ -51,9 +52,9 @@
 						<div class="col-sm-8">
 							<p>
 								<span ng-show="brewon.www != ''"><span class="fa fa-globe" title="Website"></span> <a href="{{brewon.www}}" target="_blank">{{brewon.www}}</a><br /></span>
-								<span ng-show="brewon.fb != ''"><span class="fa fa-facebook-square" title="Facebook"></span> <a href="{{brewon.fb}}" target="_blank">{{brewon.fb}}</a><br /></span>
-								<span ng-show="brewon.tw != ''"><span class="fa fa-twitter" title="Twitter"></span> <a href="https://twitter.com/{{brewon.tw}}" target="_blank">@{{brewon.tw}}</a><br /></span>
-								<span ng-show="brewon.ins != ''"><span class="fa fa-instagram" title="Instagram"></span> <a href="http://instagram.com/{{brewon.ins}}" target="_blank">@{{brewon.ins}}</a><br /></span>
+								<span ng-show="brewon.fb != ''"><span class="fa fa-facebook-square" title="Facebook"></span> <a href="https://www.facebook.com/{{brewon.fb}}" target="_blank">{{brewon.fb}}</a><br /></span>
+								<span ng-show="brewon.tw != ''"><span class="fa fa-twitter" title="Twitter"></span> <a href="https://twitter.com/{{brewon.tw}}" target="_blank">{{brewon.tw}}</a><br /></span>
+								<span ng-show="brewon.ins != ''"><span class="fa fa-instagram" title="Instagram"></span> <a href="http://instagram.com/{{brewon.ins}}" target="_blank">{{brewon.ins}}</a><br /></span>
 							</p>
 						</div>
 					</div>
