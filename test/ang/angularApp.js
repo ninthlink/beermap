@@ -4,25 +4,29 @@
 		.module('beerMap', ['ui.router', 'ngAnimate', 'google-maps'.ns()])
 		.factory('locationFactory', locationFactory)
 		.controller('beerMapd', beerMapd)
-.config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
-	GoogleMapApi.configure({
-		key: 'AIzaSyCUwl6lVEzZGsbFp8-QKu3FYwFcOEPgUo4',
-		v: '3.17',
-		libraries: 'weather,geometry,visualization'
-	});
-}])
-.config([
-'$stateProvider',
-'$urlRouterProvider',
-function($stateProvider, $urlRouterProvider) {
-$stateProvider
-.state('home', {
-url: '/home',
-templateUrl: '/home.html',
-controller: 'beerMapd'
-})
-$urlRouterProvider.otherwise('home');
-}]);
+		.config([
+			'GoogleMapApiProvider'.ns(),
+			function (GoogleMapApi) {
+				GoogleMapApi.configure({
+					key: 'AIzaSyCUwl6lVEzZGsbFp8-QKu3FYwFcOEPgUo4',
+					v: '3.17',
+					libraries: 'weather,geometry,visualization'
+				});
+			}
+			])
+		.config([
+			'$stateProvider',
+			'$urlRouterProvider',
+			function($stateProvider, $urlRouterProvider) {
+				$stateProvider
+				.state('home', {
+					url: '/home',
+					templateUrl: '/home.html',
+					controller: 'beerMapd'
+				})
+				$urlRouterProvider.otherwise('home');
+			}
+		]);
 	
 	beerMapd.$inject = ['$scope', '$http', 'locationFactory', 'GoogleMapApi'.ns()];
 	
