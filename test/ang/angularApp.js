@@ -46,44 +46,13 @@
 			maxlng: false
 		};
 		
-		locationFactory.loadAll().success(function(locs) {
-			var c = locs.length;
-			$scope.markers = [];
-			console.log('loaded '+ c + ' locations');
-			for( var i = 0; i < c; i++ ) {
-				var obj = locs[i];
-				obj.id = i;
-				obj.coords = {
-					latitude: locs[i].latitude,
-					longitude: locs[i].longitude
-				};
-				$scope.boundary = locationFactory.checkBounds( $scope.boundary, locs[i].latitude, locs[i].longitude, false );
-				$scope.markers.push(obj);
-			}
-			angular.forEach($scope.markers, function(marker) {
-				marker.onClick = function() {
-					console.log('onClick '+ marker.id);
-					markerClicked($scope, marker.id);
-				}
-				marker.phoneNumber = function() {
-					return marker.phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
-				}
-				marker.closeRight = function() {
-					console.log('close..');
-					$scope.brewon = false;
-					$scope.mapclass = '';
-				}
-			});
-			//console.log('##');
-			//console.log($scope.markers);
-			console.log('## all '+ $scope.markers.length +' markers loaded : bounds are...');
-			console.log($scope.boundary);
-		})
-		.error(function(err) {
-			console.log('Error loading : '+ err.message);
-			$scope.markers = [];
-		});
-
+		/**
+		 * Get all brewery location markers from the locationFactory
+		 *
+		 * it also sets the markers inside function, so that can be cleaned up at some pt
+		 */
+		$scope.markers = locationFactory.loadAll($scope);
+		
 		/**
 		 *	Get Map Stylesfrom external file [includes/map.styles.js]
 		 *
@@ -94,6 +63,7 @@
 		/**
 		 * HTML5 geolocation sensor
 		 *
+		 * should this be elsewhere?
 		 */
 		if(navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
@@ -117,6 +87,16 @@
 			// no geoloc
 			console.log('geoloc : no?');
 		}
+		
+		/**
+		 * test reloading data in the locationFactory
+		 *
+		 */
+		$scope.reload = function() {
+			console.log('reload?!');
+			var reload = locationFactory.loadAll();
+			console.log(reload);
+		};
 	}
 	
 	locationFactory.$inject = ['$http'];
@@ -125,8 +105,62 @@
 		var beerURL = 'beerdb.json';
 		var o = {};
 		
-		o.loadAll = function() {
-			return $http.get(beerURL);
+		o.beerdbjson = false;
+		o.omarkers = [];
+		
+		o.getJSON = function() {
+			if ( this.beerdbjson === false ) {
+				console.log('loading '+ beerURL);
+				this.beerdbjson = $http.get(beerURL);
+			} else {
+				console.log('loading '+ beerURL + ' from stored version?!');
+			}
+			return this.beerdbjson;
+		};
+		o.loadAll = function( $scope ) {
+			var vm = this;
+			if ( vm.omarkers.length == 0 ) {
+				vm.getJSON().success(function(locs) {
+					var c = locs.length;
+					$scope.markers = [];
+					console.log('loaded '+ c + ' locations');
+					for( var i = 0; i < c; i++ ) {
+						var obj = locs[i];
+						obj.id = i;
+						obj.coords = {
+							latitude: locs[i].latitude,
+							longitude: locs[i].longitude
+						};
+						$scope.boundary = vm.checkBounds( $scope.boundary, locs[i].latitude, locs[i].longitude, false );
+						$scope.markers.push(obj);
+					}
+					angular.forEach($scope.markers, function(marker) {
+						marker.onClick = function() {
+							console.log('onClick '+ marker.id);
+							markerClicked($scope, marker.id);
+						}
+						marker.phoneNumber = function() {
+							return marker.phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
+						}
+						marker.closeRight = function() {
+							console.log('close..');
+							$scope.brewon = false;
+							$scope.mapclass = '';
+						}
+					});
+					//console.log('##');
+					//console.log($scope.markers);
+					vm.omarkers = $scope.markers; // save for later
+					console.log('## all '+ $scope.markers.length +' markers loaded : bounds are...');
+					console.log($scope.boundary);
+				})
+				.error(function(err) {
+					console.log('Error loading : '+ err.message);
+					$scope.markers = [];
+					vm.omarkers = [];
+				});
+			}
+			return vm.omarkers;
 		};
 		o.checkBounds = function(bounds, newlat, newlng, ob) {
 			var inbounds = true;
@@ -172,8 +206,7 @@
 	}
 	
 	function markerClicked( $scope, i ) {
-		console.log('clicked!');
-		console.log(arguments);
+		console.log('clicked #'+ i + ' !');
 		var m = $scope.markers[i];
 		console.log(m);
 		$scope.mapclass = 'col-md-6';
