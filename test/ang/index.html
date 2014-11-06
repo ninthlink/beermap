@@ -11,7 +11,7 @@
 		<script src="includes/angular-resource.js"></script>
 		<script src="includes/jquery.min.js"></script>
 		<script src="includes/lodash.compat.min.js"></script>
-		<script src="includes/browser/bluebird.js"></script>
+		<script src="includes/bluebird.js"></script>
 		<script src="includes/angular-google-maps.min.js"></script>
 		<script src="angularApp.js"></script>
 		<style>
@@ -30,7 +30,7 @@
 		<script type="text/ng-template" id="/home.html">
 			<div class="row">
 				<div class="{{mapclass}}">
-					<ui-gmap-google-map bounds="map.bounds" options="options" draggable="true" center="map.center" zoom="map.zoom">
+					<ui-gmap-google-map bounds="map.bounds" options="options" styles="styles" draggable="true" center="map.center" zoom="map.zoom">
 						<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="'onClick'"></ui-gmap-markers>
 					</ui-gmap-google-map>
 				</div>
