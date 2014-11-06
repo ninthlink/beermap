@@ -4,6 +4,7 @@
 		.module('beerMap', ['ui.router', 'ngAnimate', 'google-maps'.ns()])
 		.factory('locationFactory', locationFactory)
 		.controller('beerMapd', beerMapd)
+		.controller('breweryList', breweryList)
 		.config([
 			'GoogleMapApiProvider'.ns(),
 			function (GoogleMapApi) {
@@ -19,11 +20,16 @@
 			'$urlRouterProvider',
 			function($stateProvider, $urlRouterProvider) {
 				$stateProvider
-				.state('home', {
-					url: '/home',
-					templateUrl: '/home.html',
-					controller: 'beerMapd'
-				})
+					.state('home', {
+						url: '/home',
+						templateUrl: '/home.html',
+						controller: 'beerMapd'
+					})
+					.state('list', {
+						url: '/list',
+						templateUrl: '/list.html',
+						controller: 'breweryList'
+					})
 				$urlRouterProvider.otherwise('home');
 			}
 		]);
@@ -213,5 +219,12 @@
 		$scope.brewon = m;
 		$scope.markers.selected = m.id;
 		$scope.$apply();
+	}
+	
+		
+	breweryList.$inject = ['$scope', '$http', 'locationFactory'];
+	
+	function breweryList($scope, $http, locationFactory){
+		// and then?
 	}
 })();
