@@ -35,6 +35,13 @@ $urlRouterProvider.otherwise('home');
 		$scope.mapclass = '';
 		$scope.brewon = false;
 		
+		$scope.boundary = {
+			minlat: false,
+			maxlat: false,
+			minlng: false,
+			maxlng: false
+		};
+		
 		locationFactory.loadAll().success(function(locs) {
 			var c = locs.length;
 			$scope.markers = [];
@@ -46,6 +53,7 @@ $urlRouterProvider.otherwise('home');
 					latitude: locs[i].latitude,
 					longitude: locs[i].longitude
 				};
+				$scope.boundary = locationFactory.checkBounds( $scope.boundary, locs[i].latitude, locs[i].longitude, false );
 				$scope.markers.push(obj);
 			}
 			angular.forEach($scope.markers, function(marker) {
@@ -62,8 +70,10 @@ $urlRouterProvider.otherwise('home');
 					$scope.mapclass = '';
 				}
 			});
-			console.log('##');
-			console.log($scope.markers);
+			//console.log('##');
+			//console.log($scope.markers);
+			console.log('## all '+ $scope.markers.length +' markers loaded : bounds are...');
+			console.log($scope.boundary);
 		})
 		.error(function(err) {
 			console.log('Error loading : '+ err.message);
@@ -237,14 +247,25 @@ $urlRouterProvider.otherwise('home');
 		// html5 geoloc
 		if(navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
-				$scope.map.zoom = 12;
-				$scope.map.center = { latitude: position.coords.latitude, longitude: position.coords.longitude };
-				$scope.$apply();
+				/**
+				 * only center to new position if new position is within san diego area, +/- ?
+				 * note : not sure if this always fires in the right order?
+				 */
+				if ( locationFactory.checkBounds( $scope.boundary, position.coords.latitude, position.coords.longitude, true ) ) {
+					$scope.map.zoom = 12;
+					$scope.map.center = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+					$scope.$apply();
+					console.log('geoloc : all set');
+				} else {
+					console.log('geoloc : oob');
+				}
 			}, function() {
 				// geoloc err
+				console.log('geoloc : err?');
 			});
 		} else {
 			// no geoloc
+			console.log('geoloc : no?');
 		}
 	}
 	
@@ -256,6 +277,46 @@ $urlRouterProvider.otherwise('home');
 		
 		o.loadAll = function() {
 			return $http.get(beerURL);
+		};
+		o.checkBounds = function(bounds, newlat, newlng, ob) {
+			var inbounds = true;
+			if ( bounds.minlat === false ) {
+				bounds.minlat = newlat;
+				inbounds = false;
+			} else {
+				if ( bounds.minlat > newlat ) {
+					bounds.minlat = newlat;
+					inbounds = false;
+				}
+			}
+			if ( bounds.maxlat === false ) {
+				bounds.maxlat = newlat;
+				inbounds = false;
+			} else {
+				if ( bounds.maxlat < newlat ) {
+					bounds.maxlat = newlat;
+					inbounds = false;
+				}
+			}
+			if ( bounds.minlng === false ) {
+				bounds.minlng = newlng;
+				inbounds = false;
+			} else {
+				if ( bounds.minlng > newlng ) {
+					bounds.minlng = newlng;
+					inbounds = false;
+				}
+			}
+			if ( bounds.maxlng === false ) {
+				bounds.maxlng = newlng;
+				inbounds = false;
+			} else {
+				if ( bounds.maxlng < newlng ) {
+					bounds.maxlng = newlng;
+					inbounds = false;
+				}
+			}
+			return ob ? inbounds : bounds;
 		};
 		return o;
 	}
