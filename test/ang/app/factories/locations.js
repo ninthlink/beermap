@@ -31,10 +31,10 @@
 		o.loadAll = function( $scope ) {
 			var vm = this;
 			if ( vm.omarkers.length == 0 ) {
+				console.log('reload markers from JSON?');
 				vm.getJSON().success(function(locs) {
 					var c = locs.length;
 					$scope.markers = [];
-					console.log('loaded '+ c + ' locations');
 					for( var i = 0; i < c; i++ ) {
 						var obj = locs[i];
 						obj.id = i;
@@ -42,37 +42,52 @@
 							latitude: locs[i].latitude,
 							longitude: locs[i].longitude
 						};
-						$scope.boundary = vm.checkBounds( $scope.boundary, locs[i].latitude, locs[i].longitude, false );
+						if ( $scope.map !== false ) {
+							$scope.boundary = vm.checkBounds( $scope.boundary, locs[i].latitude, locs[i].longitude, false );
+						}
 						$scope.markers.push(obj);
 					}
-					angular.forEach($scope.markers, function(marker) {
-						marker.onClick = function() {
-							console.log('onClick '+ marker.id);
-							markerClicked($scope, marker.id);
-						}
-						marker.phoneNumber = function() {
-							return marker.phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
-						}
-						marker.closeRight = function() {
-							console.log('close..');
-							$scope.brewon = false;
-							$scope.mapclass = '';
-						}
-					});
+					vm.addMarkerEvents( $scope );
 					//console.log('##');
 					//console.log($scope.markers);
 					vm.omarkers = $scope.markers; // save for later
-					console.log('## all '+ $scope.markers.length +' markers loaded : bounds are...');
-					console.log($scope.boundary);
+					console.log('## all '+ $scope.markers.length +' markers loaded');
+					//console.log($scope.boundary);
 				})
 				.error(function(err) {
 					console.log('Error loading : '+ err.message);
 					$scope.markers = [];
 					vm.omarkers = [];
 				});
+			} else {
+				$scope.markers = vm.omarkers;
+				$scope.$apply();
+				vm.addMarkerEvents( $scope );
 			}
-			return vm.omarkers;
 		};
+		
+		o.addMarkerEvents = function( $scope ) {
+			if ( angular.isArray( $scope.markers ) ) {
+				angular.forEach($scope.markers, function(marker) {
+					marker.phoneNumber = function() {
+						return marker.phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
+					}
+					
+					if ( $scope.map !== false ) {
+						marker.onClick = function() {
+							console.log('onClick '+ marker.id);
+							markerClicked($scope, marker.id);
+						}
+						marker.closeRight = function() {
+							console.log('close..');
+							$scope.brewon = false;
+							$scope.mapclass = '';
+						}
+					}
+				});
+			}
+		}
+		
 		o.checkBounds = function(bounds, newlat, newlng, ob) {
 			var inbounds = true;
 			if ( bounds.minlat === false ) {
