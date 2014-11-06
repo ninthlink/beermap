@@ -1,8 +1,4 @@
 <div class="row">
-	<div class="{{mapclass}}">
-		<ui-gmap-google-map bounds="map.bounds" options="options" styles="styles" draggable="true" center="map.center" zoom="map.zoom">
-			<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="'onClick'"></ui-gmap-markers>
-		</ui-gmap-google-map>
-	</div>
+	<ng-include src="'partials/map.html'"></ng-include>
 	<ng-include src="'partials/overlay.html'"></ng-include>
 </div>
