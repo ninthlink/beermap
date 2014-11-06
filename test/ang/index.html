@@ -1,12 +1,27 @@
 <html>
 	<head>
 		<title>Beer Map'd</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="apple-mobile-web-app-title" content="Beer Map">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-touch-fullscreen" content="yes">
+
 		<!-- bootstrap css -->
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<!-- fontawesome for more : http://fortawesome.github.io/Font-Awesome/icons/#web-application -->
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<!-- custom styles -->
 		<link href="includes/styles.css" rel="stylesheet">
+		<!-- and then? -->
+	</head>
+	<body ng-app="beerMap">
+		<div class="container-fluid">
+			<ui-view></ui-view>
+		</div>
 		<!-- javascripts -->
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
 		<script src="includes/map.styles.js"></script>
@@ -18,10 +33,5 @@
 		<script src="includes/bluebird.js"></script>
 		<script src="includes/angular-google-maps.min.js"></script>
 		<script src="./angularApp.js"></script>
-	</head>
-	<body ng-app="beerMap">
-		<div class="container-fluid">
-			<ui-view></ui-view>
-		</div>
 	</body>
 </html>
