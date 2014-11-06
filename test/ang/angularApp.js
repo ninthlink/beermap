@@ -223,8 +223,8 @@
 		console.log('clicked #'+ i + ' !');
 		var m = $scope.markers[i];
 		console.log(m);
-		$scope.mapclass = 'customMapClass';
-		$scope.overlayclass = 'col-md-12 customOverlayClass';
+		$scope.mapclass = 'slideleft';
+		$scope.overlayclass = 'col-md-12 overlay-container';
 		$scope.brewon = m;
 		$scope.markers.selected = m.id;
 		$scope.$apply();

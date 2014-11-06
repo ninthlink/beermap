@@ -1,6 +1,7 @@
 html,
 body {
 	height: 100%;
+	overflow-x: hidden;
 }
 .angular-google-map-container {
 	height: 100%;
@@ -15,9 +16,15 @@ body {
 	.col-md-6 .angular-google-map-container {
 		height: 100%;
 	}
+
+
+.glyphicon-thumbs-up,
+.glyphicon-remove {
+	cursor:pointer;
 }
 
-.customOverlayClass {
+
+.overlay-container {
 	background-color: #fff;
 	left: 0;
 	min-height: 100%;
@@ -25,9 +32,4 @@ body {
 	position: absolute;
 	top: 0;
 	z-index: 99;
-}
-
-.glyphicon-thumbs-up,
-.glyphicon-remove {
-	cursor:pointer;
 }
