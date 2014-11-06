@@ -1,0 +1,33 @@
+	<div ng-show="brewon != false" class="{{overlayclass}}" ng-init="markers.selected=0">
+		<div ng-repeat="marker in markers">
+		<div id="{{marker.id}}" ng-if="markers.selected == marker.id" class="switch-animation">
+		<div class="page-header">
+			<span class="pull-right"><span class="glyphicon glyphicon-remove" ng-click="marker.closeRight()"></span></span>
+			<h1>{{marker.name}} <small>{{marker.loc}}</small></h1>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<address>
+					<strong><abbr title="{{marker.coords.latitude}}, {{marker.coords.longitude}}">Location</abbr></strong><br />
+					<span>{{marker.addr}}</span><br />
+					<span>{{marker.city}}, {{marker.state}} {{marker.zip}}<br />
+					<span ng-show="marker.phone != ''"><abbr title="Phone">P:</abbr> <a href="tel:{{marker.phoneNumber()}}">{{marker.phone}}</a></span>
+				</address>
+			</div>
+			<div class="col-sm-8">
+				<p>
+					<span ng-show="marker.www != ''"><span class="fa fa-globe" title="Website"></span> <a href="{{marker.www}}" target="_blank">{{marker.www}}</a><br /></span>
+					<span ng-show="marker.fb != ''"><span class="fa fa-facebook-square" title="Facebook"></span> <a href="https://www.facebook.com/{{marker.fb}}" target="_blank">{{marker.fb}}</a><br /></span>
+					<span ng-show="marker.tw != ''"><span class="fa fa-twitter" title="Twitter"></span> <a href="https://twitter.com/{{marker.tw}}" target="_blank">{{marker.tw}}</a><br /></span>
+					<span ng-show="marker.ins != ''"><span class="fa fa-instagram" title="Instagram"></span> <a href="http://instagram.com/{{marker.ins}}" target="_blank">{{marker.ins}}</a><br /></span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+			<p><small><a href="#/list">view all breweries in a list?</a></small></p>
+			</div>
+		</div>
+		</div>
+		</div>
+	</div>
