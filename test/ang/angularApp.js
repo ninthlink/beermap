@@ -22,7 +22,7 @@
 				$stateProvider
 					.state('home', {
 						url: '/home',
-						templateUrl: '/home.html',
+						templateUrl: './partials/home.html',
 						controller: 'beerMapd'
 					})
 				$urlRouterProvider.otherwise('home');
@@ -35,7 +35,7 @@
 				$stateProvider
 					.state('list', {
 						url: '/list',
-						templateUrl: '/list.html',
+						templateUrl: './partials/list.html',
 						controller: 'breweryList'
 					})
 				$urlRouterProvider.otherwise('home');
