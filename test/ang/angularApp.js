@@ -215,7 +215,8 @@
 		console.log('clicked #'+ i + ' !');
 		var m = $scope.markers[i];
 		console.log(m);
-		$scope.mapclass = 'col-md-6';
+		$scope.mapclass = 'customMapClass';
+		$scope.overlayclass = 'col-md-12 customOverlayClass';
 		$scope.brewon = m;
 		$scope.markers.selected = m.id;
 		$scope.$apply();

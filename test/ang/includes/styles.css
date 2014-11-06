@@ -1,0 +1,9 @@
+.customOverlayClass {
+	background-color: #fff;
+	left: 0;
+	min-height: 100%;
+	overflow-x: hidden;
+	position: absolute;
+	top: 0;
+	z-index: 99;
+}

@@ -5,6 +5,8 @@
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<!-- fontawesome for more : http://fortawesome.github.io/Font-Awesome/icons/#web-application -->
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<!-- custom styles -->
+		<link href="includes/styles.css" rel="stylesheet">
 		<!-- javascripts -->
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
 		<script src="includes/map.styles.js"></script>
@@ -37,7 +39,7 @@
 						<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="'onClick'"></ui-gmap-markers>
 					</ui-gmap-google-map>
 				</div>
-				<div ng-show="brewon != false" class="col-md-6" ng-init="markers.selected=0">
+				<div ng-show="brewon != false" class="{{overlayclass}}" ng-init="markers.selected=0">
 					<div ng-repeat="marker in markers">
 					<div id="{{marker.id}}" ng-if="markers.selected == marker.id" class="switch-animation">
 					<div class="page-header">
