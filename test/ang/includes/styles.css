@@ -3,7 +3,9 @@ body {
 	height: 100%;
 	overflow-x: hidden;
 }
-
+h1 {
+	text-align: center;
+}
 
 .map-container,
 .overlay-container {
