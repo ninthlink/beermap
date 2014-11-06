@@ -83,172 +83,18 @@
 			console.log('Error loading : '+ err.message);
 			$scope.markers = [];
 		});
-		
-		$scope.styles = [
-			  {
-			    "featureType": "water",
-			    "stylers": [
-			      { "color": "#000000" }
-			    ]
-			  },{
-			    "featureType": "road.highway",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "color": "#2c2c2c" },
-			      { "visibility": "simplified" }
-			    ]
-			  },{
-			    "featureType": "road.arterial",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "color": "#555555" }
-			    ]
-			  },{
-			    "featureType": "road.local",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "color": "#777777" }
-			    ]
-			  },{
-			    "featureType": "poi",
-			    "stylers": [
-			      { "visibility": "off" }
-			    ]
-			  },{
-			    "featureType": "landscape.man_made",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "color": "#111111" }
-			    ]
-			  },{
-			    "featureType": "landscape.natural",
-			    "stylers": [
-			      { "color": "#111111" }
-			    ]
-			  },{
-			    "featureType": "road.highway",
-			    "elementType": "labels.text",
-			    "stylers": [
-			      { "visibility": "off" }
-			    ]
-			  },{
-			    "featureType": "road",
-			    "elementType": "labels.text.fill",
-			    "stylers": [
-			      { "color": "#ffffff" }
-			    ]
-			  },{
-			    "featureType": "road.highway",
-			    "elementType": "labels.text.fill",
-			    "stylers": [
-			      { "visibility": "on" },
-			      { "color": "#aaaaaa" }
-			    ]
-			  },{
-			    "featureType": "road.arterial",
-			    "elementType": "labels.text.fill",
-			    "stylers": [
-			      { "color": "#aaaaaa" }
-			    ]
-			  },{
-			    "featureType": "road.local",
-			    "elementType": "labels.text.fill",
-			    "stylers": [
-			      { "color": "#aaaaaa" },
-			      { "visibility": "on" }
-			    ]
-			  },{
-			    "featureType": "road.arterial",
-			    "elementType": "labels.text.stroke",
-			    "stylers": [
-			      { "visibility": "off" }
-			    ]
-			  },{
-			    "featureType": "administrative",
-			    "elementType": "labels",
-			    "stylers": [
-			      { "visibility": "off" }
-			    ]
-			  },{
-			    "featureType": "road.arterial",
-			    "elementType": "labels.text.stroke",
-			    "stylers": [
-			      { "visibility": "on" },
-			      { "color": "#000000" }
-			    ]
-			  },{
-			    "featureType": "road.local",
-			    "elementType": "labels.text",
-			    "stylers": [
-			      { "color": "#000000" }
-			    ]
-			  },{
-			    "featureType": "road.local",
-			    "elementType": "labels.text.fill",
-			    "stylers": [
-			      { "color": "#aaaaaa" }
-			    ]
-			  },{
-			    "featureType": "road.local",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "color": "#000000" }
-			    ]
-			  },{
-			    "featureType": "road.arterial",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "color": "#000000" }
-			    ]
-			  },{
-			    "featureType": "road.highway",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "color": "#000000" }
-			    ]
-			  },{
-			    "featureType": "road",
-			    "elementType": "labels",
-			    "stylers": [
-			      { "visibility": "off" }
-			    ]
-			  },{
-			    "featureType": "landscape",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "color": "#333333" }
-			    ]
-			  },{
-			    "featureType": "transit",
-			    "elementType": "labels",
-			    "stylers": [
-			      { "visibility": "off" }
-			    ]
-			  },{
-			    "featureType": "transit",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "color": "#222222" }
-			    ]
-			  },{
-			    "featureType": "administrative.country",
-			    "elementType": "geometry",
-			    "stylers": [
-			      { "visibility": "on" },
-			      { "color": "#444444" }
-			    ]
-			  },{
-			    "featureType": "administrative",
-			    "elementType": "geometry.fill",
-			    "stylers": [
-			      { "visibility": "simplified" },
-			      { "color": "#333333" }
-			    ]
-			  },{
-			  }
-			];
-		
-		// html5 geoloc
+
+		/**
+		 *	Get Map Stylesfrom external file [includes/map.styles.js]
+		 *
+		 *	Should we build in a dynamic style selector? For example, light versus dark app style?
+		 */
+		$scope.styles = mapStyles;
+
+		/**
+		 * HTML5 geolocation sensor
+		 *
+		 */
 		if(navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				/**
