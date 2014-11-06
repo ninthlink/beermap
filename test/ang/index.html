@@ -7,7 +7,6 @@
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<!-- javascripts -->
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-		<script src="includes/map.styles.js"></script>
 		<script src="includes/angular-ui-router.js"></script>
 		<script src="includes/angular-resource.js"></script>
 		<script src="includes/jquery.min.js"></script>
@@ -47,7 +46,7 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<address>
-								<strong>Location</strong><br />
+								<strong><abbr title="{{marker.coords.latitude}}, {{marker.coords.longitude}}">Location</abbr></strong><br />
 								<span>{{marker.addr}}</span><br />
 								<span>{{marker.city}}, {{marker.state}} {{marker.zip}}<br />
 								<span ng-show="marker.phone != ''"><abbr title="Phone">P:</abbr> <a href="tel:{{marker.phoneNumber()}}">{{marker.phone}}</a></span>
@@ -62,6 +61,11 @@
 							</p>
 						</div>
 					</div>
+					<!--div class="row">
+						<div class="col-md-12">
+						<p><button type="button" class="btn btn-primary" ng-click="reload()">Reload all Brew data?</button></p>
+						</div>
+					</div-->
 					</div>
 					</div>
 				</div>
