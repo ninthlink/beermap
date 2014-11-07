@@ -42,6 +42,7 @@
 							latitude: locs[i].latitude,
 							longitude: locs[i].longitude
 						};
+						obj.fs = false;
 						if ( $scope.map !== false ) {
 							$scope.boundary = vm.checkBounds( $scope.boundary, locs[i].latitude, locs[i].longitude, false );
 						}

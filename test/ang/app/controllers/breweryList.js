@@ -10,9 +10,9 @@
 		.module('beerMap')
 		.controller('breweryList', breweryList);
 		
-	breweryList.$inject = ['$scope', '$http', 'locationFactory'];
+	breweryList.$inject = ['$scope', '$http', 'locationFactory', 'socialFactory'];
 	
-	function breweryList($scope, $http, locationFactory){
+	function breweryList($scope, $http, locationFactory, socialFactory){
 		$scope.map = false;
 		$scope.markers = [];
 		$scope.llon = false;
@@ -42,10 +42,10 @@
 		$scope.fullName = function( marker ) {
 			return marker.fullNameLink();
 		};
-		/*
-		function( marker ) {
-			alert('fullnamed');
+		
+		$scope.foursquared = function( marker ) {
+			var fulladdr = marker.fullAddr();
+			socialFactory.foursquareSearch( marker.name, fulladdr, marker.coords.latitude, marker.coords.longitude );
 		};
-		*/
 	}
 })();

@@ -29,6 +29,7 @@
 					<th scope="row"><span class="fa fa-facebook-square" title="Facebook"></span></th>
 					<th scope="row"><span class="fa fa-twitter" title="Twitter"></span></th>
 					<th scope="row"><span class="fa fa-instagram" title="Instagram"></span></th>
+					<th scope="row"><span class="fa fa-foursquare" title="Foursquare"></span></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -40,6 +41,7 @@
 					<td><span ng-show="marker.fb != ''"><a href="https://www.facebook.com/{{marker.fb}}" target="_blank"><span class="fa fa-facebook-square" title="{{marker.fb}}"></span></a></span></td>
 					<td><span ng-show="marker.tw != ''"><a href="https://twitter.com/{{marker.tw}}" target="_blank"><span class="fa fa-twitter" title="{{marker.tw}}"></span></a></span></td>
 					<td><span ng-show="marker.ins != ''"><a href="http://instagram.com/{{marker.ins}}" target="_blank"><span class="fa fa-instagram" title="{{marker.ins}}"></span></a></span></td>
+					<td><button ng-hide="marker.fs" class="btn btn-link btn-xs" ng-click="foursquared(marker)">click 4sq</button></td>
 				</tr>
 			</tbody>
 		</table>
