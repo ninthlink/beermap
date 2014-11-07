@@ -101,6 +101,22 @@
 							$scope.brewon = false;
 							$scope.mapclass = '';
 						}
+					} else {
+						console.log('binding 4sq?!');
+						marker.foursquared = function( id ) {
+							marker.fs = id;
+						}
+						marker.print4s = function() {
+							var o = false;
+							if ( marker.fs !== false ) {
+								if ( angular.isObject( marker.fs ) ) {
+									o = 'objd';
+								} else {
+									o = marker.fs;
+								}
+							}
+							return o;
+						}
 					}
 				});
 			}

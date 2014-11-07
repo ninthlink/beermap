@@ -44,8 +44,7 @@
 		};
 		
 		$scope.foursquared = function( marker ) {
-			var fulladdr = marker.fullAddr();
-			socialFactory.foursquareSearch( marker.name, fulladdr, marker.coords.latitude, marker.coords.longitude );
+			socialFactory.foursquareSearch( marker );
 		};
 	}
 })();
