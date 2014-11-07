@@ -1,5 +1,7 @@
+<!-- MAP container -->
+
 <div class="map-container {{mapclass}}">
-	<ng-include src="'partials/header.html'"></ng-include>
+	<ng-include src="'partials/map-header.html'"></ng-include>
 	<ui-gmap-google-map bounds="map.bounds" options="options" styles="styles" draggable="true" center="map.center" zoom="map.zoom">
 		<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="'onClick'"></ui-gmap-markers>
 	</ui-gmap-google-map>

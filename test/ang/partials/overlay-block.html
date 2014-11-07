@@ -1,3 +1,5 @@
+<!-- OVERLAY container -->
+
 <div ng-show="brewon != false" class="overlay-container {{overlayclass}}" ng-init="markers.selected=0">
 	<div ng-repeat="marker in markers">
 		<div id="{{marker.id}}" ng-if="markers.selected == marker.id" class="switch-animation">
