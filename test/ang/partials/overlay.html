@@ -2,7 +2,7 @@
 	<div ng-repeat="marker in markers">
 		<div id="{{marker.id}}" ng-if="markers.selected == marker.id" class="switch-animation">
 			<div class="page-header">
-				<span class="pull-right"><span class="glyphicon glyphicon-remove" ng-click="marker.closeRight()"></span></span>
+				<span class="pull-left"><span class="glyphicon glyphicon-chevron-left clickable" ng-click="marker.closeRight()"></span></span>
 				<h1>{{marker.name}} <small>{{marker.loc}}</small></h1>
 			</div>
 			<div class="row">

@@ -6,6 +6,10 @@ body {
 h1 {
 	text-align: center;
 }
+.page-header {
+	padding-left: 20px;
+	padding-right: 20px;
+}
 
 .map-container,
 .overlay-container {
@@ -29,6 +33,7 @@ h1 {
 
 .glyphicon-thumbs-up,
 .glyphicon-remove,
+.glyphicon-chevron-left,
 .clickable {
 	cursor:pointer;
 }
