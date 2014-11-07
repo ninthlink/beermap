@@ -10,7 +10,10 @@ h1 {
 	padding-left: 20px;
 	padding-right: 20px;
 }
-
+.logo {
+	position: relative;
+	margin-top: -2.6em;
+}
 .map-container,
 .overlay-container {
 	box-sizing: border-box;
@@ -21,7 +24,6 @@ h1 {
 	width: 100%;
 }
 
-
 .angular-google-map-container {
 	bottom: 0;
 	left: 0;
@@ -30,14 +32,12 @@ h1 {
 	top: 99px;
 }
 
-
 .glyphicon-thumbs-up,
 .glyphicon-remove,
 .glyphicon-chevron-left,
 .clickable {
 	cursor:pointer;
 }
-
 
 .overlay-container {
 	background-color: #fff;
