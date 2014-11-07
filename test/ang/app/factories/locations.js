@@ -126,7 +126,7 @@
 						}
 						marker.closeRight = function() {
 							console.log('close..');
-							$scope.brewon = false;
+							$scope.showOverlay = false;
 							$scope.mapclass = '';
 						}
 					} else {
@@ -212,7 +212,8 @@
 		console.log(m);
 		$scope.mapclass = '';
 		$scope.overlayclass = '';
-		$scope.brewon = m;
+		$scope.showOverlay = true;
+		$scope.locationData = m;
 		$scope.markers.selected = m.id;
 		$scope.$apply();
 	}

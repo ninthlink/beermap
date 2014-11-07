@@ -3,19 +3,26 @@ body {
 	height: 100%;
 	overflow-x: hidden;
 }
-h1 {
-	text-align: center;
+h1, h2, h3, h4, h5, h6 {
+	line-height: 2.5em;
+	margin: 0;
 }
-.page-header {
-	padding-left: 20px;
-	padding-right: 20px;
+.pull-left, .pull-right {
+	position: absolute;
 }
-.logo {
-	position: relative;
-	margin-top: -2.6em;
+.pull-left {
+	left: 0;
 }
+.pull-right {
+	right: 0;
+}
+
+
+
+/* CONTAINERS - OUTER */
 .map-container,
 .overlay-container {
+	background-color: #fff;
 	box-sizing: border-box;
 	height: 100%;
 	left: 0;
@@ -24,14 +31,42 @@ h1 {
 	width: 100%;
 }
 
-.angular-google-map-container {
+
+
+/* HEADERS */
+.page-header {
+	border: none;
+	height: 60px;
+	margin: 0;
+	padding: 0;
+}
+
+.logo {
+	height: 50px;
+	margin-top: 5px;
+}
+.page-header a {
+	margin: 16px;
+}
+.overlay-close {
+	margin: 23px auto auto 68px;
+}
+
+/* BODIES */
+.page-header + .row {
 	bottom: 0;
 	left: 0;
 	position: absolute !important;
 	right: 0;
-	top: 99px;
+	top: 60px;
 }
 
+.angular-google-map-container {
+	height: 100%;
+}
+
+
+/* CLICKABLE OBJECTS */
 .glyphicon-thumbs-up,
 .glyphicon-remove,
 .glyphicon-chevron-left,
@@ -39,8 +74,3 @@ h1 {
 	cursor:pointer;
 }
 
-.overlay-container {
-	background-color: #fff;
-	overflow-x: hidden;
-	z-index: 99;
-}

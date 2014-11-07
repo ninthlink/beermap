@@ -1,8 +1,19 @@
 <!-- MAP container -->
 
 <div class="map-container {{mapclass}}">
-	<ng-include src="'partials/map-header.html'"></ng-include>
-	<ui-gmap-google-map bounds="map.bounds" options="options" styles="styles" draggable="true" center="map.center" zoom="map.zoom">
-		<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="'onClick'"></ui-gmap-markers>
-	</ui-gmap-google-map>
+	
+	<!-- HEADER -->
+	<div class="page-header">
+		<ng-include src="'partials/map-header.html'"></ng-include>
+	</div>
+
+	<!-- BODY -->
+	<div class="row">
+		<div class="col-md-12">
+			<ui-gmap-google-map bounds="map.bounds" options="options" styles="styles" draggable="true" center="map.center" zoom="map.zoom">
+				<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="'onClick'"></ui-gmap-markers>
+			</ui-gmap-google-map>
+		</div>
+	</div>
+
 </div>
