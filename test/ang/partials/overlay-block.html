@@ -1,11 +1,7 @@
 <!-- OVERLAY container -->
 
-<div ng-show="showOverlay" class="overlay-container {{overlayclass}} ng-hide" ng-init="locationDatas.selected=0">
+<div ng-show="showOverlay" class="row overlay-container {{overlayclass}} ng-hide" ng-init="locationDatas.selected=0">
 	
-	<!--div ng-repeat="locationData in locationDatas"-->
-		
-		<!--div id="{{locationData.id}}" ng-if="locationDatas.selected == locationData.id" class="switch-animation"-->
-
 			<!-- HEADER -->
 			<div class="page-header">
 				<ng-include src="'partials/overlay-header.html'"></ng-include>
@@ -39,9 +35,5 @@
 					</div>
 				</div>
 			</div>
-		
-		<!--/div-->
-	
-	<!--/div-->
 
 </div>

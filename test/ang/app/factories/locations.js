@@ -128,6 +128,10 @@
 							console.log('close..');
 							$scope.showOverlay = false;
 							$scope.mapclass = '';
+							// reset map position to original center
+							$scope.map.center = $scope.originalCenter;
+							$scope.map.zoom = $scope.originalZoom;
+							console.log($scope.map.center);
 						}
 					} else {
 						/**
@@ -210,11 +214,37 @@
 		console.log('clicked #'+ i + ' !');
 		var m = $scope.markers[i];
 		console.log(m);
-		$scope.mapclass = '';
-		$scope.overlayclass = '';
+		
+		// set classes for when overlay is active
+		$scope.mapclass = 'shrunkd';
+		$scope.overlayclass = 'growd';
+		
+		// show overlay
 		$scope.showOverlay = true;
+		
+		// data to pass to overlay DOM
 		$scope.locationData = m;
 		$scope.markers.selected = m.id;
+		
+		// Map adjustments
+
+		// store original center for later use...
+		$scope.originalCenter = $scope.map.center;
+		$scope.originalZoom = $scope.map.zoom;
+
+		// trigger resize event now that map display area has changed via CSS class from above
+		window.setTimeout(function(){
+			google.maps.event.trigger($scope.map, "resize");
+		},100);
+
+		// ...then recenter map on clicked marker...
+		window.setTimeout(function(){
+			$scope.map.center = { latitude: m.coords.latitude, longitude: m.coords.longitude };
+		},500);
+
+		// ...and zoom in
+		$scope.map.zoom = 16;
+		
 		$scope.$apply();
 	}
 })();

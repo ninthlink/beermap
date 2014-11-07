@@ -18,10 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-
-/* CONTAINERS - OUTER */
-.map-container,
-.overlay-container {
+.app-container {
 	background-color: #fff;
 	box-sizing: border-box;
 	height: 100%;
@@ -31,6 +28,29 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 
+.app-content.row {
+	bottom: 0;
+	left: 0;
+	position: absolute !important;
+	right: 0;
+	top: 60px;
+}
+
+/* CONTAINERS - OUTER */
+.map-container {
+	background-color: #fff;
+	box-sizing: border-box;
+	height: 100%;
+}
+.map-container div {
+	height: 100%;
+}
+.map-container.shrunkd {
+	height: 30%;
+}
+.angular-google-map-container {
+	height: 100%;
+}
 
 
 /* HEADERS */
@@ -52,18 +72,6 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 23px auto auto 68px;
 }
 
-/* BODIES */
-.page-header + .row {
-	bottom: 0;
-	left: 0;
-	position: absolute !important;
-	right: 0;
-	top: 60px;
-}
-
-.angular-google-map-container {
-	height: 100%;
-}
 
 
 /* CLICKABLE OBJECTS */
