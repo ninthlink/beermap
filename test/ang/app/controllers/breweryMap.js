@@ -13,7 +13,7 @@
 	beerMapd.$inject = ['$scope', '$http', 'locationFactory', 'GoogleMapApi'.ns()];
 	
 	function beerMapd($scope, $http, locationFactory, GoogleMapApi){
-		$scope.map = {center: {latitude: 32.91, longitude: -117 }, zoom: 10 };
+		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10 };
 		$scope.options = {};//scrollwheel: false};
 		$scope.coordsUpdates = 0;
 		$scope.dynamicMoveCtr = 0;
@@ -80,16 +80,5 @@
 			var reload = locationFactory.loadAll();
 			console.log(reload);
 		};
-	}
-	
-	function markerClicked( $scope, i ) {
-		console.log('clicked #'+ i + ' !');
-		var m = $scope.markers[i];
-		console.log(m);
-		$scope.mapclass = 'slideleft';
-		$scope.overlayclass = 'col-md-12 overlay-container';
-		$scope.brewon = m;
-		$scope.markers.selected = m.id;
-		$scope.$apply();
 	}
 })();

@@ -19,6 +19,9 @@
 		o.beerdbjson = false;
 		o.omarkers = [];
 		
+		/**
+		 * caches $http.get beerURL request?
+		 */
 		o.getJSON = function() {
 			if ( this.beerdbjson === false ) {
 				console.log('loading '+ beerURL);
@@ -28,6 +31,9 @@
 			}
 			return this.beerdbjson;
 		};
+		/**
+		 * loads all markers either from stored object or from calling getJSON
+		 */
 		o.loadAll = function( $scope ) {
 			var vm = this;
 			if ( vm.omarkers.length == 0 ) {
@@ -38,11 +44,14 @@
 					for( var i = 0; i < c; i++ ) {
 						var obj = locs[i];
 						obj.id = i;
+						// create coords pair for mapping
 						obj.coords = {
 							latitude: locs[i].latitude,
 							longitude: locs[i].longitude
 						};
-						obj.fs = false;
+						// set up some more social media placeholder stub fields for now
+						obj.foursquare_id = false;
+						// if we have a map, extend the stored "boundary" to fit this new marker
 						if ( $scope.map !== false ) {
 							$scope.boundary = vm.checkBounds( $scope.boundary, locs[i].latitude, locs[i].longitude, false );
 						}
@@ -63,19 +72,33 @@
 			} else {
 				$scope.markers = vm.omarkers;
 				$scope.$apply();
+				// re-add events so clicks on markers work again
 				vm.addMarkerEvents( $scope );
 			}
 		};
-		
+		/**
+		 * loops through a set of markers (inside $scope)
+		 * and (re)attaches some helper functions to them
+		 */
 		o.addMarkerEvents = function( $scope ) {
 			if ( angular.isArray( $scope.markers ) ) {
 				angular.forEach($scope.markers, function(marker) {
+					/**
+					 * returns "City, State Zip"
+					 */
 					marker.CSZ = function() {
 						return marker.city +', '+ marker.state +' '+ marker.zip;
 					}
+					/**
+					 * returns full address in 1 line
+					 */
 					marker.fullAddr = function() {
 						return marker.addr +', '+ marker.CSZ();
 					}
+					/**
+					 * returns name + location (if there is one),
+					 * wrapped in link to the website (if there is one)
+					 */
 					marker.fullNameLink = function() {
 						var o = '<strong>'+ marker.name +'</strong>';
 						if ( marker.loc !== '' ) {
@@ -86,6 +109,11 @@
 						}
 						return o;
 					}
+					/**
+					 * given a number like "(858) 427-1470",
+					 * 
+					 * returns that number wrapped in an <a href="tel:##########" />
+					 */
 					marker.phoneNumber = function() {
 						var phone = marker.phone;
 						var justnumber = phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
@@ -102,17 +130,22 @@
 							$scope.mapclass = '';
 						}
 					} else {
-						console.log('binding 4sq?!');
+						/**
+						 * there's no map, so maybe this is list view?
+						 * 
+						 * in that case, add a few social functions for debuggings
+						 */
 						marker.foursquared = function( id ) {
-							marker.fs = id;
+							marker.foursquare_id = id;
 						}
 						marker.print4s = function() {
 							var o = false;
-							if ( marker.fs !== false ) {
-								if ( angular.isObject( marker.fs ) ) {
+							if ( marker.foursquare_id !== false ) {
+								if ( angular.isObject( marker.foursquare_id ) ) {
+									// for further debugging..
 									o = 'objd';
 								} else {
-									o = marker.fs;
+									o = marker.foursquare_id;
 								}
 							}
 							return o;
@@ -121,7 +154,13 @@
 				});
 			}
 		}
-		
+		/**
+		 * checks whether a new lat & lng is inside an existing bounds,
+		 * and updates bounds to contain that location otherwise
+		 * 
+		 * returns the updated bounds if ob = false,
+		 * or else just returns true/false for if it was already in bounds 
+		 */
 		o.checkBounds = function(bounds, newlat, newlng, ob) {
 			var inbounds = true;
 			if ( bounds.minlat === false ) {
@@ -164,7 +203,9 @@
 		};
 		return o;
 	}
-	
+	/**
+	 * function fired when a particular marker is clicked on the map
+	 */
 	function markerClicked( $scope, i ) {
 		console.log('clicked #'+ i + ' !');
 		var m = $scope.markers[i];
