@@ -105,7 +105,7 @@
 							o += ' <small>'+ marker.loc +'</small>';
 						}
 						if ( marker.www != '' ) {
-							o = '<a href="'+ marker.www +'" target="_blank">'+ o +'</a>';
+							o = '<a href="http://'+ marker.www +'" target="_blank">'+ o +'</a>';
 						}
 						return o;
 					}
