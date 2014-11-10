@@ -18,9 +18,13 @@
 		<link href="includes/styles.css" rel="stylesheet">
 		<!-- and then? -->
 	</head>
-	<body ng-app="beerMap">
+	<body ng-app="beerMap" class="{{bodyClass}}">
 		<div class="app-container">
-			<ui-view></ui-view>
+			<ng-include src="'partials/app-header.html'"></ng-include>
+			<ng-include src="'partials/app-menu.html'"></ng-include>
+			<div class="app-content">
+				<ui-view></ui-view>
+			</div>
 		</div>
 		<!-- javascripts -->
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
@@ -34,6 +38,7 @@
 		<script src="includes/bluebird.js"></script>
 		<script src="includes/angular-google-maps.min.js"></script>
 		<script src="./angularApp.js"></script>
+		<script src="./app/factories/layout.js"></script>
 		<script src="./app/factories/locations.js"></script>
 		<script src="./app/factories/socials.js"></script>
 		<script src="./app/controllers/breweryMap.js"></script>

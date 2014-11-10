@@ -1,0 +1,7 @@
+<!-- APP menu -->
+
+<div class="sidebar" role="navigation" ng-show="menu.visible">
+	<ul class="nav">
+		<li ng-repeat="item in menu.items" class="{{menu.active === item.slug ? 'active' : ''}}"><a href="{{item.url}}">{{item.text}}</a></li>
+	</ul>
+</div>

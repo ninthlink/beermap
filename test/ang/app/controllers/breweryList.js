@@ -10,9 +10,11 @@
 		.module('beerMap')
 		.controller('breweryList', breweryList);
 		
-	breweryList.$inject = ['$scope', '$http', 'locationFactory', 'socialFactory'];
+	breweryList.$inject = ['$scope', '$rootScope', '$http', 'locationFactory', 'socialFactory', 'layoutHelper'];
 	
-	function breweryList($scope, $http, locationFactory, socialFactory){
+	function breweryList( $scope, $rootScope, $http, locationFactory, socialFactory, layoutHelper ){
+		$rootScope.menu = layoutHelper.getMenu( 'list' ); // gets and sets active menu?
+		
 		$scope.map = false;
 		$scope.markers = [];
 		$scope.llon = false;

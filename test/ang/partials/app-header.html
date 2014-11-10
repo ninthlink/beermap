@@ -2,14 +2,20 @@
 
 <div class="page-header app-header">
 	<span class="pull-left">
-		<a href="#/home"><img src="includes/craigsfirstlogo.png" alt="San Diego Beer Map" class="logo"></a>
+		<span class="menu-click clickable" ng-click="menu.toggleMenu()">
+			<span class="fa fa-reorder"></span>
+		</span>
 	</span>
+	<!--
 	<span class="pull-right">
-		<a href="#/list" class="btn btn-primary btn-sm">
+		<a href="#/list" class="btn btn-link btn-sm">
 			view all {{markers.length}} <span class="glyphicon glyphicon-chevron-right"></span>
 		</a>
 	</span>
-	<h3 class="text-center">
-		BeerMap
-	</h3>
+	-->
+	<div class="text-center">
+		<a href="#/home">
+			<img src="includes/craigsfirstlogo.png" alt="Beer Map" class="logo">
+		</a>
+	</div>
 </div>

@@ -10,9 +10,11 @@
 		.module('beerMap')
 		.controller('beerMapd', beerMapd);
 	
-	beerMapd.$inject = ['$scope', '$http', 'locationFactory', 'GoogleMapApi'.ns()];
+	beerMapd.$inject = ['$scope', '$rootScope', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper'];
 	
-	function beerMapd($scope, $http, locationFactory, GoogleMapApi){
+	function beerMapd( $scope, $rootScope, $http, locationFactory, GoogleMapApi, layoutHelper ){
+		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
+		
 		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {} };
 		$scope.options = {};//scrollwheel: false};
 		$scope.coordsUpdates = 0;
