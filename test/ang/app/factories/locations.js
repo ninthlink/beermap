@@ -131,7 +131,11 @@
 							// reset map position to original center
 							$scope.map.center = $scope.originalCenter;
 							$scope.map.zoom = $scope.originalZoom;
-							console.log($scope.map.center);
+							//console.log($scope.map.center);
+							window.setTimeout(function(){
+								var gmapd = $scope.map.control.getGMap();
+								google.maps.event.trigger(gmapd, "resize");
+							}, 100);
 						}
 					} else {
 						/**
@@ -228,23 +232,20 @@
 		
 		// Map adjustments
 
-		// store original center for later use...
+		// store original center for later use?
 		$scope.originalCenter = $scope.map.center;
 		$scope.originalZoom = $scope.map.zoom;
-
+		
 		// trigger resize event now that map display area has changed via CSS class from above
 		window.setTimeout(function(){
-			google.maps.event.trigger($scope.map, "resize");
-		},100);
-
-		// ...then recenter map on clicked marker...
-		window.setTimeout(function(){
+			var gmapd = $scope.map.control.getGMap();
+			google.maps.event.trigger(gmapd, "resize");
+			// ...then recenter map on clicked marker...
 			$scope.map.center = { latitude: m.coords.latitude, longitude: m.coords.longitude };
-		},500);
-
-		// ...and zoom in
-		$scope.map.zoom = 16;
-		
-		$scope.$apply();
+			// ...and zoom in
+			$scope.map.zoom = 16;
+			// ...and apply
+			$scope.$apply();
+		},100);
 	}
 })();

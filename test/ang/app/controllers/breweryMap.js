@@ -13,7 +13,7 @@
 	beerMapd.$inject = ['$scope', '$http', 'locationFactory', 'GoogleMapApi'.ns()];
 	
 	function beerMapd($scope, $http, locationFactory, GoogleMapApi){
-		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10 };
+		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {} };
 		$scope.options = {};//scrollwheel: false};
 		$scope.coordsUpdates = 0;
 		$scope.dynamicMoveCtr = 0;
