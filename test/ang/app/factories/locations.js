@@ -128,13 +128,15 @@
 							console.log('close..');
 							$scope.showOverlay = false;
 							$scope.mapclass = '';
-							// reset map position to original center
-							$scope.map.center = $scope.originalCenter;
-							$scope.map.zoom = $scope.originalZoom;
 							//console.log($scope.map.center);
 							window.setTimeout(function(){
 								var gmapd = $scope.map.control.getGMap();
 								google.maps.event.trigger(gmapd, "resize");
+								// reset map position to original center
+								// note : not sure this is right functionality?
+								$scope.map.center = $scope.originalCenter;
+								$scope.map.zoom = $scope.originalZoom;
+								$scope.$apply();
 							}, 100);
 						}
 					} else {
