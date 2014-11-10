@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-xs-6">
+		<address>
+			<strong><abbr title="{{locationData.coords.latitude}}, {{locationData.coords.longitude}}">Location</abbr></strong><br />
+			<span>{{locationData.addr}}</span><br />
+			<span>{{locationData.city}}, {{locationData.state}} {{locationData.zip}}<br />
+			<span ng-show="locationData.phone != ''"><abbr title="Phone">P:</abbr> <a href="tel:{{locationData.phoneNumber()}}">{{locationData.phone}}</a></span>
+		</address>
+	</div>
+	<div class="col-xs-6">
+		<p>
+			<!-- can still clean this up more.. -->
+			<span ng-show="locationData.www != ''"><span class="fa fa-globe" title="Website"></span> <a href="http://{{locationData.www}}" target="_blank">{{locationData.www}}</a><br /></span>
+			<span ng-show="locationData.fb != ''"><span class="fa fa-facebook-square" title="Facebook"></span> <a href="https://www.facebook.com/{{locationData.fb}}" target="_blank">{{locationData.fb}}</a><br /></span>
+			<span ng-show="locationData.tw != ''"><span class="fa fa-twitter" title="Twitter"></span> <a href="https://twitter.com/{{locationData.tw}}" target="_blank">{{locationData.tw}}</a><br /></span>
+			<span ng-show="locationData.ins != ''"><span class="fa fa-instagram" title="Instagram"></span> <a href="http://instagram.com/{{locationData.ins}}" target="_blank">{{locationData.ins}}</a><br /></span>
+		</p>
+	</div>
+</div>
