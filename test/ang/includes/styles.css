@@ -7,15 +7,6 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 2.5em;
 	margin: 0;
 }
-.pull-left, .pull-right {
-	position: absolute;
-}
-.pull-left {
-	left: 0;
-}
-.pull-right {
-	right: 0;
-}
 
 
 .app-container {
@@ -40,10 +31,10 @@ h1, h2, h3, h4, h5, h6 {
 .map-container {
 	background-color: #fff;
 	box-sizing: border-box;
-	height: 50%;
+	height: 50%; /* default map size */
 }
-.map-container.mapsmall { height: 25%; }
-.map-container.maplarge { height: 100%; }
+.map-container.mapsmall { height: 25%; } /* small map for details pages */
+.map-container.maplarge { height: 100%; } /* full-screen map */
 
 .angular-google-map-container,
 .angular-google-map {
@@ -53,12 +44,6 @@ h1, h2, h3, h4, h5, h6 {
 	display: block;
 }
 
-
-.mapsmll .angular-google-map-container,
-.mapsmall .angular-google-map
-{
-	height: 100%;
-}
 
 /* HEADERS */
 .page-header {
@@ -85,7 +70,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .menu-click {
-	margin: 0 16px;
 	font-size: 3em;
 }
 .menu-click .fa {

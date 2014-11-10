@@ -8,9 +8,12 @@
 
 	<!-- BODY -->
 
-	<tabset justified="true">
+	<tabset justified="true" type="pills">
 
 		<tab heading="Feed">
+			<tab-heading>
+				<i class="glyphicon glyphicon-th-list"></i> Feed
+			</tab-heading>
 			<div class="row">
 				<div class="col-md-12">
 					<ng-include src="'partials/overlay-block-feed_tab.html'"></ng-include>
@@ -19,6 +22,9 @@
 		</tab>
 
 		<tab heading="Images">
+			<tab-heading>
+				<i class="glyphicon glyphicon-camera"></i> Images
+			</tab-heading>
 			<div class="row">
 				<div class="col-md-12">
 					<ng-include src="'partials/overlay-block-pics_tab.html'"></ng-include>
@@ -27,6 +33,9 @@
 		</tab>
 
 		<tab heading="Info">
+			<tab-heading>
+				<i class="glyphicon glyphicon-info-sign"></i> Info
+			</tab-heading>
 			<div class="row">
 				<div class="col-md-12">
 					<ng-include src="'partials/overlay-block-info_tab.html'"></ng-include>
