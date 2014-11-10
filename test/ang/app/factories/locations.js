@@ -127,6 +127,7 @@
 						marker.closeRight = function() {
 							console.log('close..');
 							$scope.showOverlay = false;
+							$scope.showMainFeed = true;
 							$scope.mapclass = '';
 							//console.log($scope.map.center);
 							window.setTimeout(function(){
@@ -222,11 +223,13 @@
 		console.log(m);
 		
 		// set classes for when overlay is active
-		$scope.mapclass = 'shrunkd';
+		$scope.mapclass = 'mapsmall';
 		$scope.overlayclass = 'growd';
+		$scope.listclass = 'listhidden';
 		
 		// show overlay
 		$scope.showOverlay = true;
+		$scope.showMainFeed = false;
 		
 		// data to pass to overlay DOM
 		$scope.locationData = m;

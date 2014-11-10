@@ -25,6 +25,7 @@
 		 */
 		$scope.mapclass = '';
 		$scope.brewon = false;
+		$scope.showMainFeed = true;
 		$scope.boundary = {
 			minlat: false,
 			maxlat: false,
