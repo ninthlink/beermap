@@ -1,0 +1,3976 @@
+[
+    {
+        "created_at": "Sun Nov 09 18:57:04 +0000 2014",
+        "id": 531520866354348000,
+        "id_str": "531520866354348032",
+        "text": "There is a heat wave coming though San Diego...but we have found some ways to stay cool http://t.co/PLmye1tq4q",
+        "source": "<a href=\"https: //about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 10,
+        "favorite_count": 28,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 530811284837519360,
+                    "id_str": "530811284837519360",
+                    "indices": [
+                        88,
+                        110
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B13SDRuCUAAt5A7.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B13SDRuCUAAt5A7.jpg",
+                    "url": "http://t.co/PLmye1tq4q",
+                    "display_url": "pic.twitter.com/PLmye1tq4q",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/531520866354348032/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "medium": {
+                            "w": 600,
+                            "h": 447,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 253,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 960,
+                            "h": 716,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 530811284837519360,
+                    "id_str": "530811284837519360",
+                    "indices": [
+                        88,
+                        110
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B13SDRuCUAAt5A7.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B13SDRuCUAAt5A7.jpg",
+                    "url": "http://t.co/PLmye1tq4q",
+                    "display_url": "pic.twitter.com/PLmye1tq4q",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/531520866354348032/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "medium": {
+                            "w": 600,
+                            "h": 447,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 253,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 960,
+                            "h": 716,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Nov 08 23:12:13 +0000 2014",
+        "id": 531222690493767700,
+        "id_str": "531222690493767681",
+        "text": "We have a ton of events happening at all our locations for #SDBW. Come hang out and join us for a pint http://t.co/MzAWA3RbVH",
+        "source": "<a href=\"https: //about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 1,
+        "favorite_count": 4,
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "SDBW",
+                    "indices": [
+                        59,
+                        64
+                    ]
+                }
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                {
+                    "url": "http://t.co/MzAWA3RbVH",
+                    "expanded_url": "http://www.ballastpoint.com/events",
+                    "display_url": "ballastpoint.com/events",
+                    "indices": [
+                        103,
+                        125
+                    ]
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Nov 08 23:01:49 +0000 2014",
+        "id": 531220072065695740,
+        "id_str": "531220072065695744",
+        "text": "Sweet!! Merica!!! http://t.co/Tj2IP9LB4o",
+        "source": "<a href=\"http: //twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": {
+            "type": "Point",
+            "coordinates": [
+                35.79665812,
+                -120.74878958
+            ]
+        },
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                -120.74878958,
+                35.79665812
+            ]
+        },
+        "place": {
+            "id": "fbd6d2f5a4e4a15e",
+            "url": "https://api.twitter.com/1.1/geo/id/fbd6d2f5a4e4a15e.json",
+            "place_type": "admin",
+            "name": "California",
+            "full_name": "California, US",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -124.482003,
+                            32.528832
+                        ],
+                        [
+                            -114.131212,
+                            32.528832
+                        ],
+                        [
+                            -114.131212,
+                            42.009519
+                        ],
+                        [
+                            -124.482003,
+                            42.009519
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 5,
+        "favorite_count": 23,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 531220064121663500,
+                    "id_str": "531220064121663488",
+                    "indices": [
+                        18,
+                        40
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B19F1XOIMAAnBzL.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B19F1XOIMAAnBzL.jpg",
+                    "url": "http://t.co/Tj2IP9LB4o",
+                    "display_url": "pic.twitter.com/Tj2IP9LB4o",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/531220072065695744/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 531220064121663500,
+                    "id_str": "531220064121663488",
+                    "indices": [
+                        18,
+                        40
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B19F1XOIMAAnBzL.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B19F1XOIMAAnBzL.jpg",
+                    "url": "http://t.co/Tj2IP9LB4o",
+                    "display_url": "pic.twitter.com/Tj2IP9LB4o",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/531220072065695744/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Nov 08 18:00:09 +0000 2014",
+        "id": 531144155527786500,
+        "id_str": "531144155527786496",
+        "text": "It's #SDBW and GrillFellas have a special kick ass menu using our beers. Find them on our patio at Old Grove today. http://t.co/AEE6v5470e",
+        "source": "<a href=\"https: //about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 1,
+        "favorite_count": 2,
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "SDBW",
+                    "indices": [
+                        5,
+                        10
+                    ]
+                }
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 530802319344926700,
+                    "id_str": "530802319344926720",
+                    "indices": [
+                        116,
+                        138
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B13J5aqCAAAfim_.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B13J5aqCAAAfim_.jpg",
+                    "url": "http://t.co/AEE6v5470e",
+                    "display_url": "pic.twitter.com/AEE6v5470e",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/531144155527786496/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "medium": {
+                            "w": 600,
+                            "h": 469,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 1000,
+                            "h": 783,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 266,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 530802319344926700,
+                    "id_str": "530802319344926720",
+                    "indices": [
+                        116,
+                        138
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B13J5aqCAAAfim_.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B13J5aqCAAAfim_.jpg",
+                    "url": "http://t.co/AEE6v5470e",
+                    "display_url": "pic.twitter.com/AEE6v5470e",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/531144155527786496/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "medium": {
+                            "w": 600,
+                            "h": 469,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 1000,
+                            "h": 783,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 266,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Fri Nov 07 16:05:03 +0000 2014",
+        "id": 530752803359060000,
+        "id_str": "530752803359059968",
+        "text": "Ever have a reoccurring dream, like you are on a killer boat in Cabo drinking Grapefruit Sculpin & fishing w/ friends http://t.co/UiHC8gLBqG",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 18,
+        "favorite_count": 55,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 530752802838954000,
+                    "id_str": "530752802838953984",
+                    "indices": [
+                        122,
+                        144
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B12c3LTCQAAAr4A.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B12c3LTCQAAAr4A.jpg",
+                    "url": "http://t.co/UiHC8gLBqG",
+                    "display_url": "pic.twitter.com/UiHC8gLBqG",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/530752803359059968/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 526,
+                            "h": 394,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 254,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 526,
+                            "h": 394,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 530752802838954000,
+                    "id_str": "530752802838953984",
+                    "indices": [
+                        122,
+                        144
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B12c3LTCQAAAr4A.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B12c3LTCQAAAr4A.jpg",
+                    "url": "http://t.co/UiHC8gLBqG",
+                    "display_url": "pic.twitter.com/UiHC8gLBqG",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/530752803359059968/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 526,
+                            "h": 394,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 254,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 526,
+                            "h": 394,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Thu Nov 06 21:54:55 +0000 2014",
+        "id": 530478460721197060,
+        "id_str": "530478460721197056",
+        "text": "You asked for another one, so here you go! Join us 11/16 for a bus tour of all 4 of our locations $65- all inclusive http://t.co/kJUvqeGSql",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 2,
+        "favorite_count": 4,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                {
+                    "url": "http://t.co/kJUvqeGSql",
+                    "expanded_url": "http://www.brownpapertickets.com/event/935984",
+                    "display_url": "brownpapertickets.com/event/935984",
+                    "indices": [
+                        117,
+                        139
+                    ]
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Thu Nov 06 19:29:29 +0000 2014",
+        "id": 530441861341904900,
+        "id_str": "530441861341904897",
+        "text": "@NazTNeto Lucky for you we have an online shop, check it out here: http://t.co/vdRrkR29j3",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": 530438563469725700,
+        "in_reply_to_status_id_str": "530438563469725696",
+        "in_reply_to_user_id": 352832853,
+        "in_reply_to_user_id_str": "352832853",
+        "in_reply_to_screen_name": "NazTNeto",
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                {
+                    "screen_name": "NazTNeto",
+                    "name": "David Neto",
+                    "id": 352832853,
+                    "id_str": "352832853",
+                    "indices": [
+                        0,
+                        9
+                    ]
+                }
+            ],
+            "urls": [
+                {
+                    "url": "http://t.co/vdRrkR29j3",
+                    "expanded_url": "http://beerstore.ballastpointbrewingandspirits.com/storefront.aspx",
+                    "display_url": "…ore.ballastpointbrewingandspirits.com/storefront.aspx",
+                    "indices": [
+                        67,
+                        89
+                    ]
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Thu Nov 06 19:07:10 +0000 2014",
+        "id": 530436245583691800,
+        "id_str": "530436245583691776",
+        "text": "Holy cow! Looks like we brought everything but the kitchen sink to the @KUSI_News broadcast this morning! http://t.co/Vizfl3Txg1",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 6,
+        "favorite_count": 19,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                {
+                    "screen_name": "KUSI_News",
+                    "name": "KUSI News",
+                    "id": 25596174,
+                    "id_str": "25596174",
+                    "indices": [
+                        72,
+                        82
+                    ]
+                }
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 530436244631609340,
+                    "id_str": "530436244631609344",
+                    "indices": [
+                        107,
+                        129
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1x89EFCYAAhQxi.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1x89EFCYAAhQxi.jpg",
+                    "url": "http://t.co/Vizfl3Txg1",
+                    "display_url": "pic.twitter.com/Vizfl3Txg1",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/530436245583691776/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 423,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 239,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 960,
+                            "h": 677,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 530436244631609340,
+                    "id_str": "530436244631609344",
+                    "indices": [
+                        107,
+                        129
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1x89EFCYAAhQxi.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1x89EFCYAAhQxi.jpg",
+                    "url": "http://t.co/Vizfl3Txg1",
+                    "display_url": "pic.twitter.com/Vizfl3Txg1",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/530436245583691776/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 423,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 239,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 960,
+                            "h": 677,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Wed Nov 05 22:20:31 +0000 2014",
+        "id": 530122514731520000,
+        "id_str": "530122514731520000",
+        "text": "Wall of cans... http://t.co/xLtoYEFM5C",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 17,
+        "favorite_count": 44,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 530122514052022300,
+                    "id_str": "530122514052022272",
+                    "indices": [
+                        16,
+                        38
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1tfnimCAAALTNg.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1tfnimCAAALTNg.jpg",
+                    "url": "http://t.co/xLtoYEFM5C",
+                    "display_url": "pic.twitter.com/xLtoYEFM5C",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/530122514731520000/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 960,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 340,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 600,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 530122514052022300,
+                    "id_str": "530122514052022272",
+                    "indices": [
+                        16,
+                        38
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1tfnimCAAALTNg.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1tfnimCAAALTNg.jpg",
+                    "url": "http://t.co/xLtoYEFM5C",
+                    "display_url": "pic.twitter.com/xLtoYEFM5C",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/530122514731520000/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 960,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 340,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 600,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Wed Nov 05 17:58:19 +0000 2014",
+        "id": 530056531736145900,
+        "id_str": "530056531736145920",
+        "text": "Tasting Three Sheets Rum with Yuseff...makes for a good day http://t.co/enj3sF9CPL",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 3,
+        "favorite_count": 13,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 530056531195068400,
+                    "id_str": "530056531195068416",
+                    "indices": [
+                        60,
+                        82
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1sjm1TCAAA9JpX.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1sjm1TCAAA9JpX.jpg",
+                    "url": "http://t.co/enj3sF9CPL",
+                    "display_url": "pic.twitter.com/enj3sF9CPL",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/530056531736145920/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 960,
+                            "h": 720,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 255,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 450,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 530056531195068400,
+                    "id_str": "530056531195068416",
+                    "indices": [
+                        60,
+                        82
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1sjm1TCAAA9JpX.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1sjm1TCAAA9JpX.jpg",
+                    "url": "http://t.co/enj3sF9CPL",
+                    "display_url": "pic.twitter.com/enj3sF9CPL",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/530056531736145920/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 960,
+                            "h": 720,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 255,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 450,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Tue Nov 04 19:26:50 +0000 2014",
+        "id": 529716416602050560,
+        "id_str": "529716416602050560",
+        "text": "Beer from a car?? Stoked to reveal the #BallastPointSedona with @Kia at @SEMASHOW #SEMA2014 http://t.co/J7nxxMqSnI",
+        "source": "<a href=\"http: //twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": {
+            "type": "Point",
+            "coordinates": [
+                32.88753529,
+                -117.15794964
+            ]
+        },
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                -117.15794964,
+                32.88753529
+            ]
+        },
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 14,
+        "favorite_count": 32,
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "BallastPointSedona",
+                    "indices": [
+                        39,
+                        58
+                    ]
+                },
+                {
+                    "text": "SEMA2014",
+                    "indices": [
+                        82,
+                        91
+                    ]
+                }
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                {
+                    "screen_name": "Kia",
+                    "name": "Kia Motors America",
+                    "id": 23689478,
+                    "id_str": "23689478",
+                    "indices": [
+                        64,
+                        68
+                    ]
+                },
+                {
+                    "screen_name": "SEMASHOW",
+                    "name": "SEMA Show",
+                    "id": 21902226,
+                    "id_str": "21902226",
+                    "indices": [
+                        72,
+                        81
+                    ]
+                }
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 529716414559432700,
+                    "id_str": "529716414559432704",
+                    "indices": [
+                        92,
+                        114
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1nuRcGCMAAVLmr.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1nuRcGCMAAVLmr.jpg",
+                    "url": "http://t.co/J7nxxMqSnI",
+                    "display_url": "pic.twitter.com/J7nxxMqSnI",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/529716416602050560/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 640,
+                            "h": 630,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 590,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 334,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 529716414559432700,
+                    "id_str": "529716414559432704",
+                    "indices": [
+                        92,
+                        114
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1nuRcGCMAAVLmr.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1nuRcGCMAAVLmr.jpg",
+                    "url": "http://t.co/J7nxxMqSnI",
+                    "display_url": "pic.twitter.com/J7nxxMqSnI",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/529716416602050560/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 640,
+                            "h": 630,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 590,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 334,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Mon Nov 03 22:55:32 +0000 2014",
+        "id": 529406550121512960,
+        "id_str": "529406550121512960",
+        "text": "Day dreaming... http://t.co/0jg3pAfZIz",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 30,
+        "favorite_count": 48,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 529406549471395840,
+                    "id_str": "529406549471395840",
+                    "indices": [
+                        16,
+                        38
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1jUc6sCAAAvPIR.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1jUc6sCAAAvPIR.jpg",
+                    "url": "http://t.co/0jg3pAfZIz",
+                    "display_url": "pic.twitter.com/0jg3pAfZIz",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/529406550121512960/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 529406549471395840,
+                    "id_str": "529406549471395840",
+                    "indices": [
+                        16,
+                        38
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1jUc6sCAAAvPIR.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1jUc6sCAAAvPIR.jpg",
+                    "url": "http://t.co/0jg3pAfZIz",
+                    "display_url": "pic.twitter.com/0jg3pAfZIz",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/529406550121512960/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Mon Nov 03 21:04:16 +0000 2014",
+        "id": 529378550126632960,
+        "id_str": "529378550126632961",
+        "text": "Our folks love to enter Brewing Contests making beers that we like to drink. Having judges agree is pretty cool: http://t.co/ABG96hkjwF",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 1,
+        "favorite_count": 5,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                {
+                    "url": "http://t.co/ABG96hkjwF",
+                    "expanded_url": "http://bit.ly/1ph8tPv",
+                    "display_url": "bit.ly/1ph8tPv",
+                    "indices": [
+                        113,
+                        135
+                    ]
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sun Nov 02 18:36:31 +0000 2014",
+        "id": 528978978644582400,
+        "id_str": "528978978644582400",
+        "text": "Chargers game time. Damn you Skip Stegmair! http://t.co/VDJvBvJYAe",
+        "source": "<a href=\"http: //twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": {
+            "type": "Point",
+            "coordinates": [
+                32.91752456,
+                -117.11160966
+            ]
+        },
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                -117.11160966,
+                32.91752456
+            ]
+        },
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 6,
+        "favorite_count": 11,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 528978974488031200,
+                    "id_str": "528978974488031232",
+                    "indices": [
+                        44,
+                        66
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1dPkxwCcAAD1sa.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1dPkxwCcAAD1sa.jpg",
+                    "url": "http://t.co/VDJvBvJYAe",
+                    "display_url": "pic.twitter.com/VDJvBvJYAe",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528978978644582400/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 960,
+                            "h": 540,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 191,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 337,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 528978974488031200,
+                    "id_str": "528978974488031232",
+                    "indices": [
+                        44,
+                        66
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1dPkxwCcAAD1sa.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1dPkxwCcAAD1sa.jpg",
+                    "url": "http://t.co/VDJvBvJYAe",
+                    "display_url": "pic.twitter.com/VDJvBvJYAe",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528978978644582400/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 960,
+                            "h": 540,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 191,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 337,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sun Nov 02 16:59:36 +0000 2014",
+        "id": 528954589156892700,
+        "id_str": "528954589156892673",
+        "text": "If you're gonna grab a bottle of Three Sheets Rum to meet up with your bad ass friends, uh this is the way to do it http://t.co/0aQAsF5B0r",
+        "source": "<a href=\"http: //twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": {
+            "type": "Point",
+            "coordinates": [
+                32.91783095,
+                -117.11097705
+            ]
+        },
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                -117.11097705,
+                32.91783095
+            ]
+        },
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 4,
+        "favorite_count": 10,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 528954584346030100,
+                    "id_str": "528954584346030080",
+                    "indices": [
+                        116,
+                        138
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1c5ZFZCcAAv4pL.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1c5ZFZCcAAv4pL.jpg",
+                    "url": "http://t.co/0aQAsF5B0r",
+                    "display_url": "pic.twitter.com/0aQAsF5B0r",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528954589156892673/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 528954584346030100,
+                    "id_str": "528954584346030080",
+                    "indices": [
+                        116,
+                        138
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1c5ZFZCcAAv4pL.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1c5ZFZCcAAv4pL.jpg",
+                    "url": "http://t.co/0aQAsF5B0r",
+                    "display_url": "pic.twitter.com/0aQAsF5B0r",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528954589156892673/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Nov 01 20:12:51 +0000 2014",
+        "id": 528640835542216700,
+        "id_str": "528640835542216704",
+        "text": "Women's and men's bike jerseys available at our Miramar location and our other tasting bars and website on Tuesday http://t.co/5ei7EchfYy",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 7,
+        "favorite_count": 13,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 528640834762051600,
+                    "id_str": "528640834762051584",
+                    "indices": [
+                        115,
+                        137
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1YcCdHCEAAvO0I.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1YcCdHCEAAvO0I.jpg",
+                    "url": "http://t.co/5ei7EchfYy",
+                    "display_url": "pic.twitter.com/5ei7EchfYy",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528640835542216704/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 960,
+                            "h": 720,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 255,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 450,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 528640834762051600,
+                    "id_str": "528640834762051584",
+                    "indices": [
+                        115,
+                        137
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1YcCdHCEAAvO0I.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1YcCdHCEAAvO0I.jpg",
+                    "url": "http://t.co/5ei7EchfYy",
+                    "display_url": "pic.twitter.com/5ei7EchfYy",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528640835542216704/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 960,
+                            "h": 720,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 255,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 450,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Fri Oct 31 18:08:45 +0000 2014",
+        "id": 528247217216159740,
+        "id_str": "528247217216159744",
+        "text": "Rapunzel, Rapunzel, give up that Victory at Sea! Ahhh, Halloween at Ballast Point...good times http://t.co/ueW9pgiC5W",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 3,
+        "favorite_count": 6,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 528247216545071100,
+                    "id_str": "528247216545071104",
+                    "indices": [
+                        95,
+                        117
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1S2C2_CAAAOB1W.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1S2C2_CAAAOB1W.jpg",
+                    "url": "http://t.co/ueW9pgiC5W",
+                    "display_url": "pic.twitter.com/ueW9pgiC5W",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528247217216159744/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 528247216545071100,
+                    "id_str": "528247216545071104",
+                    "indices": [
+                        95,
+                        117
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1S2C2_CAAAOB1W.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1S2C2_CAAAOB1W.jpg",
+                    "url": "http://t.co/ueW9pgiC5W",
+                    "display_url": "pic.twitter.com/ueW9pgiC5W",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528247217216159744/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Fri Oct 31 16:45:30 +0000 2014",
+        "id": 528226265006747650,
+        "id_str": "528226265006747648",
+        "text": "We make what we like to drink, and we like this - Pina FUGU Vodka. http://t.co/0bC2l1isus",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 2,
+        "favorite_count": 9,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 528226264486641660,
+                    "id_str": "528226264486641664",
+                    "indices": [
+                        67,
+                        89
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1Si_SfCAAA8-qI.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1Si_SfCAAA8-qI.jpg",
+                    "url": "http://t.co/0bC2l1isus",
+                    "display_url": "pic.twitter.com/0bC2l1isus",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528226265006747648/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 340,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 640,
+                            "h": 640,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 600,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 528226264486641660,
+                    "id_str": "528226264486641664",
+                    "indices": [
+                        67,
+                        89
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1Si_SfCAAA8-qI.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1Si_SfCAAA8-qI.jpg",
+                    "url": "http://t.co/0bC2l1isus",
+                    "display_url": "pic.twitter.com/0bC2l1isus",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528226265006747648/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 340,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "large": {
+                            "w": 640,
+                            "h": 640,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 600,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Fri Oct 31 03:42:58 +0000 2014",
+        "id": 528029336365191200,
+        "id_str": "528029336365191168",
+        "text": "Man the life boats, we are going down. Women and children first please... http://t.co/s2mD17e8q3",
+        "source": "<a href=\"http: //twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": {
+            "type": "Point",
+            "coordinates": [
+                32.91786272,
+                -117.1109732
+            ]
+        },
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                -117.1109732,
+                32.91786272
+            ]
+        },
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 3,
+        "favorite_count": 12,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 528029327737098240,
+                    "id_str": "528029327737098240",
+                    "indices": [
+                        74,
+                        96
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1Pv4D7CEAAjPGE.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1Pv4D7CEAAjPGE.jpg",
+                    "url": "http://t.co/s2mD17e8q3",
+                    "display_url": "pic.twitter.com/s2mD17e8q3",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528029336365191168/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 528029327737098240,
+                    "id_str": "528029327737098240",
+                    "indices": [
+                        74,
+                        96
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1Pv4D7CEAAjPGE.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1Pv4D7CEAAjPGE.jpg",
+                    "url": "http://t.co/s2mD17e8q3",
+                    "display_url": "pic.twitter.com/s2mD17e8q3",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/528029336365191168/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 340,
+                            "h": 453,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 720,
+                            "h": 960,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 800,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Thu Oct 30 15:50:28 +0000 2014",
+        "id": 527850028451131400,
+        "id_str": "527850028451131393",
+        "text": "Our Scripps Ranch tasting room team got into the Halloween spirit last night! Can you guess all the pumpkin carvings? http://t.co/VY8nyNSM0e",
+        "source": "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 40892068,
+            "id_str": "40892068",
+            "name": "Ballast Point",
+            "screen_name": "BPbrewing",
+            "location": "San Diego",
+            "profile_location": null,
+            "description": "",
+            "url": "http://t.co/QYft1iNtow",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/QYft1iNtow",
+                            "expanded_url": "http://www.ballastpoint.com",
+                            "display_url": "ballastpoint.com",
+                            "indices": [
+                                0,
+                                22
+                            ]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 39818,
+            "friends_count": 36,
+            "listed_count": 1313,
+            "created_at": "Mon May 18 15:13:13 +0000 2009",
+            "favourites_count": 74,
+            "utc_offset": -28800,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 2817,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000078068145/7f4c1ad04fc6dfe0477aac3be45bb9d0.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/3592237160/a9785f009c22dcf84277484a43fb686d_normal.jpeg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/40892068/1398810366",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": {
+            "id": "a592bd6ceb1319f7",
+            "url": "https://api.twitter.com/1.1/geo/id/a592bd6ceb1319f7.json",
+            "place_type": "city",
+            "name": "San Diego",
+            "full_name": "San Diego, CA",
+            "country_code": "US",
+            "country": "United States",
+            "contained_within": [
+                
+            ],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -117.282538,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            32.53962
+                        ],
+                        [
+                            -116.9274403,
+                            33.0804044
+                        ],
+                        [
+                            -117.282538,
+                            33.0804044
+                        ]
+                    ]
+                ]
+            },
+            "attributes": {
+                
+            }
+        },
+        "contributors": null,
+        "retweet_count": 3,
+        "favorite_count": 10,
+        "entities": {
+            "hashtags": [
+                
+            ],
+            "symbols": [
+                
+            ],
+            "user_mentions": [
+                
+            ],
+            "urls": [
+                
+            ],
+            "media": [
+                {
+                    "id": 527850027192836100,
+                    "id_str": "527850027192836097",
+                    "indices": [
+                        118,
+                        140
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1NMzZWCYAEJFhM.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1NMzZWCYAEJFhM.jpg",
+                    "url": "http://t.co/VY8nyNSM0e",
+                    "display_url": "pic.twitter.com/VY8nyNSM0e",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/527850028451131393/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 640,
+                            "h": 480,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 255,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 450,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 527850027192836100,
+                    "id_str": "527850027192836097",
+                    "indices": [
+                        118,
+                        140
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/B1NMzZWCYAEJFhM.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/B1NMzZWCYAEJFhM.jpg",
+                    "url": "http://t.co/VY8nyNSM0e",
+                    "display_url": "pic.twitter.com/VY8nyNSM0e",
+                    "expanded_url": "http://twitter.com/BPbrewing/status/527850028451131393/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 640,
+                            "h": 480,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 255,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 600,
+                            "h": 450,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    }
+]

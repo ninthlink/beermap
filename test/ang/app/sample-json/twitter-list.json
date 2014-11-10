@@ -1,0 +1,3359 @@
+[
+   {
+    "created_at": "Mon Nov 10 19:00:03 +0000 2014",
+    "id": 531884006745587700,
+    "id_str": "531884006745587713",
+    "text": "To pair nicely with our Monday Burger Special- TAP TAKEOVER TONIGHT WITH HANGAR 24! Don't miss out! http://t.co/voaPM1h6iI",
+    "source": "<a href=\"http://www.facebook.com/twitter\" rel=\"nofollow\">Facebook</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 1419355110,
+      "id_str": "1419355110",
+      "name": "La Jolla Brewing Co.",
+      "screen_name": "LaJollaBrewing",
+      "location": "La Jolla",
+      "profile_location": null,
+      "description": "LJBC will not only feature our own hand-crafted beer, it will also feature a 24 tap rotating selection of local San Diego County craft beers.",
+      "url": "http://t.co/N4E1kR7YIu",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/N4E1kR7YIu",
+              "expanded_url": "http://lajollabeer.com/",
+              "display_url": "lajollabeer.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 1403,
+      "friends_count": 1283,
+      "listed_count": 41,
+      "created_at": "Sat May 11 00:18:22 +0000 2013",
+      "favourites_count": 21,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 981,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "3A848A",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/888309693/c1a13797665e4065eef43aaaa70f1caf.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/888309693/c1a13797665e4065eef43aaaa70f1caf.jpeg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/3769422352/be5308947b5c4ee02d082b8da74fe56a_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/3769422352/be5308947b5c4ee02d082b8da74fe56a_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/1419355110/1398277860",
+      "profile_link_color": "3A848A",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "http://t.co/voaPM1h6iI",
+          "expanded_url": "http://fb.me/6RZOnliXX",
+          "display_url": "fb.me/6RZOnliXX",
+          "indices":  [
+            100,
+            122
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:39:12 +0000 2014",
+    "id": 531878758681018400,
+    "id_str": "531878758681018368",
+    "text": "RT @SoNoFestChili: Great day at world's biggest bottle share! Huge thx to sponsors @MHB and @WaypointPublic for today and SoNo support! htt…",
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 50154421,
+      "id_str": "50154421",
+      "name": "Mike Hess Brewing",
+      "screen_name": "MHB",
+      "location": "San Diego, California",
+      "profile_location": null,
+      "description": "The original nano brewery of San Diego, CA, now one of its largest production breweries with a world class brewery and tasting room!",
+      "url": "http://t.co/wNrshNPZGl",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/wNrshNPZGl",
+              "expanded_url": "http://mikehessbrewing.com/",
+              "display_url": "mikehessbrewing.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 10385,
+      "friends_count": 2710,
+      "listed_count": 507,
+      "created_at": "Wed Jun 24 00:28:44 +0000 2009",
+      "favourites_count": 866,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 4315,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "FFFFFF",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/454040851048439809/b7Ws-9qN.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/454040851048439809/b7Ws-9qN.jpeg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/494231296038563840/rgPsXgYj_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/494231296038563840/rgPsXgYj_normal.jpeg",
+      "profile_link_color": "177012",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "9AE874",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweeted_status":  {
+      "created_at": "Mon Nov 10 06:23:50 +0000 2014",
+      "id": 531693698716033000,
+      "id_str": "531693698716033024",
+      "text": "Great day at world's biggest bottle share! Huge thx to sponsors @MHB and @WaypointPublic for today and SoNo support! http://t.co/jBbkWno5C8",
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "truncated": false,
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user":  {
+        "id": 387942903,
+        "id_str": "387942903",
+        "name": "SoNoFestChiliCookOff",
+        "screen_name": "SoNoFestChili",
+        "location": "San Diego, California",
+        "profile_location": null,
+        "description": "SoNo Fest & Chili Cook-Off\nMusic, Chili, Beer, Art\n\nFall 2014",
+        "url": "http://t.co/bsAhZzOW0m",
+        "entities":  {
+          "url":  {
+            "urls":  [
+               {
+                "url": "http://t.co/bsAhZzOW0m",
+                "expanded_url": "http://sonofestchilicookoff.com",
+                "display_url": "sonofestchilicookoff.com",
+                "indices":  [
+                  0,
+                  22
+                ]
+              }
+            ]
+          },
+          "description":  {
+            "urls":  []
+          }
+        },
+        "protected": false,
+        "followers_count": 151,
+        "friends_count": 227,
+        "listed_count": 4,
+        "created_at": "Sun Oct 09 22:31:46 +0000 2011",
+        "favourites_count": 43,
+        "utc_offset": -25200,
+        "time_zone": "Arizona",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 391,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "709397",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme6/bg.gif",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme6/bg.gif",
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/378800000502920640/58bdc4f211e10a16e5506c591ca569c0_normal.png",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/378800000502920640/58bdc4f211e10a16e5506c591ca569c0_normal.png",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/387942903/1415070436",
+        "profile_link_color": "BA2B07",
+        "profile_sidebar_border_color": "86A4A6",
+        "profile_sidebar_fill_color": "A0C5C7",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweet_count": 1,
+      "favorite_count": 2,
+      "entities":  {
+        "hashtags":  [],
+        "symbols":  [],
+        "user_mentions":  [
+           {
+            "screen_name": "MHB",
+            "name": "Mike Hess Brewing",
+            "id": 50154421,
+            "id_str": "50154421",
+            "indices":  [
+              64,
+              68
+            ]
+          },
+           {
+            "screen_name": "WaypointPublic",
+            "name": "Waypoint Public",
+            "id": 1589675438,
+            "id_str": "1589675438",
+            "indices":  [
+              73,
+              88
+            ]
+          }
+        ],
+        "urls":  [],
+        "media":  [
+           {
+            "id": 531693693426597900,
+            "id_str": "531693693426597888",
+            "indices":  [
+              117,
+              139
+            ],
+            "media_url": "http://pbs.twimg.com/media/B2D0mN4CAAAzjPX.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/B2D0mN4CAAAzjPX.jpg",
+            "url": "http://t.co/jBbkWno5C8",
+            "display_url": "pic.twitter.com/jBbkWno5C8",
+            "expanded_url": "http://twitter.com/SoNoFestChili/status/531693698716033024/photo/1",
+            "type": "photo",
+            "sizes":  {
+              "large":  {
+                "w": 960,
+                "h": 960,
+                "resize": "fit"
+              },
+              "small":  {
+                "w": 340,
+                "h": 340,
+                "resize": "fit"
+              },
+              "thumb":  {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "medium":  {
+                "w": 600,
+                "h": 600,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "extended_entities":  {
+        "media":  [
+           {
+            "id": 531693693426597900,
+            "id_str": "531693693426597888",
+            "indices":  [
+              117,
+              139
+            ],
+            "media_url": "http://pbs.twimg.com/media/B2D0mN4CAAAzjPX.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/B2D0mN4CAAAzjPX.jpg",
+            "url": "http://t.co/jBbkWno5C8",
+            "display_url": "pic.twitter.com/jBbkWno5C8",
+            "expanded_url": "http://twitter.com/SoNoFestChili/status/531693698716033024/photo/1",
+            "type": "photo",
+            "sizes":  {
+              "large":  {
+                "w": 960,
+                "h": 960,
+                "resize": "fit"
+              },
+              "small":  {
+                "w": 340,
+                "h": 340,
+                "resize": "fit"
+              },
+              "thumb":  {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "medium":  {
+                "w": 600,
+                "h": 600,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "en"
+    },
+    "retweet_count": 1,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [
+         {
+          "screen_name": "SoNoFestChili",
+          "name": "SoNoFestChiliCookOff",
+          "id": 387942903,
+          "id_str": "387942903",
+          "indices":  [
+            3,
+            17
+          ]
+        },
+         {
+          "screen_name": "MHB",
+          "name": "Mike Hess Brewing",
+          "id": 50154421,
+          "id_str": "50154421",
+          "indices":  [
+            83,
+            87
+          ]
+        },
+         {
+          "screen_name": "WaypointPublic",
+          "name": "Waypoint Public",
+          "id": 1589675438,
+          "id_str": "1589675438",
+          "indices":  [
+            92,
+            107
+          ]
+        }
+      ],
+      "urls":  [],
+      "media":  [
+         {
+          "id": 531693693426597900,
+          "id_str": "531693693426597888",
+          "indices":  [
+            139,
+            140
+          ],
+          "media_url": "http://pbs.twimg.com/media/B2D0mN4CAAAzjPX.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/B2D0mN4CAAAzjPX.jpg",
+          "url": "http://t.co/jBbkWno5C8",
+          "display_url": "pic.twitter.com/jBbkWno5C8",
+          "expanded_url": "http://twitter.com/SoNoFestChili/status/531693698716033024/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "large":  {
+              "w": 960,
+              "h": 960,
+              "resize": "fit"
+            },
+            "small":  {
+              "w": 340,
+              "h": 340,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium":  {
+              "w": 600,
+              "h": 600,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 531693698716033000,
+          "source_status_id_str": "531693698716033024"
+        }
+      ]
+    },
+    "extended_entities":  {
+      "media":  [
+         {
+          "id": 531693693426597900,
+          "id_str": "531693693426597888",
+          "indices":  [
+            139,
+            140
+          ],
+          "media_url": "http://pbs.twimg.com/media/B2D0mN4CAAAzjPX.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/B2D0mN4CAAAzjPX.jpg",
+          "url": "http://t.co/jBbkWno5C8",
+          "display_url": "pic.twitter.com/jBbkWno5C8",
+          "expanded_url": "http://twitter.com/SoNoFestChili/status/531693698716033024/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "large":  {
+              "w": 960,
+              "h": 960,
+              "resize": "fit"
+            },
+            "small":  {
+              "w": 340,
+              "h": 340,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium":  {
+              "w": 600,
+              "h": 600,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 531693698716033000,
+          "source_status_id_str": "531693698716033024"
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:32:44 +0000 2014",
+    "id": 531877129857028100,
+    "id_str": "531877129857028096",
+    "text": "@AmplifiedAles looking forward to seeing you all tonight!",
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "truncated": false,
+    "in_reply_to_status_id": 531871196938522600,
+    "in_reply_to_status_id_str": "531871196938522624",
+    "in_reply_to_user_id": 430944864,
+    "in_reply_to_user_id_str": "430944864",
+    "in_reply_to_screen_name": "AmplifiedAles",
+    "user":  {
+      "id": 415081072,
+      "id_str": "415081072",
+      "name": "Benchmark Brewing",
+      "screen_name": "BenchmarkBrew",
+      "location": "San Diego, CA",
+      "profile_location": null,
+      "description": "Benchmark Brewing is all about delicious beer, beer that we want to take home and drink.",
+      "url": "http://t.co/60R2hzshLA",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/60R2hzshLA",
+              "expanded_url": "http://www.benchmarkbrewing.com",
+              "display_url": "benchmarkbrewing.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 1516,
+      "friends_count": 493,
+      "listed_count": 62,
+      "created_at": "Thu Nov 17 21:47:45 +0000 2011",
+      "favourites_count": 1071,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 1532,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/3292196922/e88621cd2a966921c458f36614325b8f_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/3292196922/e88621cd2a966921c458f36614325b8f_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/415081072/1386107611",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [
+         {
+          "screen_name": "AmplifiedAles",
+          "name": "Amplified Ale Works",
+          "id": 430944864,
+          "id_str": "430944864",
+          "indices":  [
+            0,
+            14
+          ]
+        }
+      ],
+      "urls":  []
+    },
+    "favorited": false,
+    "retweeted": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:32:32 +0000 2014",
+    "id": 531877082578432000,
+    "id_str": "531877082578432000",
+    "text": "RT @taphunter: Updated Draft Republic w/ @AleSmithBrewing @IronFistBrewing @gooseisland @stonebrewingco @NewEnglishBrew http://t.co/Pi7xkwR…",
+    "source": "<a href=\"https://dev.twitter.com/docs/tfw\" rel=\"nofollow\">Twitter for Websites</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 865279142,
+      "id_str": "865279142",
+      "name": "New English Brew",
+      "screen_name": "NewEnglishBrew",
+      "location": "San Diego, CA",
+      "profile_location": null,
+      "description": "San Diego Craft Beer Since 2007",
+      "url": "http://t.co/npdWeWJSRb",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/npdWeWJSRb",
+              "expanded_url": "http://newenglishbrewing.com",
+              "display_url": "newenglishbrewing.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 907,
+      "friends_count": 108,
+      "listed_count": 38,
+      "created_at": "Sat Oct 06 20:41:49 +0000 2012",
+      "favourites_count": 0,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 282,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "291B0A",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000091966719/d6aa26d80b28b338d10194aae2f7144b.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000091966719/d6aa26d80b28b338d10194aae2f7144b.jpeg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/2688010152/c0bf7cc75026eff24e0b858538f646c0_normal.png",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/2688010152/c0bf7cc75026eff24e0b858538f646c0_normal.png",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/865279142/1381440290",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweeted_status":  {
+      "created_at": "Sat Nov 08 19:21:04 +0000 2014",
+      "id": 531164517741236200,
+      "id_str": "531164517741236225",
+      "text": "Updated Draft Republic w/ @AleSmithBrewing @IronFistBrewing @gooseisland @stonebrewingco @NewEnglishBrew http://t.co/Pi7xkwRhXa",
+      "source": "<a href=\"http://www.taphunter.com\" rel=\"nofollow\">TapHunter.com</a>",
+      "truncated": false,
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user":  {
+        "id": 23668385,
+        "id_str": "23668385",
+        "name": "TapHunter",
+        "screen_name": "taphunter",
+        "location": "United States",
+        "profile_location": null,
+        "description": "Find all the best #CraftBeer, #Spirits and #Cocktails in your area by following your local @TapHunter feed & downloading the app in iTunes or Google Play store.",
+        "url": "http://t.co/e9KdgqcGsw",
+        "entities":  {
+          "url":  {
+            "urls":  [
+               {
+                "url": "http://t.co/e9KdgqcGsw",
+                "expanded_url": "http://www.TapHunter.com",
+                "display_url": "TapHunter.com",
+                "indices":  [
+                  0,
+                  22
+                ]
+              }
+            ]
+          },
+          "description":  {
+            "urls":  []
+          }
+        },
+        "protected": false,
+        "followers_count": 14661,
+        "friends_count": 3876,
+        "listed_count": 772,
+        "created_at": "Tue Mar 10 22:11:31 +0000 2009",
+        "favourites_count": 381,
+        "utc_offset": -28800,
+        "time_zone": "Pacific Time (US & Canada)",
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 38628,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "D7CDBE",
+        "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/515089887/taphunter_tileable_bkg.jpg",
+        "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/515089887/taphunter_tileable_bkg.jpg",
+        "profile_background_tile": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/522816802724659200/BJT9Qxwq_normal.png",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/522816802724659200/BJT9Qxwq_normal.png",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/23668385/1413484230",
+        "profile_link_color": "4A913C",
+        "profile_sidebar_border_color": "FFF8AD",
+        "profile_sidebar_fill_color": "F6FFD1",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweet_count": 2,
+      "favorite_count": 0,
+      "entities":  {
+        "hashtags":  [],
+        "symbols":  [],
+        "user_mentions":  [
+           {
+            "screen_name": "AleSmithBrewing",
+            "name": "AleSmithBrewing",
+            "id": 134933240,
+            "id_str": "134933240",
+            "indices":  [
+              26,
+              42
+            ]
+          },
+           {
+            "screen_name": "IronFistBrewing",
+            "name": "Iron Fist Brewing Co",
+            "id": 62378276,
+            "id_str": "62378276",
+            "indices":  [
+              43,
+              59
+            ]
+          },
+           {
+            "screen_name": "GooseIsland",
+            "name": "Goose Island Beer Co",
+            "id": 115814829,
+            "id_str": "115814829",
+            "indices":  [
+              60,
+              72
+            ]
+          },
+           {
+            "screen_name": "StoneBrewingCo",
+            "name": "Stone Brewing Co.",
+            "id": 16331259,
+            "id_str": "16331259",
+            "indices":  [
+              73,
+              88
+            ]
+          },
+           {
+            "screen_name": "NewEnglishBrew",
+            "name": "New English Brew",
+            "id": 865279142,
+            "id_str": "865279142",
+            "indices":  [
+              89,
+              104
+            ]
+          }
+        ],
+        "urls":  [
+           {
+            "url": "http://t.co/Pi7xkwRhXa",
+            "expanded_url": "http://gdta.st/124Os3Z",
+            "display_url": "gdta.st/124Os3Z",
+            "indices":  [
+              105,
+              127
+            ]
+          }
+        ]
+      },
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "en"
+    },
+    "retweet_count": 2,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [
+         {
+          "screen_name": "taphunter",
+          "name": "TapHunter",
+          "id": 23668385,
+          "id_str": "23668385",
+          "indices":  [
+            3,
+            13
+          ]
+        },
+         {
+          "screen_name": "AleSmithBrewing",
+          "name": "AleSmithBrewing",
+          "id": 134933240,
+          "id_str": "134933240",
+          "indices":  [
+            41,
+            57
+          ]
+        },
+         {
+          "screen_name": "IronFistBrewing",
+          "name": "Iron Fist Brewing Co",
+          "id": 62378276,
+          "id_str": "62378276",
+          "indices":  [
+            58,
+            74
+          ]
+        },
+         {
+          "screen_name": "GooseIsland",
+          "name": "Goose Island Beer Co",
+          "id": 115814829,
+          "id_str": "115814829",
+          "indices":  [
+            75,
+            87
+          ]
+        },
+         {
+          "screen_name": "StoneBrewingCo",
+          "name": "Stone Brewing Co.",
+          "id": 16331259,
+          "id_str": "16331259",
+          "indices":  [
+            88,
+            103
+          ]
+        },
+         {
+          "screen_name": "NewEnglishBrew",
+          "name": "New English Brew",
+          "id": 865279142,
+          "id_str": "865279142",
+          "indices":  [
+            104,
+            119
+          ]
+        }
+      ],
+      "urls":  [
+         {
+          "url": "http://t.co/Pi7xkwRhXa",
+          "expanded_url": "http://gdta.st/124Os3Z",
+          "display_url": "gdta.st/124Os3Z",
+          "indices":  [
+            139,
+            140
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:31:22 +0000 2014",
+    "id": 531876785412407300,
+    "id_str": "531876785412407296",
+    "text": "Beer Week at Helm's Brewing #sdbeer http://t.co/Sns0T0YKXJ",
+    "source": "<a href=\"http://www.constantcontact.com\" rel=\"nofollow\">Constant Contact</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 433931101,
+      "id_str": "433931101",
+      "name": "Helms Brewing Co.",
+      "screen_name": "HelmsBrewingCo",
+      "location": "San Diego, Ca",
+      "profile_location": null,
+      "description": "Helm's is a San Diego Craft Brewery specializing in innovative & high quality craft brews. Visit our tasting room in Kearny Mesa to join our community brewery",
+      "url": "http://t.co/o5ZZCjdXM7",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/o5ZZCjdXM7",
+              "expanded_url": "http://helmsbrewingco.com",
+              "display_url": "helmsbrewingco.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 2033,
+      "friends_count": 1131,
+      "listed_count": 78,
+      "created_at": "Sun Dec 11 06:14:33 +0000 2011",
+      "favourites_count": 255,
+      "utc_offset": -32400,
+      "time_zone": "Alaska",
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 737,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/623870144/vtoe8qiu2lnlcu3kbj0v.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/623870144/vtoe8qiu2lnlcu3kbj0v.jpeg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/530136055219900416/K4OdNHrL_normal.png",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/530136055219900416/K4OdNHrL_normal.png",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/433931101/1398724037",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [
+         {
+          "text": "sdbeer",
+          "indices":  [
+            28,
+            35
+          ]
+        }
+      ],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "http://t.co/Sns0T0YKXJ",
+          "expanded_url": "http://conta.cc/10RmVSs",
+          "display_url": "conta.cc/10RmVSs",
+          "indices":  [
+            36,
+            58
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:30:53 +0000 2014",
+    "id": 531876664612253700,
+    "id_str": "531876664612253696",
+    "text": "Are you as excited as we are? The Full Table is only a day away! https://t.co/tk0PAWuEVP",
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 415081072,
+      "id_str": "415081072",
+      "name": "Benchmark Brewing",
+      "screen_name": "BenchmarkBrew",
+      "location": "San Diego, CA",
+      "profile_location": null,
+      "description": "Benchmark Brewing is all about delicious beer, beer that we want to take home and drink.",
+      "url": "http://t.co/60R2hzshLA",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/60R2hzshLA",
+              "expanded_url": "http://www.benchmarkbrewing.com",
+              "display_url": "benchmarkbrewing.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 1516,
+      "friends_count": 493,
+      "listed_count": 62,
+      "created_at": "Thu Nov 17 21:47:45 +0000 2011",
+      "favourites_count": 1071,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 1532,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/3292196922/e88621cd2a966921c458f36614325b8f_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/3292196922/e88621cd2a966921c458f36614325b8f_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/415081072/1386107611",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 1,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "https://t.co/tk0PAWuEVP",
+          "expanded_url": "https://www.sdbw.org/event-info/57-the-full-table",
+          "display_url": "sdbw.org/event-info/57-…",
+          "indices":  [
+            65,
+            88
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:30:18 +0000 2014",
+    "id": 531876518280962050,
+    "id_str": "531876518280962048",
+    "text": "San Diego Beer Week continues tonight with our Bourbon Barrel and Sour Party!! We are extending our Industry... http://t.co/Biiqtr5Qwb",
+    "source": "<a href=\"http://www.facebook.com/twitter\" rel=\"nofollow\">Facebook</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 582018710,
+      "id_str": "582018710",
+      "name": "Thorn St Brewery",
+      "screen_name": "ThornStBrewery",
+      "location": "",
+      "profile_location": null,
+      "description": "North Park, San Diego's neighborhood brewery.",
+      "url": "http://t.co/BhIxoWpcbP",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/BhIxoWpcbP",
+              "expanded_url": "http://thornstreetbrew.com",
+              "display_url": "thornstreetbrew.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 1243,
+      "friends_count": 165,
+      "listed_count": 62,
+      "created_at": "Wed May 16 17:35:02 +0000 2012",
+      "favourites_count": 39,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 766,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/2223963788/invite4_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/2223963788/invite4_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/582018710/1404693761",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 1,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "http://t.co/Biiqtr5Qwb",
+          "expanded_url": "http://fb.me/3miROgeIc",
+          "display_url": "fb.me/3miROgeIc",
+          "indices":  [
+            112,
+            134
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:26:15 +0000 2014",
+    "id": 531875498092421100,
+    "id_str": "531875498092421120",
+    "text": "RT @sdbeerweek: Mayor @kevin_faulconer tapping the keg at #GuildFest for #SDBW! http://t.co/s8AIK3TaSA",
+    "source": "<a href=\"http://www.hootsuite.com\" rel=\"nofollow\">Hootsuite</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 110548722,
+      "id_str": "110548722",
+      "name": "MotherEarthBrewCo.",
+      "screen_name": "MotherEarthBrCo",
+      "location": "Vista, CA",
+      "profile_location": null,
+      "description": "An award winning, Multi-Location, Distributed Production Craft Brewery Headquartered in the Vista, North San Diego County Area.",
+      "url": "http://t.co/8Z7zou4ZDN",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/8Z7zou4ZDN",
+              "expanded_url": "http://www.motherearthbrewco.com",
+              "display_url": "motherearthbrewco.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 3534,
+      "friends_count": 148,
+      "listed_count": 153,
+      "created_at": "Mon Feb 01 23:12:39 +0000 2010",
+      "favourites_count": 1,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 1103,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "EDECE9",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_link_color": "088253",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweeted_status":  {
+      "created_at": "Sat Nov 08 22:26:54 +0000 2014",
+      "id": 531211284541222900,
+      "id_str": "531211284541222912",
+      "text": "Mayor @kevin_faulconer tapping the keg at #GuildFest for #SDBW! http://t.co/s8AIK3TaSA",
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "truncated": false,
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user":  {
+        "id": 27598439,
+        "id_str": "27598439",
+        "name": "San Diego Beer Week",
+        "screen_name": "sdbeerweek",
+        "location": "San Diego, CA",
+        "profile_location": null,
+        "description": "November 7-16, 2014: A ten-day celebration of San Diego craft beer",
+        "url": "http://t.co/TO2ex2l48q",
+        "entities":  {
+          "url":  {
+            "urls":  [
+               {
+                "url": "http://t.co/TO2ex2l48q",
+                "expanded_url": "http://sdbw.org",
+                "display_url": "sdbw.org",
+                "indices":  [
+                  0,
+                  22
+                ]
+              }
+            ]
+          },
+          "description":  {
+            "urls":  []
+          }
+        },
+        "protected": false,
+        "followers_count": 12793,
+        "friends_count": 2162,
+        "listed_count": 552,
+        "created_at": "Mon Mar 30 06:49:56 +0000 2009",
+        "favourites_count": 770,
+        "utc_offset": -28800,
+        "time_zone": "Pacific Time (US & Canada)",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 971,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "EBAB23",
+        "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/493985672428941312/xWZHmzOn.png",
+        "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/493985672428941312/xWZHmzOn.png",
+        "profile_background_tile": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/493975513531035649/BRw2Ut0L_normal.png",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/493975513531035649/BRw2Ut0L_normal.png",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/27598439/1406693434",
+        "profile_link_color": "AD4C25",
+        "profile_sidebar_border_color": "FFFFFF",
+        "profile_sidebar_fill_color": "F3F3F3",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": true,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweet_count": 11,
+      "favorite_count": 8,
+      "entities":  {
+        "hashtags":  [
+           {
+            "text": "GuildFest",
+            "indices":  [
+              42,
+              52
+            ]
+          },
+           {
+            "text": "SDBW",
+            "indices":  [
+              57,
+              62
+            ]
+          }
+        ],
+        "symbols":  [],
+        "user_mentions":  [
+           {
+            "screen_name": "kevin_faulconer",
+            "name": "Kevin Faulconer",
+            "id": 48534208,
+            "id_str": "48534208",
+            "indices":  [
+              6,
+              22
+            ]
+          }
+        ],
+        "urls":  [],
+        "media":  [
+           {
+            "id": 531211250672218100,
+            "id_str": "531211250672218112",
+            "indices":  [
+              64,
+              86
+            ],
+            "media_url": "http://pbs.twimg.com/media/B1890WkCMAAjfs9.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/B1890WkCMAAjfs9.jpg",
+            "url": "http://t.co/s8AIK3TaSA",
+            "display_url": "pic.twitter.com/s8AIK3TaSA",
+            "expanded_url": "http://twitter.com/sdbeerweek/status/531211284541222912/photo/1",
+            "type": "photo",
+            "sizes":  {
+              "small":  {
+                "w": 340,
+                "h": 255,
+                "resize": "fit"
+              },
+              "medium":  {
+                "w": 600,
+                "h": 450,
+                "resize": "fit"
+              },
+              "thumb":  {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "large":  {
+                "w": 1024,
+                "h": 768,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "extended_entities":  {
+        "media":  [
+           {
+            "id": 531211250672218100,
+            "id_str": "531211250672218112",
+            "indices":  [
+              64,
+              86
+            ],
+            "media_url": "http://pbs.twimg.com/media/B1890WkCMAAjfs9.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/B1890WkCMAAjfs9.jpg",
+            "url": "http://t.co/s8AIK3TaSA",
+            "display_url": "pic.twitter.com/s8AIK3TaSA",
+            "expanded_url": "http://twitter.com/sdbeerweek/status/531211284541222912/photo/1",
+            "type": "photo",
+            "sizes":  {
+              "small":  {
+                "w": 340,
+                "h": 255,
+                "resize": "fit"
+              },
+              "medium":  {
+                "w": 600,
+                "h": 450,
+                "resize": "fit"
+              },
+              "thumb":  {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "large":  {
+                "w": 1024,
+                "h": 768,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "en"
+    },
+    "retweet_count": 11,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [
+         {
+          "text": "GuildFest",
+          "indices":  [
+            58,
+            68
+          ]
+        },
+         {
+          "text": "SDBW",
+          "indices":  [
+            73,
+            78
+          ]
+        }
+      ],
+      "symbols":  [],
+      "user_mentions":  [
+         {
+          "screen_name": "sdbeerweek",
+          "name": "San Diego Beer Week",
+          "id": 27598439,
+          "id_str": "27598439",
+          "indices":  [
+            3,
+            14
+          ]
+        },
+         {
+          "screen_name": "kevin_faulconer",
+          "name": "Kevin Faulconer",
+          "id": 48534208,
+          "id_str": "48534208",
+          "indices":  [
+            22,
+            38
+          ]
+        }
+      ],
+      "urls":  [],
+      "media":  [
+         {
+          "id": 531211250672218100,
+          "id_str": "531211250672218112",
+          "indices":  [
+            80,
+            102
+          ],
+          "media_url": "http://pbs.twimg.com/media/B1890WkCMAAjfs9.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/B1890WkCMAAjfs9.jpg",
+          "url": "http://t.co/s8AIK3TaSA",
+          "display_url": "pic.twitter.com/s8AIK3TaSA",
+          "expanded_url": "http://twitter.com/sdbeerweek/status/531211284541222912/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "small":  {
+              "w": 340,
+              "h": 255,
+              "resize": "fit"
+            },
+            "medium":  {
+              "w": 600,
+              "h": 450,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "large":  {
+              "w": 1024,
+              "h": 768,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 531211284541222900,
+          "source_status_id_str": "531211284541222912"
+        }
+      ]
+    },
+    "extended_entities":  {
+      "media":  [
+         {
+          "id": 531211250672218100,
+          "id_str": "531211250672218112",
+          "indices":  [
+            80,
+            102
+          ],
+          "media_url": "http://pbs.twimg.com/media/B1890WkCMAAjfs9.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/B1890WkCMAAjfs9.jpg",
+          "url": "http://t.co/s8AIK3TaSA",
+          "display_url": "pic.twitter.com/s8AIK3TaSA",
+          "expanded_url": "http://twitter.com/sdbeerweek/status/531211284541222912/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "small":  {
+              "w": 340,
+              "h": 255,
+              "resize": "fit"
+            },
+            "medium":  {
+              "w": 600,
+              "h": 450,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "large":  {
+              "w": 1024,
+              "h": 768,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 531211284541222900,
+          "source_status_id_str": "531211284541222912"
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:25:46 +0000 2014",
+    "id": 531875378449494000,
+    "id_str": "531875378449494016",
+    "text": "San Diego Beer Week continues tonight with our Bourbon Barrel and Sour Party!! We are extending our Industry... http://t.co/aLHoofJipl",
+    "source": "<a href=\"http://www.facebook.com/twitter\" rel=\"nofollow\">Facebook</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 582018710,
+      "id_str": "582018710",
+      "name": "Thorn St Brewery",
+      "screen_name": "ThornStBrewery",
+      "location": "",
+      "profile_location": null,
+      "description": "North Park, San Diego's neighborhood brewery.",
+      "url": "http://t.co/BhIxoWpcbP",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/BhIxoWpcbP",
+              "expanded_url": "http://thornstreetbrew.com",
+              "display_url": "thornstreetbrew.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 1243,
+      "friends_count": 165,
+      "listed_count": 62,
+      "created_at": "Wed May 16 17:35:02 +0000 2012",
+      "favourites_count": 39,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 766,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/2223963788/invite4_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/2223963788/invite4_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/582018710/1404693761",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "http://t.co/aLHoofJipl",
+          "expanded_url": "http://fb.me/1tCWrNylP",
+          "display_url": "fb.me/1tCWrNylP",
+          "indices":  [
+            112,
+            134
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:24:09 +0000 2014",
+    "id": 531874970222477300,
+    "id_str": "531874970222477314",
+    "text": "RT @80sGirl216: Cheers to #InternationalStoutDay2014 Love this by @MotherEarthBrCo ??#LoveYourMother http://t.co/nK2LVJI0sS",
+    "source": "<a href=\"http://www.hootsuite.com\" rel=\"nofollow\">Hootsuite</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 110548722,
+      "id_str": "110548722",
+      "name": "MotherEarthBrewCo.",
+      "screen_name": "MotherEarthBrCo",
+      "location": "Vista, CA",
+      "profile_location": null,
+      "description": "An award winning, Multi-Location, Distributed Production Craft Brewery Headquartered in the Vista, North San Diego County Area.",
+      "url": "http://t.co/8Z7zou4ZDN",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/8Z7zou4ZDN",
+              "expanded_url": "http://www.motherearthbrewco.com",
+              "display_url": "motherearthbrewco.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 3534,
+      "friends_count": 148,
+      "listed_count": 153,
+      "created_at": "Mon Feb 01 23:12:39 +0000 2010",
+      "favourites_count": 1,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 1103,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "EDECE9",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_link_color": "088253",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweeted_status":  {
+      "created_at": "Fri Nov 07 02:04:06 +0000 2014",
+      "id": 530541170653667300,
+      "id_str": "530541170653667328",
+      "text": "Cheers to #InternationalStoutDay2014 Love this by @MotherEarthBrCo ??#LoveYourMother http://t.co/nK2LVJI0sS",
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "truncated": false,
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user":  {
+        "id": 245221032,
+        "id_str": "245221032",
+        "name": "8675309",
+        "screen_name": "80sGirl216",
+        "location": "Walkin in L.A. ",
+        "profile_location": null,
+        "description": "Pop culture Queen, horror movie fanatic, reigning Ms. Pac-man champion, music enthusiast, a lover of fine wine and animals. Searching for Lloyd Dobler ;)",
+        "url": null,
+        "entities":  {
+          "description":  {
+            "urls":  []
+          }
+        },
+        "protected": false,
+        "followers_count": 1452,
+        "friends_count": 1556,
+        "listed_count": 17,
+        "created_at": "Mon Jan 31 04:55:10 +0000 2011",
+        "favourites_count": 9033,
+        "utc_offset": -28800,
+        "time_zone": "Pacific Time (US & Canada)",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 10089,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "0099B9",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme4/bg.gif",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme4/bg.gif",
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/528751132647358465/91Fpku4p_normal.jpeg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/528751132647358465/91Fpku4p_normal.jpeg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/245221032/1414899070",
+        "profile_link_color": "0099B9",
+        "profile_sidebar_border_color": "5ED4DC",
+        "profile_sidebar_fill_color": "95E8EC",
+        "profile_text_color": "3C3940",
+        "profile_use_background_image": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweet_count": 1,
+      "favorite_count": 0,
+      "entities":  {
+        "hashtags":  [
+           {
+            "text": "InternationalStoutDay2014",
+            "indices":  [
+              10,
+              36
+            ]
+          },
+           {
+            "text": "LoveYourMother",
+            "indices":  [
+              68,
+              83
+            ]
+          }
+        ],
+        "symbols":  [],
+        "user_mentions":  [
+           {
+            "screen_name": "MotherEarthBrCo",
+            "name": "MotherEarthBrewCo.",
+            "id": 110548722,
+            "id_str": "110548722",
+            "indices":  [
+              50,
+              66
+            ]
+          }
+        ],
+        "urls":  [],
+        "media":  [
+           {
+            "id": 530540665814671360,
+            "id_str": "530540665814671361",
+            "indices":  [
+              84,
+              106
+            ],
+            "media_url": "http://pbs.twimg.com/media/B1zb7LTIYAEzO9k.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/B1zb7LTIYAEzO9k.jpg",
+            "url": "http://t.co/nK2LVJI0sS",
+            "display_url": "pic.twitter.com/nK2LVJI0sS",
+            "expanded_url": "http://twitter.com/80sGirl216/status/530541170653667328/photo/1",
+            "type": "photo",
+            "sizes":  {
+              "small":  {
+                "w": 340,
+                "h": 340,
+                "resize": "fit"
+              },
+              "thumb":  {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "medium":  {
+                "w": 600,
+                "h": 600,
+                "resize": "fit"
+              },
+              "large":  {
+                "w": 1024,
+                "h": 1024,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "extended_entities":  {
+        "media":  [
+           {
+            "id": 530540665814671360,
+            "id_str": "530540665814671361",
+            "indices":  [
+              84,
+              106
+            ],
+            "media_url": "http://pbs.twimg.com/media/B1zb7LTIYAEzO9k.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/B1zb7LTIYAEzO9k.jpg",
+            "url": "http://t.co/nK2LVJI0sS",
+            "display_url": "pic.twitter.com/nK2LVJI0sS",
+            "expanded_url": "http://twitter.com/80sGirl216/status/530541170653667328/photo/1",
+            "type": "photo",
+            "sizes":  {
+              "small":  {
+                "w": 340,
+                "h": 340,
+                "resize": "fit"
+              },
+              "thumb":  {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "medium":  {
+                "w": 600,
+                "h": 600,
+                "resize": "fit"
+              },
+              "large":  {
+                "w": 1024,
+                "h": 1024,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "en"
+    },
+    "retweet_count": 1,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [
+         {
+          "text": "InternationalStoutDay2014",
+          "indices":  [
+            26,
+            52
+          ]
+        },
+         {
+          "text": "LoveYourMother",
+          "indices":  [
+            84,
+            99
+          ]
+        }
+      ],
+      "symbols":  [],
+      "user_mentions":  [
+         {
+          "screen_name": "80sGirl216",
+          "name": "8675309",
+          "id": 245221032,
+          "id_str": "245221032",
+          "indices":  [
+            3,
+            14
+          ]
+        },
+         {
+          "screen_name": "MotherEarthBrCo",
+          "name": "MotherEarthBrewCo.",
+          "id": 110548722,
+          "id_str": "110548722",
+          "indices":  [
+            66,
+            82
+          ]
+        }
+      ],
+      "urls":  [],
+      "media":  [
+         {
+          "id": 530540665814671360,
+          "id_str": "530540665814671361",
+          "indices":  [
+            100,
+            122
+          ],
+          "media_url": "http://pbs.twimg.com/media/B1zb7LTIYAEzO9k.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/B1zb7LTIYAEzO9k.jpg",
+          "url": "http://t.co/nK2LVJI0sS",
+          "display_url": "pic.twitter.com/nK2LVJI0sS",
+          "expanded_url": "http://twitter.com/80sGirl216/status/530541170653667328/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "small":  {
+              "w": 340,
+              "h": 340,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium":  {
+              "w": 600,
+              "h": 600,
+              "resize": "fit"
+            },
+            "large":  {
+              "w": 1024,
+              "h": 1024,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 530541170653667300,
+          "source_status_id_str": "530541170653667328"
+        }
+      ]
+    },
+    "extended_entities":  {
+      "media":  [
+         {
+          "id": 530540665814671360,
+          "id_str": "530540665814671361",
+          "indices":  [
+            100,
+            122
+          ],
+          "media_url": "http://pbs.twimg.com/media/B1zb7LTIYAEzO9k.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/B1zb7LTIYAEzO9k.jpg",
+          "url": "http://t.co/nK2LVJI0sS",
+          "display_url": "pic.twitter.com/nK2LVJI0sS",
+          "expanded_url": "http://twitter.com/80sGirl216/status/530541170653667328/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "small":  {
+              "w": 340,
+              "h": 340,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium":  {
+              "w": 600,
+              "h": 600,
+              "resize": "fit"
+            },
+            "large":  {
+              "w": 1024,
+              "h": 1024,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 530541170653667300,
+          "source_status_id_str": "530541170653667328"
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:21:44 +0000 2014",
+    "id": 531874363838963700,
+    "id_str": "531874363838963712",
+    "text": "today's #SDBEERWEEK release @ both locations 12N: #barrelaged Russian Imperial Stout w/ vanilla &amp; coconut (on nitro) http://t.co/0XzKDpV3p2",
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 1249457238,
+      "id_str": "1249457238",
+      "name": "Culture Brewing Co",
+      "screen_name": "culturebrewco",
+      "location": "Cedros Avenue, Solana Beach CA",
+      "profile_location": null,
+      "description": "OPEN DAILY 12N - 9P | | http://t.co/AsrazC8QdR",
+      "url": "http://t.co/368VyMAWxv",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/368VyMAWxv",
+              "expanded_url": "http://www.CultureBrewingCo.com",
+              "display_url": "CultureBrewingCo.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  [
+             {
+              "url": "http://t.co/AsrazC8QdR",
+              "expanded_url": "http://CULTUREBREWINGCO.COM",
+              "display_url": "CULTUREBREWINGCO.COM",
+              "indices":  [
+                25,
+                47
+              ]
+            }
+          ]
+        }
+      },
+      "protected": false,
+      "followers_count": 1051,
+      "friends_count": 351,
+      "listed_count": 33,
+      "created_at": "Thu Mar 07 16:21:45 +0000 2013",
+      "favourites_count": 441,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 467,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/3349843141/d156cd077284b7bcd01f3d2a54f9dfb2_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/3349843141/d156cd077284b7bcd01f3d2a54f9dfb2_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/1249457238/1389823527",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place":  {
+      "id": "01d4e349481265e8",
+      "url": "https://api.twitter.com/1.1/geo/id/01d4e349481265e8.json",
+      "place_type": "city",
+      "name": "Carlsbad",
+      "full_name": "Carlsbad, CA",
+      "country_code": "US",
+      "country": "United States",
+      "contained_within":  [],
+      "bounding_box":  {
+        "type": "Polygon",
+        "coordinates":  [
+           [
+             [
+              -117.359298,
+              33.0606148
+            ],
+             [
+              -117.216549,
+              33.0606148
+            ],
+             [
+              -117.216549,
+              33.1823533
+            ],
+             [
+              -117.359298,
+              33.1823533
+            ]
+          ]
+        ]
+      },
+      "attributes":  {}
+    },
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [
+         {
+          "text": "SDBEERWEEK",
+          "indices":  [
+            8,
+            19
+          ]
+        },
+         {
+          "text": "barrelaged",
+          "indices":  [
+            50,
+            61
+          ]
+        }
+      ],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [],
+      "media":  [
+         {
+          "id": 531874363033673700,
+          "id_str": "531874363033673728",
+          "indices":  [
+            121,
+            143
+          ],
+          "media_url": "http://pbs.twimg.com/media/B2GY6knCYAABovy.png",
+          "media_url_https": "https://pbs.twimg.com/media/B2GY6knCYAABovy.png",
+          "url": "http://t.co/0XzKDpV3p2",
+          "display_url": "pic.twitter.com/0XzKDpV3p2",
+          "expanded_url": "http://twitter.com/culturebrewco/status/531874363838963712/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "small":  {
+              "w": 340,
+              "h": 341,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium":  {
+              "w": 594,
+              "h": 596,
+              "resize": "fit"
+            },
+            "large":  {
+              "w": 594,
+              "h": 596,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities":  {
+      "media":  [
+         {
+          "id": 531874363033673700,
+          "id_str": "531874363033673728",
+          "indices":  [
+            121,
+            143
+          ],
+          "media_url": "http://pbs.twimg.com/media/B2GY6knCYAABovy.png",
+          "media_url_https": "https://pbs.twimg.com/media/B2GY6knCYAABovy.png",
+          "url": "http://t.co/0XzKDpV3p2",
+          "display_url": "pic.twitter.com/0XzKDpV3p2",
+          "expanded_url": "http://twitter.com/culturebrewco/status/531874363838963712/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "small":  {
+              "w": 340,
+              "h": 341,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium":  {
+              "w": 594,
+              "h": 596,
+              "resize": "fit"
+            },
+            "large":  {
+              "w": 594,
+              "h": 596,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:09:09 +0000 2014",
+    "id": 531871196938522600,
+    "id_str": "531871196938522624",
+    "text": "We've got a full schedule for Beer San Diego Beer Week!\n\nToday: Benchmark brewing on tap including the GABF Gold... http://t.co/SyowWYTApc",
+    "source": "<a href=\"http://www.facebook.com/twitter\" rel=\"nofollow\">Facebook</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 430944864,
+      "id_str": "430944864",
+      "name": "Amplified Ale Works",
+      "screen_name": "AmplifiedAles",
+      "location": "Pacific Beach, CA",
+      "profile_location": null,
+      "description": "Oceanfront brewpub located in San Diego. We believe in brewing by the beach with good music. #craftbeer #brewbythebeach",
+      "url": "http://t.co/uFpImlSDpC",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/uFpImlSDpC",
+              "expanded_url": "http://amplifiedales.com",
+              "display_url": "amplifiedales.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 1406,
+      "friends_count": 578,
+      "listed_count": 71,
+      "created_at": "Wed Dec 07 18:56:30 +0000 2011",
+      "favourites_count": 140,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 787,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1679484971/Twitter_Profile_Pic_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/1679484971/Twitter_Profile_Pic_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/430944864/1412007232",
+      "profile_link_color": "000000",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 2,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "http://t.co/SyowWYTApc",
+          "expanded_url": "http://fb.me/6RFLv0qgq",
+          "display_url": "fb.me/6RFLv0qgq",
+          "indices":  [
+            116,
+            138
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 18:01:53 +0000 2014",
+    "id": 531869368804970500,
+    "id_str": "531869368804970497",
+    "text": "Happy birthday to the Marine Corp. Thank you to all the men and women who have served… http://t.co/xj7fLQl7HG",
+    "source": "<a href=\"http://instagram.com\" rel=\"nofollow\">Instagram</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 387315958,
+      "id_str": "387315958",
+      "name": "Prohibition Brewing",
+      "screen_name": "prohibitionbc",
+      "location": "2004 E VIsta Way Vista, CA",
+      "profile_location": null,
+      "description": "North County's favorite brewery and full restaurant! Come check us out! Open 11 am M- F and 9am for Breakfast Sat/ Sun!",
+      "url": "http://t.co/bIPWRQ2Wdn",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/bIPWRQ2Wdn",
+              "expanded_url": "http://www.prohibitionbrewingcompany.com/",
+              "display_url": "prohibitionbrewingcompany.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 961,
+      "friends_count": 789,
+      "listed_count": 50,
+      "created_at": "Sat Oct 08 20:52:47 +0000 2011",
+      "favourites_count": 36,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 589,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "B37426",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/357409721/beer.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/357409721/beer.jpg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/471369860606222336/UKlfBgIS_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/471369860606222336/UKlfBgIS_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/387315958/1401218178",
+      "profile_link_color": "36200B",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "D1C8AB",
+      "profile_text_color": "000000",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "http://t.co/xj7fLQl7HG",
+          "expanded_url": "http://instagram.com/p/vOoDRPIoED/",
+          "display_url": "instagram.com/p/vOoDRPIoED/",
+          "indices":  [
+            87,
+            109
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 17:59:31 +0000 2014",
+    "id": 531868769694781440,
+    "id_str": "531868769694781440",
+    "text": "\"Get on the bus!\" You &amp; a guest can join us in celebrating #SDBW. Visit &amp; Like our fb page for details! http://t.co/Wx1gpBrBS2",
+    "source": "<a href=\"http://www.hootsuite.com\" rel=\"nofollow\">Hootsuite</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 110548722,
+      "id_str": "110548722",
+      "name": "MotherEarthBrewCo.",
+      "screen_name": "MotherEarthBrCo",
+      "location": "Vista, CA",
+      "profile_location": null,
+      "description": "An award winning, Multi-Location, Distributed Production Craft Brewery Headquartered in the Vista, North San Diego County Area.",
+      "url": "http://t.co/8Z7zou4ZDN",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/8Z7zou4ZDN",
+              "expanded_url": "http://www.motherearthbrewco.com",
+              "display_url": "motherearthbrewco.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 3534,
+      "friends_count": 148,
+      "listed_count": 153,
+      "created_at": "Mon Feb 01 23:12:39 +0000 2010",
+      "favourites_count": 1,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 1103,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "EDECE9",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_link_color": "088253",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 1,
+    "favorite_count": 2,
+    "entities":  {
+      "hashtags":  [
+         {
+          "text": "SDBW",
+          "indices":  [
+            63,
+            68
+          ]
+        }
+      ],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "http://t.co/Wx1gpBrBS2",
+          "expanded_url": "http://ow.ly/E4qCW",
+          "display_url": "ow.ly/E4qCW",
+          "indices":  [
+            112,
+            134
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 17:54:46 +0000 2014",
+    "id": 531867577488637950,
+    "id_str": "531867577488637952",
+    "text": "Day Four of @sdbeerweek rolls on, time to keg off some beer on #qualitycontrolmonday…Cheers! http://t.co/2faVzIlmiD",
+    "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for i?S</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 277250135,
+      "id_str": "277250135",
+      "name": "Societe Brewing Co",
+      "screen_name": "SocieteBrewing",
+      "location": "San Diego, CA",
+      "profile_location": null,
+      "description": "A brewery founded by two professional brewers. We brew hoppy Out West ales, Belgian-inspired Old World ales, and dark Stygian beers. Drink freakin awesome beer.",
+      "url": "http://t.co/7kj3UkX312",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/7kj3UkX312",
+              "expanded_url": "http://www.societebrewing.com",
+              "display_url": "societebrewing.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 9947,
+      "friends_count": 487,
+      "listed_count": 342,
+      "created_at": "Tue Apr 05 00:32:54 +0000 2011",
+      "favourites_count": 1835,
+      "utc_offset": -25200,
+      "time_zone": "Arizona",
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 4544,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/344918034408834277/e1d201e78ed977bb28a226792734cb55.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/344918034408834277/e1d201e78ed977bb28a226792734cb55.jpeg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/483634829217394688/vRlUVJV8_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/483634829217394688/vRlUVJV8_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/277250135/1404142592",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "232733",
+      "profile_text_color": "D6B45E",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place":  {
+      "id": "661b453c9ea31ff6",
+      "url": "https://api.twitter.com/1.1/geo/id/661b453c9ea31ff6.json",
+      "place_type": "neighborhood",
+      "name": "Kearny Mesa",
+      "full_name": "Kearny Mesa, San Diego",
+      "country_code": "US",
+      "country": "United States",
+      "contained_within":  [],
+      "bounding_box":  {
+        "type": "Polygon",
+        "coordinates":  [
+           [
+             [
+              -117.178392,
+              32.8083554
+            ],
+             [
+              -117.1142641,
+              32.8083554
+            ],
+             [
+              -117.1142641,
+              32.8476592
+            ],
+             [
+              -117.178392,
+              32.8476592
+            ]
+          ]
+        ]
+      },
+      "attributes":  {}
+    },
+    "contributors": null,
+    "retweet_count": 1,
+    "favorite_count": 1,
+    "entities":  {
+      "hashtags":  [
+         {
+          "text": "qualitycontrolmonday",
+          "indices":  [
+            63,
+            84
+          ]
+        }
+      ],
+      "symbols":  [],
+      "user_mentions":  [
+         {
+          "screen_name": "sdbeerweek",
+          "name": "San Diego Beer Week",
+          "id": 27598439,
+          "id_str": "27598439",
+          "indices":  [
+            12,
+            23
+          ]
+        }
+      ],
+      "urls":  [],
+      "media":  [
+         {
+          "id": 531867575487959040,
+          "id_str": "531867575487959041",
+          "indices":  [
+            93,
+            115
+          ],
+          "media_url": "http://pbs.twimg.com/media/B2GSvfCCEAEGYoj.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/B2GSvfCCEAEGYoj.jpg",
+          "url": "http://t.co/2faVzIlmiD",
+          "display_url": "pic.twitter.com/2faVzIlmiD",
+          "expanded_url": "http://twitter.com/SocieteBrewing/status/531867577488637952/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "small":  {
+              "w": 340,
+              "h": 340,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium":  {
+              "w": 600,
+              "h": 600,
+              "resize": "fit"
+            },
+            "large":  {
+              "w": 1024,
+              "h": 1024,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities":  {
+      "media":  [
+         {
+          "id": 531867575487959040,
+          "id_str": "531867575487959041",
+          "indices":  [
+            93,
+            115
+          ],
+          "media_url": "http://pbs.twimg.com/media/B2GSvfCCEAEGYoj.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/B2GSvfCCEAEGYoj.jpg",
+          "url": "http://t.co/2faVzIlmiD",
+          "display_url": "pic.twitter.com/2faVzIlmiD",
+          "expanded_url": "http://twitter.com/SocieteBrewing/status/531867577488637952/photo/1",
+          "type": "photo",
+          "sizes":  {
+            "small":  {
+              "w": 340,
+              "h": 340,
+              "resize": "fit"
+            },
+            "thumb":  {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium":  {
+              "w": 600,
+              "h": 600,
+              "resize": "fit"
+            },
+            "large":  {
+              "w": 1024,
+              "h": 1024,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 17:20:09 +0000 2014",
+    "id": 531858864313233400,
+    "id_str": "531858864313233408",
+    "text": "A sterling example of the power of our barrel-aged #beer program, SOUTHERN CHARRED, starts hitting shelves TODAY! \n http://t.co/nXZFP4iW6E",
+    "source": "<a href=\"http://www.hootsuite.com\" rel=\"nofollow\">Hootsuite</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 16331259,
+      "id_str": "16331259",
+      "name": "Stone Brewing Co.",
+      "screen_name": "StoneBrewingCo",
+      "location": "Escondido, CA",
+      "profile_location": null,
+      "description": "The All-Time Top Brewery on Planet Earth - BeerAdvocate Magazine\r\nFacebook: http://t.co/TgWTsIuy | Instagram: http://t.co/Mr0LCaqs",
+      "url": "http://t.co/RdcgXoiG",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/RdcgXoiG",
+              "expanded_url": "http://www.stonebrewing.com",
+              "display_url": "stonebrewing.com",
+              "indices":  [
+                0,
+                20
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  [
+             {
+              "url": "http://t.co/TgWTsIuy",
+              "expanded_url": "http://facebook.com/StoneBrewingCo",
+              "display_url": "facebook.com/StoneBrewingCo",
+              "indices":  [
+                76,
+                96
+              ]
+            },
+             {
+              "url": "http://t.co/Mr0LCaqs",
+              "expanded_url": "http://instagram.com/StoneBrewingCo",
+              "display_url": "instagram.com/StoneBrewingCo",
+              "indices":  [
+                110,
+                130
+              ]
+            }
+          ]
+        }
+      },
+      "protected": false,
+      "followers_count": 166541,
+      "friends_count": 14315,
+      "listed_count": 5706,
+      "created_at": "Wed Sep 17 16:00:11 +0000 2008",
+      "favourites_count": 3557,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": true,
+      "verified": true,
+      "statuses_count": 6917,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "050505",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/3760441/bigrock.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/3760441/bigrock.jpg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/527843854385311746/OgXWn16B_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/527843854385311746/OgXWn16B_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/16331259/1415040116",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "616161",
+      "profile_sidebar_fill_color": "191919",
+      "profile_text_color": "9C9C9C",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 17,
+    "favorite_count": 18,
+    "entities":  {
+      "hashtags":  [
+         {
+          "text": "beer",
+          "indices":  [
+            51,
+            56
+          ]
+        }
+      ],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "http://t.co/nXZFP4iW6E",
+          "expanded_url": "http://ow.ly/i/7wTdg",
+          "display_url": "ow.ly/i/7wTdg",
+          "indices":  [
+            116,
+            138
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 16:25:12 +0000 2014",
+    "id": 531845037986816000,
+    "id_str": "531845037986816000",
+    "text": "Looking forward to our first @pinkbootsbeer and @sdsudssorority meet up tonight! 16 beers on tap and a food truck coming. See ya'll here!",
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 1383032125,
+      "id_str": "1383032125",
+      "name": "Council Brewing Co.",
+      "screen_name": "CouncilBrewing",
+      "location": "San Diego, CA",
+      "profile_location": null,
+      "description": "A nano-brewery nestled in the heart of the San Diego, California brewing and serving fine craft beer.",
+      "url": "http://t.co/V2rgdvh2t0",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/V2rgdvh2t0",
+              "expanded_url": "http://www.councilbrew.com",
+              "display_url": "councilbrew.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 939,
+      "friends_count": 394,
+      "listed_count": 38,
+      "created_at": "Fri Apr 26 22:35:07 +0000 2013",
+      "favourites_count": 293,
+      "utc_offset": -25200,
+      "time_zone": "Arizona",
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 574,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/378800000683744225/df1063c73d4d877751172abaabac8963_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/378800000683744225/df1063c73d4d877751172abaabac8963_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/1383032125/1367794796",
+      "profile_link_color": "9A2721",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 2,
+    "favorite_count": 4,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [
+         {
+          "screen_name": "pinkbootsbeer",
+          "name": "Pink Boots Society",
+          "id": 74920204,
+          "id_str": "74920204",
+          "indices":  [
+            29,
+            43
+          ]
+        },
+         {
+          "screen_name": "sdsudssorority",
+          "name": "SD Suds Sorority",
+          "id": 1942122348,
+          "id_str": "1942122348",
+          "indices":  [
+            48,
+            63
+          ]
+        }
+      ],
+      "urls":  []
+    },
+    "favorited": false,
+    "retweeted": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 16:16:11 +0000 2014",
+    "id": 531842765098065900,
+    "id_str": "531842765098065920",
+    "text": "Marines - Active/Retired once a Marine... Come to Main St. 2day &amp; please allow us to properly wish you a Happy Birthday the Tun Tavern way!",
+    "source": "<a href=\"http://www.hootsuite.com\" rel=\"nofollow\">Hootsuite</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 110548722,
+      "id_str": "110548722",
+      "name": "MotherEarthBrewCo.",
+      "screen_name": "MotherEarthBrCo",
+      "location": "Vista, CA",
+      "profile_location": null,
+      "description": "An award winning, Multi-Location, Distributed Production Craft Brewery Headquartered in the Vista, North San Diego County Area.",
+      "url": "http://t.co/8Z7zou4ZDN",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/8Z7zou4ZDN",
+              "expanded_url": "http://www.motherearthbrewco.com",
+              "display_url": "motherearthbrewco.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 3534,
+      "friends_count": 148,
+      "listed_count": 153,
+      "created_at": "Mon Feb 01 23:12:39 +0000 2010",
+      "favourites_count": 1,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 1103,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "EDECE9",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_link_color": "088253",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 1,
+    "favorite_count": 1,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  []
+    },
+    "favorited": false,
+    "retweeted": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 15:54:17 +0000 2014",
+    "id": 531837255330299900,
+    "id_str": "531837255330299905",
+    "text": "Happy Birthday Marines. And thank you for your faithful service. #USMC #TunTavern",
+    "source": "<a href=\"http://www.hootsuite.com\" rel=\"nofollow\">Hootsuite</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 110548722,
+      "id_str": "110548722",
+      "name": "MotherEarthBrewCo.",
+      "screen_name": "MotherEarthBrCo",
+      "location": "Vista, CA",
+      "profile_location": null,
+      "description": "An award winning, Multi-Location, Distributed Production Craft Brewery Headquartered in the Vista, North San Diego County Area.",
+      "url": "http://t.co/8Z7zou4ZDN",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/8Z7zou4ZDN",
+              "expanded_url": "http://www.motherearthbrewco.com",
+              "display_url": "motherearthbrewco.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 3534,
+      "friends_count": 148,
+      "listed_count": 153,
+      "created_at": "Mon Feb 01 23:12:39 +0000 2010",
+      "favourites_count": 1,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 1103,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "EDECE9",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/499329210054234112/eWpyAQTP.jpeg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/3042780600/6f689ab8f13163f2b38709b49b5e1de1_normal.jpeg",
+      "profile_link_color": "088253",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 4,
+    "entities":  {
+      "hashtags":  [
+         {
+          "text": "USMC",
+          "indices":  [
+            65,
+            70
+          ]
+        },
+         {
+          "text": "TunTavern",
+          "indices":  [
+            71,
+            81
+          ]
+        }
+      ],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  []
+    },
+    "favorited": false,
+    "retweeted": false,
+    "lang": "en"
+  },
+   {
+    "created_at": "Mon Nov 10 03:53:37 +0000 2014",
+    "id": 531655892367081500,
+    "id_str": "531655892367081473",
+    "text": "Such an amazing brunch today with Chris' Ono Grinds Island Grill for our Hawaiian brunch and sour release! Thanks... http://t.co/KPmCgyFTeF",
+    "source": "<a href=\"http://www.facebook.com/twitter\" rel=\"nofollow\">Facebook</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user":  {
+      "id": 582018710,
+      "id_str": "582018710",
+      "name": "Thorn St Brewery",
+      "screen_name": "ThornStBrewery",
+      "location": "",
+      "profile_location": null,
+      "description": "North Park, San Diego's neighborhood brewery.",
+      "url": "http://t.co/BhIxoWpcbP",
+      "entities":  {
+        "url":  {
+          "urls":  [
+             {
+              "url": "http://t.co/BhIxoWpcbP",
+              "expanded_url": "http://thornstreetbrew.com",
+              "display_url": "thornstreetbrew.com",
+              "indices":  [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description":  {
+          "urls":  []
+        }
+      },
+      "protected": false,
+      "followers_count": 1243,
+      "friends_count": 165,
+      "listed_count": 62,
+      "created_at": "Wed May 16 17:35:02 +0000 2012",
+      "favourites_count": 39,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 766,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/2223963788/invite4_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/2223963788/invite4_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/582018710/1404693761",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweet_count": 0,
+    "favorite_count": 0,
+    "entities":  {
+      "hashtags":  [],
+      "symbols":  [],
+      "user_mentions":  [],
+      "urls":  [
+         {
+          "url": "http://t.co/KPmCgyFTeF",
+          "expanded_url": "http://fb.me/2qRUPTlsm",
+          "display_url": "fb.me/2qRUPTlsm",
+          "indices":  [
+            117,
+            139
+          ]
+        }
+      ]
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  }
+]
