@@ -1,13 +1,14 @@
 <div class="row">
 	<div class="col-xs-6">
+		<h5><abbr title="{{locationData.coords.latitude}}, {{locationData.coords.longitude}}">Location</abbr></h5>
 		<address>
-			<strong><abbr title="{{locationData.coords.latitude}}, {{locationData.coords.longitude}}">Location</abbr></strong><br />
 			<span>{{locationData.addr}}</span><br />
 			<span>{{locationData.city}}, {{locationData.state}} {{locationData.zip}}<br />
 			<span ng-show="locationData.phone != ''"><abbr title="Phone">P:</abbr> <a href="tel:{{locationData.phoneNumber()}}">{{locationData.phone}}</a></span>
 		</address>
 	</div>
 	<div class="col-xs-6">
+		<h5>Social</h5>
 		<p>
 			<!-- can still clean this up more.. -->
 			<span ng-show="locationData.www != ''"><span class="fa fa-globe" title="Website"></span> <a href="http://{{locationData.www}}" target="_blank">{{locationData.www}}</a><br /></span>
