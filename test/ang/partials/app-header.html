@@ -1,21 +1,31 @@
 <!-- APP header -->
 
-<div class="page-header app-header">
-	<span class="pull-left">
-		<span class="menu-click clickable" ng-click="menu.toggleMenu()">
-			<span class="fa fa-reorder"></span>
+<nav class="navbar navbar-default navbar-fixed-top page-header app-header">
+	<div class="container">
+		<span class="pull-left">
+			<span class="menu-click clickable" ng-click="menu.toggleMenu()">
+				<span class="fa fa-reorder"></span>
+			</span>
 		</span>
-	</span>
-	<!--
-	<span class="pull-right">
-		<a href="#/list" class="btn btn-link btn-sm">
-			view all {{markers.length}} <span class="glyphicon glyphicon-chevron-right"></span>
-		</a>
-	</span>
-	-->
-	<div class="text-center">
-		<a href="#/home">
-			<img src="includes/craigsfirstlogo.png" alt="Beer Map" class="logo">
-		</a>
+		<!--
+		<span class="pull-right">
+			<a href="#/list" class="btn btn-link btn-sm">
+				view all {{markers.length}} <span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</span>
+		-->
+		<div class="text-center">
+			<a href="#/home">
+				<img src="includes/craigsfirstlogo.png" alt="Beer Map" class="logo">
+			</a>
+		</div>
+		<span class="pull-right">
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</span>
 	</div>
-</div>
+</nav>
