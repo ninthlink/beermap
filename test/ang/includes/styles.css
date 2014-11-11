@@ -93,42 +93,43 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* logo icon fix */
-	.main-nav .navbar-header {
-		display: block;
-		top: 0;
-		bottom: 0;
-		left: 75px;
-		right: 75px;
-		position: absolute;
-		text-align: center;
-		z-index: 1;
+.main-nav .navbar-header {
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 75px;
+	right: 75px;
+	position: absolute;
+	text-align: center;
+	z-index: 1;
+}
+.main-nav .navbar-brand {
+	display: block;
+	float: none;
+	font-weight: bold;
+	margin: 0 auto;
+}
+.navbar-form {
+	position: relative;
+	z-index: 2;
+}
+.navbar-form .dropdown-menu a {
+	overflow: hidden;
+}
+/*
+@media screen and (max-width: 767px ) {
+	.navbar-brand {
+		padding-left: 15px !important;
 	}
-	.main-nav .navbar-brand {
-		display: block;
-		float: none;
-		font-weight: bold;
-		margin: 0 auto;
-	}
-	.navbar-form {
-		position: relative;
-		z-index: 2;
-	}
-	/*
-	@media screen and (max-width: 767px ) {
-		.navbar-brand {
-			padding-left: 15px !important;
-		}
-	}
-	.logo {
-		height: 50px;
-		width: auto;
-	}
-	*/
-	.header-menu-icon {
-		font-size: 1.4em;
-	}
-
-
+}
+.logo {
+	height: 50px;
+	width: auto;
+}
+*/
+.header-menu-icon {
+	font-size: 1.4em;
+}
 
 
 /* sidebar menu */
@@ -190,6 +191,7 @@ h1, h2, h3, h4, h5, h6 {
 .glyphicon-remove,
 .glyphicon-chevron-left,
 .nav-tabs a,
+.dropdown-menu a,
 .clickable {
 	cursor:pointer;
 }
