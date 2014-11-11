@@ -62,7 +62,7 @@
 					//console.log($scope.markers);
 					vm.omarkers = $scope.markers; // save for later
 					console.log('## all '+ $scope.markers.length +' markers loaded');
-					//console.log($scope.boundary);
+					console.log($scope.markers);
 				})
 				.error(function(err) {
 					console.log('Error loading : '+ err.message);
@@ -83,22 +83,18 @@
 		o.addMarkerEvents = function( $scope ) {
 			if ( angular.isArray( $scope.markers ) ) {
 				angular.forEach($scope.markers, function(marker) {
-					/**
-					 * returns "City, State Zip"
-					 */
+					// "City, State Zip"
 					marker.CSZ = function() {
 						return marker.city +', '+ marker.state +' '+ marker.zip;
 					}
-					/**
-					 * returns full address in 1 line
-					 */
+					// get full address in 1 line
 					marker.fullAddr = function() {
 						return marker.addr +', '+ marker.CSZ();
 					}
-					/**
-					 * returns name + location (if there is one),
-					 * wrapped in link to the website (if there is one)
-					 */
+					// store a couple versions of fullName combined for easier things?
+					marker.fullName = marker.name + ( marker.loc !== '' ? (' <small>' + marker.loc + '</small>') : '' );
+					marker.fullNameSearch = marker.name +' '+ marker.loc;
+					// name + location (if there is), wrapped in www link (if there is)
 					marker.fullNameLink = function() {
 						var o = '<strong>'+ marker.name +'</strong>';
 						if ( marker.loc !== '' ) {
@@ -109,21 +105,19 @@
 						}
 						return o;
 					}
-					/**
-					 * given a number like "(858) 427-1470",
-					 * 
-					 * returns that number wrapped in an <a href="tel:##########" />
-					 */
+					// phone # wrapped in an <a href="tel:##########" />
 					marker.phoneNumber = function() {
 						var phone = marker.phone;
 						var justnumber = phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
 						return '<a href="tel:'+ justnumber +'">'+ phone +'</a>';
 					}
 					if ( $scope.map !== false ) {
+						// helper to make the right onClick
 						marker.onClick = function() {
 							console.log('onClick '+ marker.id);
 							markerClicked($scope, marker.id);
 						}
+						// this should be renamed..
 						marker.closeRight = function() {
 							console.log('close..');
 							$scope.showOverlay = false;
@@ -141,26 +135,7 @@
 							}, 100);
 						}
 					} else {
-						/**
-						 * there's no map, so maybe this is list view?
-						 * 
-						 * in that case, add a few social functions for debuggings
-						 */
-						marker.foursquared = function( id ) {
-							marker.foursquare_id = id;
-						}
-						marker.print4s = function() {
-							var o = false;
-							if ( marker.foursquare_id !== false ) {
-								if ( angular.isObject( marker.foursquare_id ) ) {
-									// for further debugging..
-									o = 'objd';
-								} else {
-									o = marker.foursquare_id;
-								}
-							}
-							return o;
-						}
+						// huh?
 					}
 				});
 			}
