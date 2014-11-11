@@ -1,7 +1,14 @@
 <!-- APP menu -->
 
-<div class="sidebar" role="navigation" ng-show="menu.visible">
-	<ul class="nav">
-		<li ng-repeat="item in menu.items" class="{{menu.active === item.slug ? 'active' : ''}}"><a href="{{item.url}}">{{item.text}}</a></li>
-	</ul>
-</div>
+<nav class="sidebar navbar navbar-inverse navbar-fixed-top" roll="navigation" ng-show="menu.visible">
+	<div class="container-fluid">
+		<div class="navbar-header" ng-click="menu.toggleMenu()">
+			<h4 class="clickable"><i class="glyphicon glyphicon-cog"></i> Settings</h4>
+		</div>
+		<ul class="nav navbar-nav">
+			<li ng-repeat="item in menu.items" class="{{menu.active === item.slug ? 'active' : ''}}">
+				<a href="{{item.url}}">{{item.text}}</a>
+			</li>
+		</ul>
+	</div>
+</nav>

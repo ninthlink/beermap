@@ -32,6 +32,8 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: #fff;
 	box-sizing: border-box;
 	height: 50%; /* default map size */
+	-webkit-transition: all linear .05s;
+	transition: all linear .05s;
 }
 .map-container.mapsmall { height: 25%; } /* small map for details pages */
 .map-container.maplarge { height: 100%; } /* full-screen map */
@@ -44,6 +46,34 @@ h1, h2, h3, h4, h5, h6 {
 	display: block;
 }
 
+/* animate overlay */
+.overlay-container.ng-hide-add,
+.overlay-container.ng-hide-add-active,
+.overlay-container.ng-hide-remove,
+.overlay-container.ng-hide-remove-active {
+	-webkit-transition: all linear .15s;
+	transition: all linear .15s;
+}
+.overlay-container.ng-hide {
+	height: 0;
+}
+
+.feed-container { height: 100%; }
+/* animate mainfeed */
+.feed-container.ng-hide-add,
+.feed-container.ng-hide-add-active,
+.feed-container.ng-hide-remove,
+.feed-container.ng-hide-remove-active {
+	-webkit-transition: all linear .1s;
+	transition: all linear .1s;
+}
+.feed-container.ng-hide {
+	height: 0;
+}
+
+
+
+
 
 /* HEADERS */
 .page-header {
@@ -53,21 +83,18 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 0;
 }
 
+/* logo icon fix */
+.navbar-brand {
+	margin: 0 !important;
+	padding-top: 0 !important;
+}
+
 .logo {
 	height: 50px;
 	width: auto;
 }
 
-.navbar-header {
-	left: 50%;
-	margin-left: -19px !important;
-	position: absolute;
-	width: 37px;
-}
-.navbar-brand {
-	margin: 0 !important;
-	padding: 0 !important;
-}
+
 
 .menu-click {
 	font-size: 3em;
@@ -81,17 +108,39 @@ h1, h2, h3, h4, h5, h6 {
 
 /* sidebar menu */
 .sidebar {
-	width: 120px;
-	position: absolute;
+	height: 100%;
 	left: 0;
-	top: 60px;
+	position: fixed;
+	top: 0;
+	width: 90%;
 }
-.menu-open .app-content {
-	left: 120px;
+.sidebar .navbar-header h4 {
+	color: #fff;
+	padding-left: 12px;
 }
-.nav li.active a {
-	color: #000;
+.sidebar ul {
+	width: 100%;
 }
+.sidebar li {
+	width: 100%;
+}
+/* animate sidebar */
+.sidebar.ng-hide-add,
+.sidebar.ng-hide-add-active,
+.sidebar.ng-hide-remove,
+.sidebar.ng-hide-remove-active {
+	-webkit-transition: all linear .15s;
+	transition: all linear .15s;
+}
+.sidebar.ng-hide {
+	width: 0%;
+}
+
+
+
+
+
+
 /* CLICKABLE OBJECTS */
 .glyphicon-thumbs-up,
 .glyphicon-remove,
