@@ -10,9 +10,9 @@
 		.module('beerMap')
 		.controller('beerMapd', beerMapd);
 	
-	beerMapd.$inject = ['$scope', '$rootScope', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper'];
+	beerMapd.$inject = ['$scope', '$rootScope', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
 	
-	function beerMapd( $scope, $rootScope, $http, locationFactory, GoogleMapApi, layoutHelper ){
+	function beerMapd( $scope, $rootScope, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		$rootScope.searchFor = layoutHelper.searchFor; // typeahead search callback
 		
@@ -35,10 +35,7 @@
 			maxlng: false
 		};
 		
-		/**
-		 * Get all brewery location markers from the locationFactory
-		 *
-		 */
+		// Get all brewery location markers from the locationFactory
 		locationFactory.loadAll($scope);
 		
 		/**
@@ -76,14 +73,19 @@
 			console.log('geoloc : no?');
 		}
 		
-		/**
-		 * test reloading data in the locationFactory
-		 *
-		 */
+		// test reloading data in the locationFactory
 		$scope.reload = function() {
 			console.log('reload?!');
 			var reload = locationFactory.loadAll();
 			console.log(reload);
 		};
+		
+		// attach socialFactory.loadSampleFeed to something we can call from partials?
+		$rootScope.loadSampleFeed = function(socialnetwork, type, sample) {
+			// also pass $scope in..
+			socialFactory.loadSampleFeed(socialnetwork, type, sample, $scope);
+		};
+		// and load our home news
+		// socialFactory.loadSampleNews( $scope );
 	}
 })();

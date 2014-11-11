@@ -1,25 +1,12 @@
 <!-- LIST block -->
 
 <div ng-show="showMainFeed" class="container-fluid feed-container">
-	<!--
-	<div class="page-header">
-		<h1 class="text-center">
-			<span class="pull-left">
-				<a href="#/home" class="btn btn-primary btn-sm">
-					<span class="glyphicon glyphicon-chevron-left"></span> back to map
-				</a>
-			</span>
-			All Brewery Location Listings
-		</h1>
-	</div>
-	-->
 	<div class="row">
 		<div class="col-md-12">
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="llon"> toggle latlng column
-				</label>
-			</div>
+			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('twitter','list', 0);">Sample Twitter List?!</button>
+			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('twitter','user', 0);">Sample Twitter User?!</button>
+			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('instagram','loc', 0);">Sample Instagram Location?!</button>
+			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('instagram','user', 0);">Sample Instagram User?!</button>
 		</div>
 	</div>
 	<div class="row">
