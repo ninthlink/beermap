@@ -32,7 +32,7 @@
 					</a>
 				</li>
 			</ul>
-			<form class="navbar-form navbar-right" role="search" ng-controller="beerMapd" ng-show="showSearch">
+			<form class="navbar-form navbar-right" role="search" ng-controller="home" ng-show="showSearch">
 					<input type="text" ng-model="searched" placeholder="Search" typeahead="marker.name as marker.fullName for marker in markers | filter:{fullNameSearch:$viewValue} | limitTo: 20" typeahead-on-select='searchFor($item,$model,$label)' class="form-control">
 			</form>
 

@@ -1,5 +1,5 @@
 /**
- * breweryList Controller
+ * list Controller
  *
  * for state /list (in angularApp.js config)
  * with /partials/list.html
@@ -8,11 +8,11 @@
 (function() {
 	angular
 		.module('beerMap')
-		.controller('breweryList', breweryList);
+		.controller('locationList', locationList);
 		
-	breweryList.$inject = ['$scope', '$rootScope', '$http', 'locationFactory', 'socialFactory', 'layoutHelper'];
+	locationList.$inject = ['$scope', '$rootScope', '$http', 'locationFactory', 'socialFactory', 'layoutHelper'];
 	
-	function breweryList( $scope, $rootScope, $http, locationFactory, socialFactory, layoutHelper ){
+	function locationList( $scope, $rootScope, $http, locationFactory, socialFactory, layoutHelper ){
 		$rootScope.menu = layoutHelper.getMenu( 'list' ); // gets and sets active menu?
 		
 		$scope.map = false;

@@ -8,11 +8,11 @@
 (function() {
 	angular
 		.module('beerMap')
-		.controller('beerMapd', beerMapd);
+		.controller('home', home);
 	
-	beerMapd.$inject = ['$scope', '$rootScope', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
+	home.$inject = ['$scope', '$rootScope', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
 	
-	function beerMapd( $scope, $rootScope, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
+	function home( $scope, $rootScope, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		$rootScope.searchFor = layoutHelper.searchFor; // typeahead search callback
 		

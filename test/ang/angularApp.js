@@ -41,12 +41,12 @@
 					.state('home', {
 						url: '/home',
 						templateUrl: './partials/home.html',
-						controller: 'beerMapd'
+						controller: 'home'
 					})
 					.state('list', {
 						url: '/list',
 						templateUrl: './partials/list.html',
-						controller: 'breweryList'
+						controller: 'locationList'
 					})
 				$urlRouterProvider.otherwise('home');
 			}
