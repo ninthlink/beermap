@@ -48,6 +48,11 @@
 						templateUrl: './partials/list.html',
 						controller: 'locationList'
 					})
+					.state('location', {
+						url: '/location/{id}',
+						templateUrl: './partials/location.html',
+						controller: 'locationCtrl'
+					})
 				$urlRouterProvider.otherwise('home');
 			}
 		]);

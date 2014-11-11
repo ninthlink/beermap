@@ -135,6 +135,13 @@
 								$scope.$apply();
 							}, 100);
 						}
+						
+						// check if we should default open to a particular ID loaded in scope?
+						if ( $scope.brewon !== false ) {
+							if ( marker.id == $scope.brewon ) {
+								markerClicked($scope, marker.id);
+							}
+						}
 					} else {
 						// huh?
 					}
