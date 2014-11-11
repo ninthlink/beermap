@@ -1,6 +1,31 @@
 <!-- OVERLAY header -->
+<nav class="navbar navbar-inverse navbar-static-top" roll="navigation">
+	<div class="container-fluid">
 
-<span class="pull-left button-span overlay-close">
-	<span class="glyphicon glyphicon-chevron-down clickable" ng-click="locationData.closeRight()"></span>
-</span>
-<h3 class="text-center">{{locationData.name}} <small>{{locationData.loc}}</small></h3>
+			<ul class="nav navbar-nav navbar-left">
+				<li>
+					<a class="clickable" ng-click="locationData.closeRight()">
+						<i class="glyphicon glyphicon-chevron-left"></i>
+					</a>
+				</li>
+				<li>
+					<p class="navbar-text">{{locationData.name}} <small>{{locationData.loc}}</small></p>
+				</li>
+				<li>
+					<p class="navbar-text">Show Mileage Here</p>
+				</li>
+				<li>
+					<p class="navbar-text">Get Directions?</p>
+				</li>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a class="clickable">
+						<i class="glyphicon glyphicon-chevron-down"></i>
+					</a>
+				</li>
+			</ul>
+
+	</div>
+</nav>

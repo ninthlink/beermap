@@ -199,7 +199,7 @@
 		console.log(m);
 		
 		// set classes for when overlay is active
-		$scope.mapclass = 'mapsmall';
+		//$scope.mapclass = 'mapsmall';
 		$scope.overlayclass = 'growd';
 		$scope.listclass = 'listhidden';
 		

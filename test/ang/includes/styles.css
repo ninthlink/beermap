@@ -24,51 +24,60 @@ h1, h2, h3, h4, h5, h6 {
 	left: 0;
 	position: absolute !important;
 	right: 0;
-	top: 50px;
+	top: 0;
 }
 
 /* CONTAINERS - OUTER */
-.map-container {
-	background-color: #fff;
-	box-sizing: border-box;
-	height: 50%; /* default map size */
-	-webkit-transition: all linear .05s;
-	transition: all linear .05s;
-}
-.map-container.mapsmall { height: 25%; } /* small map for details pages */
-.map-container.maplarge { height: 100%; } /* full-screen map */
+	.map-container {
+		background-color: #fff;
+		box-sizing: border-box;
+		height: 50%; /* default map size */
+		-webkit-transition: all linear .05s;
+		transition: all linear .05s;
+	}
+	.map-container.mapsmall { height: 25%; } /* small map for details pages */
+	.map-container.maplarge { height: 100%; } /* full-screen map */
+	.angular-google-map-container,
+	.angular-google-map {
+		height: 100%;
+		width: 100%;
+		position: relative;
+		display: block;
+	}
 
-.angular-google-map-container,
-.angular-google-map {
+
+.overlay-container {
 	height: 100%;
-	width: 100%;
+	left: 0;
 	position: relative;
-	display: block;
 }
-
 /* animate overlay */
 .overlay-container.ng-hide-add,
 .overlay-container.ng-hide-add-active,
 .overlay-container.ng-hide-remove,
 .overlay-container.ng-hide-remove-active {
-	-webkit-transition: all linear .15s;
-	transition: all linear .15s;
+	-webkit-transition: all linear .3s;
+	transition: all linear .3s;
 }
 .overlay-container.ng-hide {
-	height: 0;
+	left: 100%;
 }
 
-.feed-container { height: 100%; }
+.feed-container {
+	height: 100%;
+	left: 0;
+	position: relative;
+}
 /* animate mainfeed */
 .feed-container.ng-hide-add,
 .feed-container.ng-hide-add-active,
 .feed-container.ng-hide-remove,
 .feed-container.ng-hide-remove-active {
-	-webkit-transition: all linear .1s;
-	transition: all linear .1s;
+	-webkit-transition: all linear .3s;
+	transition: all linear .3s;
 }
 .feed-container.ng-hide {
-	height: 0;
+	left: -100%;
 }
 
 
@@ -84,71 +93,67 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* logo icon fix */
-.navbar-header {
-	left: 50%;
-	margin-left: -20px !important;
-	position: relative;
-}
-.navbar-brand {
-	margin: 0 !important;
-	padding-left: 0 !important;
-	padding-top: 0 !important;
-}
-@media screen and (max-width: 767px ) {
-	.navbar-brand {
-		padding-left: 15px !important;
+	.navbar-header {
+		left: 50%;
+		margin-left: -20px !important;
+		position: relative;
 	}
-}
-.logo {
-	height: 50px;
-	width: auto;
-}
+	.navbar-brand {
+		margin: 0 !important;
+		padding-left: 0 !important;
+		padding-top: 0 !important;
+	}
+	@media screen and (max-width: 767px ) {
+		.navbar-brand {
+			padding-left: 15px !important;
+		}
+	}
+	.logo {
+		height: 50px;
+		width: auto;
+	}
+	.header-menu-icon {
+		font-size: 1.4em;
+	}
 
 
 
-.header-menu-icon {
-	font-size: 1.4em;
-}
-
-.overlay-close {
-	margin: 23px auto auto 68px;
-}
 
 /* sidebar menu */
-.sidebar {
-	height: 100%;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 90%;
-}
-.sidebar .navbar-header {
-	width: 100%;
-}
-.sidebar .navbar-header h4 {
-	color: #fff;
-	padding-left: 12px;
-}
-.sidebar .navbar-header .glyphicon.glyphicon-remove {
-	padding: 13px 0;
-}
-.sidebar ul {
-	width: 100%;
-}
-.sidebar li {
-	width: 100%;
-}
-/* animate sidebar */
-.sidebar.ng-hide-add,
-.sidebar.ng-hide-add-active,
-.sidebar.ng-hide-remove,
-.sidebar.ng-hide-remove-active {
-	-webkit-transition: all linear .15s;
-	transition: all linear .15s;
-}
-.sidebar.ng-hide {
-	left: -100%;
-}
+	.sidebar {
+		height: 100%;
+		left: 0;
+		position: fixed;
+		top: 0;
+		width: 90%;
+	}
+	.sidebar .navbar-header {
+		width: 100%;
+	}
+	.sidebar .navbar-header h4 {
+		color: #fff;
+		padding-left: 12px;
+	}
+	.sidebar .navbar-header .glyphicon.glyphicon-remove {
+		padding: 13px 0;
+	}
+	.sidebar ul {
+		width: 100%;
+	}
+	.sidebar li {
+		width: 100%;
+	}
+	/* animate sidebar */
+	.sidebar.ng-hide-add,
+	.sidebar.ng-hide-add-active,
+	.sidebar.ng-hide-remove,
+	.sidebar.ng-hide-remove-active {
+		-webkit-transition: all linear .15s;
+		transition: all linear .15s;
+	}
+	.sidebar.ng-hide {
+		left: -100%;
+	}
 
 
 
