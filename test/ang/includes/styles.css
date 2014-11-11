@@ -152,8 +152,20 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-
-
+/* news feed */
+.media-left,
+.media-right,
+.media-body {
+	display: table-cell;
+	vertical-align: top;
+}
+.feed-container .media-left {
+	padding-right: 1em;
+}
+.feed-container .feed-item {
+	border-top: 1px solid #ccc;
+	padding: 1em 0;
+}
 
 /* CLICKABLE OBJECTS */
 .glyphicon-thumbs-up,

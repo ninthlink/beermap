@@ -83,8 +83,8 @@
 		/**
 		 * gets response from getSampleFeed and does some parsing to conglomerate feeds together?
 		 */
-		o.loadSampleFeed = function( socialnetwork, type, sample, $scope ) {
-			alert("right now this doesnt do anything to the DOM.\nbut you can check your console.logs");
+		o.loadSampleFeed = function( $scope, socialnetwork, type, sample ) {
+			// alert("right now this doesnt do anything to the DOM.\nbut you can check your console.logs");
 			console.log('getSampleFeed for [ '+ socialnetwork +' ][ '+ type +' ][ '+ sample +' ] ?');
 			o.getSampleFeed( socialnetwork, type, sample ).success(function(result) {
 				console.log('social search complete');
@@ -98,10 +98,51 @@
 				 *
 				 * or just move all those to separate functions...
 				 */
+				if ( ( socialnetwork == 'twitter' ) && ( type == 'list' ) ) {
+					// cleanup twitter response objects & push to news
+					var ar = [];
+					var c = result.length;
+					// think this could maybe be a different better iterator
+					for ( var i = 0; i < c; i++ ) {
+						var obj = o.generalizeTwitterObject( result[i] );
+						ar.push(obj);
+					}
+					$scope.newsfeed = ar;
+					console.log(':: NEWS FEED LOADED ::');
+					console.log($scope.newsfeed);
+					$scope.newsLoaded = true;
+				}
 			})
 			.error(function(err) {
 				console.log('Error loading : '+ err.message);
 			});
+		};
+		/**
+		 * set $scope with (fake) array of results from twitter list + ?
+		 */
+		o.loadSampleNews = function( $scope ) {
+			if ( angular.isArray( $scope.newsfeed ) === false ) {
+				// initialize
+				$scope.newsLoaded = false;
+				$scope.newsfeed = [];
+				o.loadSampleFeed( $scope, 'twitter', 'list', 0 );
+			}
+		};
+		/**
+		 * given an object returned from Twitter, generalize it in to a more standard
+		 */
+		o.generalizeTwitterObject = function( twobj ) {
+			var parsedate = new Date( Date.parse( twobj.created_at ) );
+			var obj = {
+				body: twobj.text,
+				entities: twobj.entities,
+				origin_id: twobj.id_str,
+				source: 'twitter',
+				timestamp: parsedate.getTime(),
+				prettyTime: parsedate.toLocaleDateString() +' '+ parsedate.toLocaleTimeString(),
+				user: twobj.user, // for now
+			};
+			return obj;
 		};
 		/**
 		 * foursquare search API for a name query string + near address

@@ -38,6 +38,14 @@
 		// Get all brewery location markers from the locationFactory
 		locationFactory.loadAll($scope);
 		
+		// attach socialFactory.loadSampleFeed to something we can call from partials?
+		$rootScope.loadSampleFeed = function(socialnetwork, type, sample) {
+			// also pass $scope in..
+			socialFactory.loadSampleFeed(socialnetwork, type, sample, $scope);
+		};
+		// and load our home news
+		socialFactory.loadSampleNews( $rootScope );
+		
 		/**
 		 *	Get Map Stylesfrom external file [includes/map.styles.js]
 		 *
@@ -79,13 +87,5 @@
 			var reload = locationFactory.loadAll();
 			console.log(reload);
 		};
-		
-		// attach socialFactory.loadSampleFeed to something we can call from partials?
-		$rootScope.loadSampleFeed = function(socialnetwork, type, sample) {
-			// also pass $scope in..
-			socialFactory.loadSampleFeed(socialnetwork, type, sample, $scope);
-		};
-		// and load our home news
-		// socialFactory.loadSampleNews( $scope );
 	}
 })();

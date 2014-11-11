@@ -6,6 +6,7 @@
 			<ng-include src="'partials/feed-block-header_bar.html'"></ng-include>
 		</div>
 	</div>
+	<!--
 	<div class="row">
 		<div class="col-md-12">
 			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('twitter','list', 0);">Sample Twitter List?!</button>
@@ -14,34 +15,24 @@
 			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('instagram','user', 0);">Sample Instagram User?!</button>
 		</div>
 	</div>
+	-->
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="row"><span class="clickable" ng-click="sortBy('id')">#<span ng-show="sort == 'id'"><small><span ng-show="!asc" class="glyphicon glyphicon-chevron-down"></span><span ng-show="asc" class="glyphicon glyphicon-chevron-up"></span></small></span></span></th>
-						<th scope="row"><span class="clickable" ng-click="sortBy('name')">Brewery<span ng-show="sort == 'name'"><small><span ng-show="!asc" class="glyphicon glyphicon-chevron-down"></span><span ng-show="asc" class="glyphicon glyphicon-chevron-up"></span></small></span></span></th>
-						<th scope="row">Location</th>
-						<th scope="row" ng-show="llon">Lat, Lng</th>
-						<th scope="row"><span class="fa fa-facebook-square" title="Facebook"></span></th>
-						<th scope="row"><span class="fa fa-twitter" title="Twitter"></span></th>
-						<th scope="row"><span class="fa fa-instagram" title="Instagram"></span></th>
-						<!--th scope="row"><span class="fa fa-foursquare" title="Foursquare"></span></th-->
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="marker in markers | orderBy:sort:asc">
-						<td>{{marker.id}}</td>
-						<td ng-bind-html="marker.fullNameLink()"></td>
-						<td ng-bind-html="marker.fullAddr()"></td>
-						<td ng-show="llon">{{marker.coords.latitude}}, {{marker.coords.longitude}}</td>
-						<td><span ng-show="marker.fb != ''"><a href="https://www.facebook.com/{{marker.fb}}" target="_blank"><span class="fa fa-facebook-square" title="{{marker.fb}}"></span></a></span></td>
-						<td><span ng-show="marker.tw != ''"><a href="https://twitter.com/{{marker.tw}}" target="_blank"><span class="fa fa-twitter" title="{{marker.tw}}"></span></a></span></td>
-						<td><span ng-show="marker.ins != ''"><a href="http://instagram.com/{{marker.ins}}" target="_blank"><span class="fa fa-instagram" title="{{marker.ins}}"></span></a></span></td>
-						<!--td><button ng-hide="marker.foursquare_id" class="btn btn-link btn-xs" ng-click="foursquared(marker)">click 4sq</button><span ng-bind-html="marker.print4s()"></span></td-->
-					</tr>
-				</tbody>
-			</table>
+			<p class="text-center" ng-hide="newsLoaded">Loading News...</p>
+			<div ng-repeat="news in newsfeed" class="feed-item">
+				<p ng-bind-html="news.body"></p>
+				<div class="media">
+					<a class="media-left" href="#{{news.origin_id}}">
+						<img ng-src="{{news.user.profile_image_url}}" alt="{{user.screen_name}}" style="width:48px;height:48px">
+					</a>
+					<div class="media-body">
+						<p>
+							<strong ng-bind-html="news.user.name" title="@{{news.user.screen_name}}"></strong><br />
+							<span class="fa fa-{{news.source}}"></span> <span ng-bind-html="news.prettyTime"></span> | <abbr title="distance coming soon?">12 miles from you</abbr>
+						</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
