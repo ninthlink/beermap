@@ -1,9 +1,9 @@
-<!-- APP menu -->
+<!-- APP / SIDEBAR menu -->
 
 <nav class="sidebar navbar navbar-inverse navbar-fixed-top" roll="navigation" ng-show="menu.visible">
 	<div class="container-fluid">
-		<div class="navbar-header" ng-click="menu.toggleMenu()">
-			<h4 class="clickable"><i class="glyphicon glyphicon-cog"></i> Settings</h4>
+		<div class="navbar-header" >
+			<h4><i class="glyphicon glyphicon-cog"></i> Settings<span class="pull-right clickable" ng-click="menu.toggleMenu()"><i class="glyphicon glyphicon-remove"></i></h4>
 		</div>
 		<ul class="nav navbar-nav">
 			<li ng-repeat="item in menu.items" class="{{menu.active === item.slug ? 'active' : ''}}">

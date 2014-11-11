@@ -86,9 +86,14 @@ h1, h2, h3, h4, h5, h6 {
 /* logo icon fix */
 .navbar-brand {
 	margin: 0 !important;
+	padding-left: 0 !important;
 	padding-top: 0 !important;
 }
-
+@media screen and (max-width: 767px ) {
+	.navbar-brand {
+		padding-left: 15px !important;
+	}
+}
 .logo {
 	height: 50px;
 	width: auto;
@@ -114,9 +119,15 @@ h1, h2, h3, h4, h5, h6 {
 	top: 0;
 	width: 90%;
 }
+.sidebar .navbar-header {
+	width: 100%;
+}
 .sidebar .navbar-header h4 {
 	color: #fff;
 	padding-left: 12px;
+}
+.sidebar .navbar-header .glyphicon.glyphicon-remove {
+	padding: 13px 0;
 }
 .sidebar ul {
 	width: 100%;
@@ -133,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 	transition: all linear .15s;
 }
 .sidebar.ng-hide {
-	width: 0%;
+	left: -100%;
 }
 
 
