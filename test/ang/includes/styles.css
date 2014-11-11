@@ -93,16 +93,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* logo icon fix */
-	.navbar-header {
-		left: 50%;
-		margin-left: -20px !important;
+	.main-nav .navbar-header {
+		display: block;
+		top: 0;
+		bottom: 0;
+		left: 75px;
+		right: 75px;
+		position: absolute;
+		text-align: center;
+		z-index: 1;
+	}
+	.main-nav .navbar-brand {
+		display: block;
+		float: none;
+		font-weight: bold;
+		margin: 0 auto;
+	}
+	.navbar-form {
 		position: relative;
+		z-index: 2;
 	}
-	.navbar-brand {
-		margin: 0 !important;
-		padding-left: 0 !important;
-		padding-top: 0 !important;
-	}
+	/*
 	@media screen and (max-width: 767px ) {
 		.navbar-brand {
 			padding-left: 15px !important;
@@ -112,6 +123,7 @@ h1, h2, h3, h4, h5, h6 {
 		height: 50px;
 		width: auto;
 	}
+	*/
 	.header-menu-icon {
 		font-size: 1.4em;
 	}
@@ -134,7 +146,8 @@ h1, h2, h3, h4, h5, h6 {
 		color: #fff;
 		padding-left: 12px;
 	}
-	.sidebar .navbar-header .glyphicon.glyphicon-remove {
+	.sidebar .navbar-header .glyphicon.glyphicon-remove,
+	.sidebar .navbar-header .fa.fa-close {
 		padding: 13px 0;
 	}
 	.sidebar ul {

@@ -1,6 +1,6 @@
 <!-- APP header -->
 
-<nav class="navbar navbar-default navbar-fixed-top" roll="navigation">
+<nav class="navbar navbar-default navbar-fixed-top main-nav" roll="navigation">
 	<div class="container-fluid">
 
 			<!-- Menu Hamburder - float left -->
@@ -16,28 +16,24 @@
 			<!-- Header text / icon whatever - centered -->
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#/home">
-					<img src="includes/craigsfirstlogo.png" alt="Beer Map" class="logo">
+					Beer Maps
 				</a>
 			</div>
 
 			<!-- Search / Filter Form - float right -->
 
-			<!-- Layout / overlay action needs to be cleaned up... probably just css classes to show hide, etc... -->
+			<!-- Layout / overlay action could be cleaned up a bit more -->
 			
 			<ul class="nav navbar-nav navbar-right">
 				<li>
 					<a class="clickable" ng-click="showSearch = ! showSearch">
-						<i class="glyphicon glyphicon-search"></i>
+						<i class="fa fa-search" ng-hide="showSearch"></i>
+						<i class="fa fa-close" ng-show="showSearch"></i>
 					</a>
 				</li>
 			</ul>
 			<form class="navbar-form navbar-right" role="search" ng-controller="beerMapd" ng-show="showSearch">
-				<div class="form-group input-group">
 					<input type="text" ng-model="searched" placeholder="Search" typeahead="marker.name as marker.fullName for marker in markers | filter:{fullNameSearch:$viewValue} | limitTo: 20" typeahead-on-select='searchFor($item,$model,$label)' class="form-control">
-					<span class="input-group-btn">
-						<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;</button>
-					</span>
-				</div>
 			</form>
 
 
