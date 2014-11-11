@@ -24,10 +24,10 @@
 		 */
 		o.getJSON = function() {
 			if ( this.beerdbjson === false ) {
-				console.log('loading '+ beerURL);
+				//console.log('loading '+ beerURL);
 				this.beerdbjson = $http.get(beerURL);
 			} else {
-				console.log('loading '+ beerURL + ' from stored version?!');
+				//console.log('loading '+ beerURL + ' from stored version?!');
 			}
 			return this.beerdbjson;
 		};
@@ -37,7 +37,7 @@
 		o.loadAll = function( $scope ) {
 			var vm = this;
 			if ( vm.omarkers.length == 0 ) {
-				console.log('reload markers from JSON?');
+				//console.log('reload markers from JSON?');
 				vm.getJSON().success(function(locs) {
 					var c = locs.length;
 					$scope.markers = [];
@@ -61,8 +61,8 @@
 					//console.log('##');
 					//console.log($scope.markers);
 					vm.omarkers = $scope.markers; // save for later
-					console.log('## all '+ $scope.markers.length +' markers loaded');
-					console.log($scope.markers);
+					console.log('## all '+ $scope.markers.length +' markers (re)loaded');
+					//console.log($scope.markers);
 				})
 				.error(function(err) {
 					console.log('Error loading : '+ err.message);
@@ -94,6 +94,7 @@
 					// store a couple versions of fullName combined for easier things?
 					marker.fullName = marker.name + ( marker.loc !== '' ? (' <small>' + marker.loc + '</small>') : '' );
 					marker.fullNameSearch = marker.name +' '+ marker.loc;
+					marker.slug = marker.fullNameSearch.replace(/ /g,'-').toLowerCase();
 					// name + location (if there is), wrapped in www link (if there is)
 					marker.fullNameLink = function() {
 						var o = '<strong>'+ marker.name +'</strong>';

@@ -49,12 +49,9 @@
 		
 		// set up the typeahead callback here so it stays for all Controllers
 		o.searchFor = function( $item, $model, $label ) {
-			console.log('ssss search for : $item = ');
+			var slugd = $item.slug;
+			console.log('search for : $model = ' + $model + ' : $label = '+ $label +' : slug = '+ slugd + ' ::');
 			console.log($item);
-			console.log('ss search for : $model = ');
-			console.log($model);
-			console.log('sss search for : $label = ');
-			console.log($label);
 			
 			// http://stackoverflow.com/a/17994624 said to do this..
 			$rootScope.$item = $item;
