@@ -101,12 +101,10 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-.menu-click {
-	font-size: 3em;
+.header-menu-icon {
+	font-size: 1.4em;
 }
-.menu-click .fa {
-	line-height: 1.3;
-}
+
 .overlay-close {
 	margin: 23px auto auto 68px;
 }

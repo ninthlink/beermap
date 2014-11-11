@@ -3,7 +3,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" roll="navigation">
 	<div class="container-fluid">
 
-		<div class="navbar-header">
+		<!--div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
@@ -13,25 +13,36 @@
 			<a class="navbar-brand" href="#/home">
 				<img src="includes/craigsfirstlogo.png" alt="Beer Map" class="logo">
 			</a>
-		</div>
+		</div-->
 
-		<div class="collapse navbar-collapse" id="app-navbar-collapse">
-
-			<ul class="nav navbar-nav navbar-right">
-				<!--li>
-					<a href="#">
-						<span class="menu-click clickable fa fa-reorder" ng-click="menu.toggleMenu()">
-						</span>
-					</a>
-				</li-->
+			<!-- Menu Hamburder - float left -->
+			<ul class="nav navbar-nav navbar-left">
 				<li>
-					<a class="clickable">
-						<i class="glyphicon glyphicon-cog" ng-click="menu.toggleMenu()"></i>
+					<a href="#">
+						<span class="header-menu-icon clickable fa fa-reorder" ng-click="menu.toggleMenu()">
+						</span>
 					</a>
 				</li>
 			</ul>
 
-			<form class="navbar-form navbar-right" role="search" ng-controller="beerMapd">
+			<!-- Header text / icon whatever - centered -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#/home">
+					<img src="includes/craigsfirstlogo.png" alt="Beer Map" class="logo">
+				</a>
+			</div>
+
+			<!-- Search / Filter Form - float right -->
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a class="clickable" ng-click="showSearch = ! showSearch">
+						<i class="glyphicon glyphicon-search"></i>
+					</a>
+				</li>
+			</ul>
+			
+
+			<form class="navbar-form navbar-right" role="search" ng-controller="beerMapd" ng-show="showSearch">
 				<div class="form-group input-group">
 					<input type="text" ng-model="searched" placeholder="Search" typeahead="marker.name as marker.fullName for marker in markers | filter:{fullNameSearch:$viewValue} | limitTo: 20" typeahead-on-select='searchFor($item,$model,$label)' class="form-control">
 					<span class="input-group-btn">
@@ -40,7 +51,6 @@
 				</div>
 			</form>
 
-		</div>
 
 	</div>
 </nav>
