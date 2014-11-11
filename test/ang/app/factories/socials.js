@@ -129,15 +129,22 @@
 			}
 		};
 		/**
-		 * given an object returned from Twitter, generalize it in to a more standard
+		 * given an object returned from Twitter, generalize it in to a more standard format
+		 *
+		 * #todo :
+		 * deeplinking between feed item object & markers?!
+		 * distance from current location
+		 * replace entities in body with links ?
+		 * replace prettyTime with "time ago" ?
 		 */
 		o.generalizeTwitterObject = function( twobj ) {
 			var parsedate = new Date( Date.parse( twobj.created_at ) );
 			var obj = {
 				body: twobj.text,
 				entities: twobj.entities,
-				origin_id: twobj.id_str,
+				originID: twobj.id_str,
 				source: 'twitter',
+				sourceLink: '<a href="https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str +'" target="_blank">Twitter</a>', 
 				timestamp: parsedate.getTime(),
 				prettyTime: parsedate.toLocaleDateString() +' '+ parsedate.toLocaleTimeString(),
 				user: twobj.user, // for now
