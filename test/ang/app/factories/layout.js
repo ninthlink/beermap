@@ -47,6 +47,23 @@
 		
 		menu.toggleMenu = o.toggleMenu; //?
 		
+		// set up the typeahead callback here so it stays for all Controllers
+		o.searchFor = function( $item, $model, $label ) {
+			console.log('ssss search for : $item = ');
+			console.log($item);
+			console.log('ss search for : $model = ');
+			console.log($model);
+			console.log('sss search for : $label = ');
+			console.log($label);
+			
+			// http://stackoverflow.com/a/17994624 said to do this..
+			$rootScope.$item = $item;
+			$rootScope.$model = $model;
+			$rootScope.$label = $label;
+			
+			// and then redirect to details for that location item?!
+		};
+		
 		return o;
 	}
 })();

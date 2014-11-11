@@ -14,11 +14,13 @@
 	
 	function beerMapd( $scope, $rootScope, $http, locationFactory, GoogleMapApi, layoutHelper ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
+		$rootScope.searchFor = layoutHelper.searchFor; // typeahead search callback
 		
 		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {} };
 		$scope.options = {};//scrollwheel: false};
 		$scope.coordsUpdates = 0;
 		$scope.dynamicMoveCtr = 0;
+		
 		/**
 		 * initial default variables that get set later with locationFactory
 		 *
