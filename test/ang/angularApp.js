@@ -41,12 +41,12 @@
 					.state('home', {
 						url: '/home',
 						templateUrl: './partials/home.html',
-						controller: 'home'
+						controller: 'mainCtrl'
 					})
 					.state('location', {
 						url: '/location/{id}',
 						templateUrl: './partials/location.html',
-						controller: 'home'
+						controller: 'mainCtrl'
 					})
 					.state('list', {
 						url: '/list',

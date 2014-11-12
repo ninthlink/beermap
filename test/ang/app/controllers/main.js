@@ -1,5 +1,5 @@
 /**
- * beerMapd Controller
+ * mainCtrl Controller
  *
  * for states (in angularApp.js config) :
  * /home , with /partials/home.html
@@ -8,11 +8,11 @@
 (function() {
 	angular
 		.module('beerMap')
-		.controller('home', home);
+		.controller('mainCtrl', mainCtrl);
 	
-	home.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
+	mainCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
 	
-	function home( $scope, $rootScope, $state, $stateParams, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
+	function mainCtrl( $scope, $rootScope, $state, $stateParams, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		$rootScope.searchFor = layoutHelper.searchFor; // typeahead search callback
 		
@@ -51,7 +51,7 @@
 			// also pass $scope in..
 			socialFactory.loadSampleFeed(socialnetwork, type, sample, $scope);
 		};
-		// and load our home news
+		// load our main news (sample)
 		socialFactory.loadSampleNews( $rootScope );
 		
 		/**

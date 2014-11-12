@@ -9,13 +9,13 @@
 	<!-- Tabbed structure -->
 	<div class="btn-group btn-group-justified" ng-init="tab = 1">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default" ng-click="tab = 1">Feed</button>
+			<button type="button" class="btn btn-{{tab==1 ? 'info' : 'default'}}" ng-click="tab = 1">Feed</button>
 		</div>
 		<div class="btn-group">
-			<button type="button" class="btn btn-default" ng-click="tab = 2">Images</button>
+			<button type="button" class="btn btn-{{tab==2 ? 'info' : 'default'}}" ng-click="tab = 2">Images</button>
 		</div>
 		<div class="btn-group">
-			<button type="button" class="btn btn-default" ng-click="tab = 3">Info</button>
+			<button type="button" class="btn btn-{{tab==3 ? 'info' : 'default'}}" ng-click="tab = 3">Info</button>
 		</div>
 	</div>
 
