@@ -29,30 +29,11 @@
 				});
 			}
 			])
-		/**
-		 * app states here
-		 *
-		 */
+		// app states mostly set in their own Controllers?
 		.config([
 			'$stateProvider',
 			'$urlRouterProvider',
 			function($stateProvider, $urlRouterProvider) {
-				$stateProvider
-					.state('home', {
-						url: '/home',
-						templateUrl: './partials/home.html',
-						controller: 'mainCtrl'
-					})
-					.state('location', {
-						url: '/location/{id}',
-						templateUrl: './partials/location.html',
-						controller: 'mainCtrl'
-					})
-					.state('list', {
-						url: '/list',
-						templateUrl: './partials/list.html',
-						controller: 'locationList'
-					})
 				$urlRouterProvider.otherwise('home');
 			}
 		]);

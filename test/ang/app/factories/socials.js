@@ -8,9 +8,9 @@
 		.module('beerMap')
 		.factory('socialFactory', socialFactory);
 	
-	socialFactory.$inject = ['$http', 'locationFactory'];
+	socialFactory.$inject = ['$http', '$q', 'locationFactory'];
 	
-	function socialFactory( $http, locationFactory ) {
+	function socialFactory( $http, $q, locationFactory ) {
 		var foursquare_auth = {
 			client_id: 'HQD2GOLKBT40T4ANKBCVI4VLSESIBN1MSOKX1OVX04O2DD4J',
 			v: '20140808',
@@ -83,49 +83,52 @@
 		/**
 		 * gets response from getSampleFeed and does some parsing to conglomerate feeds together?
 		 */
-		o.loadSampleFeed = function( $scope, socialnetwork, type, sample ) {
+		o.loadSampleFeed = function( socialnetwork, type, sample ) {
+			var ar = [];
+			var defer = $q.defer();
 			// alert("right now this doesnt do anything to the DOM.\nbut you can check your console.logs");
 			console.log('getSampleFeed for [ '+ socialnetwork +' ][ '+ type +' ][ '+ sample +' ] ?');
-			o.getSampleFeed( socialnetwork, type, sample ).success(function(result) {
+			o.getSampleFeed( socialnetwork, type, sample ).then(function(result) {
 				console.log('social search complete');
 				console.log(result);
-				/**
-				 * #todo : set $scope something after feed returns success
-				 *
-				 * maybe like $scope.news.push results for twitter[list] & instagram[users]
-				 * and $scope.user whatever for twitter[user] & instagram[user]
-				 * and $scope.locationphotos for instagram[loc]
-				 *
-				 * or just move all those to separate functions...
-				 */
-				if ( ( socialnetwork == 'twitter' ) && ( type == 'list' ) ) {
+				// translate response objects to a more general form
+				if ( socialnetwork == 'twitter' ) {
 					// cleanup twitter response objects & push to news
-					var ar = [];
-					var c = result.length;
+					var c = result.data.length;
 					// think this could maybe be a different better iterator
 					for ( var i = 0; i < c; i++ ) {
-						var obj = o.generalizeTwitterObject( result[i] );
+						var obj = o.generalizeTwitterObject( result.data[i] );
 						ar.push(obj);
 					}
-					$scope.newsfeed = ar;
-					console.log(':: NEWS FEED LOADED ::');
-					console.log($scope.newsfeed);
-					$scope.newsLoaded = true;
 				}
-			})
-			.error(function(err) {
-				console.log('Error loading : '+ err.message);
+				// pass the data back upstream
+				defer.resolve( ar );
+			},
+			function(err) {
+				defer.reject(err);
 			});
+			return defer.promise;
 		};
 		/**
 		 * set $scope with (fake) array of results from twitter list + ?
 		 */
-		o.loadSampleNews = function( $scope ) {
-			if ( angular.isArray( $scope.newsfeed ) === false ) {
+		o.loadSampleNews = function( scope ) {
+			// only load if its not been loaded yet
+			if ( angular.isArray( scope.newsfeed ) === false ) {
 				// initialize
-				$scope.newsLoaded = false;
-				$scope.newsfeed = [];
-				o.loadSampleFeed( $scope, 'twitter', 'list', 0 );
+				scope.newsLoaded = false;
+				scope.newsfeed = [];
+				o.loadSampleFeed( 'twitter', 'list' ).then(
+					function( data ) {
+						scope.newsfeed = data;
+						console.log(':: NEWS FEED LOADED ::');
+						console.log(scope.newsfeed);
+						scope.newsLoaded = true;
+					},
+					function( err ) {
+						console.log('Error loading sample news : '+ err.message);
+					}
+				);
 			}
 		};
 		/**

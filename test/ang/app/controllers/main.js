@@ -8,11 +8,34 @@
 (function() {
 	angular
 		.module('beerMap')
+		// app states for this Controller
+		.config([
+			'$stateProvider',
+			'$urlRouterProvider',
+			function($stateProvider, $urlRouterProvider) {
+				$stateProvider
+					.state('home', {
+						url: '/home',
+						templateUrl: './partials/home.html',
+						controller: 'mainCtrl'
+					})
+					.state('location', {
+						url: '/location/{id}',
+						templateUrl: './partials/location.html',
+						controller: 'mainCtrl',
+						resolve: {
+							singleFeed: function( $stateParams, socialFactory ) {
+								return socialFactory.loadSampleFeed( 'twitter', 'user', 0 );
+							}
+						}
+					})
+			}
+		])
 		.controller('mainCtrl', mainCtrl);
 	
-	mainCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
+	mainCtrl.$inject = ['$scope', 'singleFeed', '$rootScope', '$state', '$stateParams', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
 	
-	function mainCtrl( $scope, $rootScope, $state, $stateParams, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
+	function mainCtrl( $scope, singleFeed, $rootScope, $state, $stateParams, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		$rootScope.searchFor = layoutHelper.searchFor; // typeahead search callback
 		
@@ -29,6 +52,10 @@
 		if ( $stateParams.id >= 0 ) {
 			$scope.onlocation = $stateParams.id;
 			$rootScope.onlocation = true;
+			
+			console.log('feed check..');
+			$scope.singleFeed = singleFeed;
+			console.log($scope.singleFeed);
 		} else {
 			$scope.onlocation = false;
 			$rootScope.onlocation = false;
@@ -46,11 +73,13 @@
 		// Get all brewery location markers from the locationFactory
 		locationFactory.loadAll( $scope, $rootScope, $state );
 		
-		// attach socialFactory.loadSampleFeed to something we can call from partials?
+		/*
+		//CURRENT BROKE : attach socialFactory.loadSampleFeed to something we can call from partials?
 		$rootScope.loadSampleFeed = function(socialnetwork, type, sample) {
 			// also pass $scope in..
-			socialFactory.loadSampleFeed(socialnetwork, type, sample, $scope);
+			socialFactory.loadSampleFeed( socialnetwork, type, sample );
 		};
+		*/
 		// load our main news (sample)
 		socialFactory.loadSampleNews( $rootScope );
 		
