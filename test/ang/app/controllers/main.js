@@ -8,6 +8,19 @@
 (function() {
 	angular
 		.module('beerMap')
+		.factory("locationCtrlInitialData", function( socialFactory, $q ) {
+			return function() {
+				var singleFeed = socialFactory.loadSampleFeed( 'twitter', 'user', 0 );
+				var instagramLocFeed = socialFactory.loadSampleFeed( 'instagram', 'loc', 0 );
+				
+				return $q.all([singleFeed, instagramLocFeed]).then(function(results) {
+					return {
+						singleFeed: results[0],
+						instagramLocFeed: results[1]
+					};
+				});
+			}
+		})
 		// app states for this Controller
 		.config([
 			'$stateProvider',
@@ -19,8 +32,10 @@
 						templateUrl: './partials/home.html',
 						controller: 'mainCtrl',
 						resolve: {
-							singleFeed: function() {
-								return false;
+							initialData: function() {
+								return {
+									singleFeed: undefined
+								};
 							}
 						}
 					})
@@ -29,17 +44,8 @@
 						templateUrl: './partials/location.html',
 						controller: 'mainCtrl',
 						resolve: {
-							singleFeed: function( $stateParams, socialFactory, $q ) {
-								// theres some error here but...
-								if ( $stateParams.id !== null ) {
-									var defer = $q.defer();
-									socialFactory.loadSampleFeed( 'twitter', 'user', 0 ).then( function(data) {
-										defer.resolve(data);
-									});
-									return defer.promise;
-								} else {
-									return [];
-								}
+							initialData: function( locationCtrlInitialData ) {
+								return locationCtrlInitialData();
 							}
 						}
 					})
@@ -47,9 +53,9 @@
 		])
 		.controller('mainCtrl', mainCtrl);
 	
-	mainCtrl.$inject = ['$scope', 'singleFeed', '$rootScope', '$state', '$stateParams', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
-	
-	function mainCtrl( $scope, singleFeed, $rootScope, $state, $stateParams, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
+	mainCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory', 'locationCtrlInitialData', 'initialData' ];
+	//omg wtf so many args
+	function mainCtrl( $scope, $rootScope, $state, $stateParams, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory, locationCtrlInitialData, initialData ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		$rootScope.searchFor = layoutHelper.searchFor; // typeahead search callback
 		
@@ -63,20 +69,18 @@
 		 *
 		 */
 		$scope.mapclass = '';
+		$scope.singleFeed = initialData.singleFeed;
 		if ( $stateParams.id !== undefined ) {
 			$scope.onlocation = $stateParams.id;
+			$scope.showMainFeed = false;
 			$rootScope.onlocation = true;
-			
-			console.log('feed check?');
-			$scope.singleFeed = singleFeed;
-			console.log($scope.singleFeed);
 		} else {
 			$scope.onlocation = false;
 			$rootScope.onlocation = false;
 			$scope.locationData = undefined;
 			$rootScope.locationData = undefined;
+			$scope.showMainFeed = true;
 		}
-		$scope.showMainFeed = true;
 		$scope.boundary = {
 			minlat: false,
 			maxlat: false,
@@ -108,13 +112,10 @@
 		 * HTML5 geolocation sensor
 		 *
 		 * should this be elsewhere?
-		 */
+		 *
 		if(navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
-				/**
-				 * only center to new position if new position is within san diego area, +/- ?
-				 * note : not sure if this always fires in the right order?
-				 */
+				// only center to new position if new position is within san diego area, +/- ?
 				if ( locationFactory.checkBounds( $scope.boundary, position.coords.latitude, position.coords.longitude, true ) ) {
 					$scope.map.zoom = 12;
 					$scope.map.center = { latitude: position.coords.latitude, longitude: position.coords.longitude };
@@ -131,7 +132,7 @@
 			// no geoloc
 			console.log('geoloc : no?');
 		}
-		
+		*/
 		// test reloading data in the locationFactory
 		$scope.reload = function() {
 			console.log('reload?!');

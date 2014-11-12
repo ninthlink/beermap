@@ -95,21 +95,48 @@ h1, h2, h3, h4, h5, h6 {
 /* HEADERS */
 
 /* logo icon fix */
-/**
- * This method of centering header text breaks search form and bootstrap guidelines
- * I think we could fix the centering issue at the end... since we still need to see results of titles in detail pages...
- *
- */
-	/*
-	.main-nav .navbar-header {
-		display: block;
-		top: 0;
-		bottom: 0;
-		left: 75px;
-		right: 75px;
-		position: absolute;
-		text-align: center;
-		z-index: 1;
+.main-nav .navbar-header {
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 75px;
+	right: 75px;
+	position: absolute;
+	text-align: center;
+	z-index: 1;
+}
+.main-nav .navbar-brand {
+	display: block;
+	float: none;
+	font-weight: bold;
+	margin: 0 auto;
+}
+.navbar-form {
+	border: none;
+	float: right;
+	padding: 0 !important;
+	position: relative;
+	z-index: 2;
+}
+.navbar-form .dropdown-menu a {
+	overflow: hidden;
+}
+.main-nav .navbar-left {
+	float: left;
+}
+.main-nav .navbar-right.navbar-nav {
+	float: right;
+}
+/*
+.main-nav .navbar-nav,
+.navbar-form {
+	margin: 8px 0 0 !important;
+}
+
+/*
+@media screen and (max-width: 767px ) {
+	.navbar-brand {
+		padding-left: 15px !important;
 	}
 	.main-nav .navbar-brand {
 		display: block;

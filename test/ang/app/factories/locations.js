@@ -10,9 +10,9 @@
 		.module('beerMap')
 		.factory('locationFactory', locationFactory);
 	
-	locationFactory.$inject = ['$http'];
+	locationFactory.$inject = ['$http', '$q'];
 	
-	function locationFactory( $http ) {
+	function locationFactory( $http, $q ) {
 		var beerURL = 'beerdb.json';
 		var o = {};
 		
@@ -49,8 +49,6 @@
 							latitude: locs[i].latitude,
 							longitude: locs[i].longitude
 						};
-						// set up some more social media placeholder stub fields for now
-						obj.foursquare_id = false;
 						// if we have a map, extend the stored "boundary" to fit this new marker
 						if ( $scope.map !== false ) {
 							$scope.boundary = vm.checkBounds( $scope.boundary, locs[i].latitude, locs[i].longitude, false );
@@ -71,7 +69,7 @@
 				});
 			} else {
 				$scope.markers = vm.omarkers;
-				$scope.$apply();
+				//$scope.$apply();
 				// re-add events so clicks on markers work again
 				vm.addMarkerEvents( $scope, $rootScope, $state );
 			}
@@ -115,7 +113,7 @@
 					if ( $scope.map !== false ) {
 						// helper to make the right onClick
 						marker.onClick = function() {
-							console.log('onClick '+ marker.id);
+							//console.log('onClick '+ marker.id);
 							//markerClicked($scope, marker.id);
 							$state.go('location', { id: marker.id });
 						}
@@ -203,9 +201,9 @@
 	 * function fired when a particular marker is clicked on the map
 	 */
 	function gotoLocation( $scope, $rootScope, i ) {
-		console.log('clicked #'+ i + ' !');
+		//console.log('clicked #'+ i + ' !');
 		var m = $scope.markers[i];
-		console.log(m);
+		//console.log(m);
 		
 		// set classes for when overlay is active
 		//$scope.mapclass = 'mapsmall';
@@ -222,14 +220,14 @@
 		$rootScope.locationData = m;
 		$scope.markers.selected = m.id;
 		
-		// Map adjustments
+		// Map adjustments?
 
 		// store original center for later use?
 		$scope.originalCenter = $scope.map.center;
 		$scope.originalZoom = $scope.map.zoom;
 		
 		// trigger resize event now that map display area has changed via CSS class from above
-		window.setTimeout(function(){
+		//window.setTimeout(function(){
 			if ( angular.isFunction( $scope.map.control.getGMap ) ) {
 				var gmapd = $scope.map.control.getGMap();
 				google.maps.event.trigger(gmapd, "resize");
@@ -239,7 +237,7 @@
 			// ...and zoom in
 			$scope.map.zoom = 16;
 			// ...and apply
-			$scope.$apply();
-		},100);
+			//$scope.$apply();
+		//},100);
 	}
 })();

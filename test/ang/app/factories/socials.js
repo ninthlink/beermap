@@ -52,7 +52,7 @@
 		 * caches $http.get requests?
 		 */
 		o.getSampleFeed = function( socialnetwork, type, sample ) {
-			console.log('gg getSampleFeed for [ '+ socialnetwork +' ][ '+ type +' ][ '+ sample +' ]');
+			//console.log('gg getSampleFeed for [ '+ socialnetwork +' ][ '+ type +' ][ '+ sample +' ]');
 			var sample_feed = o.sample_json[socialnetwork][type]; // maybe error check for correct values?!
 			if ( type == 'user' ) {
 				if ( ( sample >= 0 ) && ( sample < sample_feed.length ) ) {
@@ -66,7 +66,7 @@
 					sample_feed = $http.get('app/sample-json/'+ sample_feed);
 					o.sample_json[socialnetwork][type][sample] = sample_feed;
 				} else {
-					console.log('loading sample_json for '+ socialnetwork +' > '+ type +' from stored version?!');
+					//console.log('loading sample_json for '+ socialnetwork +' > '+ type +' from stored version?!');
 				}
 			} else {
 				// check if its already been loaded = whether its a string or an obj
@@ -75,7 +75,7 @@
 					sample_feed = $http.get('app/sample-json/'+ sample_feed);
 					this.sample_json[socialnetwork][type] = sample_feed;
 				} else {
-					console.log('loading sample_json for '+ socialnetwork +' > '+ type +' from stored version?!');
+					//console.log('loading sample_json for '+ socialnetwork +' > '+ type +' from stored version?!');
 				}
 			}
 			return sample_feed;
@@ -87,19 +87,27 @@
 			var ar = [];
 			var defer = $q.defer();
 			// alert("right now this doesnt do anything to the DOM.\nbut you can check your console.logs");
-			console.log('getSampleFeed for [ '+ socialnetwork +' ][ '+ type +' ][ '+ sample +' ] ?');
+			//console.log('getSampleFeed for [ '+ socialnetwork +' ][ '+ type +' ][ '+ sample +' ] ?');
 			o.getSampleFeed( socialnetwork, type, sample ).then(function(result) {
-				console.log('social search complete');
-				console.log(result);
+				//console.log('social search complete');
+				//console.log(result);
+				var c = result.data.length;
 				// translate response objects to a more general form
-				if ( socialnetwork == 'twitter' ) {
-					// cleanup twitter response objects & push to news
-					var c = result.data.length;
-					// think this could maybe be a different better iterator
-					for ( var i = 0; i < c; i++ ) {
-						var obj = o.generalizeTwitterObject( result.data[i] );
-						ar.push(obj);
-					}
+				switch ( socialnetwork ) {
+					case 'twitter':
+						// cleanup twitter response objects & push to news
+						// think this could maybe be a different better iterator
+						for ( var i = 0; i < c; i++ ) {
+							var obj = o.generalizeTwitterObject( result.data[i] );
+							ar.push(obj);
+						}
+						break;
+					case 'instagram':
+						for ( var i = 0; i < c; i++ ) {
+							var obj = result.data[i];
+							ar.push(obj);
+						}
+						break;
 				}
 				// pass the data back upstream
 				defer.resolve( ar );
@@ -121,8 +129,8 @@
 				o.loadSampleFeed( 'twitter', 'list' ).then(
 					function( data ) {
 						scope.newsfeed = data;
-						console.log(':: NEWS FEED LOADED ::');
-						console.log(scope.newsfeed);
+						//console.log(':: NEWS FEED LOADED ::');
+						//console.log(scope.newsfeed);
 						scope.newsLoaded = true;
 					},
 					function( err ) {
