@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 	left: 0;
 	position: absolute !important;
 	right: 0;
-	top: 0;
+	top: 51px;
 }
 
 /* CONTAINERS - OUTER */
@@ -110,11 +110,24 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0 auto;
 }
 .navbar-form {
+	border: none;
+	float: right;
+	padding: 0 !important;
 	position: relative;
 	z-index: 2;
 }
 .navbar-form .dropdown-menu a {
 	overflow: hidden;
+}
+.main-nav .navbar-left {
+	float: left;
+}
+.main-nav .navbar-right.navbar-nav {
+	float: right;
+}
+.main-nav .navbar-nav,
+.navbar-form {
+	margin: 8px 0 0 !important;
 }
 /*
 @media screen and (max-width: 767px ) {
