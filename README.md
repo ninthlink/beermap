@@ -1,8 +1,10 @@
-beermap
-=======
+beermaps
+========
 
-its like a map(s), of beer(s)
+its like a map, of breweries.
 
-check out initial progress at 
+check out our second round of initial progress, in building with Angular.JS 
 
-http://beerd.ninthlink.me
+http://beerd.ninthlink.me/ang/
+
+more soon.
