@@ -11,12 +11,12 @@
 		.factory("locationCtrlInitialData", function( socialFactory, $q ) {
 			return function() {
 				var singleFeed = socialFactory.loadSampleFeed( 'twitter', 'user', 0 );
-				var instagramLocFeed = socialFactory.loadSampleFeed( 'instagram', 'loc', 0 );
+				var locationImageFeed = socialFactory.loadSampleFeed( 'instagram', 'loc', 0 );
 				
-				return $q.all([singleFeed, instagramLocFeed]).then(function(results) {
+				return $q.all([singleFeed, locationImageFeed]).then(function(results) {
 					return {
 						singleFeed: results[0],
-						instagramLocFeed: results[1]
+						locationImageFeed: results[1]
 					};
 				});
 			}
@@ -34,7 +34,8 @@
 						resolve: {
 							initialData: function() {
 								return {
-									singleFeed: undefined
+									singleFeed: undefined,
+									locationImageFeed: undefined
 								};
 							}
 						}
@@ -70,6 +71,7 @@
 		 */
 		$scope.mapclass = '';
 		$scope.singleFeed = initialData.singleFeed;
+		$scope.locationImageFeed = initialData.locationImageFeed;
 		if ( $stateParams.id !== undefined ) {
 			$scope.onlocation = $stateParams.id;
 			$scope.showMainFeed = false;

@@ -84,27 +84,28 @@
 		 * gets response from getSampleFeed and does some parsing to conglomerate feeds together?
 		 */
 		o.loadSampleFeed = function( socialnetwork, type, sample ) {
-			var ar = [];
 			var defer = $q.defer();
 			// alert("right now this doesnt do anything to the DOM.\nbut you can check your console.logs");
 			//console.log('getSampleFeed for [ '+ socialnetwork +' ][ '+ type +' ][ '+ sample +' ] ?');
 			o.getSampleFeed( socialnetwork, type, sample ).then(function(result) {
+				var ar = [];
 				//console.log('social search complete');
 				//console.log(result);
-				var c = result.data.length;
 				// translate response objects to a more general form
 				switch ( socialnetwork ) {
 					case 'twitter':
 						// cleanup twitter response objects & push to news
 						// think this could maybe be a different better iterator
+						var c = result.data.length;
 						for ( var i = 0; i < c; i++ ) {
 							var obj = o.generalizeTwitterObject( result.data[i] );
 							ar.push(obj);
 						}
 						break;
 					case 'instagram':
+						var c = result.data.data.length; // yes double data
 						for ( var i = 0; i < c; i++ ) {
-							var obj = result.data[i];
+							var obj = result.data.data[i];
 							ar.push(obj);
 						}
 						break;

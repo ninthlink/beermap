@@ -59,7 +59,7 @@
 					//console.log('##');
 					//console.log($scope.markers);
 					vm.omarkers = $scope.markers; // save for later
-					console.log('## all '+ $scope.markers.length +' markers (re)loaded');
+					//console.log('## all '+ $scope.markers.length +' markers (re)loaded');
 					//console.log($scope.markers);
 				})
 				.error(function(err) {

@@ -1,7 +1,8 @@
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#thm" class="thumbnail">
-      <img src="http://scontent-a.cdninstagram.com/hphotos-xaf1/t51.2885-15/10810072_586283424850720_1664852105_n.jpg" alt="franky__ix">
+<div class="row thm-container">
+  <div ng-repeat="img in locationImageFeed" class="col-xs-6 col-md-3">
+    <a href="{{img.link}}" target="_blank" class="thumbnail">
+      <img src="{{img.images.standard_resolution.url}}" alt="{{img.user.username}}">
     </a>
   </div>
+  <pre ng-hide="true">{{locationImageFeed | json}}</pre>
 </div>
