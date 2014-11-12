@@ -17,7 +17,12 @@
 					.state('home', {
 						url: '/home',
 						templateUrl: './partials/home.html',
-						controller: 'mainCtrl'
+						controller: 'mainCtrl',
+						resolve: {
+							singleFeed: function() {
+								return false;
+							}
+						}
 					})
 					.state('location', {
 						url: '/location/{id}',
@@ -49,11 +54,11 @@
 		 *
 		 */
 		$scope.mapclass = '';
-		if ( $stateParams.id >= 0 ) {
+		if ( $stateParams.id !== undefined ) {
 			$scope.onlocation = $stateParams.id;
 			$rootScope.onlocation = true;
 			
-			console.log('feed check..');
+			console.log('feed check?');
 			$scope.singleFeed = singleFeed;
 			console.log($scope.singleFeed);
 		} else {
