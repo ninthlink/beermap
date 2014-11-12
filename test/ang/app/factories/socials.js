@@ -166,13 +166,17 @@
 		};
 		// generalize an instagram object too
 		o.generalizeInstagramObject = function ( insta ) {
-			var timestamp = insta.created_time * 1000;
+			var timestamp = insta.created_time * 1000; // instagram time is in seconds not ms
 			var parsedate = new Date( timestamp );
+			var img = insta.images.standard_resolution.url;
 			var caption = angular.isObject(insta.caption) ? insta.caption.text : '';
+			// #todo : probably make this better HTML / styling?
+			var body = '<a href="'+ insta.link +'" target="_blank"><img src="'+ img +'" alt=""></a><br />' + caption;
+			
 			var obj = {
-				body: caption,//insta.caption.text,
+				body: body,
 				entities: insta.tags,
-				img: insta.images.standard_resolution.url,
+				img: img,
 				originID: insta.id,
 				source: 'Instagram',
 				sourceLink: insta.link, 

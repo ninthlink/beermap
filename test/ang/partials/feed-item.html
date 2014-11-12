@@ -2,7 +2,7 @@
 	<a class="pull-left" href="#{{news.originID}}">
 		<img ng-src="{{news.user.profile_image_url}}" alt="{{user.screen_name}}" style="width:32px;height:32px">
 	</a>
-	<div class="pull-right">
+	<div ng-show="showMainFeed" class="pull-right">
 		<br />
 		<small><abbr class="distance" title="distance coming soon?">12 miles</abbr></small>
 	</div>
