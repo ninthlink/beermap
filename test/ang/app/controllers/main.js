@@ -70,6 +70,13 @@
 		 *
 		 */
 		$scope.mapclass = '';
+		$scope.boundary = {
+			minlat: false,
+			maxlat: false,
+			minlng: false,
+			maxlng: false
+		};
+		
 		$scope.singleFeed = initialData.singleFeed;
 		$scope.locationImageFeed = initialData.locationImageFeed;
 		if ( $stateParams.id !== undefined ) {
@@ -82,14 +89,35 @@
 			$scope.locationData = undefined;
 			$rootScope.locationData = undefined;
 			$scope.showMainFeed = true;
+			
+			
+		/**
+		 * HTML5 geolocation sensor
+		 *
+		 * should this be elsewhere?
+		 *
+		*/
+		if(navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				// only center to new position if new position is within san diego area, +/- ?
+				if ( locationFactory.checkBounds( $scope.boundary, position.coords.latitude, position.coords.longitude, true ) ) {
+					$scope.map.zoom = 12;
+					$scope.map.center = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+					$scope.$apply();
+					console.log('geoloc : all set');
+				} else {
+					console.log('geoloc : oob');
+				}
+			}, function() {
+				// geoloc err
+				console.log('geoloc : err?');
+			});
+		} else {
+			// no geoloc
+			console.log('geoloc : no?');
 		}
-		$scope.boundary = {
-			minlat: false,
-			maxlat: false,
-			minlng: false,
-			maxlng: false
-		};
-		
+			
+		}
 		// Get all brewery location markers from the locationFactory
 		locationFactory.loadAll( $scope, $rootScope, $state );
 		
@@ -110,31 +138,6 @@
 		 */
 		$scope.styles = mapStyles;
 
-		/**
-		 * HTML5 geolocation sensor
-		 *
-		 * should this be elsewhere?
-		 *
-		if(navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-				// only center to new position if new position is within san diego area, +/- ?
-				if ( locationFactory.checkBounds( $scope.boundary, position.coords.latitude, position.coords.longitude, true ) ) {
-					$scope.map.zoom = 12;
-					$scope.map.center = { latitude: position.coords.latitude, longitude: position.coords.longitude };
-					$scope.$apply();
-					console.log('geoloc : all set');
-				} else {
-					console.log('geoloc : oob');
-				}
-			}, function() {
-				// geoloc err
-				console.log('geoloc : err?');
-			});
-		} else {
-			// no geoloc
-			console.log('geoloc : no?');
-		}
-		*/
 		// test reloading data in the locationFactory
 		$scope.reload = function() {
 			console.log('reload?!');
