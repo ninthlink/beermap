@@ -8,15 +8,28 @@
 (function() {
 	angular
 		.module('beerMap')
+		// "quick" helper "Factory" for loading some initial data promises for location details?!
 		.factory("locationCtrlInitialData", function( socialFactory, $q ) {
 			return function() {
-				var singleFeed = socialFactory.loadSampleFeed( 'twitter', 'user', 0 );
-				var locationImageFeed = socialFactory.loadSampleFeed( 'instagram', 'loc', 0 );
+				var sampleTwitterUserFeed = socialFactory.loadSampleFeed( 'twitter', 'user', 0 );
+				var sampleInstagramUserFeed = socialFactory.loadSampleFeed( 'instagram', 'user', 0 );
+				var sampleInstagramLocationFeed = socialFactory.loadSampleFeed( 'instagram', 'loc', 0 );
 				
-				return $q.all([singleFeed, locationImageFeed]).then(function(results) {
+				return $q.all([sampleTwitterUserFeed, sampleInstagramUserFeed, sampleInstagramLocationFeed]).then(function(results) {
+					// combine sampleTwitterUserFeed + sampleInstagramUserFeed into 1 singleFeed..
+					var singleFeed = results[0].concat(results[1]);
+					// sort too by timestamp
+					
+					singleFeed.sort(function(a,b) {
+						if ( a.timestamp > b.timestamp ) return -1;
+						if ( a.timestamp < b.timestamp ) return 1;
+						return 0;
+					});
+					
 					return {
-						singleFeed: results[0],
-						locationImageFeed: results[1]
+						singleFeed: singleFeed,
+						instaTest: results[1],
+						locationImageFeed: results[2]
 					};
 				});
 			}
@@ -35,6 +48,7 @@
 							initialData: function() {
 								return {
 									singleFeed: undefined,
+									instaTest: undefined,
 									locationImageFeed: undefined
 								};
 							}
@@ -78,6 +92,7 @@
 		};
 		
 		$scope.singleFeed = initialData.singleFeed;
+		$scope.instaTest = initialData.instaTest;
 		$scope.locationImageFeed = initialData.locationImageFeed;
 		if ( $stateParams.id !== undefined ) {
 			$scope.onlocation = $stateParams.id;

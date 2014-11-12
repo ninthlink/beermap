@@ -20,27 +20,7 @@
 		<div class="col-md-12">
 			<p class="text-center" ng-hide="newsLoaded">Loading News...</p>
 			<div ng-repeat="news in newsfeed" class="feed-item">
-				<div class="media">
-					<a class="pull-left" href="#{{news.originID}}">
-						<img ng-src="{{news.user.profile_image_url}}" alt="{{user.screen_name}}" style="width:32px;height:32px">
-					</a>
-					<div class="pull-right">
-						<br />
-						<small><abbr class="distance" title="distance coming soon?">12 miles</abbr></small>
-					</div>
-					<div class="media-body">
-						<p>
-							<strong ng-bind-html="news.user.name" title="@{{news.user.screen_name}}"></strong><br />
-							<small>
-								<span class="pull-left">
-									<!--span class="fa fa-{{news.source}}"></span-->
-									<span ng-bind-html="news.prettyTime"></span> via <span ng-bind-html="news.sourceLink"></span>
-								</span>
-							</small>
-						</p>
-					</div>
-				</div>
-				<div class="media-body" ng-bind-html="news.body"></div>
+				<ng-include src="'partials/feed-item.html'"></ng-include>
 			</div>
 		</div>
 	</div>

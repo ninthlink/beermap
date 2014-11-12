@@ -1,7 +1,7 @@
 <div class="row thm-container">
   <div ng-repeat="img in locationImageFeed" class="col-xs-6 col-md-3">
-    <a href="{{img.link}}" target="_blank" class="thumbnail">
-      <img ng-src="{{img.images.standard_resolution.url}}" alt="{{img.user.username}}">
+    <a href="{{img.sourceLink}}" target="_blank" class="thumbnail">
+      <img ng-src="{{img.img}}" alt="{{img.user.screen_name}}">
     </a>
   </div>
   <pre ng-hide="true">{{locationImageFeed | json}}</pre>

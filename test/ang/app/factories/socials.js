@@ -105,7 +105,7 @@
 					case 'instagram':
 						var c = result.data.data.length; // yes double data
 						for ( var i = 0; i < c; i++ ) {
-							var obj = result.data.data[i];
+							var obj = o.generalizeInstagramObject( result.data.data[i] );
 							ar.push(obj);
 						}
 						break;
@@ -154,12 +154,35 @@
 			var obj = {
 				body: twobj.text,
 				entities: twobj.entities,
+				img: false,
 				originID: twobj.id_str,
-				source: 'twitter',
-				sourceLink: '<a href="https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str +'" target="_blank">Twitter</a>', 
+				source: 'Twitter',
+				sourceLink: 'https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str, 
 				timestamp: parsedate.getTime(),
 				prettyTime: parsedate.toLocaleDateString() +' '+ parsedate.toLocaleTimeString(),
 				user: twobj.user, // for now
+			};
+			return obj;
+		};
+		// generalize an instagram object too
+		o.generalizeInstagramObject = function ( insta ) {
+			var timestamp = insta.created_time * 1000;
+			var parsedate = new Date( timestamp );
+			var caption = angular.isObject(insta.caption) ? insta.caption.text : '';
+			var obj = {
+				body: caption,//insta.caption.text,
+				entities: insta.tags,
+				img: insta.images.standard_resolution.url,
+				originID: insta.id,
+				source: 'Instagram',
+				sourceLink: insta.link, 
+				timestamp: timestamp,
+				prettyTime: parsedate.toLocaleDateString() +' '+ parsedate.toLocaleTimeString(),
+				user: {
+					name: insta.user.full_name,
+					profile_image_url: insta.user.profile_picture,
+					screen_name: insta.user.username,
+				},
 			};
 			return obj;
 		};
