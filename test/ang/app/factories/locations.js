@@ -34,7 +34,7 @@
 		/**
 		 * loads all markers either from stored object or from calling getJSON
 		 */
-		o.loadAll = function( $scope ) {
+		o.loadAll = function( $scope, $state ) {
 			var vm = this;
 			if ( vm.omarkers.length == 0 ) {
 				//console.log('reload markers from JSON?');
@@ -57,7 +57,7 @@
 						}
 						$scope.markers.push(obj);
 					}
-					vm.addMarkerEvents( $scope );
+					vm.addMarkerEvents( $scope, $state );
 					//console.log('##');
 					//console.log($scope.markers);
 					vm.omarkers = $scope.markers; // save for later
@@ -73,14 +73,14 @@
 				$scope.markers = vm.omarkers;
 				$scope.$apply();
 				// re-add events so clicks on markers work again
-				vm.addMarkerEvents( $scope );
+				vm.addMarkerEvents( $scope, $state );
 			}
 		};
 		/**
 		 * loops through a set of markers (inside $scope)
 		 * and (re)attaches some helper functions to them
 		 */
-		o.addMarkerEvents = function( $scope ) {
+		o.addMarkerEvents = function( $scope, $state ) {
 			if ( angular.isArray( $scope.markers ) ) {
 				angular.forEach($scope.markers, function(marker) {
 					// "City, State Zip"
@@ -116,9 +116,11 @@
 						// helper to make the right onClick
 						marker.onClick = function() {
 							console.log('onClick '+ marker.id);
-							markerClicked($scope, marker.id);
+							//markerClicked($scope, marker.id);
+							$state.go('location', { id: marker.id });
 						}
-						// this should be renamed..
+						/*
+						// note : no longer used because we can just jump states?
 						marker.closeRight = function() {
 							console.log('close..');
 							$scope.showOverlay = false;
@@ -135,7 +137,7 @@
 								$scope.$apply();
 							}, 100);
 						}
-						
+						*/
 						// check if we should default open to a particular ID loaded in scope?
 						if ( $scope.brewon !== false ) {
 							if ( marker.id == $scope.brewon ) {

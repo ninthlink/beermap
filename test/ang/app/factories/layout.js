@@ -8,9 +8,9 @@
 		.module('beerMap')
 		.factory('layoutHelper', layoutHelper);
 	
-	layoutHelper.$inject = ['$rootScope'];
+	layoutHelper.$inject = ['$rootScope', '$state'];
 	
-	function layoutHelper( $rootScope ) {
+	function layoutHelper( $rootScope, $state ) {
 		var menu = {
 			items: [
 				{
@@ -59,6 +59,7 @@
 			$rootScope.$label = $label;
 			
 			// and then redirect to details for that location item?!
+			$state.go('location', {id: $item.id});
 		};
 		
 		return o;

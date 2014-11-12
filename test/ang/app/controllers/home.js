@@ -10,9 +10,9 @@
 		.module('beerMap')
 		.controller('home', home);
 	
-	home.$inject = ['$scope', '$rootScope', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
+	home.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory'];
 	
-	function home( $scope, $rootScope, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
+	function home( $scope, $rootScope, $state, $stateParams, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		$rootScope.searchFor = layoutHelper.searchFor; // typeahead search callback
 		
@@ -26,7 +26,7 @@
 		 *
 		 */
 		$scope.mapclass = '';
-		$scope.brewon = false;
+		$scope.brewon = $stateParams.id >= 0 ? $stateParams.id : false;
 		$scope.showMainFeed = true;
 		$scope.boundary = {
 			minlat: false,
@@ -36,7 +36,7 @@
 		};
 		
 		// Get all brewery location markers from the locationFactory
-		locationFactory.loadAll($scope);
+		locationFactory.loadAll( $scope, $state );
 		
 		// attach socialFactory.loadSampleFeed to something we can call from partials?
 		$rootScope.loadSampleFeed = function(socialnetwork, type, sample) {

@@ -43,15 +43,15 @@
 						templateUrl: './partials/home.html',
 						controller: 'home'
 					})
+					.state('location', {
+						url: '/location/{id}',
+						templateUrl: './partials/location.html',
+						controller: 'home'
+					})
 					.state('list', {
 						url: '/list',
 						templateUrl: './partials/list.html',
 						controller: 'locationList'
-					})
-					.state('location', {
-						url: '/location/{id}',
-						templateUrl: './partials/location.html',
-						controller: 'locationCtrl'
 					})
 				$urlRouterProvider.otherwise('home');
 			}
