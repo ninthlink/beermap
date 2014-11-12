@@ -24,8 +24,17 @@
 						templateUrl: './partials/location.html',
 						controller: 'mainCtrl',
 						resolve: {
-							singleFeed: function( $stateParams, socialFactory ) {
-								return socialFactory.loadSampleFeed( 'twitter', 'user', 0 );
+							singleFeed: function( $stateParams, socialFactory, $q ) {
+								// theres some error here but...
+								if ( $stateParams.id !== null ) {
+									var defer = $q.defer();
+									socialFactory.loadSampleFeed( 'twitter', 'user', 0 ).then( function(data) {
+										defer.resolve(data);
+									});
+									return defer.promise;
+								} else {
+									return [];
+								}
 							}
 						}
 					})
