@@ -34,7 +34,7 @@
 		/**
 		 * loads all markers either from stored object or from calling getJSON
 		 */
-		o.loadAll = function( $scope, $state ) {
+		o.loadAll = function( $scope, $rootScope, $state ) {
 			var vm = this;
 			if ( vm.omarkers.length == 0 ) {
 				//console.log('reload markers from JSON?');
@@ -57,7 +57,7 @@
 						}
 						$scope.markers.push(obj);
 					}
-					vm.addMarkerEvents( $scope, $state );
+					vm.addMarkerEvents( $scope, $rootScope, $state );
 					//console.log('##');
 					//console.log($scope.markers);
 					vm.omarkers = $scope.markers; // save for later
@@ -73,14 +73,14 @@
 				$scope.markers = vm.omarkers;
 				$scope.$apply();
 				// re-add events so clicks on markers work again
-				vm.addMarkerEvents( $scope, $state );
+				vm.addMarkerEvents( $scope, $rootScope, $state );
 			}
 		};
 		/**
 		 * loops through a set of markers (inside $scope)
 		 * and (re)attaches some helper functions to them
 		 */
-		o.addMarkerEvents = function( $scope, $state ) {
+		o.addMarkerEvents = function( $scope, $rootScope, $state ) {
 			if ( angular.isArray( $scope.markers ) ) {
 				angular.forEach($scope.markers, function(marker) {
 					// "City, State Zip"
@@ -139,9 +139,9 @@
 						}
 						*/
 						// check if we should default open to a particular ID loaded in scope?
-						if ( $scope.brewon !== false ) {
-							if ( marker.id == $scope.brewon ) {
-								markerClicked($scope, marker.id);
+						if ( $scope.onlocation !== false ) {
+							if ( marker.id == $scope.onlocation ) {
+								gotoLocation($scope, $rootScope, marker.id);
 							}
 						}
 					} else {
@@ -202,7 +202,7 @@
 	/**
 	 * function fired when a particular marker is clicked on the map
 	 */
-	function markerClicked( $scope, i ) {
+	function gotoLocation( $scope, $rootScope, i ) {
 		console.log('clicked #'+ i + ' !');
 		var m = $scope.markers[i];
 		console.log(m);
@@ -218,6 +218,8 @@
 		
 		// data to pass to overlay DOM
 		$scope.locationData = m;
+		$rootScope.onlocation = true;
+		$rootScope.locationData = m;
 		$scope.markers.selected = m.id;
 		
 		// Map adjustments
@@ -228,8 +230,10 @@
 		
 		// trigger resize event now that map display area has changed via CSS class from above
 		window.setTimeout(function(){
-			var gmapd = $scope.map.control.getGMap();
-			google.maps.event.trigger(gmapd, "resize");
+			if ( angular.isFunction( $scope.map.control.getGMap ) ) {
+				var gmapd = $scope.map.control.getGMap();
+				google.maps.event.trigger(gmapd, "resize");
+			}
 			// ...then recenter map on clicked marker...
 			$scope.map.center = { latitude: m.coords.latitude, longitude: m.coords.longitude };
 			// ...and zoom in

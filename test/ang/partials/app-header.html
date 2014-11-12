@@ -6,17 +6,22 @@
 			<!-- Menu Hamburder - float left -->
 			<ul class="nav navbar-nav navbar-left">
 				<li>
-					<a href="#">
-						<span class="header-menu-icon clickable fa fa-reorder" ng-click="menu.toggleMenu()">
-						</span>
+					<a ng-hide="onlocation">
+						<span class="header-menu-icon clickable fa fa-reorder" ng-click="menu.toggleMenu()"></span>
+					</a>
+					<a href="#/home" class="clickable" ui-sref="home" ng-show="onlocation">
+						<span class="header-menu-icon fa fa-arrow-left"></span>
 					</a>
 				</li>
 			</ul>
 
 			<!-- Header text / icon whatever - centered -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#/home">
+				<a class="navbar-brand" href="#/home" ng-hide="locationData">
 					Beer Maps
+				</a>
+				<a class="navbar-brand" href="#/location/{{locationData.id}}" ng-show="locationData">
+					{{locationData.name}}
 				</a>
 			</div>
 

@@ -1,9 +1,9 @@
 /**
  * beerMapd Controller
  *
- * for state /home (in angularApp.js config)
- * with /partials/home.html
- * 
+ * for states (in angularApp.js config) :
+ * /home , with /partials/home.html
+ * /location/{id} , with /partials/location.html
  */
 (function() {
 	angular
@@ -26,7 +26,15 @@
 		 *
 		 */
 		$scope.mapclass = '';
-		$scope.brewon = $stateParams.id >= 0 ? $stateParams.id : false;
+		if ( $stateParams.id >= 0 ) {
+			$scope.onlocation = $stateParams.id;
+			$rootScope.onlocation = true;
+		} else {
+			$scope.onlocation = false;
+			$rootScope.onlocation = false;
+			$scope.locationData = undefined;
+			$rootScope.locationData = undefined;
+		}
 		$scope.showMainFeed = true;
 		$scope.boundary = {
 			minlat: false,
@@ -36,7 +44,7 @@
 		};
 		
 		// Get all brewery location markers from the locationFactory
-		locationFactory.loadAll( $scope, $state );
+		locationFactory.loadAll( $scope, $rootScope, $state );
 		
 		// attach socialFactory.loadSampleFeed to something we can call from partials?
 		$rootScope.loadSampleFeed = function(socialnetwork, type, sample) {

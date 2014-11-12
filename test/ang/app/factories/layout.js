@@ -46,7 +46,6 @@
 		};
 		
 		menu.toggleMenu = o.toggleMenu; //?
-		
 		// set up the typeahead callback here so it stays for all Controllers
 		o.searchFor = function( $item, $model, $label ) {
 			var slugd = $item.slug;
