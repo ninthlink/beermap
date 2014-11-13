@@ -14,6 +14,8 @@
 	
 	function locationFactory( $http, $q ) {
 		var beerURL = 'beerdb.json';
+		var icon_mapmarker = 'includes/icn-mapmarker2.png';
+		var icon_mylocation = 'includes/icn-mylocation.png';
 		var o = {};
 		
 		o.beerdbjson = false;
@@ -81,6 +83,7 @@
 		o.addMarkerEvents = function( $scope, $rootScope, $state ) {
 			if ( angular.isArray( $scope.markers ) ) {
 				angular.forEach($scope.markers, function(marker) {
+					//marker.icon = icon_mapmarker;
 					// "City, State Zip"
 					marker.CSZ = function() {
 						return marker.city +', '+ marker.state +' '+ marker.zip;
