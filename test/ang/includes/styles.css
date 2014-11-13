@@ -1,3 +1,26 @@
+/**
+ * fonts
+ */
+body {
+	font-family: "Open Sans", sans-serif;
+}
+/**
+ * colors
+ */
+body {
+	color: #1b1b1b;
+}
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+	color: #000;
+}
+.navbar-inverse .navbar-text {
+	color: #fff;
+}
+/**
+ * layout
+ */
 html,
 body {
 	height: 100%;
