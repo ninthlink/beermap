@@ -8,7 +8,7 @@
 (function() {
 	angular
 		.module('beerMap')
-		// "quick" helper "Factory" for loading some initial data promises for location details?!
+		// "quick" helper "Factory" for loading some initial data Promises for location details (social feeds)?!
 		.factory("locationCtrlInitialData", function( socialFactory, $q ) {
 			return function() {
 				var sampleTwitterUserFeed = socialFactory.loadSampleFeed( 'twitter', 'user', 0 );
@@ -19,7 +19,6 @@
 					// combine sampleTwitterUserFeed + sampleInstagramUserFeed into 1 singleFeed..
 					var singleFeed = results[0].concat(results[1]);
 					// sort too by timestamp
-					
 					singleFeed.sort(function(a,b) {
 						if ( a.timestamp > b.timestamp ) return -1;
 						if ( a.timestamp < b.timestamp ) return 1;
@@ -72,16 +71,14 @@
 	//omg wtf so many args
 	function mainCtrl( $scope, $rootScope, $state, $stateParams, $http, $window, locationFactory, GoogleMapApi, layoutHelper, socialFactory, locationCtrlInitialData, initialData ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
-		$rootScope.searchFor = layoutHelper.searchFor; // typeahead search callback
-		
+		// set some initial map variables
 		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {} };
 		$scope.options = {};//scrollwheel: false};
 		$scope.coordsUpdates = 0;
 		$scope.dynamicMoveCtr = 0;
-		/**
-		 * initial default variables that get set later with locationFactory
-		 *
-		 */
+		//	Get Map Stylesfrom external file [includes/map.styles.js]
+		$scope.styles = mapStyles;
+		// initial default variables that get set later with locationFactory
 		$scope.mapclass = '';
 		$scope.boundary = {
 			minlat: false,
@@ -89,30 +86,39 @@
 			minlng: false,
 			maxlng: false
 		};
-		
+		// map initialData, mostly just for on location Details but not specific to it?!
 		$scope.singleFeed = initialData.singleFeed;
 		$scope.instaTest = initialData.instaTest;
 		$scope.locationImageFeed = initialData.locationImageFeed;
+		
 		if ( $stateParams.id !== undefined ) {
+			// on LOCATION DETAILS 
 			$scope.onlocation = $stateParams.id;
 			$scope.showMainFeed = false;
 			$rootScope.onlocation = true;
 			$scope.animationstyle = 'slidey';
 		} else {
+			// on HOME
 			$scope.animationstyle = 'fadey';
 			$scope.onlocation = false;
 			$rootScope.onlocation = false;
 			$scope.locationData = undefined;
 			$rootScope.locationData = undefined;
 			$scope.showMainFeed = true;
-			
+			// load our main news (sample)
+			socialFactory.loadSampleNews( $rootScope );
+			// html5 geoloc
 			function geo_success(position) {
 				var lat = position.coords.latitude;
 				var lng = position.coords.longitude;
 				console.log(position.coords);
 				$scope.$apply(function(){
-					$rootScope.myCoords = position.coords; // mostly just for debugging
+					// center map on new location
 					$scope.map.center = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+					// zoom in a bit? lucky 13?
+					$scope.map.zoom = 13;
+					// set rootScope.myCoords too, mostly just for debugging
+					$rootScope.myCoords = position.coords;
 				});
 			}
 			function geo_error(error){
@@ -127,29 +133,5 @@
 		
 		// Get all brewery location markers from the locationFactory
 		locationFactory.loadAll( $scope, $rootScope, $state );
-		
-		/*
-		//CURRENT BROKE : attach socialFactory.loadSampleFeed to something we can call from partials?
-		$rootScope.loadSampleFeed = function(socialnetwork, type, sample) {
-			// also pass $scope in..
-			socialFactory.loadSampleFeed( socialnetwork, type, sample );
-		};
-		*/
-		// load our main news (sample)
-		socialFactory.loadSampleNews( $rootScope );
-		
-		/**
-		 *	Get Map Stylesfrom external file [includes/map.styles.js]
-		 *
-		 *	Should we build in a dynamic style selector? For example, light versus dark app style?
-		 */
-		$scope.styles = mapStyles;
-
-		// test reloading data in the locationFactory
-		$scope.reload = function() {
-			console.log('reload?!');
-			var reload = locationFactory.loadAll();
-			console.log(reload);
-		};
 	}
 })();
