@@ -1,27 +1,8 @@
 <!-- Main Feed block -->
 
-<div ng-show="showMainFeed" class="container-fluid feed-container">
-	<div class="row">
-		<!--div class="col-md-12"-->
-			<ng-include src="'partials/feed-block-header_bar.html'"></ng-include>
-		<!--/div-->
-	</div>
-	<!--
-	<div class="row">
-		<div class="col-md-12">
-			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('twitter','list', 0);">Sample Twitter List?!</button>
-			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('twitter','user', 0);">Sample Twitter User?!</button>
-			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('instagram','loc', 0);">Sample Instagram Location?!</button>
-			<button class="btn btn-primary btn-xs" ng-click="loadSampleFeed('instagram','user', 0);">Sample Instagram User?!</button>
-		</div>
-	</div>
-	-->
-	<div class="row">
-		<div class="col-md-12">
-			<p class="text-center" ng-hide="newsLoaded">Loading News...</p>
-			<div ng-repeat="news in newsfeed" class="feed-item">
-				<ng-include src="'partials/feed-item.html'"></ng-include>
-			</div>
-		</div>
+<div class="feed-container">
+	<p class="text-center" ng-hide="newsLoaded">Loading News...</p>
+	<div ng-repeat="news in newsfeed" class="feed-item">
+		<ng-include src="'partials/feed-item.html'"></ng-include>
 	</div>
 </div>

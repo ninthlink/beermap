@@ -8,31 +8,6 @@
 (function() {
 	angular
 		.module('beerMap')
-		// "quick" helper "Factory" for loading some initial data Promises for location details (social feeds)?!
-		.factory("locationCtrlInitialData", function( socialFactory, $q ) {
-			return function() {
-				var sampleTwitterUserFeed = socialFactory.loadSampleFeed( 'twitter', 'user', 0 );
-				var sampleInstagramUserFeed = socialFactory.loadSampleFeed( 'instagram', 'user', 0 );
-				var sampleInstagramLocationFeed = socialFactory.loadSampleFeed( 'instagram', 'loc', 0 );
-				
-				return $q.all([sampleTwitterUserFeed, sampleInstagramUserFeed, sampleInstagramLocationFeed]).then(function(results) {
-					// combine sampleTwitterUserFeed + sampleInstagramUserFeed into 1 singleFeed..
-					var singleFeed = results[0].concat(results[1]);
-					// sort too by timestamp
-					singleFeed.sort(function(a,b) {
-						if ( a.timestamp > b.timestamp ) return -1;
-						if ( a.timestamp < b.timestamp ) return 1;
-						return 0;
-					});
-					
-					return {
-						singleFeed: singleFeed,
-						instaTest: results[1],
-						locationImageFeed: results[2]
-					};
-				});
-			}
-		})
 		// app states for this Controller
 		.config([
 			'$stateProvider',
@@ -58,8 +33,8 @@
 						templateUrl: './partials/location.html',
 						controller: 'mainCtrl',
 						resolve: {
-							initialData: function( locationCtrlInitialData ) {
-								return locationCtrlInitialData();
+							initialData: function( socialFactory ) {
+								return socialFactory.initLocationData();
 							}
 						}
 					})
@@ -67,9 +42,9 @@
 		])
 		.controller('mainCtrl', mainCtrl);
 	
-	mainCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$window', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory', 'locationCtrlInitialData', 'initialData' ];
+	mainCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$window', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory', 'initialData' ];
 	//omg wtf so many args
-	function mainCtrl( $scope, $rootScope, $state, $stateParams, $http, $window, locationFactory, GoogleMapApi, layoutHelper, socialFactory, locationCtrlInitialData, initialData ){
+	function mainCtrl( $scope, $rootScope, $state, $stateParams, $http, $window, locationFactory, GoogleMapApi, layoutHelper, socialFactory, initialData ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		// set some initial map variables
 		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {} };
@@ -108,7 +83,7 @@
 			$rootScope.locationData = undefined;
 			$scope.showMainFeed = true;
 			// load our main news (sample)
-			socialFactory.loadSampleNews( $rootScope );
+			socialFactory.loadSampleNewsDirty( $rootScope );
 			// html5 geoloc
 			function geo_success(position) {
 				var lat = position.coords.latitude;

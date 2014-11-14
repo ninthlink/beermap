@@ -48,6 +48,30 @@
 			}
 		};
 		o.newsfeed = [];
+		
+		o.initLocationData = function() {
+			var sampleTwitterUserFeed = o.loadSampleFeed( 'twitter', 'user', 0 );
+			var sampleInstagramUserFeed = o.loadSampleFeed( 'instagram', 'user', 0 );
+			var sampleInstagramLocationFeed = o.loadSampleFeed( 'instagram', 'loc', 0 );
+			
+			return $q.all([sampleTwitterUserFeed, sampleInstagramUserFeed, sampleInstagramLocationFeed]).then(function(results) {
+				// combine sampleTwitterUserFeed + sampleInstagramUserFeed into 1 singleFeed..
+				var singleFeed = results[0].concat(results[1]);
+				// sort too by timestamp
+				singleFeed.sort(function(a,b) {
+					if ( a.timestamp > b.timestamp ) return -1;
+					if ( a.timestamp < b.timestamp ) return 1;
+					return 0;
+				});
+				
+				return {
+					singleFeed: singleFeed,
+					instaTest: results[1],
+					locationImageFeed: results[2]
+				};
+			});
+		};
+		
 		/**
 		 * caches $http.get requests?
 		 */
@@ -121,7 +145,7 @@
 		/**
 		 * set $scope with (fake) array of results from twitter list + ?
 		 */
-		o.loadSampleNews = function( scope ) {
+		o.loadSampleNewsDirty = function( scope ) {
 			// only load if its not been loaded yet
 			if ( angular.isArray( scope.newsfeed ) === false ) {
 				// initialize

@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 	box-sizing: border-box;
 	height: 100%;
 	left: 0;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	width: 100%;
 	overflow: hidden;
@@ -96,12 +96,50 @@ h1, h2, h3, h4, h5, h6 {
 .map-container {
 	background-color: #fff;
 	box-sizing: border-box;
-	height: 30%; /* default map size */
+	height: 100%; /* default map size */
 	-webkit-transition: all linear .05s;
 	transition: all linear .05s;
 }
+.left-half {
+	position: fixed;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 40%;
+	top: 0;
+	bottom: 40%;
+}
+.map-wrap {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 52px;
+	bottom: 0;
+}
+.right-half {
+	position: fixed;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 60%;
+	top: 40%;
+	bottom: 0;
+	overflow: hidden;
+}
 @media screen and (min-width: 1024px) {
-	.map-container { height: 100% }
+	.left-half,
+	.right-half {
+		width: 50%;
+		height: 100%;
+		bottom: 0;
+		top: 0;
+	}
+	.left-half {
+		right: 50%;
+	}
+	.right-half {
+		left: 50%;
+	}
 }
 .map-container.mapsmall { height: 25%; } /* small map for details pages */
 .map-container.maplarge { height: 100%; } /* full-screen map */
@@ -156,9 +194,12 @@ h1, h2, h3, h4, h5, h6 {
 	.feed-container.ng-hide {
 		left: -100%;
 	}
-
+	.feed-item img {
+		max-width: 100%;
+		height: auto;
+	}
 /**
- * FEED CONTAINER
+ * thm CONTAINER
  *
  */
 .thm-container {
