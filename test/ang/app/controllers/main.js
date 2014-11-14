@@ -68,9 +68,9 @@
 		])
 		.controller('mainCtrl', mainCtrl);
 	
-	mainCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory', 'locationCtrlInitialData', 'initialData' ];
+	mainCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$window', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory', 'locationCtrlInitialData', 'initialData' ];
 	//omg wtf so many args
-	function mainCtrl( $scope, $rootScope, $state, $stateParams, $http, locationFactory, GoogleMapApi, layoutHelper, socialFactory, locationCtrlInitialData, initialData ){
+	function mainCtrl( $scope, $rootScope, $state, $stateParams, $http, $window, locationFactory, GoogleMapApi, layoutHelper, socialFactory, locationCtrlInitialData, initialData ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		$rootScope.searchFor = layoutHelper.searchFor; // typeahead search callback
 		
@@ -104,35 +104,48 @@
 			$scope.locationData = undefined;
 			$rootScope.locationData = undefined;
 			$scope.showMainFeed = true;
-			
-			
-		/**
-		 * HTML5 geolocation sensor
-		 *
-		 * should this be elsewhere?
-		 *
-		*/
-		if(navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-				// only center to new position if new position is within san diego area, +/- ?
-				if ( locationFactory.checkBounds( $scope.boundary, position.coords.latitude, position.coords.longitude, true ) ) {
-					$scope.map.zoom = 12;
-					$scope.map.center = { latitude: position.coords.latitude, longitude: position.coords.longitude };
-					$scope.$apply();
-					console.log('geoloc : all set');
-				} else {
-					console.log('geoloc : oob');
-				}
-			}, function() {
-				// geoloc err
-				console.log('geoloc : err?');
+			/**
+			 * HTML5 geolocation sensor
+			 *
+			 * should this be elsewhere?
+			 *
+			if(navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function(position) {
+					// only center to new position if new position is within san diego area, +/- ?
+					if ( locationFactory.checkBounds( $scope.boundary, position.coords.latitude, position.coords.longitude, true ) ) {
+						$scope.map.zoom = 12;
+						$scope.map.center = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+						$scope.$apply();
+						console.log('geoloc : all set');
+					} else {
+						console.log('geoloc : oob');
+					}
+				}, function() {
+					// geoloc err
+					console.log('geoloc : err?');
+				});
+			} else {
+				// no geoloc
+				console.log('geoloc : no?');
+			}
+			*/
+		}
+		
+		function geo_success(position) {
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
+			console.log(position.coords);
+			$scope.$apply(function(){
+				$rootScope.myCoords = position.coords;
 			});
-		} else {
-			// no geoloc
-			console.log('geoloc : no?');
 		}
-			
+		function geo_error(error){
+			console.log("geolocation error");
+			console.log(error);
 		}
+		var watchID = $window.navigator.geolocation.watchPosition( geo_success, geo_error, { enableHighAccuracy: true });
+
+		
 		// Get all brewery location markers from the locationFactory
 		locationFactory.loadAll( $scope, $rootScope, $state );
 		
