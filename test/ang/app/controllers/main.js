@@ -42,7 +42,7 @@
 				$stateProvider
 					.state('home', {
 						url: '/home',
-						templateUrl: './partials/home.html',
+						templateUrl: './partials/main.html',
 						controller: 'mainCtrl',
 						resolve: {
 							initialData: function() {
@@ -56,7 +56,7 @@
 					})
 					.state('location', {
 						url: '/location/{id}',
-						templateUrl: './partials/location.html',
+						templateUrl: './partials/main.html',
 						controller: 'mainCtrl',
 						resolve: {
 							initialData: function( locationCtrlInitialData ) {
@@ -78,7 +78,6 @@
 		$scope.options = {};//scrollwheel: false};
 		$scope.coordsUpdates = 0;
 		$scope.dynamicMoveCtr = 0;
-		
 		/**
 		 * initial default variables that get set later with locationFactory
 		 *
@@ -98,7 +97,9 @@
 			$scope.onlocation = $stateParams.id;
 			$scope.showMainFeed = false;
 			$rootScope.onlocation = true;
+			$scope.slideDirection = 'slide-left';
 		} else {
+			$scope.slideDirection = '';
 			$scope.onlocation = false;
 			$rootScope.onlocation = false;
 			$scope.locationData = undefined;
