@@ -48,6 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 	position: absolute !important;
 	right: 0;
 	top: 51px;
+	z-index: 1030; /* for animation and things on top of other things */
 }
 
 /* CONTAINERS - OUTER */
@@ -95,6 +96,7 @@ h1, h2, h3, h4, h5, h6 {
  *
  */
 	.feed-container {
+		background: #fff;
 		height: 100%;
 		left: 0;
 		position: relative;
@@ -218,6 +220,7 @@ h1, h2, h3, h4, h5, h6 {
 		position: fixed;
 		top: 0;
 		width: 90%;
+		z-index: 1050;
 	}
 	.sidebar .navbar-header {
 		width: 100%;
@@ -276,50 +279,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ui-view sliding?! */
-.slide-left.ng-enter,
-.slide-left.ng-leave,
-.slide-right.ng-enter,
-.slide-right.ng-leave {
+.slidey.ng-enter,
+.slidey.ng-leave,
+.fadey.ng-enter,
+.fadey.ng-leave {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background: inherit;
-  -ms-transition: .7s ease-in-out;
-  -webkit-transition: .7s ease-in-out;
-  transition:  .7s ease-in-out;
+  overflow: visible;
+  -webkit-transition: 1s ease-in-out;
+  -ms-transition: 1s ease-in-out;
+  transition:  1s ease-in-out;
 }
-.slide-left.ng-enter {
+.slidey.ng-enter .navbar-fixed-top,
+.slidey.ng-leave .navbar-fixed-top {
+	top: -51px;
+	z-index: 100;
+}
+.slidey.ng-enter {
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
 }
-.slide-left.ng-enter.ng-enter-active {
+.slidey.ng-enter.ng-enter-active {
   -webkit-transform: translateX(0);
   transform: translateX(0);
 }
-.slide-left.ng-leave {
-  z-index: 100;
+.slidey.ng-leave {
+  z-index: 1040;
   -webkit-transform: translateX(0);
   transform: translateX(0);
 }
-.slide-left.ng-leave.ng-leave-active {
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
+.slidey.ng-leave.ng-leave-active {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
 }
-.slide-right.ng-enter {
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
+.fadey.ng-enter,
+.fadey.ng-leave.ng-leave-active {
+  opacity: 0;
 } 
-
-.slide-right.ng-enter.ng-enter-active, 
-.slide-right.ng-leave {
-  position: absolute;
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-}
-
-.slide-right.ng-leave.ng-leave-active {
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
+.fadey.ng-enter.ng-enter-active, 
+.fadey.ng-leave {
+  opacity: 1;
 }

@@ -42,7 +42,7 @@
 				$stateProvider
 					.state('home', {
 						url: '/home',
-						templateUrl: './partials/main.html',
+						templateUrl: './partials/home.html',
 						controller: 'mainCtrl',
 						resolve: {
 							initialData: function() {
@@ -56,7 +56,7 @@
 					})
 					.state('location', {
 						url: '/location/{id}',
-						templateUrl: './partials/main.html',
+						templateUrl: './partials/location.html',
 						controller: 'mainCtrl',
 						resolve: {
 							initialData: function( locationCtrlInitialData ) {
@@ -97,9 +97,9 @@
 			$scope.onlocation = $stateParams.id;
 			$scope.showMainFeed = false;
 			$rootScope.onlocation = true;
-			$scope.slideDirection = 'slide-left';
+			$scope.animationstyle = 'slidey';
 		} else {
-			$scope.slideDirection = '';
+			$scope.animationstyle = 'fadey';
 			$scope.onlocation = false;
 			$rootScope.onlocation = false;
 			$scope.locationData = undefined;

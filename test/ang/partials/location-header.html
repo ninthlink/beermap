@@ -1,32 +1,22 @@
-<!-- APP header -->
+<!-- APP : Location header -->
 
 <nav class="navbar navbar-default navbar-fixed-top main-nav" roll="navigation">
 	<div class="container-fluid">
 
-			<!-- Menu Hamburder - float left -->
+			<!-- float left -->
 			<ul class="nav navbar-nav navbar-left">
 				<li>
-					<a><!-- ng-hide="onlocation"-->
-						<span class="header-menu-icon clickable fa fa-reorder" ng-click="menu.toggleMenu()"></span>
-					</a>
-					<!--
 					<a href="#/home" class="clickable" ui-sref="home" ng-show="onlocation">
 						<span class="header-menu-icon fa fa-arrow-left"></span>
 					</a>
-					-->
 				</li>
 			</ul>
 
 			<!-- Header text / icon whatever - centered -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#/home"><!-- ng-hide="locationData"-->
-					Beer Maps
-				</a>
-				<!--
 				<a class="navbar-brand" href="#/location/{{locationData.id}}" ng-show="locationData">
 					{{locationData.name}}
 				</a>
-				-->
 			</div>
 			<!--ng-include src="'partials/search-block.html'"></ng-include-->
 	</div>
