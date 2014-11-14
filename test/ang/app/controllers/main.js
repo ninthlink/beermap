@@ -97,6 +97,8 @@
 			$scope.showMainFeed = false;
 			$rootScope.onlocation = true;
 			$scope.animationstyle = 'slidey';
+			$scope.tab = 1;
+			$scope.tabsliderclass = function() { return 'tabslider tab'+ $scope.tab; };
 		} else {
 			// on HOME
 			$scope.animationstyle = 'fadey';
@@ -133,5 +135,12 @@
 		
 		// Get all brewery location markers from the locationFactory
 		locationFactory.loadAll( $scope, $rootScope, $state );
+		
+		// trigger gmap.resize when windows resize
+		var w = angular.element($window);
+		w.bind('resize', function() {
+			var gmapd = $scope.map.control.getGMap();
+			google.maps.event.trigger(gmapd, "resize");
+		});
 	}
 })();
