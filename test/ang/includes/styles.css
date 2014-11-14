@@ -124,7 +124,9 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* HEADERS */
-
+.navbar {
+	margin-bottom: 0;
+}
 /* logo icon fix */
 .main-nav .navbar-header {
 	display: block;
@@ -277,7 +279,9 @@ h1, h2, h3, h4, h5, h6 {
 .clickable {
 	cursor:pointer;
 }
-
+/* no gutter things */
+.no-gutter-right { padding-right: 0 }
+.no-gutter-left { padding-left: 0 }
 /* ui-view sliding?! */
 .slidey.ng-enter,
 .slidey.ng-leave,

@@ -22,11 +22,7 @@
 	</head>
 	<body ng-app="beerMap" class="{{bodyClass}}">
 		<div class="app-container">
-			<ng-include src="'partials/app-header.html'"></ng-include>
-			<ng-include src="'partials/app-menu.html'"></ng-include>
-			<div class="app-content">
-				<div ui-view ng-class="animationstyle"></div>
-			</div>
+			<div ui-view ng-class="animationstyle"></div>
 		</div>
 		<!-- javascripts -->
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>

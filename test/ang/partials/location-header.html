@@ -1,6 +1,6 @@
 <!-- APP : Location header -->
 
-<nav class="navbar navbar-default navbar-fixed-top main-nav" roll="navigation">
+<nav class="navbar navbar-default main-nav" roll="navigation">
 	<div class="container-fluid">
 
 			<!-- float left -->
@@ -14,9 +14,7 @@
 
 			<!-- Header text / icon whatever - centered -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#/location/{{locationData.id}}" ng-show="locationData">
-					{{locationData.name}}
-				</a>
+				<a class="navbar-brand" href="#/location/{{locationData.id}}" ng-show="locationData" ng-bind-html="locationData.fullName"></a>
 			</div>
 			<!--ng-include src="'partials/search-block.html'"></ng-include-->
 	</div>
