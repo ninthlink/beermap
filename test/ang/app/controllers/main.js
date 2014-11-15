@@ -19,12 +19,8 @@
 						templateUrl: './partials/home.html',
 						controller: 'mainCtrl',
 						resolve: {
-							initialData: function() {
-								return {
-									singleFeed: undefined,
-									instaTest: undefined,
-									locationImageFeed: undefined
-								};
+							initialData: function( socialFactory ) {
+								return socialFactory.initHomeData();
 							}
 						}
 					})
@@ -62,8 +58,13 @@
 			maxlng: false
 		};
 		// map initialData, mostly just for on location Details but not specific to it?!
-		$scope.singleFeed = initialData.singleFeed;
-		$scope.instaTest = initialData.instaTest;
+		$scope.newsLoaded = false;
+		$scope.newsFeed = initialData.newsFeed;
+		if ( angular.isArray( $scope.newsFeed ) ) {
+			if ( $scope.newsFeed.length > 0 ) {
+				$scope.newsLoaded = true;
+			}
+		}
 		$scope.locationImageFeed = initialData.locationImageFeed;
 		
 		if ( $stateParams.id !== undefined ) {
@@ -82,8 +83,7 @@
 			$scope.locationData = undefined;
 			$rootScope.locationData = undefined;
 			$scope.showMainFeed = true;
-			// load our main news (sample)
-			socialFactory.loadSampleNewsDirty( $rootScope );
+			
 			// html5 geoloc
 			function geo_success(position) {
 				var lat = position.coords.latitude;

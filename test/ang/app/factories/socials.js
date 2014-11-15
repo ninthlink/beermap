@@ -47,26 +47,51 @@
 				user: []
 			}
 		};
-		o.newsfeed = [];
 		
+		/**
+		 * initial Promises for data to populate Home screen
+		 *
+		 */
+		o.initHomeData = function() {
+			var sampleTwitterListFeed = o.loadSampleFeed( 'twitter', 'list' );
+			// for example, load the same instagram location feed twice?!
+			var sampleInstagramLocationFeed1 = o.loadSampleFeed( 'instagram', 'loc', 0 );
+			var sampleInstagramLocationFeed2 = o.loadSampleFeed( 'instagram', 'loc', 0 );
+			
+			return $q.all([ sampleTwitterListFeed, sampleInstagramLocationFeed1, sampleInstagramLocationFeed2 ]).then(function(results) {
+				// for example, we can combine 2 instagram feeds here
+				var locpics = results[1];
+				locpics = locpics.concat(results[2]);
+				// set up return object of actual results
+				return {
+					newsFeed: results[0],
+					locationImageFeed: locpics
+				};
+			});
+		};
+		
+		/**
+		 * initial Promises for data to populate Location Details screen
+		 *
+		 * combining sample Twitter user feed + sample Instagram user feed in to 1
+		 */
 		o.initLocationData = function() {
 			var sampleTwitterUserFeed = o.loadSampleFeed( 'twitter', 'user', 0 );
 			var sampleInstagramUserFeed = o.loadSampleFeed( 'instagram', 'user', 0 );
 			var sampleInstagramLocationFeed = o.loadSampleFeed( 'instagram', 'loc', 0 );
 			
 			return $q.all([sampleTwitterUserFeed, sampleInstagramUserFeed, sampleInstagramLocationFeed]).then(function(results) {
-				// combine sampleTwitterUserFeed + sampleInstagramUserFeed into 1 singleFeed..
-				var singleFeed = results[0].concat(results[1]);
+				// combine sampleTwitterUserFeed + sampleInstagramUserFeed into 1 newsFeed..
+				var newsFeed = results[0].concat(results[1]);
 				// sort too by timestamp
-				singleFeed.sort(function(a,b) {
+				newsFeed.sort(function(a,b) {
 					if ( a.timestamp > b.timestamp ) return -1;
 					if ( a.timestamp < b.timestamp ) return 1;
 					return 0;
 				});
 				
 				return {
-					singleFeed: singleFeed,
-					instaTest: results[1],
+					newsFeed: newsFeed,
 					locationImageFeed: results[2]
 				};
 			});
@@ -141,28 +166,6 @@
 				defer.reject(err);
 			});
 			return defer.promise;
-		};
-		/**
-		 * set $scope with (fake) array of results from twitter list + ?
-		 */
-		o.loadSampleNewsDirty = function( scope ) {
-			// only load if its not been loaded yet
-			if ( angular.isArray( scope.newsfeed ) === false ) {
-				// initialize
-				scope.newsLoaded = false;
-				scope.newsfeed = [];
-				o.loadSampleFeed( 'twitter', 'list' ).then(
-					function( data ) {
-						scope.newsfeed = data;
-						//console.log(':: NEWS FEED LOADED ::');
-						//console.log(scope.newsfeed);
-						scope.newsLoaded = true;
-					},
-					function( err ) {
-						console.log('Error loading sample news : '+ err.message);
-					}
-				);
-			}
 		};
 		/**
 		 * given an object returned from Twitter, generalize it in to a more standard format
