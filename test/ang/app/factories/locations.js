@@ -15,13 +15,19 @@
 	function locationFactory( $http, $q ) {
 		var beerURL = 'beerdb.json';
 		var icon_reddot = 'includes/dot-red.png';
+		var icon_bluedot = 'includes/dot-blue.png';
 		var icon_mapmarker = 'includes/icn-mapmarker2.png';
 		var icon_mylocation = 'includes/icn-mylocation.png';
 		var o = {};
 		
 		o.beerdbjson = false;
 		o.omarkers = [];
-		
+		/**
+		 * help return the blue dot
+		 */
+		o.myLocationIcon = function() {
+			return icon_bluedot;
+		};
 		/**
 		 * caches $http.get beerURL request?
 		 */

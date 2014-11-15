@@ -38,9 +38,9 @@
 		])
 		.controller('mainCtrl', mainCtrl);
 	
-	mainCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$window', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory', 'initialData' ];
+	mainCtrl.$inject = [ '$scope', '$rootScope', '$state', '$stateParams', '$window', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory', 'initialData', 'markersinboundsFilter' ];
 	//omg wtf so many args
-	function mainCtrl( $scope, $rootScope, $state, $stateParams, $http, $window, locationFactory, GoogleMapApi, layoutHelper, socialFactory, initialData ){
+	function mainCtrl( $scope, $rootScope, $state, $stateParams, $window, locationFactory, GoogleMapApi, layoutHelper, socialFactory, initialData, markersinboundsFilter ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		// set some initial map variables
 		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {} };
@@ -66,6 +66,8 @@
 			}
 		}
 		$scope.locationImageFeed = initialData.locationImageFeed;
+		$scope.geolocationWatchID = null;
+		$scope.myDot = locationFactory.myLocationIcon();
 		
 		if ( $stateParams.id !== undefined ) {
 			// on LOCATION DETAILS 
@@ -84,7 +86,11 @@
 			$rootScope.locationData = undefined;
 			$scope.showMainFeed = true;
 			
-			// html5 geoloc
+			// html5 geolocation
+			$scope.firstgeolocset = false;
+			$scope.mapmoved = false;
+			$scope.mapzoomchanged = false;
+			
 			function geo_success(position) {
 				var lat = position.coords.latitude;
 				var lng = position.coords.longitude;
@@ -97,25 +103,63 @@
 					// set rootScope.myCoords too, mostly just for debugging
 					$rootScope.myCoords = position.coords;
 				});
+				// clear the watchPosition at least for now
+				$window.navigator.geolocation.clearWatch($scope.geolocationwatchID);
 			}
 			function geo_error(error){
 				console.log("geolocation error");
 				console.log(error);
 			}
-			var watchID = $window.navigator.geolocation.watchPosition( geo_success, geo_error, { enableHighAccuracy: true });
+			$scope.geolocationwatchID = $window.navigator.geolocation.watchPosition( geo_success, geo_error, { enableHighAccuracy: false });
 			$scope.$on("$destroy", function() {
-				$window.navigator.geolocation.clearWatch(watchID);
+				console.log('destroying this view?! current map center was...');
+				var gmapd = $scope.map.control.getGMap();
+				console.log(gmapd.getCenter());
+				// clear the watchPosition to save battery lives?
+				$window.navigator.geolocation.clearWatch($scope.geolocationwatchID);
 			});
 		}
 		
 		// Get all brewery location markers from the locationFactory
 		locationFactory.loadAll( $scope, $rootScope, $state );
 		
-		// trigger gmap.resize when windows resize
-		var w = angular.element($window);
-		w.bind('resize', function() {
-			var gmapd = $scope.map.control.getGMap();
-			google.maps.event.trigger(gmapd, "resize");
-		});
+		/*
+        * GoogleMapApi is a promise with a
+        * then callback of the google.maps object
+        *   @pram: maps = google.maps
+        */
+        GoogleMapApi.then(function(maps) {
+			// trigger gmap.resize when windows resize
+			var w = angular.element($window);
+			w.bind('resize', function() {
+				var gmapd = $scope.map.control.getGMap();
+				google.maps.event.trigger(gmapd, "resize");
+			});
+			
+			if ( $scope.onlocation === false ) {
+				// on home screen, add some map listener(s)
+				$scope.refilterTimeout = null;
+				setTimeout(function() {
+					var gmapd = $scope.map.control.getGMap();
+					// listen when the center has manually been moved
+					$scope.mapMoveListener = google.maps.event.addListener(gmapd, 'center_changed', function() {
+						clearTimeout( $scope.refilterTimeout );
+						//console.log('map moved : center changed');
+						$scope.mapmoved = true;
+						// add throttled call to filter map markers in the area, here?
+						$scope.refilterTimeout = setTimeout( function() {
+							console.log('check bounds :');
+							var gmapd = $scope.map.control.getGMap();
+							var bounds = gmapd.getBounds();
+							var markersinbounds = markersinboundsFilter( bounds, $scope.markers );
+							console.log(markersinbounds);
+							// #todo : filter News Feed and Location Images and List for just the in-bounds
+						}, 200 );
+						// don't just go back to previous centering? but by now watch should be done anyways..
+						//$window.navigator.geolocation.clearWatch($scope.geolocationWatchID);
+					});
+				}, 400);
+			}
+        });
 	}
 })();
