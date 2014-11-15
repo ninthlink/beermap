@@ -1,0 +1,32 @@
+/**
+ * all filters in 1 file?!
+ */
+(function() {
+	angular
+		.module('beerMap')
+		/**
+		 * markerinbounds returns true/false for if a given bounds contains a given LatLng 
+		 */
+		.filter('markerinbounds', function() {
+			return function( bounds, latlng ) {
+				// bounds.contains takes a LatLng object
+				return bounds.contains(latlng);
+			};
+		})
+		/**
+		 * markersinbounds returns a filtered array containing the items inside the bounds?
+		 */
+		.filter('markersinbounds', [ 'GoogleMapApi'.ns(), function( GoogleMapApi ) {
+			return function( bounds, markerarray ) {
+				var inbounds = [];
+				angular.forEach( markerarray, function( marker ) {
+					// create a new LatLng object to check bounds.contains against
+					var ll = new google.maps.LatLng( marker.coords.latitude, marker.coords.longitude );
+					if ( bounds.contains( ll ) ) {
+						inbounds.push( marker );
+					}
+				});
+				return inbounds;
+			};
+		}]);
+})();
