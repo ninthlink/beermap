@@ -90,7 +90,10 @@
 		o.addMarkerEvents = function( $scope, $rootScope, $state ) {
 			if ( angular.isArray( $scope.markers ) ) {
 				angular.forEach($scope.markers, function(marker) {
+					// set map marker for now
 					marker.icon = icon_reddot;
+					// initial distance?
+					marker.distance = '';
 					// "City, State Zip"
 					marker.CSZ = function() {
 						return marker.city +', '+ marker.state +' '+ marker.zip;
@@ -102,6 +105,7 @@
 					// store a couple versions of fullName combined for easier things?
 					marker.fullName = marker.name + ( marker.loc !== '' ? (' <small>' + marker.loc + '</small>') : '' );
 					marker.fullNameSearch = marker.name +' '+ marker.loc;
+					// in case we ever want to do permalink as like /location/ballast-point-old-grove ?
 					marker.slug = marker.fullNameSearch.replace(/ /g,'-').toLowerCase();
 					// name + location (if there is), wrapped in www link (if there is)
 					marker.fullNameLink = function() {
@@ -127,25 +131,11 @@
 							//markerClicked($scope, marker.id);
 							$state.go('location', { id: marker.id });
 						}
-						/*
-						// note : no longer used because we can just jump states?
-						marker.closeRight = function() {
-							console.log('close..');
-							$scope.showOverlay = false;
-							$scope.showMainFeed = true;
-							$scope.mapclass = '';
-							//console.log($scope.map.center);
-							window.setTimeout(function(){
-								var gmapd = $scope.map.control.getGMap();
-								google.maps.event.trigger(gmapd, "resize");
-								// reset map position to original center
-								// note : not sure this is right functionality?
-								$scope.map.center = $scope.originalCenter;
-								$scope.map.zoom = $scope.originalZoom;
-								$scope.$apply();
-							}, 100);
-						}
-						*/
+						marker.updateDistance = function( newDistance ) {
+							console.log( 'update distance for #'+ marker.id + ' : ' + marker.fullName + ' ::');
+							console.log(newDistance);
+							marker.distance = newDistance;
+						};
 						// check if we should default open to a particular ID loaded in scope?
 						if ( $scope.onlocation !== false ) {
 							if ( marker.id == $scope.onlocation ) {

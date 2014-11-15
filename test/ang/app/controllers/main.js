@@ -58,6 +58,9 @@
 			maxlng: false
 		};
 		// map initialData, mostly just for on location Details but not specific to it?!
+		$scope.nearbyMarkers = [];
+		$scope.nearbyLoaded = false;
+		$scope.nearbyNotFound = false;
 		$scope.newsLoaded = false;
 		$scope.newsFeed = initialData.newsFeed;
 		if ( angular.isArray( $scope.newsFeed ) ) {
@@ -68,6 +71,8 @@
 		$scope.locationImageFeed = initialData.locationImageFeed;
 		$scope.geolocationWatchID = null;
 		$scope.myDot = locationFactory.myLocationIcon();
+		$rootScope.myCoords = false;
+		$scope.hideDistances = true;
 		
 		if ( $stateParams.id !== undefined ) {
 			// on LOCATION DETAILS 
@@ -109,6 +114,7 @@
 			function geo_error(error){
 				console.log("geolocation error");
 				console.log(error);
+				$rootScope.myCoords = false;
 			}
 			$scope.geolocationwatchID = $window.navigator.geolocation.watchPosition( geo_success, geo_error, { enableHighAccuracy: false });
 			$scope.$on("$destroy", function() {
@@ -136,9 +142,60 @@
 				google.maps.event.trigger(gmapd, "resize");
 			});
 			
+			$scope.distanceMatrixService = new google.maps.DistanceMatrixService();
+			
 			if ( $scope.onlocation === false ) {
 				// on home screen, add some map listener(s)
 				$scope.refilterTimeout = null;
+				$scope.refilter = function() {
+					$scope.nearbyLoaded = false;
+					var gmapd = $scope.map.control.getGMap();
+					var bounds = gmapd.getBounds();
+					var inbounds = markersinboundsFilter( bounds, $scope.markers );
+					/**
+					 * returns object with some info
+					 * .inbounds = [ array of markers that were inbounds ]
+					 * .latlngs = [ array of LatLng of those markers ]
+					 * .count = length of those arrays, which match
+					 */
+					
+					// store results
+					$scope.nearbyMarkers = inbounds.inbounds;
+					console.log($scope.nearbyMarkers);
+					$scope.nearbyNotFound = ( inbounds.count == 0 );
+					$scope.nearbyLoaded = true;
+					//console.log('nearbyNotFound = ' + ( $scope.nearbyNotFound ? 'true' : 'false' ) + ' : nearbyLoaded = ' + ( $scope.nearbyLoaded ? 'true' : 'false' ) + ' : so that = ' + ( ( $scope.nearbyLoaded && !$scope.nearbyNotFound ) ? 'true' : 'false' ) );
+					// recalc distances?
+					if ( ( $rootScope.myCoords !== false ) && ( inbounds.count > 0 ) ) {
+						var myLatLng = new google.maps.LatLng( $rootScope.myCoords.latitude, $rootScope.myCoords.longitude );
+						$scope.distanceMatrixService.getDistanceMatrix({
+							origins: [ myLatLng ],
+							destinations: inbounds.latlngs,
+							travelMode: google.maps.TravelMode.DRIVING,
+							unitSystem: google.maps.UnitSystem.IMPERIAL,
+							avoidHighways: false,
+							avoidTolls: false
+						}, $scope.recalcDistances );
+					} else {
+						// we don't have current user's location so hide all distances?
+						$scope.hideDistances = true;
+					}
+				};
+				$scope.recalcDistances = function( response, status ) {
+					if (status != google.maps.DistanceMatrixStatus.OK) {
+						console.log('Distance Matrix Error was: ' + status);
+						$scope.hideDistances = true;
+					} else {
+						// success!
+						console.log('DISTANCES UPDATE :');
+						console.log(response);
+						angular.forEach( response.rows[0].elements, function( d, k ) {
+							$scope.nearbyMarkers[k].updateDistance( d.distance.text );
+						});
+						$scope.hideDistances = false;
+						$scope.nearbyLoaded = true;
+					}
+				};
 				setTimeout(function() {
 					var gmapd = $scope.map.control.getGMap();
 					// listen when the center has manually been moved
@@ -147,17 +204,19 @@
 						//console.log('map moved : center changed');
 						$scope.mapmoved = true;
 						// add throttled call to filter map markers in the area, here?
-						$scope.refilterTimeout = setTimeout( function() {
-							console.log('check bounds :');
-							var gmapd = $scope.map.control.getGMap();
-							var bounds = gmapd.getBounds();
-							var markersinbounds = markersinboundsFilter( bounds, $scope.markers );
-							console.log(markersinbounds);
-							// #todo : filter News Feed and Location Images and List for just the in-bounds
-						}, 200 );
+						$scope.refilterTimeout = setTimeout( $scope.refilter, 200 );
 						// don't just go back to previous centering? but by now watch should be done anyways..
 						//$window.navigator.geolocation.clearWatch($scope.geolocationWatchID);
 					});
+					$scope.mapZoomListener = google.maps.event.addListener(gmapd, 'zoom_changed', function() {
+						clearTimeout( $scope.refilterTimeout );
+						console.log('map moved : zoom changed');
+						$scope.mapmoved = true;
+						// add throttled call to filter map markers in the area, here?
+						$scope.refilterTimeout = setTimeout( $scope.refilter, 200 );
+					});
+					// initial check for markers in the area, too
+					$scope.refilterTimeout = setTimeout( $scope.refilter, 100 );
 				}, 400);
 			}
         });

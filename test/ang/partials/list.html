@@ -1,55 +1,28 @@
-<!-- LIST block -->
+<!-- Main Feed block -->
 
-<div class="container-fluid">
-	<!--
-	<div class="page-header">
-		<h1 class="text-center">
-			<span class="pull-left">
-				<a href="#/home" class="btn btn-primary btn-sm">
-					<span class="glyphicon glyphicon-chevron-left"></span> back to map
-				</a>
-			</span>
-			All Brewery Location Listings
-		</h1>
-	</div>
-	-->
-	<div class="row">
-		<div class="col-md-12">
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="llon"> toggle latlng column
-				</label>
-			</div>
+<div class="feed-container">
+	<div ng-hide="nearbyLoaded && !nearbyNotFound" class="feed-item">
+		<div class="media-body">
+			<p class="text-center" ng-hide="nearbyLoaded">Loading Nearby Breweries...</p>
+			<p class="text-center" ng-show="nearbyNotFound">No Breweries found in the current map area - please try again.</p>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="row"><span class="clickable" ng-click="sortBy('id')">#<span ng-show="sort == 'id'"><small><span ng-show="!asc" class="glyphicon glyphicon-chevron-down"></span><span ng-show="asc" class="glyphicon glyphicon-chevron-up"></span></small></span></span></th>
-						<th scope="row"><span class="clickable" ng-click="sortBy('name')">Brewery<span ng-show="sort == 'name'"><small><span ng-show="!asc" class="glyphicon glyphicon-chevron-down"></span><span ng-show="asc" class="glyphicon glyphicon-chevron-up"></span></small></span></span></th>
-						<th scope="row">Location</th>
-						<th scope="row" ng-show="llon">Lat, Lng</th>
-						<th scope="row"><span class="fa fa-facebook-square" title="Facebook"></span></th>
-						<th scope="row"><span class="fa fa-twitter" title="Twitter"></span></th>
-						<th scope="row"><span class="fa fa-instagram" title="Instagram"></span></th>
-						<!--th scope="row"><span class="fa fa-foursquare" title="Foursquare"></span></th-->
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="marker in markers | orderBy:sort:asc">
-						<td>{{marker.id}}</td>
-						<td ng-bind-html="marker.fullNameLink()"></td>
-						<td ng-bind-html="marker.fullAddr()"></td>
-						<td ng-show="llon">{{marker.coords.latitude}}, {{marker.coords.longitude}}</td>
-						<td><span ng-show="marker.fb != ''"><a href="https://www.facebook.com/{{marker.fb}}" target="_blank"><span class="fa fa-facebook-square" title="{{marker.fb}}"></span></a></span></td>
-						<td><span ng-show="marker.tw != ''"><a href="https://twitter.com/{{marker.tw}}" target="_blank"><span class="fa fa-twitter" title="{{marker.tw}}"></span></a></span></td>
-						<td><span ng-show="marker.ins != ''"><a href="http://instagram.com/{{marker.ins}}" target="_blank"><span class="fa fa-instagram" title="{{marker.ins}}"></span></a></span></td>
-						<!--td><button ng-hide="marker.foursquare_id" class="btn btn-link btn-xs" ng-click="foursquared(marker)">click 4sq</button><span ng-bind-html="marker.print4s()"></span></td-->
-					</tr>
-				</tbody>
-			</table>
+	<div ng-show="!nearbyNotFound">
+		<div ng-repeat="marker in nearbyMarkers" class="feed-item">
+			<div class="media">
+				<div ng-hide="hideDistances" class="pull-right">
+					<br />
+					<small><abbr class="distance" ng-bind-html="marker.distance"></abbr></small>
+				</div>
+				<div class="media-body">
+					<p>
+						<strong ng-bind-html="marker.fullName"></strong><br />
+						<small>
+							<span ng-bind-html="marker.fullAddr()"></span>
+						</small>
+					</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

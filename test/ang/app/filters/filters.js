@@ -17,18 +17,30 @@
 		 * markersinbounds returns a filtered array containing the items inside the bounds?
 		 */
 		.filter('markersinbounds', [ 'GoogleMapApi'.ns(), function( GoogleMapApi ) {
-			return function( bounds, markerarray ) {
+			return function( bounds, markerArray, distanceFrom ) {
 				var inbounds = [];
-				angular.forEach( markerarray, function( marker ) {
+				var latlngs = [];
+				var count = 0;
+				angular.forEach( markerArray, function( marker ) {
 					// create a new LatLng object to check bounds.contains against
 					var ll = new google.maps.LatLng( marker.coords.latitude, marker.coords.longitude );
 					if ( bounds.contains( ll ) ) {
+						// add marker to the subset we are returning
 						inbounds.push( marker );
+						// and add the ll to the LatLngs we are returning
+						latlngs.push( ll );
+						// inc counter
+						count++;
 					}
 				});
-				return inbounds;
+				return {
+					count: count,
+					inbounds : inbounds,
+					latlngs : latlngs
+				};
 			};
 		}]);
+		
 		/**
 		 * #todo : add filters to filter markers by...
 		 *
