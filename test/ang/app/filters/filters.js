@@ -29,4 +29,14 @@
 				return inbounds;
 			};
 		}]);
+		/**
+		 * #todo : add filters to filter markers by...
+		 *
+		 * by twitter username
+		 * twitter user ID
+		 * instagram username
+		 * instagram location
+		 *
+		 * and then?
+		 */
 })();
