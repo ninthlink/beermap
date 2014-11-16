@@ -118,7 +118,7 @@
 			}
 			$scope.geolocationwatchID = $window.navigator.geolocation.watchPosition( geo_success, geo_error, { enableHighAccuracy: false });
 			$scope.$on("$destroy", function() {
-				console.log('destroying this view?! current map center was...');
+				console.log('destroying this view?! #todo probably want to save this map center & zoom for when you come back : current map center was...');
 				var gmapd = $scope.map.control.getGMap();
 				console.log(gmapd.getCenter());
 				// clear the watchPosition to save battery lives?
