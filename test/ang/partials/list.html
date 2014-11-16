@@ -8,7 +8,7 @@
 		</div>
 	</div>
 	<div ng-show="!nearbyNotFound">
-		<div ng-repeat="marker in nearbyMarkers" class="feed-item">
+		<div ng-repeat="marker in nearbyMarkers" ng-mouseover="marker.mouseover();" ng-mouseout="marker.mouseout();" class="feed-item clickable {{marker.activeClass}}" ng-click="marker.onClick();">
 			<div class="media">
 				<div ng-hide="hideDistances" class="pull-right">
 					<br />

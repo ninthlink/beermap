@@ -38,9 +38,9 @@
 		])
 		.controller('mainCtrl', mainCtrl);
 	
-	mainCtrl.$inject = [ '$scope', '$rootScope', '$state', '$stateParams', '$window', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory', 'initialData', 'markersinboundsFilter' ];
+	mainCtrl.$inject = [ '$scope', '$rootScope', '$state', '$stateParams', '$window', 'locationFactory', 'GoogleMapApi'.ns(), 'layoutHelper', 'socialFactory', 'initialData', 'markersinboundsFilter', 'finditembykeyFilter' ];
 	//omg wtf so many args
-	function mainCtrl( $scope, $rootScope, $state, $stateParams, $window, locationFactory, GoogleMapApi, layoutHelper, socialFactory, initialData, markersinboundsFilter ){
+	function mainCtrl( $scope, $rootScope, $state, $stateParams, $window, locationFactory, GoogleMapApi, layoutHelper, socialFactory, initialData, markersinboundsFilter, finditembykeyFilter ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		// set some initial map variables
 		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {}, markerControl: {} };
@@ -75,7 +75,7 @@
 		$scope.hideDistances = true;
 		
 		if ( $stateParams.id !== undefined ) {
-			// on LOCATION DETAILS 
+			// on LOCATION DETAILS
 			$scope.onlocation = $stateParams.id;
 			$scope.showMainFeed = false;
 			$rootScope.onlocation = true;
@@ -230,13 +230,16 @@
 					mouseover: markerMouseOver,
 					mouseout: markerMouseOut,
 				};
-				function markerMouseOver( mousedmarker, event ) {
-					console.log('markerMouseOver ?? #'+ mousedmarker.key);
-					console.log(mousedmarker, event);
+				function markerMouseOver( result, event ) {
+					//console.log('markerMouseOver ?? #'+ result.key);
+					var overmarker = finditembykeyFilter( $scope.nearbyMarkers, 'id', result.key, true );
+					//console.log(overmarker);
+					overmarker.mouseover();
 				}
 				function markerMouseOut( mousedmarker, event ) {
-					console.log('?? markerMouseOut #'+ mousedmarker.key);
-					console.log(mousedmarker);
+					//console.log('?? markerMouseOut #'+ mousedmarker.key);
+					//console.log(mousedmarker);
+					$scope.markers[mousedmarker.key].mouseout();
 				}
 			}
         });

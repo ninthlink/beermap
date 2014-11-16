@@ -350,9 +350,18 @@ h1, h2, h3, h4, h5, h6 {
 .feed-container .media-left {
 	padding-right: 1em;
 }
-.feed-container .feed-item {
+.feed-container .feed-item,
+.feed-container a.feed-item {
 	border-bottom: 1px solid #ccc;
+	color: #1b1b1b;
+	display: block;
 	padding: 1em 0;
+}
+.feed-container a.feed-item:hover {
+	text-decoration: none;
+}
+.feed-container .feed-item.over {
+	background-color: #eaeaea;
 }
 
 /* CLICKABLE OBJECTS */

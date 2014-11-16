@@ -90,6 +90,8 @@
 		o.addMarkerEvents = function( $scope, $rootScope, $state ) {
 			if ( angular.isArray( $scope.markers ) ) {
 				angular.forEach($scope.markers, function(marker) {
+					// set a class for adding places when its hovered over / active
+					marker.activeClass = '';
 					// set map marker for now
 					marker.icon = icon_reddot;
 					// initial distance?
@@ -132,29 +134,27 @@
 							$state.go('location', { id: marker.id });
 						};
 						marker.updateDistance = function( newDistance ) {
-							console.log( 'update distance for #'+ marker.id + ' : ' + marker.fullName + ' ::');
-							console.log(newDistance);
+							console.log( 'update distance for #'+ marker.id + ' : ' + marker.fullName + ' :: '+ newDistance);
 							marker.distance = newDistance;
 						};
-						// check if we should default open to a particular ID loaded in scope?
+						
+						marker.mouseover = function() {
+							//console.log('markerMouseOver ??');
+							//console.log(marker);
+							marker.activeClass = 'over';
+						};
+						marker.mouseout = function() {
+							//console.log('?? markerMouseOut');
+							//console.log(marker);
+							marker.activeClass = '';
+						};
+						
+						// and last but not least, check if we should default open to a particular ID loaded in scope?
 						if ( $scope.onlocation !== false ) {
 							if ( marker.id == $scope.onlocation ) {
 								gotoLocation($scope, $rootScope, marker.id);
 							}
 						}
-						
-						
-						marker.clickEventsObject = {
-							mouseover: function( marker, e ) {
-								console.log('markerMouseOver ??');
-								console.log(marker);
-							},
-							mouseout: function( marker, e ) {
-								console.log('?? markerMouseOut');
-								console.log(marker);
-							},
-						};
-						
 					} else {
 						// huh?
 					}
@@ -209,8 +209,7 @@
 			return ob ? inbounds : bounds;
 		};
 		return o;
-	}
-	/**
+	}/**
 	 * function fired when a particular marker is clicked on the map
 	 */
 	function gotoLocation( $scope, $rootScope, i ) {
