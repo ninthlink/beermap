@@ -43,7 +43,7 @@
 	function mainCtrl( $scope, $rootScope, $state, $stateParams, $window, locationFactory, GoogleMapApi, layoutHelper, socialFactory, initialData, markersinboundsFilter ){
 		$rootScope.menu = layoutHelper.getMenu( 'home' ); // gets and sets active menu?
 		// set some initial map variables
-		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {} };
+		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {}, markerControl: {} };
 		$scope.options = {};//scrollwheel: false};
 		$scope.coordsUpdates = 0;
 		$scope.dynamicMoveCtr = 0;
@@ -192,6 +192,13 @@
 						angular.forEach( response.rows[0].elements, function( d, k ) {
 							$scope.nearbyMarkers[k].updateDistance( d.distance.text );
 						});
+						$scope.nearbyMarkers.sort(function(a,b) {
+							var af = parseFloat(a.distance);
+							var bf = parseFloat(b.distance);
+							if ( af < bf ) return -1;
+							if ( af > bf ) return 1;
+							return 0;
+						});
 						$scope.hideDistances = false;
 						$scope.nearbyLoaded = true;
 					}
@@ -218,6 +225,19 @@
 					// initial check for markers in the area, too
 					$scope.refilterTimeout = setTimeout( $scope.refilter, 100 );
 				}, 400);
+				
+				$scope.clickEventsObject = {
+					mouseover: markerMouseOver,
+					mouseout: markerMouseOut,
+				};
+				function markerMouseOver( mousedmarker, event ) {
+					console.log('markerMouseOver ?? #'+ mousedmarker.key);
+					console.log(mousedmarker, event);
+				}
+				function markerMouseOut( mousedmarker, event ) {
+					console.log('?? markerMouseOut #'+ mousedmarker.key);
+					console.log(mousedmarker);
+				}
 			}
         });
 	}

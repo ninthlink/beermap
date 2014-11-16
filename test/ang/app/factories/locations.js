@@ -130,7 +130,7 @@
 							//console.log('onClick '+ marker.id);
 							//markerClicked($scope, marker.id);
 							$state.go('location', { id: marker.id });
-						}
+						};
 						marker.updateDistance = function( newDistance ) {
 							console.log( 'update distance for #'+ marker.id + ' : ' + marker.fullName + ' ::');
 							console.log(newDistance);
@@ -142,6 +142,19 @@
 								gotoLocation($scope, $rootScope, marker.id);
 							}
 						}
+						
+						
+						marker.clickEventsObject = {
+							mouseover: function( marker, e ) {
+								console.log('markerMouseOver ??');
+								console.log(marker);
+							},
+							mouseout: function( marker, e ) {
+								console.log('?? markerMouseOut');
+								console.log(marker);
+							},
+						};
+						
 					} else {
 						// huh?
 					}
