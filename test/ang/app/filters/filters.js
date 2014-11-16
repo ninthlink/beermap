@@ -23,12 +23,14 @@
 				var count = 0;
 				angular.forEach( markerArray, function( marker ) {
 					// create a new LatLng object to check bounds.contains against
-					var ll = new google.maps.LatLng( marker.coords.latitude, marker.coords.longitude );
-					if ( bounds.contains( ll ) ) {
+					if ( marker.latLngObj == undefined ) {
+						marker.latLngObj = new google.maps.LatLng( marker.coords.latitude, marker.coords.longitude );
+					}
+					if ( bounds.contains( marker.latLngObj ) ) {
 						// add marker to the subset we are returning
 						inbounds.push( marker );
 						// and add the ll to the LatLngs we are returning
-						latlngs.push( ll );
+						latlngs.push( marker.latLngObj );
 						// inc counter
 						count++;
 					}
@@ -39,8 +41,28 @@
 					latlngs : latlngs
 				};
 			};
-		}]);
-		
+		}])
+		/**
+		 * search array of markers for that one with matching key
+		 *
+		 * returning either the array of all matching,
+		 * or just the first found if singular = true
+		 */
+		.filter('finditembykey', function() {
+			return function( array, key, value, singular ) {
+				var found = [];
+				angular.forEach( array, function( item ) {
+					if ( item[key] == value ) {
+						found.push(item);
+					}
+				});
+				if ( ( found.length > 0 ) && ( singular == true ) ) {
+					// in this case, return just the first match
+					return found[0];
+				}
+				return found;
+			};
+		})
 		/**
 		 * #todo : add filters to filter markers by...
 		 *
