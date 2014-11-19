@@ -1,3 +1,4 @@
+(function() {
 'use strict';
 
 var crypto = require('crypto');
@@ -408,3 +409,4 @@ describe('<Unit Test>', function() {
     });
   });
 });
+})();

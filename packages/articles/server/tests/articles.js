@@ -1,3 +1,4 @@
+(function() {
 'use strict';
 
 /**
@@ -86,3 +87,4 @@ describe('<Unit Test>', function() {
     });
   });
 });
+})();
