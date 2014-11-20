@@ -13,8 +13,8 @@ var hasAuthorization = function(req, res, next) {
 module.exports = function(Articles, app, auth) {
 
   app.route('/articles')
-    .get(articles.all);
-    //.post(auth.requiresLogin, articles.create);
+    .get(articles.all)
+    .post(auth.requiresLogin, articles.create);
   app.route('/articles/:articleId')
     .get(articles.placed);
 	/*

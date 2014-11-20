@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  Article = mongoose.model('Article'),
+  //Article = mongoose.model('Article'),
   Place = mongoose.model('Place'),
   _ = require('lodash');
 
@@ -29,16 +29,17 @@ exports.article = function(req, res, next, id) {
  * Create an article
  */
 exports.create = function(req, res) {
-  var article = new Article(req.body);
-  article.user = req.user;
-
-  article.save(function(err) {
+  var place = new Place(req.body);
+  //article.user = req.user;
+	console.log('server : create a new Place :');
+	console.log(place);
+  place.save(function(err) {
     if (err) {
       return res.json(500, {
-        error: 'Cannot save the article'
+        error: 'Cannot save the place'
       });
     }
-    res.json(article);
+    res.json(place);
 
   });
 };
