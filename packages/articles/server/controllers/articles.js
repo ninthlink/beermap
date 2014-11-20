@@ -18,7 +18,7 @@ var mongoose = require('mongoose'),
  */
 exports.article = function(req, res, next, id) {
 	console.log('exports.article');
-	if ( id.substr(0,1) == '(' ) {
+	if ( id.substr(0,1) === '(' ) {
 		//console.log('overloaded :: looking for bounds');
 		//console.log(id);
 		var parsedok = false;
