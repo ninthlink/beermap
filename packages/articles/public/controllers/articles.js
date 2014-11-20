@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles',
-  function($scope, $stateParams, $location, Global, Articles) {
+  function($scope, $stateParams, $location, Global, Articles, uiGmapGoogleMapApi) {
     $scope.global = Global;
 
     $scope.hasAuthorization = function(article) {
@@ -60,11 +60,13 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
     };
 
     $scope.find = function() {
+		console.log('find..?!');
+		$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
       Articles.query(function(articles) {
         $scope.articles = articles;
       });
     };
-
+	
     $scope.findOne = function() {
       Articles.get({
         articleId: $stateParams.articleId

@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
   Article = mongoose.model('Article'),
+  Place = mongoose.model('Place'),
   _ = require('lodash');
 
 
@@ -12,10 +13,14 @@ var mongoose = require('mongoose'),
  * Find article by id
  */
 exports.article = function(req, res, next, id) {
-  Article.load(id, function(err, article) {
+	console.log('exports.article');
+	
+  Place.load(id, function(err, place) {
     if (err) return next(err);
-    if (!article) return next(new Error('Failed to load article ' + id));
-    req.article = article;
+    if (!place) return next(new Error('Failed to load article place ' + id));
+	// else : its ok?
+    req.place = place;
+	console.log(place);
     next();
   });
 };
@@ -78,20 +83,31 @@ exports.destroy = function(req, res) {
  * Show an article
  */
 exports.show = function(req, res) {
+	console.log('exports.show');
   res.json(req.article);
+  console.log('---EXP---');
 };
 
 /**
- * List of Articles
+ * List of Places
  */
 exports.all = function(req, res) {
-  Article.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
+  Place.find().exec(function(err, places) {
     if (err) {
       return res.json(500, {
-        error: 'Cannot list the articles'
+        error: 'Cannot list the places'
       });
     }
-    res.json(articles);
-
+	console.log('--- loaded all Places ---');
+	console.log(places);
+	console.log('----');
+    res.json(places);
   });
+};
+
+/**
+ * Show a Place
+ */
+exports.placed = function(req, res) {
+  res.json(req.place);
 };

@@ -32,6 +32,13 @@ angular.module('mean.articles').config(['$stateProvider',
           //loggedin: checkLoggedin
         }
       })
+      .state('map', {
+        url: '/',
+        templateUrl: 'articles/views/map.html',
+        resolve: {
+          //loggedin: checkLoggedin
+        }
+      })
       .state('create article', {
         url: '/articles/create',
         templateUrl: 'articles/views/create.html',
