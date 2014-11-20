@@ -17,7 +17,11 @@ var mean = require('meanio'),
   helpers = require('view-helpers'),
   flash = require('connect-flash'),
   config = mean.loadConfig();
-
+  /*
+  express = require('express'),
+  socketio = require('socket.io'),
+  http = require('http'),
+  */
 module.exports = function(app, passport, db) {
 
   app.set('showStackError', true);
@@ -95,9 +99,16 @@ module.exports = function(app, passport, db) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  //mean middleware from modules before routes
+  // MEAN middleware from modules before routes
   app.use(mean.chainware.before);
 
   // Connect flash for flash messages
   app.use(flash());
+  
+  /*
+  // tweet stream setup?! NOT QUITE YET
+  var io = socketio(http);
+  app.set('io', io);
+  console.log('socket.io listening on port '+ config.http.port + ' (hopefully)');
+  */
 };
