@@ -3,7 +3,10 @@
 angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', '$window', 'Global', 'Articles', 'Places', 'PlacesFromSpreadsheet', 'uiGmapGoogleMapApi',
   function($scope, $stateParams, $location, $window, Global, Articles, Places, PlacesFromSpreadsheet, GoogleMapApi) {
     $scope.global = Global;
-
+	// map marker icons?!
+	var icon_reddot = '/articles/assets/img/dot-red.png';
+	//var icon_bluedot = '/articles/assets/img/dot-blue.png';
+	
     $scope.hasAuthorization = function(article) {
       if (!article || !article.user) return false;
       return $scope.global.isAdmin || article.user._id === $scope.global.user._id;
@@ -86,7 +89,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 			var w = angular.element($window);
 			w.bind('resize', function() {
 				var gmapd = $scope.map.control.getGMap();
-				maps.event.trigger(gmapd, "resize");
+				maps.event.trigger( gmapd, 'resize' );
 			});
 			
 			setTimeout(function() {
@@ -108,15 +111,17 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 					$scope.markers = [];
 					Places.query({
 						articleId: bounds_corners
-					}, function(places) {
+					}, function(newplaces) {
 						//console.log('queried Places : got :');
 						//console.log(places);
-						angular.forEach(places, function( marker, k ) {
+						angular.forEach(newplaces, function( marker, k ) {
 							marker.coords = {
 								latitude: marker.latitude,
 								longitude: marker.longitude
 							};
 							marker.id = k;
+							marker.icon = icon_reddot;
+							
 							$scope.markers.push(marker);
 						});
 						//console.log('-- markers : ');
