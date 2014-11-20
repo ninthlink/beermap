@@ -99,9 +99,9 @@ exports.all = function(req, res) {
         error: 'Cannot list the places'
       });
     }
-	console.log('--- loaded all Places ---');
-	console.log(places);
-	console.log('----');
+	//console.log('--- loaded all Places ---');
+	//console.log(places);
+	//console.log('----');
     res.json(places);
   });
 };
