@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', 'Places', 'PlacesFromSpreadsheet',
-  function($scope, $stateParams, $location, Global, Articles, Places, PlacesFromSpreadsheet, uiGmapGoogleMapApi) {
+angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', '$window', 'Global', 'Articles', 'Places', 'PlacesFromSpreadsheet', 'uiGmapGoogleMapApi',
+  function($scope, $stateParams, $location, $window, Global, Articles, Places, PlacesFromSpreadsheet, GoogleMapApi) {
     $scope.global = Global;
 
     $scope.hasAuthorization = function(article) {
@@ -75,61 +75,70 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 		$scope.styles = [{'featureType':'water','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':-78},{'lightness':67},{'visibility':'simplified'}]},{'featureType':'landscape','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'simplified'}]},{'featureType':'road','elementType':'geometry','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'simplified'}]},{'featureType':'poi','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'off'}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'hue':'#e9ebed'},{'saturation':-90},{'lightness':-8},{'visibility':'simplified'}]},{'featureType':'transit','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':10},{'lightness':69},{'visibility':'on'}]},{'featureType':'administrative.locality','elementType':'all','stylers':[{'hue':'#2c2e33'},{'saturation':7},{'lightness':19},{'visibility':'on'}]},{'featureType':'road','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'on'}]},{'featureType':'road.arterial','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':-2},{'visibility':'simplified'}]}];
 		
 		$scope.markers = [];
-		Places.query(function(places) {
-			console.log('queried Places : got :');
-			console.log(places);
-			angular.forEach(places, function( marker, k ) {
-				marker.coords = {
-					latitude: marker.latitude,
-					longitude: marker.longitude
+		
+		/**
+         * SUCCESS!! GoogleMapApi is a promise with a
+         * then callback of the google.maps object
+         *   @pram: maps = google.maps
+         */
+        GoogleMapApi.then(function(maps) {
+			// trigger gmap.resize when windows resize
+			var w = angular.element($window);
+			w.bind('resize', function() {
+				var gmapd = $scope.map.control.getGMap();
+				maps.event.trigger(gmapd, "resize");
+			});
+			
+			setTimeout(function() {
+				var gmapd = $scope.map.control.getGMap();
+				// on home screen, add some map listener(s)
+				$scope.refilterTimeout = null;
+				$scope.refilter = function() {
+					var gmapd = $scope.map.control.getGMap();
+					var bounds = gmapd.getBounds();
+					// get the 2 boundary corners LatLng objects from the bounds
+					// https://developers.google.com/maps/documentation/javascript/reference#LatLngBounds
+					var ne = bounds.getNorthEast();
+					var sw = bounds.getSouthWest();
+					// combine in to 1 object to send to the server
+					var bounds_corners = ne.toString() +','+ sw.toString();
+					//console.log(':: map bounds update ::');
+					//console.log(bounds_corners);
+					//console.log(':: querying Places now?! ::');
+					$scope.markers = [];
+					Places.query({
+						articleId: bounds_corners
+					}, function(places) {
+						//console.log('queried Places : got :');
+						//console.log(places);
+						angular.forEach(places, function( marker, k ) {
+							marker.coords = {
+								latitude: marker.latitude,
+								longitude: marker.longitude
+							};
+							marker.id = k;
+							$scope.markers.push(marker);
+						});
+						//console.log('-- markers : ');
+						//console.log($scope.markers);
+					});
+					
 				};
-				marker.id = k;
-				$scope.markers.push(marker);
-			});
-			console.log('-- markers : ');
-			console.log($scope.markers);
-		});
-		/*
-		// load places from google spreadsheet & translate to json array for mongo inserting?!
-		PlacesFromSpreadsheet.get(function(placespreadsheet) {
-			console.log('places loaded into front end?!');
-			console.log(placespreadsheet);
-			var docArray = [];
-			angular.forEach( placespreadsheet.feed.entry, function( row ) {
-				// map row data to new Places object fields?!
-				var doc = new Places({
-					addr: row['gsx$addr']['$t'],
-					city: row['gsx$city']['$t'],
-					dogs: row['gsx$dogs']['$t'],
-					facebook_location_id: row['gsx$facebooklocationid']['$t'],
-					facebook_page_id: row['gsx$facebookpageid']['$t'],
-					facebook_url: row['gsx$facebookurl']['$t'],
-					fams: row['gsx$fams']['$t'],
-					foods: row['gsx$foods']['$t'],
-					growlers: row['gsx$growlers']['$t'],
-					instagram_location_id: row['gsx$instagramlocationid']['$t'],
-					instagram_user_id: row['gsx$instagramuserid']['$t'],
-					instagram_user_name: row['gsx$instagramusername']['$t'],
-					latitude: row['gsx$latitude']['$t'],
-					longitude: row['gsx$longitude']['$t'],
-					name: row['gsx$name']['$t'],
-					phone: row['gsx$phone']['$t'],
-					slug: row['gsx$slug']['$t'],
-					state: row['gsx$state']['$t'],
-					sublocation: row['gsx$sublocation']['$t'],
-					suffix: row['gsx$suffix']['$t'],
-					trucks: row['gsx$trucks']['$t'],
-					twitter_user_id: row['gsx$twitteruserid']['$t'],
-					twitter_user_img: row['gsx$twitteruserimg']['$t'],
-					twitter_user_name: row['gsx$twitterusername']['$t'],
-					www: row['gsx$www']['$t'],
-					zip: row['gsx$zip']['$t'],
+				// listen when the center has manually been moved
+				$scope.mapMoveListener = maps.event.addListener(gmapd, 'center_changed', function() {
+					clearTimeout( $scope.refilterTimeout );
+					// add throttled call to filter map markers in the area
+					$scope.refilterTimeout = setTimeout( $scope.refilter, 200 );
 				});
-				docArray.push(doc);
-			});
-			$scope.docArray = docArray;
+				$scope.mapZoomListener = maps.event.addListener(gmapd, 'zoom_changed', function() {
+					clearTimeout( $scope.refilterTimeout );
+					// add throttled call to filter map markers in the area
+					$scope.refilterTimeout = setTimeout( $scope.refilter, 200 );
+				});
+				// initial check for markers in the area, too
+				$scope.refilterTimeout = setTimeout( $scope.refilter, 100 );
+			}, 400);
 		});
-		*/
     };
 	
     $scope.findOne = function() {

@@ -11,18 +11,63 @@ var mongoose = require('mongoose'),
 
 /**
  * Find article by id
+ *
+ * heres the deal : dont know how to make a new api call just yet
+ * so we're overloading article and changing based off if id is really an _id
+ * or if its something else like a '(lat,lng),(lat,lng)' ...
  */
 exports.article = function(req, res, next, id) {
 	console.log('exports.article');
-	
-  Place.load(id, function(err, place) {
-    if (err) return next(err);
-    if (!place) return next(new Error('Failed to load article place ' + id));
-	// else : its ok?
-    req.place = place;
-	console.log(place);
-    next();
-  });
+	if ( id.substr(0,1) == '(' ) {
+		//console.log('overloaded :: looking for bounds');
+		//console.log(id);
+		var parsedok = false;
+		var nelat, nelng, swlat, swlng;
+		
+		var commasplit = id.indexOf( '),(' );
+		if ( commasplit > 0 ) {
+			var comma = id.indexOf( ',' );
+			if ( comma > 0 ) {
+				nelat = parseFloat( id.substr( 1, comma - 1 ) ); // 33.1
+				nelng = parseFloat( id.substr( comma + 2, ( commasplit - comma ) - 2 ) ); // -116
+				comma = id.lastIndexOf( ',' );
+				swlat = parseFloat( id.substr( commasplit + 3, ( comma - commasplit ) - 3 ) ); // 32.7
+				swlng = parseFloat( id.substr( comma + 2, id.length - comma - 3 ) ); // -117
+				//console.log('= |'+ nelat +'|'+ nelng +'|'+ swlat +'|'+ swlng);
+				parsedok = true;
+			} else {
+				console.log('looking for bounds, but no inbetween comma found : '+ id);
+			}
+		} else {
+			console.log('no commasplit to be found in '+ id);
+		}
+		// and return
+		if ( parsedok ) {
+			Place.find()
+				.where('latitude').lt(nelat)
+				.where('longitude').lt(nelng)
+				.where('latitude').gt(swlat)
+				.where('longitude').gt(swlng)
+				.exec(function(err, places) {
+				if (err) {
+					return res.json(500, {
+						error: 'Cannot list the places'
+					});
+				}
+				res.json(places);
+			});
+		}
+	} else {
+		console.log('looking for article id '+ id);
+		Place.load(id, function(err, place) {
+			if (err) return next(err);
+			if (!place) return next(new Error('Failed to load article place ' + id));
+			// else : its ok?
+			req.place = place;
+			console.log(place);
+			next();
+		});
+	}
 };
 
 /**
