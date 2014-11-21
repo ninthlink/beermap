@@ -1,9 +1,15 @@
 <section data-ng-controller="ArticlesController" data-ng-init="mainmap()">
 	<div class="map-container">
 		<ui-gmap-google-map bounds="map.bounds" options="options" styles="styles" draggable="true" center="map.center" zoom="map.zoom" control="map.control">
-			<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" events="clickEventsObject" click="'onClick'" control="map.markerControl"></ui-gmap-markers>
+			<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" events="clickEventsObject" control="map.markerControl"></ui-gmap-markers>
 			<ui-gmap-marker idKey="'myLocation'" icon="myDot" coords="myCoords"></ui-gmap-marker>
 		</ui-gmap-google-map>
+	</div>
+	<pre>showing {{markers.length}} places</pre>
+	<div class="place-quick-info" ng-show="highlightPlace">
+		<!-- if this is showing, then highlightPlace = the place marker object that was clicked / shown -->
+		<div>{{highlightPlace.fullName}}</div>
+		<div>{{highlightPlace.fullAddr}}</div>
 	</div>
 	<!--pre ng-hide="true">{{docArray | json}}</pre-->
 </section>

@@ -74,10 +74,10 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 		$scope.options = {};//scrollwheel: false};
 		$scope.coordsUpdates = 0;
 		$scope.dynamicMoveCtr = 0;
+		$scope.highlightPlace = $scope.highlightNumber = false;
+		$scope.markers = [];
 		//	Map Styles : not sure how to inject otherwise..
 		$scope.styles = [{'featureType':'water','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':-78},{'lightness':67},{'visibility':'simplified'}]},{'featureType':'landscape','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'simplified'}]},{'featureType':'road','elementType':'geometry','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'simplified'}]},{'featureType':'poi','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'off'}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'hue':'#e9ebed'},{'saturation':-90},{'lightness':-8},{'visibility':'simplified'}]},{'featureType':'transit','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':10},{'lightness':69},{'visibility':'on'}]},{'featureType':'administrative.locality','elementType':'all','stylers':[{'hue':'#2c2e33'},{'saturation':7},{'lightness':19},{'visibility':'on'}]},{'featureType':'road','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'on'}]},{'featureType':'road.arterial','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':-2},{'visibility':'simplified'}]}];
-		
-		$scope.markers = [];
 		
 		/**
          * SUCCESS!! GoogleMapApi is a promise with a
@@ -108,22 +108,26 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 					//console.log(':: map bounds update ::');
 					//console.log(bounds_corners);
 					//console.log(':: querying Places now?! ::');
-					$scope.markers = [];
+					//$scope.markers = [];
 					Places.query({
 						articleId: bounds_corners
 					}, function(newplaces) {
 						//console.log('queried Places : got :');
 						//console.log(places);
+						var newmarkers = [];
 						angular.forEach(newplaces, function( marker, k ) {
+							/*
 							marker.coords = {
 								latitude: marker.latitude,
 								longitude: marker.longitude
 							};
-							marker.id = k;
+							*/
+							marker.id = marker._id;
 							marker.icon = icon_reddot;
 							
-							$scope.markers.push(marker);
+							newmarkers.push(marker);
 						});
+						$scope.markers = newmarkers;
 						//console.log('-- markers : ');
 						//console.log($scope.markers);
 					});
@@ -144,6 +148,34 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 				$scope.refilterTimeout = setTimeout( $scope.refilter, 100 );
 			}, 400);
 		});
+		
+		// set up our click / mouse events?
+		$scope.markerClick = function( result, event ) {
+			// can't figure out how to run a filter soooooooo
+			var clickedon = false;
+			angular.forEach( $scope.markers, function( item, n ) {
+				if ( item.id === result.key ) {
+					clickedon = item;
+					$scope.highlightNumber = n;
+				}
+			});
+			$scope.highlightPlace = clickedon;
+			console.log('clicked #'+ $scope.highlightNumber +' = _id: '+ result.key);
+			console.log(clickedon.fullName);
+		};
+		$scope.markerMouseOver = function( result, event ) {
+			// in case we want to change color on rollover or do something
+			//console.log('markerMouseOver '+ result.key);
+		};
+		$scope.markerMouseOut = function( result, event ) {
+			// the opposite of mouseover
+			//console.log('markerMouseOut '+ result.key);
+		};
+		$scope.clickEventsObject = {
+			click: $scope.markerClick,
+			mouseover: $scope.markerMouseOver,
+			mouseout: $scope.markerMouseOut,
+		};
     };
 	
     $scope.findOne = function() {
