@@ -15,6 +15,8 @@ module.exports = {
     callbackURL: 'http://localhost:3000/auth/facebook/callback'
   },
   twitter: {
+	access_token: '2876250307-VWGQfiDaWAwSZovHucOtLYaOnHMLBtUztRjq6XS',
+	access_token_secret: 'otX608Ye00cbA14ornvf0AaVFLIxdN9uAI4UHgaiS7npY',
     clientID: 'e0rBKc4xCzxgWoKO2UkfmMwgh',
     clientSecret: 'PO6dV0gtkzGHKiZIekM5FjYsnIBvdjAm95Ws5u1Li2temNSgpd',
     callbackURL: 'http://localhost:3000/auth/twitter/callback'

@@ -16,11 +16,13 @@ var mean = require('meanio'),
   mongoStore = require('connect-mongo')(session),
   helpers = require('view-helpers'),
   flash = require('connect-flash'),
-  config = mean.loadConfig();
-  /*
+  twit = require('twit'),
   express = require('express'),
   socketio = require('socket.io'),
   http = require('http'),
+  io = socketio(http),
+  config = mean.loadConfig();
+  /*
   */
 module.exports = function(app, passport, db) {
 
@@ -105,10 +107,41 @@ module.exports = function(app, passport, db) {
   // Connect flash for flash messages
   app.use(flash());
   
-  /*
+  
   // tweet stream setup?! NOT QUITE YET
-  var io = socketio(http);
-  app.set('io', io);
   console.log('socket.io listening on port '+ config.http.port + ' (hopefully)');
+  io.on('connection', function(socket) {
+	console.log('new connection');
+	socket.emit('welcome', { hello: 'world' });
+	socket.on('welcome reply', function(data) {
+		console.log('wwwwwwwelcome replyyyyyyyy');
+		console.log(data);
+		console.log('zzzzzz');
+	});
+  });
+  
+  var t = new twit({
+	consumer_key: config.twitter.clientID,
+	consumer_secret: config.twitter.clientSecret,
+	access_token: config.twitter.access_token,
+	access_token_secret: config.twitter.access_token_secret
+  });
+  /*
+  // REST call to search all tweets with / from @BPBrewing
+  t.get('search/tweets', { q: '@BPbrewing' }, function(err, data, response) {
+	if ( err ) {
+		console.log('twit search err');
+		console.log(err);
+	} else {
+		console.log('TWIT SEARCH SUCCESS');
+		console.log(data);
+	}
+  });
   */
+  // example connecting to a twitter STREAM for every tweet mentioning craftbeer or #craftbeer
+  var tstream = t.stream('statuses/filter', { track: 'craftbeer' });
+  tstream.on('tweet', function(tweet) {
+	console.log( 'tweet from @'+ tweet.user.screen_name +' id #'+ tweet.id_str );
+	io.sockets.emit('tweet', { screen_name: tweet.user.screen_name, id: tweet.id_str });
+  });
 };
