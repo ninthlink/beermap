@@ -160,8 +160,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 				}
 			});
 			$scope.highlightPlace = clickedon;
-			console.log('clicked #'+ $scope.highlightNumber +' = _id: '+ result.key);
-			console.log(clickedon.fullName);
+			console.log('clicked #'+ $scope.highlightNumber +' = _id: '+ result.key +' : '+ clickedon.fullName);
+			// #todo : now somehow social factory to get couple feed items from server?!
 		};
 		$scope.markerMouseOver = function( result, event ) {
 			// in case we want to change color on rollover or do something
