@@ -135,6 +135,13 @@ var PlaceSchema = new Schema({
     trim: true
   },
   // and then?
+}, {
+	toObject: {
+		virtuals: true
+	},
+	toJSON: {
+		virtuals: true
+	}
 });
 
 /**
@@ -166,9 +173,9 @@ PlaceSchema.virtual( 'CSZ' ).get(function() {
 PlaceSchema.virtual( 'fullAddr' ).get(function() {
 	return this.addr +', '+ this.CSZ;
 });
-// store a couple versions of fullName combined for easier things?
+// name ("Alpine") + suffix ("Beer Co")
 PlaceSchema.virtual( 'fullName' ).get(function() {
-	return this.name + ( this.sublocation !== '' ? (' <small>' + this.sublocation + '</small>') : '' );
+	return this.name + ( this.suffix !== '' ? (' ' + this.suffix ) : '' );
 });
 /**
  * Statics
