@@ -70,19 +70,18 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
     };
 	
     $scope.mainmap = function() {
-		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, control: {}, markerControl: {} };
+		$scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, bounds: {}, control: {}, markerControl: {} };
 		$scope.options = {};//scrollwheel: false};
 		$scope.coordsUpdates = 0;
 		$scope.dynamicMoveCtr = 0;
+		
 		$scope.highlightPlace = $scope.highlightNumber = false;
 		$scope.markers = [];
 		//	Map Styles : not sure how to inject otherwise..
 		$scope.styles = [{'featureType':'water','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':-78},{'lightness':67},{'visibility':'simplified'}]},{'featureType':'landscape','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'simplified'}]},{'featureType':'road','elementType':'geometry','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'simplified'}]},{'featureType':'poi','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'off'}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'hue':'#e9ebed'},{'saturation':-90},{'lightness':-8},{'visibility':'simplified'}]},{'featureType':'transit','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':10},{'lightness':69},{'visibility':'on'}]},{'featureType':'administrative.locality','elementType':'all','stylers':[{'hue':'#2c2e33'},{'saturation':7},{'lightness':19},{'visibility':'on'}]},{'featureType':'road','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'on'}]},{'featureType':'road.arterial','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':-2},{'visibility':'simplified'}]}];
 		
 		/**
-         * SUCCESS!! GoogleMapApi is a promise with a
-         * then callback of the google.maps object
-         *   @pram: maps = google.maps
+         * SUCCESS!! GoogleMapApi is a promise with then callback of google.maps obj
          */
         GoogleMapApi.then(function(maps) {
 			// trigger gmap.resize when windows resize
@@ -108,7 +107,6 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 					//console.log(':: map bounds update ::');
 					//console.log(bounds_corners);
 					//console.log(':: querying Places now?! ::');
-					//$scope.markers = [];
 					Places.query({
 						articleId: bounds_corners
 					}, function(newplaces) {
@@ -116,13 +114,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 						//console.log(places);
 						var newmarkers = [];
 						angular.forEach(newplaces, function( marker, k ) {
-							/*
-							marker.coords = {
-								latitude: marker.latitude,
-								longitude: marker.longitude
-							};
-							*/
-							marker.id = marker._id;
+							// set our default icon here?!
 							marker.icon = icon_reddot;
 							
 							newmarkers.push(marker);

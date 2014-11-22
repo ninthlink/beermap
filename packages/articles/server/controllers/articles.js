@@ -44,10 +44,10 @@ exports.article = function(req, res, next, id) {
 		// and return
 		if ( parsedok ) {
 			Place.find()
-				.where('latitude').lt(nelat)
-				.where('longitude').lt(nelng)
-				.where('latitude').gt(swlat)
-				.where('longitude').gt(swlng)
+				.where('lat').lt(nelat)
+				.where('lng').lt(nelng)
+				.where('lat').gt(swlat)
+				.where('lng').gt(swlng)
 				.exec(function(err, places) {
 				if (err) {
 					return res.json(500, {

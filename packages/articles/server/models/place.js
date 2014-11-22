@@ -7,135 +7,71 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
+ * helper objects
+ * since lots of Schema pieces seem to want same options
+ */
+var StringTrimmed = { type: String, trim: true };
+var StringReqTrimmed = { type: String, required: true, trim: true };
+var BoolFalse = { type: Boolean, default: false };
+/**
  * Place Schema
  */
 var PlaceSchema = new Schema({
   // name, like "Alpine"
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  },
+  name: StringReqTrimmed,
   // suffix, like "Beer Company"
-  suffix: {
-    type: String,
-    trim: true
-  },
+  suffix: StringTrimmed,
   // sublocation, like "Tasting Room"
-  sublocation: {
-    type: String,
-    trim: true
-  },
+  sublocation: StringTrimmed,
   // not sure if this could be defaulting to other values
   // like (name +' '+ sublocation).toLowerCase.replace(spaces with -)
-  slug: {
-	type: String,
-	required: true,
-	trim: true
-  },
+  slug: StringReqTrimmed,
   // some Booleans for checkboxes of amenities
-  // growler fills
-  growlers: {
-	type: Boolean,
-	default: false
-  },
-  // family friendly
-  fams: {
-	type: Boolean,
-	default: false
-  },
-  // dog friendly
-  dogs: {
-	type: Boolean,
-	default: false
-  },
-  // food trucks
-  trucks: {
-	type: Boolean,
-	default: false
-  },
-  // food service
-  foods: {
-	type: Boolean,
-	default: false
+  chk: {
+	  // growler fills
+	  growlers: BoolFalse,
+	  // family friendly
+	  fams: BoolFalse,
+	  // dog friendly
+	  dogs: BoolFalse,
+	  // food trucks
+	  trucks: BoolFalse,
+	  // food service
+	  foods: BoolFalse
   },
   // addr = Address 1 & 2 if its there since who cares
-  addr: {
-    type: String,
-    trim: true
-  },
-  city: {
-    type: String,
-    trim: true
-  },
-  state: {
-    type: String,
-    trim: true
-  },
-  zip: {
-    type: String,
-    trim: true
-  },
-  // does phone number need a set / validator to handle formatting?!
-  phone: {
-    type: String,
-    trim: true
-  },
-  // does www need a set / validator to store
+  addr: StringTrimmed,
+  city: StringTrimmed,
+  state: StringTrimmed,
+  zip: StringTrimmed,
+  // should phone number have a set / validator to handle formatting?!
+  phone: StringTrimmed,
+  // should url have a set / validator to store
   // without any "http://www." at the front & / at the end?
-  www: {
-    type: String,
-    trim: true
-  },
-  // latitude & longitude
-  // get converted in 'coords" object Virtual
-  lat: {
-    type: Number,
-    trim: true
-  },
-  lng: {
-    type: Number,
-    trim: true
-  },
+  url: StringTrimmed,
+  // latitude & longitude, converted to 'coords" object via a Virtual below
+  lat: Number,
+  lng: Number,
   // social media links & IDs & such...
-  twitter_user_name: {
-    type: String,
-    trim: true
+  twit: {
+	name: StringTrimmed,
+	user_id: StringTrimmed,
+	img: StringTrimmed
   },
-  twitter_user_id: {
-    type: String,
-    trim: true
+  insta: {
+	name: StringTrimmed,
+	user_id: StringTrimmed,
+	place_id: StringTrimmed
   },
-  twitter_user_img: {
-    type: String,
-    trim: true
-  },
-  instagram_user_name: {
-    type: String,
-    trim: true
-  },
-  instagram_user_id: {
-    type: String,
-    trim: true
-  },
-  instagram_brewloc_id: {
-    type: String,
-    trim: true
-  },
-  facebook_url: {
-    type: String,
-    trim: true
-  },
-  facebook_page_id: {
-    type: String,
-    trim: true
-  },
-  facebook_brewloc_id: {
-    type: String,
-    trim: true
-  },
+  fb: {
+	url: StringTrimmed,
+	page_id: StringTrimmed,
+	place_id: StringTrimmed
+  }
   // and then?
-}, {
+},
+// set Schema "virtuals" = true so the Angular front end gets em too
+{
 	toObject: {
 		virtuals: true
 	},
@@ -157,28 +93,39 @@ ArticleSchema.path('content').validate(function(content) {
 
 /**
  * Virtuals
+ *
+ * are like helpers for doing some shortcuts / combinings
+ * the first couple are more specifically for specific naming conventions gmap requires
  */
-// for mapping place.coords = { latitude, longitude }
+// map place.coords = { latitude, longitude }
+PlaceSchema.virtual( 'latitude' ).get(function() {
+	return this.lat;
+});
+PlaceSchema.virtual( 'longitude' ).get(function() {
+	return this.lng;
+});
 PlaceSchema.virtual( 'coords' ).get(function() {
 	return {
 		latitude: this.lat,
 		longitude: this.lng
 	};
 });
-// "City, State Zip"
+// combine "City, State Zip"
 PlaceSchema.virtual( 'CSZ' ).get(function() {
 	return this.city +', '+ this.city +' '+ this.zip;
 });
-// get full address in 1 line
+// get full address in 1 line, for kicks
 PlaceSchema.virtual( 'fullAddr' ).get(function() {
 	return this.addr +', '+ this.CSZ;
 });
-// name ("Alpine") + suffix ("Beer Co")
+// fullName returns name ("Alpine") + suffix ("Beer Co")
 PlaceSchema.virtual( 'fullName' ).get(function() {
 	return this.name + ( this.suffix !== '' ? (' ' + this.suffix ) : '' );
 });
 /**
  * Statics
+ *
+ * are like helper functions or something, nobody knows, maybe dragons
  */
 // findOne Place given an id & execute callback
 PlaceSchema.statics.load = function(id, cb) {
@@ -188,7 +135,7 @@ PlaceSchema.statics.load = function(id, cb) {
   //.populate('user', 'name username').exec(cb);
   .exec(cb);
 };
-// findOne Place given a slug & execute callback?
+// findOne Place, given a slug instead of ID, & execute callback?
 PlaceSchema.statics.findBySlug = function(slug, cb) {
   this.findOne({
     slug: slug //new RegExp( slug, 'i' )
@@ -197,5 +144,5 @@ PlaceSchema.statics.findBySlug = function(slug, cb) {
   .exec(cb);
 };
 
-// compile our model
+// and "compile" our model, or something
 mongoose.model('Place', PlaceSchema);
