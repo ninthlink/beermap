@@ -123,23 +123,6 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 						//console.log('-- markers : ');
 						//console.log($scope.markers);
 					});
-					
-					Places.query({
-						articleId: 'findbad'
-					}, function(newplaces) {
-						//console.log('queried Places : got :');
-						//console.log(places);
-						var badmarkers = [];
-						angular.forEach(newplaces, function( marker, k ) {
-							// set our default icon here?!
-							if ( !marker.hasOwnProperty('lat') || !marker.hasOwnProperty('lng') ) {
-								badmarkers.push(marker);
-							}
-						});
-						$scope.badMarkers = badmarkers;
-						//console.log('-- markers : ');
-						//console.log($scope.markers);
-					});
 				};
 				// listen when the center has manually been moved
 				$scope.mapMoveListener = maps.event.addListener(gmapd, 'center_changed', function() {
@@ -154,7 +137,56 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 				});
 				// initial check for markers in the area, too
 				$scope.refilterTimeout = setTimeout( $scope.refilter, 100 );
+				
+				Places.query({
+					articleId: 'findbad'
+				}, function(newplaces) {
+					//console.log('queried Places : got :');
+					//console.log(places);
+					var badmarkers = [];
+					
+					angular.forEach(newplaces, function( marker, k ) {
+						// set our default icon here?!
+						if ( !marker.hasOwnProperty('lat') || !marker.hasOwnProperty('lng') ) {
+							badmarkers.push(marker);
+						}
+					});
+					$scope.badMarkers = badmarkers;
+					if ( badmarkers.length > 0 ) {
+						placeCheckStep();
+					}
+					//console.log('-- markers : ');
+					//console.log($scope.markers);
+				});
 			}, 400);
+			
+			var geocoder = new maps.Geocoder();
+			function placeCheckStep() {
+				if ( $scope.badMarkers.length > 0 ) {
+					var marker = $scope.badMarkers.shift();
+					var addr = marker.fullAddr;
+					if ( addr === ', ,  ' ) {
+						console.log('address totally blank for '+ marker.name +' '+ marker.sublocation);
+						// and repeat
+						setTimeout(placeCheckStep, 300);
+					} else {
+						console.log('geocoding for '+ marker.name + ' (which was missing its lat lng in the db) : ' + addr);
+						geocoder.geocode( { 'address': addr }, function(results, status) {
+							if (status == google.maps.GeocoderStatus.OK) {
+								var newlatlng = results[0].geometry.location;
+								console.log(newlatlng.toString());
+								marker.lat = newlatlng.lat();
+								marker.lng = newlatlng.lng();
+								//marker.$update(
+							} else {
+								console.log('Geocode was not successful for the following reason: ' + status);
+							}
+							// and repeat
+							setTimeout(placeCheckStep, 300);
+						});
+					}
+				}
+			}
 		});
 		
 		// set up our click / mouse events?
