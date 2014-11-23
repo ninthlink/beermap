@@ -8,6 +8,7 @@
 		<!-- if this is showing, then highlightPlace = the place marker object that was clicked / shown -->
 		<div>{{highlightPlace.fullName}}</div>
 		<div>{{highlightPlace.fullAddr}}</div>
+		<div><span ng-show="highlightPlace.chk.growlers" class="fa fa-beer"></span> <span ng-show="highlightPlace.chk.fams" class="fa fa-child"></span> <span ng-show="highlightPlace.chk.dogs" class="fa fa-paw"></span> <span ng-show="highlightPlace.chk.trucks" class="fa fa-truck"></span> <span ng-show="highlightPlace.chk.foods" class="fa fa-cutlery"></span></div>
 	</div>
 	<pre>showing {{markers.length}} places : the below are others that are missing some key location info...</pre>
 	<pre>{{badMarkers | json}}</pre>
