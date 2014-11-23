@@ -58,15 +58,27 @@ exports.article = function(req, res, next, id) {
 			});
 		}
 	} else {
-		console.log('looking for article id '+ id);
-		Place.load(id, function(err, place) {
-			if (err) return next(err);
-			if (!place) return next(new Error('Failed to load article place ' + id));
-			// else : its ok?
-			req.place = place;
-			console.log(place);
-			next();
-		});
+		if ( id === 'findbad' ) {
+			Place.find()
+				.exec(function(err, places) {
+				if (err) {
+					return res.json(500, {
+						error: 'Cannot list the places'
+					});
+				}
+				res.json(places);
+			});
+		} else {
+			console.log('looking for article id '+ id);
+			Place.load(id, function(err, place) {
+				if (err) return next(err);
+				if (!place) return next(new Error('Failed to load article place ' + id));
+				// else : its ok?
+				req.place = place;
+				console.log(place);
+				next();
+			});
+		}
 	}
 };
 

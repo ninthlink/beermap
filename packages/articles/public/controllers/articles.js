@@ -124,6 +124,22 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 						//console.log($scope.markers);
 					});
 					
+					Places.query({
+						articleId: 'findbad'
+					}, function(newplaces) {
+						//console.log('queried Places : got :');
+						//console.log(places);
+						var badmarkers = [];
+						angular.forEach(newplaces, function( marker, k ) {
+							// set our default icon here?!
+							if ( !marker.hasOwnProperty('lat') || !marker.hasOwnProperty('lng') ) {
+								badmarkers.push(marker);
+							}
+						});
+						$scope.badMarkers = badmarkers;
+						//console.log('-- markers : ');
+						//console.log($scope.markers);
+					});
 				};
 				// listen when the center has manually been moved
 				$scope.mapMoveListener = maps.event.addListener(gmapd, 'center_changed', function() {
