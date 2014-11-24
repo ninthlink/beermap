@@ -67,8 +67,9 @@ var PlaceSchema = new Schema({
 	url: StringTrimmed,
 	page_id: StringTrimmed,
 	place_id: StringTrimmed
-  }
+  },
   // and then?
+  comment: StringTrimmed
 },
 // set Schema "virtuals" = true so the Angular front end gets em too
 {
