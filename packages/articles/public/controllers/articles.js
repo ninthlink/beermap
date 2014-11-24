@@ -172,17 +172,31 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 					} else {
 						console.log('geocoding for '+ marker.name + ' (which was missing its lat lng in the db) : ' + addr);
 						geocoder.geocode( { 'address': addr }, function(results, status) {
-							if (status == google.maps.GeocoderStatus.OK) {
+							if (status === maps.GeocoderStatus.OK) {
 								var newlatlng = results[0].geometry.location;
 								console.log(newlatlng.toString());
-								marker.lat = newlatlng.lat();
-								marker.lng = newlatlng.lng();
-								//marker.$update(
+								marker.lat = parseFloat( newlatlng.lat() );
+								marker.lng = parseFloat( newlatlng.lng() );
+								marker.comment = 'should lat lng update to '+ marker.lat +','+ marker.lng + ' but can\'t figure out the save/update';
+								/*
+								Places.update(
+									{ _id: marker.id },
+									{
+										lat: 10,
+										lng: 20
+									},
+									{},
+									function( err, numAffected ) {
+										console.log('lat lng update saved for '+ marker.name +' #' + marker.id +' = updated '+ numAffected);
+									}
+								);
+								*/
+								console.log(marker);
 							} else {
 								console.log('Geocode was not successful for the following reason: ' + status);
 							}
 							// and repeat
-							setTimeout(placeCheckStep, 300);
+							//setTimeout(placeCheckStep, 300);
 						});
 					}
 				}

@@ -12,12 +12,10 @@ angular.module('mean.articles').factory('Places', ['$resource',
 	 */
     return $resource('articles/:articleId', {
       articleId: '@_id'
-    }/*, {
+    }, {
       update: {
         method: 'PUT'
       }
-    }
-	  */
-	);
+    });
   }
 ]);
