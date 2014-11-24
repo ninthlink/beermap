@@ -146,8 +146,9 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 					var badmarkers = [];
 					
 					angular.forEach(newplaces, function( marker, k ) {
-						// set our default icon here?!
-						if ( !marker.hasOwnProperty('lat') || !marker.hasOwnProperty('lng') ) {
+						// markers with no lat/lng used to not have those props but now they just have lat = lng = 0
+						//if ( !marker.hasOwnProperty('lat') || !marker.hasOwnProperty('lng') ) {
+						if ( ( marker.lat === 0 ) && ( marker.lng === 0 ) ) {
 							badmarkers.push(marker);
 						}
 					});
@@ -155,51 +156,46 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
 					if ( badmarkers.length > 0 ) {
 						placeCheckStep();
 					}
-					//console.log('-- markers : ');
-					//console.log($scope.markers);
 				});
 			}, 400);
 			
 			var geocoder = new maps.Geocoder();
 			function placeCheckStep() {
-				if ( $scope.badMarkers.length > 0 ) {
-					var marker = $scope.badMarkers.shift();
-					var addr = marker.fullAddr;
-					if ( addr === ', ,  ' ) {
-						console.log('address totally blank for '+ marker.name +' '+ marker.sublocation);
-						// and repeat
-						setTimeout(placeCheckStep, 300);
-					} else {
-						console.log('geocoding for '+ marker.name + ' (which was missing its lat lng in the db) : ' + addr);
-						geocoder.geocode( { 'address': addr }, function(results, status) {
-							if (status === maps.GeocoderStatus.OK) {
-								var newlatlng = results[0].geometry.location;
-								console.log(newlatlng.toString());
-								marker.lat = parseFloat( newlatlng.lat() );
-								marker.lng = parseFloat( newlatlng.lng() );
-								marker.comment = 'should lat lng update to '+ marker.lat +','+ marker.lng + ' but can\'t figure out the save/update';
-								/*
-								Places.update(
-									{ _id: marker.id },
-									{
-										lat: 10,
-										lng: 20
-									},
-									{},
-									function( err, numAffected ) {
-										console.log('lat lng update saved for '+ marker.name +' #' + marker.id +' = updated '+ numAffected);
-									}
-								);
-								*/
-								console.log(marker);
-							} else {
-								console.log('Geocode was not successful for the following reason: ' + status);
-							}
+				setTimeout( function() {
+					if ( $scope.badMarkers.length > 0 ) {
+						var marker = $scope.badMarkers.shift();
+						var addr = marker.fullAddr;
+						if ( addr === ', ,  ' ) {
+							console.log('address totally blank for '+ marker.name +' '+ marker.sublocation);
+              // maybe do some sort of google place search based on the name info that we do have?!
+              
 							// and repeat
-							//setTimeout(placeCheckStep, 300);
-						});
+							placeCheckStep();
+						} else {
+							console.log('geocoding for '+ marker.name + ' (which was missing its lat lng in the db) : ' + addr);
+							geocoder.geocode( { 'address': addr }, function(results, status) {
+								if (status === maps.GeocoderStatus.OK) {
+									var newlatlng = results[0].geometry.location;
+									console.log(newlatlng.toString());
+									marker.lat = parseFloat( newlatlng.lat() );
+									marker.lng = parseFloat( newlatlng.lng() );
+									marker.comment = 'latlng updated';
+									
+									marker.$update(function(response) {
+										console.log('place saved?!');
+										console.log(response);
+										$scope.markers.push(response.place);
+										// and repeat
+										placeCheckStep();
+									});
+									console.log(marker);
+								} else {
+									console.log('Geocode was not successful for the following reason: ' + status);
+								}
+							});
+						}
 					}
-				}
+				}, 200);
 			}
 		});
 		
