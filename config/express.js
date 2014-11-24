@@ -107,7 +107,7 @@ module.exports = function(app, passport, db) {
   // Connect flash for flash messages
   app.use(flash());
   
-  
+  /*
   // tweet stream setup?! NOT QUITE YET
   console.log('socket.io listening on port '+ config.http.port + ' (hopefully)');
   io.on('connection', function(socket) {
@@ -119,7 +119,7 @@ module.exports = function(app, passport, db) {
 		console.log('zzzzzz');
 	});
   });
-  
+  *
   var t = new twit({
 	consumer_key: config.twitter.clientID,
 	consumer_secret: config.twitter.clientSecret,
@@ -137,11 +137,12 @@ module.exports = function(app, passport, db) {
 		console.log(data);
 	}
   });
-  */
+  *
   // example connecting to a twitter STREAM for every tweet mentioning craftbeer or #craftbeer
   var tstream = t.stream('statuses/filter', { track: 'craftbeer' });
   tstream.on('tweet', function(tweet) {
 	console.log( 'tweet from @'+ tweet.user.screen_name +' id #'+ tweet.id_str );
 	io.sockets.emit('tweet', { screen_name: tweet.user.screen_name, id: tweet.id_str });
   });
+  */
 };
