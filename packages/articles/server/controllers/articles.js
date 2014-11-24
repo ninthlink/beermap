@@ -167,5 +167,39 @@ exports.all = function(req, res) {
  * Show a Place
  */
 exports.placed = function(req, res) {
-  res.json(req.place);
+	console.log('GET /articles/:id ' );
+	console.log(req.params);
+	res.json(req.place);
+};
+
+
+/**
+ * Update an article
+ */
+exports.updatePlace = function(req, res) {
+	var pid = req.params.id;
+	console.log( 'check it : PUT /places/:id = updatePlace '+ pid );
+	return Place.load( pid, function(err, place) {
+		console.log( 'updatePlace > load finished, now save?' );
+		if ( !place ) {
+			res.statusCode = 404;
+			return res.send({ error: 'Not found' });
+		}
+		// otherwise, should be ok to continue
+		place = _.extend(place, req.body);
+		/*
+		console.log('updating to..');
+		console.log(place);
+		*/
+		place.save(function(err) {
+			if ( err ) {
+				console.log( 'Internal error(%d): %s', res.statusCode, err.message);
+				res.statusCode = 500;
+				return res.send( { error: 'some kind of error' } );
+			} else {
+				console.log('place saved!');
+				return res.send({ status: 'OK', place: place });
+			}
+		});
+	});
 };
