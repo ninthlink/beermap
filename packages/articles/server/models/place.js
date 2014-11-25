@@ -11,21 +11,21 @@ var mongoose = require('mongoose'),
  * since lots of Schema pieces seem to want same options
  */
 var StringTrimmed = { type: String, trim: true };
-var StringReqTrimmed = { type: String, required: true, trim: true };
+var StringLowerTrimmed = { type: String, trim: true, lowercase: true };
 var BoolFalse = { type: Boolean, default: false };
 /**
  * Place Schema
  */
 var PlaceSchema = new Schema({
   // name, like "Alpine"
-  name: StringReqTrimmed,
+  name: { type: String, required: true, trim: true },
   // suffix, like "Beer Company"
   suffix: StringTrimmed,
   // sublocation, like "Tasting Room"
   sublocation: StringTrimmed,
   // not sure if this could be defaulting to other values
   // like (name +' '+ sublocation).toLowerCase.replace(spaces with -)
-  slug: StringReqTrimmed,
+  slug: { type: String, required: true, trim: true, lowercase: true, unique: true },
   // some Booleans for checkboxes of amenities
   chk: {
 	  // growler fills
@@ -54,19 +54,19 @@ var PlaceSchema = new Schema({
   lng: Number,
   // social media links & IDs & such...
   twit: {
-	name: StringTrimmed,
-	user_id: StringTrimmed,
-	img: StringTrimmed
+    name: StringLowerTrimmed,
+    user_id: StringTrimmed,
+    img: StringTrimmed
   },
   insta: {
-	name: StringTrimmed,
-	user_id: StringTrimmed,
-	place_id: StringTrimmed
+    name: StringLowerTrimmed,
+    user_id: StringTrimmed,
+    place_id: StringTrimmed
   },
   fb: {
-	url: StringTrimmed,
-	page_id: StringTrimmed,
-	place_id: StringTrimmed
+    url: StringTrimmed,
+    page_id: StringTrimmed,
+    place_id: StringTrimmed
   },
   // and then?
   comment: StringTrimmed
@@ -80,6 +80,10 @@ var PlaceSchema = new Schema({
 		virtuals: true
 	}
 });
+/**
+ * see http://blog.mongodb.org/post/87892923503/6-rules-of-thumb-for-mongodb-schema-design-part-2
+ * for storing array of max length and such
+ */
 
 /**
  * Validations?
@@ -133,6 +137,10 @@ PlaceSchema.statics.load = function(id, cb) {
   this.findOne({
     _id: id
   })
+  /**
+   * see http://mongoosejs.com/docs/populate.html
+   * for more on populating, so we can populate latest couple feed items?
+   */
   //.populate('user', 'name username').exec(cb);
   .exec(cb);
 };
@@ -144,6 +152,5 @@ PlaceSchema.statics.findBySlug = function(slug, cb) {
   //.populate('user', 'name username').exec(cb);
   .exec(cb);
 };
-
 // and "compile" our model, or something
 mongoose.model('Place', PlaceSchema);
