@@ -124,58 +124,7 @@ module.exports = function(app, passport, db) {
     access_token: config.twitter.access_token,
     access_token_secret: config.twitter.access_token_secret
   });
-  // function for saving a new tweet as a Feed in our DB
-  var saveNewTweet = function( twobj, savecallback ) {
-    console.log( '!!! new tweet from '+ twobj.user.screen_name +' id #'+ twobj.id_str );
-    //console.log(twobj);
-    var img = '';
-    if ( twobj.entities.hasOwnProperty('media') ) {
-      //console.log('-- media attached --');
-      //console.log(twobj.entities.media);
-      if ( twobj.entities.media.length > 0 ) {
-        if ( twobj.entities.media[0].type === 'photo' ) {
-          img = twobj.entities.media[0].media_url_https;
-        }
-      }
-    }
-    
-    var tw_by = {
-      id: twobj.user.id_str,
-      name: twobj.user.name,
-      screen_name: twobj.user.screen_name
-    };
-    /**
-     * NOTE :
-     * currently there is a disconnect here, because the follow stream can contain
-     * https://dev.twitter.com/streaming/overview/request-parameters#follow
-     * tweets created by the user
-     * retweeted by the user
-     * replies to any tweet created by the user
-     * retweets of any tweet created by the user
-     * manual replies created without pressing reply
-     *
-     * in those last cases, the tweet's user object
-     * would be different than the Place twitter account that it was for...
-     * but maybe we just don't care about those ones anyways?
-     */
-    var newfeeditem = new Feed({
-      body: twobj.text,
-      date: twobj.created_at,
-      img: img,
-      origin_id: twobj.id_str,
-      source: {
-        from: 'Twitter',
-        url: 'https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str
-      },
-      author: tw_by
-    });
-    // actually save to db?
-    newfeeditem.save(function(err) {
-      if ( !err ) {
-        savecallback();
-      }
-    });
-  };
+  
   // step through results and update 1 at a time?
   var updatePlaceTwitterStep = function(data) {
     if ( data.length > 0 ) {
@@ -201,7 +150,7 @@ module.exports = function(app, passport, db) {
             name: firstplace.name,
             screen_name: firstplace.screen_name
           };
-          saveNewTweet( firstplace.status, function() {
+          Feed.saveNewTweet( firstplace.status, function() {
             // loop
             updatePlaceTwitterStep( data );
           });
@@ -238,8 +187,8 @@ module.exports = function(app, passport, db) {
               console.log('twit search err');
               console.log(err);
             } else {
-              console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' places twitter users : and then?');
-              // and process..
+              console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' Places\' twitters : and then?');
+              // recursive call to see about inserting any new feed items for the results
               updatePlaceTwitterStep( data );
             }
           });
@@ -281,17 +230,43 @@ module.exports = function(app, passport, db) {
           var tstream = t.stream('statuses/filter', { follow: ids_str });
           // https://github.com/ttezel/twit#event-tweet
           tstream.on('tweet', function(twobj) {
-            saveNewTweet( twobj, function() {
-              console.log('new feed item saved to database!?');
-              // YESSS : socket emit notify?!
-              //io.sockets.emit('tweet', { screen_name: twobj.user.screen_name, id: twobj.id_str });
-            });
+            /**
+             * checkit : tweet actually could be a Retweet or Reply from someone else
+             * so first check if this tweet is from a right Place, and only save if so
+             */
+            console.log( 'TWEET : https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str );
+            Place
+              .findOne({ "twit.name": twobj.user.screen_name })
+              .exec(function(err, place) {
+                if ( err ) {
+                  console.log('err in finding matching twit.name ::');
+                  console.log(err);
+                } else {
+                  // if a match was found, place is the place
+                  // but if no match was found, place is null apparently
+                  if ( place !== null ) {
+                    console.log('twit.name Place matched : '+ place.name +' '+ place.sublocation +' @'+ place.twit.name  );
+                    Feed.saveNewTweet( twobj, function() {
+                      console.log('new Feed item saved to DB!');
+                      console.log('***');
+                      // YESSS : socket emit notify?!
+                      //io.sockets.emit('tweet', { screen_name: twobj.user.screen_name, id: twobj.id_str });
+                    });
+                  } else {
+                    console.log('no Place found matching @'+ twobj.user.screen_name + ' = no save.');
+                  }
+                }
+              });
           });
           // https://github.com/ttezel/twit#event-delete
           tstream.on('delete', function(deleteMessage) {
-            console.log('xxxx Twitter Stream delete event xxxx');
-            console.log(deleteMessage);
-            // #todo : actual delete from the DB & socket emit ?! example :
+            var tw_id = deleteMessage.delete.status.id_str;
+            console.log('xxxx Twitter Stream delete '+ tw_id);
+            //console.log(deleteMessage);
+            Feed.deleteItem( tw_id, function() {
+              console.log(' ... '+ tw_id +' deleted');
+              // #todo : socket emit ?!
+            });
             /*
             deleteMessage = {
               delete: {
