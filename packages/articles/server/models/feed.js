@@ -70,14 +70,14 @@ var FeedSchema = new Schema({
  * are like helper functions or something, nobody knows, maybe dragons
  */
 // findOne Feed item given an id, populate author info, & execute callback
-FeedSchema.statics.load = function(id, cb) {
+FeedSchema.statics.load = function(id, callback) {
   this.findOne({
     _id: id
   })
   // could also add 2nd parameter like 'name _id' to return just specific fields
   .populate('author')
   // and send it back
-  .exec(cb);
+  .exec(callback);
 };
 /**
  * Create a static getFeed method to return feed data from the db
@@ -98,6 +98,80 @@ FeedSchema.statics.getFeed = function(page, skip, callback) {
     }
     // Pass them back to the specified callback
     callback(items);
+  });
+};
+/**
+ * save a new Tweet as a Feed in our DB ?rs
+ */
+FeedSchema.statics.saveNewTweet = function( twobj, callback ) {
+  // should there be error checking here?
+  var tw_url = 'https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str;
+  console.log( 'saving new tweet '+ tw_url );
+  //console.log(twobj);
+  /**
+   * check if the tweet has associated media with it
+   * and if it does, & if the first media is a "photo",
+   * then store that img src https URL in our new feed item
+   */
+  var img = '';
+  if ( twobj.entities.hasOwnProperty('media') ) {
+    //console.log('-- media attached --');
+    //console.log(twobj.entities.media);
+    if ( twobj.entities.media.length > 0 ) {
+      if ( twobj.entities.media[0].type === 'photo' ) {
+        img = twobj.entities.media[0].media_url_https;
+      }
+    }
+  }
+  /**
+   * i think this could be confusing,
+   * because in the Place schema, twit.name = screen_name
+   * but here, name = "Acoustic Ales" & screen_name = AcousticAles
+   * but whats another name for name then?
+   */ 
+  var tw_by = {
+    id: twobj.user.id_str,
+    name: twobj.user.name,
+    screen_name: twobj.user.screen_name
+  };
+  
+  var newfeeditem = new this({
+    body: twobj.text,
+    date: twobj.created_at,
+    img: img,
+    origin_id: twobj.id_str,
+    source: {
+      from: 'Twitter',
+      url: tw_url
+    },
+    author: tw_by
+  });
+  // actually save to db?
+  newfeeditem.save(function(err) {
+    if ( err ) {
+      var emsg = 'Feed.saveNewTweet > save err';
+      if ( err.code === 11000 ) {
+        // this is the DUPLICATE KEY insert error, so eh
+        console.log(emsg +' > item with origin_id already exists : skip');
+      } else {
+        console.log(emsg);
+        console.log(err);
+      }
+    }
+    callback();
+  });
+};
+/**
+ * given an origin_id, find and remove that tweet?
+ */
+FeedSchema.statics.deleteItem = function( og_id, callback ) {
+  this.remove({ origin_id: og_id }, function(err) {
+    if ( err ) {
+      console.log('Error in deleting Feed item with origin_id '+ og_id);
+    } else {
+      console.log('Feed item with origin_id '+ og_id +' has been deleted?');
+    }
+    callback();
   });
 };
 // and "compile" our model, or something
