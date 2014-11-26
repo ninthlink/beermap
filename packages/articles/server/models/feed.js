@@ -24,28 +24,28 @@ var FeedSchema = new Schema({
   author_id: StringReqTrimmed,
   // main body content of the tweet / post / item / w/e
   body: StringTrimmed,
-  // Date object will also need some converting for Twitter timestamp & Instagram
-  // use "expires" to automatically wipe feed items after 7 days what?
+  // Date property automatically handles both Twitter & Instagram time formats?
   date: {
     type: Date,
     default: Date.now,
+    // here we say automatically wipe Feed items after some time, like 7 days
     expires: '7d'
   },
-  // img, either '' or URL for instagram source or twitter attached media or what
+  // either URL for Instagram img src or Twitter attached photo src, or ''
   img: StringTrimmed,
-  // original ID as provided by whatever source
+  // original id as provided by whatever source
   origin_id: { type: String, required: true, trim: true, unique: true },
-  // source like "Twitter" or "Instagram"
+  // source possibilities are set here
   source: {
     type: String,
     default: 'Twitter',
     // list all possible feed sources here for auto validation magic?
     enum : ['Twitter', 'Instagram', 'Facebook']
   },
-  // like 'https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str
+  // permalink like 'https://twitter.com/'+ screen_name +'/status/'+ id_str
   url: StringReqTrimmed
 },
-// set Schema "virtuals" = true so the Angular front end gets em too
+// set Schema "virtuals" = true so back & front end gets em too
 {
 	toObject: {
 		virtuals: true
@@ -55,7 +55,7 @@ var FeedSchema = new Schema({
 	}
 });
 /**
- * Virtuals ?
+ * Virtuals : not sure what Virtuals we might need?
  */
 
  /**
