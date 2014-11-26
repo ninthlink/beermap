@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+  Schema = mongoose.Schema,
+  Feed = mongoose.model('Feed');
 
 /**
  * helper objects
@@ -151,6 +152,163 @@ PlaceSchema.statics.findBySlug = function(slug, cb) {
   })
   //.populate('user', 'name username').exec(cb);
   .exec(cb);
+};
+// help recurse step through results & update 1 at a time?
+PlaceSchema.statics.processTwitterUsersLookup = function(data) {
+  var thisPlace = this;
+  if ( data.length > 0 ) {
+    var p = data.shift();
+    //console.log(p);
+    thisPlace.update({
+      // find all Places where twit.name == twitter object screen_name
+      'twit.name': p.screen_name
+    }, {
+      // and update their twit.user_id & twit.img appropriately
+      'twit.user_id': p.id_str,
+      'twit.img': p.profile_image_url_https
+    }, {
+      multi: true
+    }, function(err, numberAffected, rawResponse) {
+      console.log('saved twitter user_id & user img for '+ numberAffected +' @'+ p.screen_name);
+      // also save the latest status in our Feeds?!
+      if ( p.hasOwnProperty('status') ) {
+        //console.log('saving new status for '+ p.screen_name +' ...');
+        // add user object for later tweet save processing?
+        p.status.user = {
+          id_str: p.id_str,
+          screen_name: p.screen_name
+        };
+        Feed.saveNewTweet( p.status, function() {
+          // loop
+          thisPlace.processTwitterUsersLookup( data );
+        });
+      } else {
+        // no status, so skip and just go to saving next place?
+        console.log('no status to save for @'+ p.screen_name +' ...');
+        // loop
+        thisPlace.processTwitterUsersLookup( data );
+      }
+    });
+  }
+};
+// check list of Places for any with twitter Names but not twitter user IDs
+PlaceSchema.statics.populateMissingTwitterInfos = function( Twit ) {
+  var thisPlace = this;
+  thisPlace.find({})
+    .where('twit.name').ne('')
+    .where('twit.img').equals('')
+    .distinct('twit.name', function(err, twitter_names) {
+      if ( err ) {
+        console.log('twit name search err');
+        console.log(err);
+      } else {
+        if ( twitter_names.length > 0 ) {
+          if ( twitter_names.length > 100 ) {
+            console.log('more than 100 places twitter names found. first 100 :');
+            twitter_names = twitter_names.slice(0,100);
+          }
+          
+          var names_str = twitter_names.join();
+          console.log(twitter_names.length +' lookup : '+ names_str + ' : ...');
+          
+          // GET call to /users/lookup to populate any missing user_names & IDs
+          Twit.get('users/lookup', { screen_name: names_str }, function(err, data, response) {
+            if ( err ) {
+              console.log('twit search err');
+              console.log(err);
+            } else {
+              console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' Places\' twitters : and then?');
+              // recursive call to see about inserting any new feed items for the results
+              thisPlace.processTwitterUsersLookup( data );
+            }
+          });
+        }
+      }
+    });
+};
+// only Save a Tweet if we have a Place with twit.name = tweet.user.screen_name
+PlaceSchema.statics.saveTweetIfMatch = function( tweet ) {
+  var thisPlace = this;
+  console.log( 'TWEET : https://twitter.com/'+ tweet.user.screen_name +'/status/'+ tweet.id_str );
+  thisPlace.findOne({ 'twit.name': tweet.user.screen_name })
+  .exec(function(err, place) {
+    if ( err ) {
+      console.log('err in finding matching twit.name ::');
+      console.log(err);
+    } else {
+      if ( place !== null ) {
+        // a match was found, so we're cool to save
+        console.log('twit.name Place matched : '+ place.name +' '+ place.sublocation +' @'+ place.twit.name  );
+        Feed.saveNewTweet( tweet, function() {
+          console.log('new Feed item saved to DB!');
+          console.log('***');
+          // #todo : socket emit notify?!
+          //io.sockets.emit('tweet', { screen_name: tweet.user.screen_name, id: tweet.id_str });
+        });
+      } else {
+        // no match found...
+        console.log('no Place found matching @'+ tweet.user.screen_name + ' = no save.');
+        console.log('***');
+        // note : if we wanted to store # of Retweets, this is probably when that # should be incremented somehow
+      }
+    }
+  });
+};
+// intialize Twitter stream for Places' twitters'
+PlaceSchema.statics.initTwitterStream = function( Twit ) {
+  console.log('<< Place.initTwitterStream >>');
+  var thisPlace = this;
+  // query DB for Places with twit.user_id != '' and then STREAM
+  this.find({})
+  .where('twit.user_id').ne('')
+  .distinct('twit.user_id', function(err, twitter_ids) {
+    if ( err ) {
+      console.log('twit user_id search err');
+      console.log(err);
+    } else {
+      if ( twitter_ids.length > 0 ) {
+        if ( twitter_ids.length > 100 ) {
+          console.log('more than 100 places twitter names found. first 100 :');
+          twitter_ids = twitter_ids.slice(0,100);
+          // in this case, we'd really have to set up multiple streams...
+        }
+        
+        var ids_str = twitter_ids.join();
+        console.log(twitter_ids.length +' lookup : '+ ids_str + ' : ...');
+        
+        /**
+         * GET call to /users/lookup
+         * populate any missing user_names & IDs
+         * & initial svaes the latest tweet from each
+         */
+        Twit.get('users/lookup', { user_id: ids_str }, function(err, data, response) {
+          if ( err ) {
+            console.log('twit search err');
+            console.log(err);
+          } else {
+            console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' places twitter users : and then?');
+            // and process..
+            thisPlace.processTwitterUsersLookup( data );
+          }
+        });
+        
+        // and STREAM
+        var tstream = Twit.stream( 'statuses/filter', { follow: ids_str } );
+        // yea, thats really it. then just have to add the event listeners...
+        // https://github.com/ttezel/twit#event-tweet
+        tstream.on( 'tweet', thisPlace.saveTweetIfMatch );
+        // https://github.com/ttezel/twit#event-delete
+        tstream.on( 'delete', Feed.deleteTweetFromStream );
+        // https://github.com/ttezel/twit#event-error
+        tstream.on( 'error', function(error) {
+          console.log('xxxx Twitter Stream error xxxx');
+          console.log(error);
+        });
+        
+        // #todo : cycle through the twitter_ids and make sure they are FOLLOWED and in the list?
+      }
+    }
+  });
 };
 // and "compile" our model, or something
 mongoose.model('Place', PlaceSchema);
