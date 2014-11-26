@@ -19,7 +19,7 @@ module.exports = function(Articles, app, auth) {
   app.get('/articles/:articleId', articles.placed);
   app.put('/articles/:id', articles.updatePlace);
   //.delete(auth.requiresLogin, hasAuthorization, articles.destroy);
-
+  app.get('/feed', articles.fullFeed);
   // Finish with setting up the articleId param
   app.param('articleId', articles.article);
 };

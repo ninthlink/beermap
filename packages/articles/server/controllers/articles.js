@@ -6,7 +6,7 @@
 var mongoose = require('mongoose'),
   //Article = mongoose.model('Article'),
   Place = mongoose.model('Place'),
-  //Feed = mongoose.model('Feed'),
+  Feed = mongoose.model('Feed'),
   _ = require('lodash');
 
 /**
@@ -161,7 +161,27 @@ exports.all = function(req, res) {
 };
 
 /**
- * Show a Place
+ * full Feed list from the db?!
+ * right now this just loads the first 10, and we have no pagination yet
+ */
+exports.fullFeed = function(req, res) {
+  console.log('GET /feed ( articles.fullFeed )');
+  console.log(req.params);
+  
+  Feed.getFeed(0,0, function(err) {
+    return res.json(500, {
+      error: 'Cannot list Feed items'
+    });
+  }, function( items ) {
+    //console.log('--- loaded all Feed items ---');
+    //console.log(items);
+    //console.log('----');
+    res.json(items);
+  });
+};
+
+/**
+ * Show a single Place
  */
 exports.placed = function(req, res) {
 	console.log('GET /articles/:id ' );
@@ -170,7 +190,7 @@ exports.placed = function(req, res) {
 };
 
 /**
- * Update an article
+ * Update a Place
  */
 exports.updatePlace = function(req, res) {
 	var pid = req.params.id;
