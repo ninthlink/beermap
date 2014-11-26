@@ -34,8 +34,14 @@ var FeedSchema = new Schema({
   // either URL for Instagram img src or Twitter attached photo src, or ''
   img: StringTrimmed,
   // original id as provided by whatever source
-  origin_id: { type: String, required: true, trim: true, unique: true },
-  // source possibilities are set here
+  origin_id: {
+    type: String,
+    required: true,
+    trim: true,
+    // setting unique makes sure we have just 1 Feed item for each origin_id
+    unique: true
+  },
+  // all possibile sources are listed here...
   source: {
     type: String,
     default: 'Twitter',
@@ -58,10 +64,8 @@ var FeedSchema = new Schema({
  * Virtuals : not sure what Virtuals we might need?
  */
 
- /**
- * Statics
- *
- * are like helper functions or something, nobody knows, maybe dragons
+/**
+ * Statics are like helper functions or something, nobody knows, maybe dragons
  */
 // findOne Feed item given an id, populate author info, & execute callback
 FeedSchema.statics.load = function(id, callback) {
@@ -73,30 +77,28 @@ FeedSchema.statics.load = function(id, callback) {
   // and send it back
   .exec(callback);
 };
-/**
- * Create a static getFeed method to return feed data from the db
- * with page and skip args so we can do async paginations or something
- */
-FeedSchema.statics.getFeed = function(page, skip, callback) {
+// returns 10 Feed items from the db with page & skip args for paginations?
+FeedSchema.statics.getFeed = function(page, skip, errorCallback, successCallback) {
   var items = [],
-      start = (page * 10) + (skip * 1);
+      perpage = 10,
+      start = (page * perpage) + (skip * 1);
   // Query the db, using skip and limit to achieve page chunks
   // Feed.find(... ?
-  this.find({},'active author body date img source source_link',{skip: start, limit: 10}).sort({date: 'desc'}).exec(function(err,docs){
+  this.find({},'active author author_id body date img origin_id source url',{skip: start, limit: perpage}).sort({date: 'desc'}).exec(function(err,docs){
     // If everything is cool...
-    if(!err) {
+    if(err) {
+      errorCallback(err);
+    } else {
       items = docs;  // We got tweets
       items.forEach(function(tweet){
         items.active = true; // Set them to active
       });
+      // Pass them back to the specified callback
+      successCallback(items);
     }
-    // Pass them back to the specified callback
-    callback(items);
   });
 };
-/**
- * save a new Tweet as a Feed in our DB ?rs
- */
+// save a new Tweet as a Feed item in our DB
 FeedSchema.statics.saveNewTweet = function( twobj, callback ) {
   // should there be error checking here?
   var tw_url = 'https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str;
@@ -117,9 +119,7 @@ FeedSchema.statics.saveNewTweet = function( twobj, callback ) {
       }
     }
   }
-  /**
-   * only save screen_name, don't care about name = display_name = full_name
-   */ 
+  // only save screen_name, don't care about name = display_name = full_name
   var newfeeditem = new this({
     author: twobj.user.screen_name,
     author_id: twobj.user.id_str,
@@ -130,7 +130,7 @@ FeedSchema.statics.saveNewTweet = function( twobj, callback ) {
     source: 'Twitter',
     url: tw_url
   });
-  // actually save to db?
+  // actually save to db
   newfeeditem.save(function(err) {
     if ( err ) {
       var emsg = 'Feed.saveNewTweet > save err';
@@ -145,7 +145,7 @@ FeedSchema.statics.saveNewTweet = function( twobj, callback ) {
     callback();
   });
 };
-// tstream.on('delete' sends a twitter deleteMessage object to delete Feed item
+// handler for tstream.on('delete' which sends a twitter deleteMessage object
 FeedSchema.statics.deleteTweetFromStream = function(deleteMessage) {
   /*
   deleteMessage = {
@@ -168,7 +168,7 @@ FeedSchema.statics.deleteTweetFromStream = function(deleteMessage) {
     // #todo : socket emit ?!
   });
 };
-// given an origin_id, find & remove that Feed item
+// given an origin_id, actually find & remove that Feed item
 FeedSchema.statics.deleteItem = function( id, callback ) {
   this.remove({ origin_id: id }, function(err) {
     if ( err ) {
