@@ -244,17 +244,19 @@ PlaceSchema.statics.populateMissingTwitterInfos = function( Twit ) {
     });
 };
 // only Save a Tweet if we have a Place with twit.name = tweet.user.screen_name
-PlaceSchema.statics.saveTweetIfMatch = function( tweet ) {
+PlaceSchema.statics.saveTweetIfMatch = function( tweet, thisPlace ) {
+  // somehow this was bugging out til i added thisPlace arg..
   console.log( 'TWEET : https://twitter.com/'+ tweet.user.screen_name +'/status/'+ tweet.id_str );
-  this.findOne({ 'twit.name': tweet.user.screen_name })
-  .exec(function(err, place) {
+  this.find({})
+  .where('twit.name').equals( tweet.user.screen_name )
+  .distinct('twit.name', function( err, matches ) {
     if ( err ) {
       console.log('err in finding matching twit.name ::');
       console.log(err);
     } else {
-      if ( place !== null ) {
+      if ( matches.length > 0 ) {
         // a match was found, so we're cool to save
-        console.log('twit.name Place matched : '+ place.nameLoc +' @'+ place.twit.name  );
+        console.log('Place(s) found matching : '+ tweet.user.screen_name  );
         Feed.saveNewTweet( tweet, function() {
           console.log('new Feed item saved to DB!');
           console.log('***');
@@ -312,7 +314,9 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
         var tstream = Twit.stream( 'statuses/filter', { follow: ids_str } );
         // yea, thats really it. then just have to add the event listeners...
         // https://github.com/ttezel/twit#event-tweet
-        tstream.on( 'tweet', thisPlace.saveTweetIfMatch );
+        tstream.on( 'tweet', function( tweet ) {
+          thisPlace.saveTweetIfMatch( tweet, thisPlace ); // what?!
+        });
         // https://github.com/ttezel/twit#event-delete
         tstream.on( 'delete', Feed.deleteTweetFromStream );
         // https://github.com/ttezel/twit#event-error
