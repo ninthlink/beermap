@@ -19,14 +19,26 @@ var BoolFalse = { type: Boolean, default: false };
  */
 var PlaceSchema = new Schema({
   // name, like "Alpine"
-  name: { type: String, required: true, trim: true },
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
   // suffix, like "Beer Company"
   suffix: StringTrimmed,
   // sublocation, like "Tasting Room"
   sublocation: StringTrimmed,
   // not sure if this could be defaulting to other values
   // like (name +' '+ sublocation).toLowerCase.replace(spaces with -)
-  slug: { type: String, required: true, trim: true, lowercase: true, unique: true },
+  slug: {
+    type: String,
+    required: true,
+    trim: true,
+    // auto convert any slug to lowercase
+    lowercase: true,
+    // make sure we cant have multiple Places with the same slug..
+    unique: true
+  },
   // some Booleans for checkboxes of amenities
   chk: {
 	  // growler fills
@@ -55,21 +67,26 @@ var PlaceSchema = new Schema({
   lng: Number,
   // social media links & IDs & such...
   twit: {
-    name: StringLowerTrimmed,
+    img: StringTrimmed,
     user_id: StringTrimmed,
-    img: StringTrimmed
+    // twitter screen_name
+    name: StringLowerTrimmed
   },
   insta: {
-    name: StringLowerTrimmed,
     user_id: StringTrimmed,
+    // instagram name
+    name: StringLowerTrimmed,
+    // instagram location id, different than the Place's (brand's) user acct
     place_id: StringTrimmed
   },
   fb: {
-    url: StringTrimmed,
     page_id: StringTrimmed,
+    // url should start with facebook.com/ ?! or just the part after that?!
+    url: StringTrimmed,
+    // Facebook Place id, different than the Place's (brand's) Page ID#
     place_id: StringTrimmed
   },
-  // and then?
+  // and then? maybe we add a "comment" string field for tracking some
   comment: StringTrimmed
 },
 // set Schema "virtuals" = true so the Angular front end gets em too
@@ -82,25 +99,7 @@ var PlaceSchema = new Schema({
 	}
 });
 /**
- * see http://blog.mongodb.org/post/87892923503/6-rules-of-thumb-for-mongodb-schema-design-part-2
- * for storing array of max length and such
- */
-
-/**
- * Validations?
- *
-ArticleSchema.path('title').validate(function(title) {
-  return !!title;
-}, 'Title cannot be blank');
-
-ArticleSchema.path('content').validate(function(content) {
-  return !!content;
-}, 'Content cannot be blank');
-
-/**
- * Virtuals
- *
- * are like helpers for doing some shortcuts / combinings
+ * Virtuals are like helpers for doing some shortcuts / combinings
  * the first couple are more specifically for specific naming conventions gmap requires
  */
 // map place.coords = { latitude, longitude }
@@ -124,14 +123,32 @@ PlaceSchema.virtual( 'CSZ' ).get(function() {
 PlaceSchema.virtual( 'fullAddr' ).get(function() {
 	return this.addr +', '+ this.CSZ;
 });
-// fullName returns name ("Alpine") + suffix ("Beer Co")
+// fullName (deprecated) returns name ("Alpine") + suffix ("Beer Co")
 PlaceSchema.virtual( 'fullName' ).get(function() {
 	return this.name + ( this.suffix !== '' ? (' ' + this.suffix ) : '' );
 });
+// nameFull returns name ("Alpine") + suffix ("Beer Co")
+PlaceSchema.virtual( 'nameFull' ).get(function() {
+	return this.name + ( this.suffix !== '' ? (' ' + this.suffix ) : '' );
+});
+// nameLoc returns "Ballast Point" + "Little Italy"
+PlaceSchema.virtual( 'nameLoc' ).get(function() {
+  var loc = this.sublocation;
+	return this.name + ( loc !== '' ? ( ' ' + loc ) : '' );
+});
+// nameLongest returns "Ballast Point" + "Brewing & Spirits" + "Little Italy"
+PlaceSchema.virtual( 'nameLongest' ).get(function() {
+  var oot = this.name;
+  if ( this.suffix !== '' ) {
+    oot += ' '+ this.suffix;
+  }
+  if ( this.sublocation !== '' ) {
+    oot += ' '+ this.sublocation;
+  }
+	return oot;
+});
 /**
- * Statics
- *
- * are like helper functions or something, nobody knows, maybe dragons
+ * Statics are like helper functions or something, nobody knows, maybe dragons
  */
 // findOne Place given an id & execute callback
 PlaceSchema.statics.load = function(id, cb) {
@@ -228,9 +245,8 @@ PlaceSchema.statics.populateMissingTwitterInfos = function( Twit ) {
 };
 // only Save a Tweet if we have a Place with twit.name = tweet.user.screen_name
 PlaceSchema.statics.saveTweetIfMatch = function( tweet ) {
-  var thisPlace = this;
   console.log( 'TWEET : https://twitter.com/'+ tweet.user.screen_name +'/status/'+ tweet.id_str );
-  thisPlace.findOne({ 'twit.name': tweet.user.screen_name })
+  this.findOne({ 'twit.name': tweet.user.screen_name })
   .exec(function(err, place) {
     if ( err ) {
       console.log('err in finding matching twit.name ::');
@@ -238,7 +254,7 @@ PlaceSchema.statics.saveTweetIfMatch = function( tweet ) {
     } else {
       if ( place !== null ) {
         // a match was found, so we're cool to save
-        console.log('twit.name Place matched : '+ place.name +' '+ place.sublocation +' @'+ place.twit.name  );
+        console.log('twit.name Place matched : '+ place.nameLoc +' @'+ place.twit.name  );
         Feed.saveNewTweet( tweet, function() {
           console.log('new Feed item saved to DB!');
           console.log('***');
