@@ -6,8 +6,8 @@
 var mongoose = require('mongoose'),
   //Article = mongoose.model('Article'),
   Place = mongoose.model('Place'),
+  //Feed = mongoose.model('Feed'),
   _ = require('lodash');
-
 
 /**
  * Find article by id
@@ -97,7 +97,6 @@ exports.create = function(req, res) {
       });
     }
     res.json(place);
-
   });
 };
 
@@ -116,7 +115,6 @@ exports.update = function(req, res) {
       });
     }
     res.json(article);
-
   });
 };
 
@@ -133,7 +131,6 @@ exports.destroy = function(req, res) {
       });
     }
     res.json(article);
-
   });
 };
 
@@ -171,7 +168,6 @@ exports.placed = function(req, res) {
 	console.log(req.params);
 	res.json(req.place);
 };
-
 
 /**
  * Update an article
