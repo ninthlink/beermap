@@ -19,13 +19,9 @@ var BoolFalse = { type: Boolean, default: false };
 var FeedSchema = new Schema({
   // bool for whether the item is active (displayed vs queued? not sure..)
   active: BoolFalse,
-  // reference to the User/Place that posted whatever item
-  author: {
-    // save some source user info here in case we can't match the author field above too
-    id: StringReqTrimmed,
-    name: StringReqTrimmed,
-    screen_name: StringReqTrimmed
-  },
+  // author info for the feed item
+  author: StringReqTrimmed,
+  author_id: StringReqTrimmed,
   // main body content of the tweet / post / item / w/e
   body: StringTrimmed,
   // Date object will also need some converting for Twitter timestamp & Instagram
@@ -41,15 +37,13 @@ var FeedSchema = new Schema({
   origin_id: { type: String, required: true, trim: true, unique: true },
   // source like "Twitter" or "Instagram"
   source: {
-    from: {
-      type: String,
-      default: 'Twitter',
-      // list all possible feed sources here for auto validation magic?
-      enum : ['Twitter', 'Instagram', 'Facebook']
-    },
-    // like 'https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str
-    url: StringReqTrimmed
-  }
+    type: String,
+    default: 'Twitter',
+    // list all possible feed sources here for auto validation magic?
+    enum : ['Twitter', 'Instagram', 'Facebook']
+  },
+  // like 'https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str
+  url: StringReqTrimmed
 },
 // set Schema "virtuals" = true so the Angular front end gets em too
 {
@@ -124,27 +118,17 @@ FeedSchema.statics.saveNewTweet = function( twobj, callback ) {
     }
   }
   /**
-   * i think this could be confusing,
-   * because in the Place schema, twit.name = screen_name
-   * but here, name = "Acoustic Ales" & screen_name = AcousticAles
-   * but whats another name for name then?
+   * only save screen_name, don't care about name = display_name = full_name
    */ 
-  var tw_by = {
-    id: twobj.user.id_str,
-    name: twobj.user.name,
-    screen_name: twobj.user.screen_name
-  };
-  
   var newfeeditem = new this({
+    author: twobj.user.screen_name,
+    author_id: twobj.user.id_str,
     body: twobj.text,
     date: twobj.created_at,
     img: img,
     origin_id: twobj.id_str,
-    source: {
-      from: 'Twitter',
-      url: tw_url
-    },
-    author: tw_by
+    source: 'Twitter',
+    url: tw_url
   });
   // actually save to db?
   newfeeditem.save(function(err) {
