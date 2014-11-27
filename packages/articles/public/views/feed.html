@@ -3,8 +3,8 @@
     <p class="text-center" ng-hide="newsLoaded">Loading News...</p>
     <div ng-repeat="news in newsFeed" class="feed-item">
       <div class="media">
-        <a class="pull-left" href="#{{news.origin_id}}">
-          <img ng-src="{{news.user.profile_image_url}}" alt="{{news.author}}" style="width:32px;height:32px">
+        <a class="pull-left" href="#{{news.author.slug}}">
+          <img ng-src="{{news.author.twit.img}}" alt="{{news.author.name}}" style="width:32px;height:32px">
         </a>
         <div ng-hide="hideDistances" class="pull-right">
           <br />
@@ -12,11 +12,11 @@
         </div>
         <div class="media-body">
           <p>
-            <strong>{{news.author}}</strong><br />
+            <strong>{{news.author.nameFull}}</strong><br />
             <small>
               <span class="pull-left">
                 <!--span class="fa fa-{{news.source}}"></span-->
-                <span>{{news.date}}</span> via <a ng-href="{{news.url}}" target="_blank">{{news.source}}</a>
+                <span><abbr title="set timezone?!">{{news.date}}</abbr></span> via <a ng-href="{{news.url}}" target="_blank">{{news.source}}</a>
               </span>
             </small>
           </p>
