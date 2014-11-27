@@ -18,8 +18,12 @@ Articles.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   Articles.menus.add({
-    'title': 'Map',
+    'title': 'Beer Map',
     'link': '/'
+  });
+  Articles.menus.add({
+    'title': 'Beer News',
+    'link': '/feed'
   });
   /*
   Articles.menus.add({
