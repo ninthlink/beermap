@@ -109,19 +109,53 @@ PlaceSchema.virtual( 'latitude' ).get(function() {
 PlaceSchema.virtual( 'longitude' ).get(function() {
 	return this.lng;
 });
+/*
 PlaceSchema.virtual( 'coords' ).get(function() {
 	return {
 		latitude: this.lat,
 		longitude: this.lng
 	};
 });
+*/
 // combine "City, State Zip"
 PlaceSchema.virtual( 'CSZ' ).get(function() {
-	return this.city +', '+ this.city +' '+ this.zip;
+  // only return something if the object actually has a city || state || zip
+  var oot = '';
+  if ( this.city ) {
+    oot += this.city;
+    if ( this.state || this.zip ) {
+      oot += ', ';
+    }
+  }
+  if ( this.state ) {
+    oot += this.state;
+    if ( this.zip ) {
+      oot += ' ';
+    }
+  }
+  if ( this.zip ) {
+    oot += this.zip;
+  }
+  if ( oot !== '' ) {
+    return oot;
+  }
 });
 // get full address in 1 line, for kicks
 PlaceSchema.virtual( 'fullAddr' ).get(function() {
-	return this.addr +', '+ this.CSZ;
+  // only return something if address items are set..
+  var oot = '';
+  if ( this.addr ) {
+    oot += this.addr;
+    if ( this.CSZ ) {
+      oot += ', ';
+    }
+  }
+  if ( this.CSZ ) {
+    oot += this.CSZ;
+  }
+  if ( oot !== '' ) {
+    return oot;
+  }
 });
 // fullName (deprecated) returns name ("Alpine") + suffix ("Beer Co")
 PlaceSchema.virtual( 'fullName' ).get(function() {
@@ -195,8 +229,8 @@ PlaceSchema.statics.processTwitterUsersLookup = function(data) {
           id_str: p.id_str,
           screen_name: p.screen_name
         };
-        Feed.saveNewTweet( p.status, function() {
-          // loop
+        thisPlace.saveTweetIfMatch( p.status, thisPlace, function() {
+          // and loop
           thisPlace.processTwitterUsersLookup( data );
         });
       } else {
@@ -244,30 +278,44 @@ PlaceSchema.statics.populateMissingTwitterInfos = function( Twit ) {
     });
 };
 // only Save a Tweet if we have a Place with twit.name = tweet.user.screen_name
-PlaceSchema.statics.saveTweetIfMatch = function( tweet, thisPlace ) {
+PlaceSchema.statics.saveTweetIfMatch = function( tweet, thisPlace, callback ) {
   // somehow this was bugging out til i added thisPlace arg..
   console.log( 'TWEET : https://twitter.com/'+ tweet.user.screen_name +'/status/'+ tweet.id_str );
   this.find({})
   .where('twit.name').equals( tweet.user.screen_name )
-  .distinct('twit.name', function( err, matches ) {
+  .exec( function( err, matches ) {
     if ( err ) {
       console.log('err in finding matching twit.name ::');
       console.log(err);
+      if ( callback ) {
+        // and then trigger callback anyways
+        callback();
+      }
     } else {
       if ( matches.length > 0 ) {
         // a match was found, so we're cool to save
-        console.log('Place(s) found matching : '+ tweet.user.screen_name  );
-        Feed.saveNewTweet( tweet, function() {
+        var placematch_id = matches[0]._id;
+        console.log('Place(s) found matching : '+ tweet.user.screen_name +' : '+ placematch_id );
+        //console.log(matches[0]);
+        
+        Feed.saveNewTweet( tweet, placematch_id, function() {
           console.log('new Feed item saved to DB!');
           console.log('***');
           // #todo : socket emit notify?!
           //io.sockets.emit('tweet', { screen_name: tweet.user.screen_name, id: tweet.id_str });
+          if ( callback ) {
+            callback();
+          }
         });
       } else {
         // no match found...
         console.log('no Place found matching @'+ tweet.user.screen_name + ' = no save.');
         console.log('***');
         // note : if we wanted to store # of Retweets, this is probably when that # should be incremented somehow
+        if ( callback ) {
+          // and then trigger callback anyways
+          callback();
+        }
       }
     }
   });

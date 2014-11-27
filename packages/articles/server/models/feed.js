@@ -20,8 +20,10 @@ var FeedSchema = new Schema({
   // bool for whether the item is active (displayed vs queued? not sure..)
   active: BoolFalse,
   // author info for the feed item
-  author: StringReqTrimmed,
-  author_id: StringReqTrimmed,
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'Place'
+  },
   // main body content of the tweet / post / item / w/e
   body: StringTrimmed,
   // Date property automatically handles both Twitter & Instagram time formats?
@@ -73,7 +75,7 @@ FeedSchema.statics.load = function(id, callback) {
     _id: id
   })
   // could also add 2nd parameter like 'name _id' to return just specific fields
-  //.populate('author')
+  .populate('author')
   // and send it back
   .exec(callback);
 };
@@ -84,7 +86,12 @@ FeedSchema.statics.getFeed = function(page, skip, errorCallback, successCallback
       start = (page * perpage) + (skip * 1);
   // Query the db, using skip and limit to achieve page chunks
   // Feed.find(... ?
-  this.find({},'active author author_id body date img origin_id source url',{skip: start, limit: perpage}).sort({date: 'desc'}).exec(function(err,docs){
+  this.find({},'active author body date img origin_id source url',{skip: start, limit: perpage})
+  .sort({date: 'desc'})
+  // populate the Feed item's "author", but only with fields that we might need..
+  .populate('author', 'name suffix sublocation slug lat lng fb insta twit')
+  // and execute & callback
+  .exec(function(err,docs){
     // If everything is cool...
     if(err) {
       errorCallback(err);
@@ -99,10 +106,10 @@ FeedSchema.statics.getFeed = function(page, skip, errorCallback, successCallback
   });
 };
 // save a new Tweet as a Feed item in our DB
-FeedSchema.statics.saveNewTweet = function( twobj, callback ) {
+FeedSchema.statics.saveNewTweet = function( twobj, author_id, callback ) {
   // should there be error checking here?
   var tw_url = 'https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str;
-  console.log( 'saving new tweet '+ tw_url );
+  console.log( 'saving tweet '+ tw_url );
   //console.log(twobj);
   /**
    * check if the tweet has associated media with it
@@ -121,8 +128,7 @@ FeedSchema.statics.saveNewTweet = function( twobj, callback ) {
   }
   // only save screen_name, don't care about name = display_name = full_name
   var newfeeditem = new this({
-    author: twobj.user.screen_name,
-    author_id: twobj.user.id_str,
+    author: author_id,
     body: twobj.text,
     date: twobj.created_at,
     img: img,
