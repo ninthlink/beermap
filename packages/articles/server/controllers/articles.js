@@ -165,17 +165,14 @@ exports.all = function(req, res) {
  * right now this just loads the first 10, and we have no pagination yet
  */
 exports.fullFeed = function(req, res) {
-  console.log('GET /feed ( articles.fullFeed )');
-  console.log(req.params);
+  //console.log('GET /feed ( articles.fullFeed )');
+  //console.log(req.params);
   
   Feed.getFeed(0,0, function(err) {
     return res.json(500, {
       error: 'Cannot list Feed items'
     });
   }, function( items ) {
-    //console.log('--- loaded all Feed items ---');
-    //console.log(items);
-    //console.log('----');
     res.json(items);
   });
 };
