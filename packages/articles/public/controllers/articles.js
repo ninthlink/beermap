@@ -232,9 +232,22 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
     
     $scope.loadFeed = function() {
       $scope.newsLoaded = false;
+      $scope.newsFeed = [];
       $scope.hideDistances = true;
       Feeds.query(function(items) {
-        $scope.newsFeed = items;
+        var news = [];
+        angular.forEach(items, function( item, n ) {
+          item.bodyClass = 'media-body';
+          if ( item.img ) {
+            item.hasMedia = true;
+            item.bodyClass += ' has-media';
+          } else {
+            item.hasMedia = false;
+          }
+          news.push(item);
+        });
+        
+        $scope.newsFeed = news;
         $scope.newsLoaded = true;
       });
     };
