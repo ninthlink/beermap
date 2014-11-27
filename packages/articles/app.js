@@ -54,9 +54,6 @@ Articles.register(function(app, auth, database) {
     */
   Articles.aggregateAsset('css', 'articles.css');
   //Articles.aggregateAsset('js', 'map.styles.js');
-
-  
-  //Articles.angularDependencies(['uiGmapgoogle-maps']);
   
   return Articles;
 });
