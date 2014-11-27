@@ -32,6 +32,13 @@ angular.module('mean.articles').config(['$stateProvider',
           //loggedin: checkLoggedin
         }
       })
+      .state('latest feed', {
+        url: '/feed',
+        templateUrl: 'articles/views/feed.html',
+        resolve: {
+          //loggedin: checkLoggedin
+        }
+      })
       .state('map', {
         url: '/',
         templateUrl: 'articles/views/map.html',
