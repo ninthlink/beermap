@@ -162,7 +162,7 @@ exports.all = function(req, res) {
 
 /**
  * full Feed list from the db?!
- * right now this just loads the first 10, and we have no pagination yet
+ * right now this just loads the first chunk, and we have no pagination yet
  */
 exports.fullFeed = function(req, res) {
   //console.log('GET /feed ( articles.fullFeed )');
