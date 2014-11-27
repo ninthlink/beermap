@@ -73,7 +73,7 @@ FeedSchema.statics.load = function(id, callback) {
     _id: id
   })
   // could also add 2nd parameter like 'name _id' to return just specific fields
-  .populate('author')
+  //.populate('author')
   // and send it back
   .exec(callback);
 };
