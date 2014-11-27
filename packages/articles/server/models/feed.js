@@ -82,7 +82,7 @@ FeedSchema.statics.load = function(id, callback) {
 // returns 10 Feed items from the db with page & skip args for paginations?
 FeedSchema.statics.getFeed = function(page, skip, errorCallback, successCallback) {
   var items = [],
-      perpage = 10,
+      perpage = 20,
       start = (page * perpage) + (skip * 1);
   // Query the db, using skip and limit to achieve page chunks
   // Feed.find(... ?
