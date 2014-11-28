@@ -220,7 +220,7 @@ PlaceSchema.statics.processTwitterUsersLookup = function(data) {
     }, {
       multi: true
     }, function(err, numberAffected, rawResponse) {
-      console.log('saved twitter user_id & user img for '+ numberAffected +' @'+ p.screen_name);
+      //console.log('saved twitter user_id & user img for '+ numberAffected +' @'+ p.screen_name);
       // also save the latest status in our Feeds?!
       if ( p.hasOwnProperty('status') ) {
         //console.log('saving new status for '+ p.screen_name +' ...');
@@ -235,7 +235,7 @@ PlaceSchema.statics.processTwitterUsersLookup = function(data) {
         });
       } else {
         // no status, so skip and just go to saving next place?
-        console.log('no status to save for @'+ p.screen_name +' ...');
+        //console.log('no status to save for @'+ p.screen_name +' ...');
         // loop
         thisPlace.processTwitterUsersLookup( data );
       }
@@ -250,7 +250,7 @@ PlaceSchema.statics.populateMissingTwitterInfos = function( Twit ) {
     .where('twit.img').equals('')
     .distinct('twit.name', function(err, twitter_names) {
       if ( err ) {
-        console.log('twit name search err');
+        console.log('populateMissingTwitterInfos twit name search err ?');
         console.log(err);
       } else {
         if ( twitter_names.length > 0 ) {
@@ -260,15 +260,15 @@ PlaceSchema.statics.populateMissingTwitterInfos = function( Twit ) {
           }
           
           var names_str = twitter_names.join();
-          console.log(twitter_names.length +' lookup : '+ names_str + ' : ...');
+          console.log('populate twitter infos for '+ twitter_names.length +' Places ...');
           
           // GET call to /users/lookup to populate any missing user_names & IDs
           Twit.get('users/lookup', { screen_name: names_str }, function(err, data, response) {
             if ( err ) {
-              console.log('twit search err');
+              console.log('twit search err?');
               console.log(err);
             } else {
-              console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' Places\' twitters : and then?');
+              //console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' Places\' twitters : and then?');
               // recursive call to see about inserting any new feed items for the results
               thisPlace.processTwitterUsersLookup( data );
             }
@@ -285,7 +285,7 @@ PlaceSchema.statics.saveTweetIfMatch = function( tweet, thisPlace, callback ) {
   .where('twit.name').equals( tweet.user.screen_name )
   .exec( function( err, matches ) {
     if ( err ) {
-      console.log('err in finding matching twit.name ::');
+      console.log('err in finding matching twit.name?');
       console.log(err);
       if ( callback ) {
         // and then trigger callback anyways
@@ -329,7 +329,7 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
   .where('twit.user_id').ne('')
   .distinct('twit.user_id', function(err, twitter_ids) {
     if ( err ) {
-      console.log('twit user_id search err');
+      console.log('twit user_id search err?');
       console.log(err);
     } else {
       if ( twitter_ids.length > 0 ) {
@@ -340,7 +340,7 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
         }
         
         var ids_str = twitter_ids.join();
-        console.log(twitter_ids.length +' lookup : '+ ids_str + ' : ...');
+        console.log( 'refreshing info on '+ twitter_ids.length +' Places\' Twitters ...');
         
         /**
          * GET call to /users/lookup
@@ -349,10 +349,10 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
          */
         Twit.get('users/lookup', { user_id: ids_str }, function(err, data, response) {
           if ( err ) {
-            console.log('twit search err');
+            console.log('twit search err?');
             console.log(err);
           } else {
-            console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' places twitter users : and then?');
+            //console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' places twitter users : and then?');
             // and process..
             thisPlace.processTwitterUsersLookup( data );
           }
@@ -369,7 +369,7 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
         tstream.on( 'delete', Feed.deleteTweetFromStream );
         // https://github.com/ttezel/twit#event-error
         tstream.on( 'error', function(error) {
-          console.log('xxxx Twitter Stream error xxxx');
+          console.log('??? Twitter Stream error ???');
           console.log(error);
         });
         
