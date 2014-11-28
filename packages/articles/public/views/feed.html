@@ -3,7 +3,7 @@
     <p class="text-center" ng-hide="newsLoaded">Loading News...</p>
     <div ng-repeat="news in newsFeed" class="feed-item">
       <div class="media">
-        <a class="pull-left" href="#{{news.author.slug}}">
+        <a class="pull-left clickable" ng-click="goBackToMap(news.author);">
           <img ng-src="{{news.author.twit.img}}" alt="{{news.author.name}}" style="width:32px;height:32px">
         </a>
         <div ng-hide="hideDistances" class="pull-right">

@@ -4,12 +4,25 @@
 			<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" events="clickEventsObject" control="map.markerControl"></ui-gmap-markers>
 		</ui-gmap-google-map>
 	</div>
-	<div class="place-quick-info" ng-show="highlightPlace">
+	<div class="place-overlay media" ng-show="highlightPlace">
 		<!-- if this is showing, then highlightPlace = the place marker object that was clicked / shown -->
-		<div>{{highlightPlace.fullName}}</div>
-		<div>{{highlightPlace.fullAddr}}</div>
-		<div><span ng-show="highlightPlace.chk.growlers" class="fa fa-beer"></span> <span ng-show="highlightPlace.chk.fams" class="fa fa-child"></span> <span ng-show="highlightPlace.chk.dogs" class="fa fa-paw"></span> <span ng-show="highlightPlace.chk.trucks" class="fa fa-truck"></span> <span ng-show="highlightPlace.chk.foods" class="fa fa-cutlery"></span></div>
+		<a class="pull-left clickable" href="#!" ng-click="goBackToMap(highlightPlace);">
+      <img ng-src="{{highlightPlace.twit.img}}" alt="{{highlightPlace.name}}" style="width:32px;height:32px">
+    </a>
+    <div ng-hide="hideDistances" class="pull-right">
+      <br />
+      <small><abbr class="distance" title="distance coming soon?">12 miles</abbr></small>
+    </div>
+    <div class="media-body">
+      <p>
+        <strong>{{highlightPlace.fullName}} <small>{{highlightPlace.sublocation}}</small></strong><br />
+        <span>{{highlightPlace.fullAddr}}</span><br />
+        <span ng-show="highlightPlace.chk.growlers" class="fa fa-beer"></span> <span ng-show="highlightPlace.chk.fams" class="fa fa-child"></span> <span ng-show="highlightPlace.chk.dogs" class="fa fa-paw"></span> <span ng-show="highlightPlace.chk.trucks" class="fa fa-truck"></span> <span ng-show="highlightPlace.chk.foods" class="fa fa-cutlery"></span>
+      </p>
+    </div>
 	</div>
+  <!--
 	<pre>showing {{markers.length}} places : the below are others that are missing some key location info...</pre>
 	<pre>{{badMarkers | json}}</pre>
+  -->
 </section>

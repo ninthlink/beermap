@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', '$window', 'Global', 'Articles', 'Places', 'Feeds', 'PlacesFromSpreadsheet', 'uiGmapGoogleMapApi',
-  function($scope, $stateParams, $location, $window, Global, Articles, Places, Feeds, PlacesFromSpreadsheet, GoogleMapApi) {
+angular.module('mean.articles').controller('ArticlesController', ['$scope', '$rootScope', '$stateParams', '$location', '$window', 'Global', 'Articles', 'Places', 'Feeds', 'PlacesFromSpreadsheet', 'uiGmapGoogleMapApi',
+  function($scope, $rootScope, $stateParams, $location, $window, Global, Articles, Places, Feeds, PlacesFromSpreadsheet, GoogleMapApi ) {
     $scope.global = Global;
     // map marker icons?!
     var icon_reddot = '/articles/assets/img/dot-red.png';
     //var icon_bluedot = '/articles/assets/img/dot-blue.png';
-	
+    $scope.hideDistances = true;
+    
     $scope.hasAuthorization = function(article) {
       if (!article || !article.user) return false;
       return $scope.global.isAdmin || article.user._id === $scope.global.user._id;
@@ -70,13 +71,21 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
     };
 	
     $scope.mainmap = function() {
+      $scope.uiRoute = 'map';
       $scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, bounds: {}, control: {}, markerControl: {} };
-      $scope.options = {};//scrollwheel: false};
+      $scope.options = { mapTypeControl: false, streetViewControl: false, zoomControl: false };//scrollwheel: false};
       $scope.coordsUpdates = 0;
       $scope.dynamicMoveCtr = 0;
       
-      $scope.highlightPlace = $scope.highlightNumber = false;
       $scope.markers = [];
+      
+      if ( $rootScope.hasOwnProperty('highlightPlace') ) {
+        console.log(' highlight : ');
+        console.log($rootScope.highlightPlace);
+        // re-center map at that place?
+        $scope.map.center.latitude = $rootScope.highlightPlace.latitude;
+        $scope.map.center.longitude = $rootScope.highlightPlace.longitude;
+      }
       //	Map Styles : not sure how to inject otherwise..
       $scope.styles = [{'featureType':'water','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':-78},{'lightness':67},{'visibility':'simplified'}]},{'featureType':'landscape','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'simplified'}]},{'featureType':'road','elementType':'geometry','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'simplified'}]},{'featureType':'poi','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'off'}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'hue':'#e9ebed'},{'saturation':-90},{'lightness':-8},{'visibility':'simplified'}]},{'featureType':'transit','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':10},{'lightness':69},{'visibility':'on'}]},{'featureType':'administrative.locality','elementType':'all','stylers':[{'hue':'#2c2e33'},{'saturation':7},{'lightness':19},{'visibility':'on'}]},{'featureType':'road','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'on'}]},{'featureType':'road.arterial','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':-2},{'visibility':'simplified'}]}];
       
@@ -110,12 +119,21 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
             Places.query({
               articleId: bounds_corners
             }, function(newplaces) {
+              // check to reset old marker?
+              var oldhighlight_id = false;
+              if ( $rootScope.hasOwnProperty( 'highlightPlace' ) ) {
+                oldhighlight_id = $rootScope.highlightPlace._id;
+              }
               //console.log('queried Places : got :');
               //console.log(places);
               var newmarkers = [];
               angular.forEach(newplaces, function( marker, k ) {
                 // set our default icon here?!
                 marker.icon = icon_reddot;
+                if ( oldhighlight_id === marker._id ) {
+                  //marker.icon = icon_bluedot;
+                  $rootScope.highlightPlace = marker;
+                }
                 
                 newmarkers.push(marker);
               });
@@ -137,7 +155,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
           });
           // initial check for markers in the area, too
           $scope.refilterTimeout = setTimeout( $scope.refilter, 100 );
-          
+          /*
           Places.query({
             articleId: 'findbad'
           }, function(newplaces) {
@@ -157,6 +175,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
               placeCheckStep();
             }
           });
+          */
         }, 400);
         
         var geocoder = new maps.Geocoder();
@@ -201,16 +220,23 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
       
       // set up our click / mouse events?
       $scope.markerClick = function( result, event ) {
+        /*
+        if ( $rootScope.hasOwnProperty( 'highlightPlace' ) ) {
+          $rootScope.highlightPlace.icon = icon_reddot;
+        }
+        */
+        //var clickednum = -1;
         // can't figure out how to run a filter soooooooo
-        var clickedon = false;
         angular.forEach( $scope.markers, function( item, n ) {
           if ( item.id === result.key ) {
-            clickedon = item;
-            $scope.highlightNumber = n;
+            //item.icon = icon_bluedot;
+            $rootScope.highlightPlace = item; //$scope.highlightPlace = 
+            //clickednum = n;
+          //} else {
+          //  item.icon = icon_reddot;
           }
         });
-        $scope.highlightPlace = clickedon;
-        console.log('clicked #'+ $scope.highlightNumber +' = _id: '+ result.key +' : '+ clickedon.fullName);
+        console.log('clicked _id '+ result.key +' : '+ $rootScope.highlightPlace.fullName);
         // #todo : now somehow social factory to get couple feed items from server?!
       };
       $scope.clickEventsObject = {
@@ -233,7 +259,6 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
     $scope.loadFeed = function() {
       $scope.newsLoaded = false;
       $scope.newsFeed = [];
-      $scope.hideDistances = true;
       Feeds.query(function(items) {
         var news = [];
         angular.forEach(items, function( item, n ) {
@@ -250,6 +275,12 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         $scope.newsFeed = news;
         $scope.newsLoaded = true;
       });
+    };
+    
+    $scope.goBackToMap = function( highlightPlace ) {
+      $rootScope.highlightPlace = highlightPlace;
+      $location.path('map');
+      return false;
     };
   }
 ]);
