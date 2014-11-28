@@ -80,8 +80,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       $scope.markers = [];
       
       if ( $rootScope.hasOwnProperty('highlightPlace') ) {
-        console.log(' highlight : ');
-        console.log($rootScope.highlightPlace);
+        console.log('re-center map on highlight _id:'+ $rootScope.highlightPlace.id +' ' + $rootScope.highlightPlace.nameLongest);
         // re-center map at that place?
         $scope.map.center.latitude = $rootScope.highlightPlace.latitude;
         $scope.map.center.longitude = $rootScope.highlightPlace.longitude;
@@ -236,7 +235,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           //  item.icon = icon_reddot;
           }
         });
-        console.log('clicked _id '+ result.key +' : '+ $rootScope.highlightPlace.fullName);
+        //console.log('clicked _id '+ result.key +' : '+ $rootScope.highlightPlace.nameFull);
         // #todo : now somehow social factory to get couple feed items from server?!
       };
       $scope.clickEventsObject = {
