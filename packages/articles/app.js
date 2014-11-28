@@ -20,12 +20,20 @@ Articles.register(function(app, auth, database) {
   Articles.menus.add({
     title: 'Beer Map',
     link: 'map',
-    menu: 'main'
+    menu: 'main',
+    roles: [
+      'anonymous',
+      'authenticated'
+    ]
   });
   Articles.menus.add({
     title: 'Beer News',
     link: 'latest feed',
-    menu: 'main'
+    menu: 'main',
+    roles: [
+      'anonymous',
+      'authenticated'
+    ]
   });
   /*
   Articles.menus.add({
