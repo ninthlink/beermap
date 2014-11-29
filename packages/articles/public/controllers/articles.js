@@ -132,6 +132,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
                 if ( oldhighlight_id === marker._id ) {
                   //marker.icon = icon_bluedot;
                   $rootScope.highlightPlace = marker;
+                  //$scope.loadHighlightPlaceFeed();
                 }
                 
                 newmarkers.push(marker);
@@ -276,7 +277,27 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $scope.newsLoaded = true;
       });
     };
-    
+    /*
+    $scope.loadHighlightPlaceFeed = function() {
+      Feeds.query({
+        '_id': $rootScope.highlightPlace._id
+      }, function(items) {
+        var news = [];
+        angular.forEach(items, function( item, n ) {
+          item.bodyClass = 'media-body';
+          if ( item.img ) {
+            item.hasMedia = true;
+            item.bodyClass += ' has-media';
+          } else {
+            item.hasMedia = false;
+          }
+          news.push(item);
+        });
+        
+        $rootScope.highlightPlace.newsFeed = news;
+      });
+    };
+    */
     $scope.goBackToMap = function( highlightPlace ) {
       $rootScope.highlightPlace = highlightPlace;
       $location.path('map');
