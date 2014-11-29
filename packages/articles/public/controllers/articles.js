@@ -176,7 +176,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           });
           */
         }, 400);
-        
+        /*
         var geocoder = new maps.Geocoder();
         function placeCheckStep() {
           setTimeout( function() {
@@ -215,6 +215,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             }
           }, 200);
         }
+        */
       });
       
       // set up our click / mouse events?
