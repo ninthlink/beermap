@@ -165,8 +165,8 @@ exports.all = function(req, res) {
  * right now this just loads the first chunk, and we have no pagination yet
  */
 exports.loadFeed = function(req, res) {
-  console.log('GET /feed ( articles.getFeed )');
-  console.log(req.params);
+  //console.log('GET /feed ( articles.getFeed )');
+  //console.log(req.params);
   
   var id = '',
       p = 0,
@@ -185,12 +185,21 @@ exports.loadFeed = function(req, res) {
     s = parseInt( req.params.skip, 10 );
   }
   
-  console.log('fullFeed : getFeed /'+ id +'/'+ p +'/'+ s );
+  //console.log('fullFeed : getFeed /'+ id +'/'+ p +'/'+ s );
   Feed.getFeed(id, p, s, function(err) {
     return res.status(500).json({
       error: 'Cannot list Feed items'
     });
   }, function( items ) {
+    if ( id !== '' ) {
+      // in this case, we are returning items for a specific Place author already
+      var c = items.length;
+      for( var i = c; i > 0 ; i-- ) {
+        // so we shouldn't need to pass the author sub document back with each..
+        items[i-1].author = undefined;
+      }
+    }
+    // and return
     res.json(items);
   });
 };
