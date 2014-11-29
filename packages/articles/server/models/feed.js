@@ -84,30 +84,38 @@ FeedSchema.statics.load = function(id, callback) {
   .exec(callback);
 };
 // returns 10 Feed items from the db with page & skip args for paginations?
-FeedSchema.statics.getFeed = function(page, skip, errorCallback, successCallback) {
+FeedSchema.statics.getFeed = function(author_id, page, skip, errorCallback, successCallback) {
   var items = [],
       perpage = 20,
-      start = (page * perpage) + (skip * 1);
+      start = (page * perpage) + (skip * 1),
+      feedFields = 'active author body date img origin_id source url',
+      authorFields = 'name suffix sublocation slug lat lng fb insta twit';
+  
+  //console.log('Feed > getFeed /'+ id + '/'+ page + '/'+ skip +' = start at #'+ start);
   // Query the db, using skip and limit to achieve page chunks
-  // Feed.find(... ?
-  this.find({},'active author body date img origin_id source url',{skip: start, limit: perpage})
-  .sort({date: 'desc'})
+  var query = this.find({},feedFields,{skip: start, limit: perpage})
+    .sort({date: 'desc'});
+  // if id is provided, only match on author
+  if ( author_id !== '' ) {
+    query = query.where('author').equals(author_id);
+  }
   // populate the Feed item's "author", but only with fields that we might need..
-  .populate('author', 'name suffix sublocation slug lat lng fb insta twit')
-  // and execute & callback
-  .exec(function(err,docs){
-    // If everything is cool...
-    if(err) {
-      errorCallback(err);
-    } else {
-      items = docs;  // We got tweets
-      items.forEach(function(tweet){
-        items.active = true; // Set them to active
-      });
-      // Pass them back to the specified callback
-      successCallback(items);
-    }
-  });
+  query
+    .populate('author', authorFields)
+    // and execute & callback
+    .exec(function(err,docs){
+      // If everything is cool...
+      if(err) {
+        errorCallback(err);
+      } else {
+        items = docs;  // We got tweets
+        items.forEach(function(tweet){
+          items.active = true; // Set them to active
+        });
+        // Pass them back to the specified callback
+        successCallback(items);
+      }
+    });
 };
 // save a new Tweet as a Feed item in our DB
 FeedSchema.statics.saveNewTweet = function( twobj, author_id, callback ) {
