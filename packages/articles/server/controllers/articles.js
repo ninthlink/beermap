@@ -197,7 +197,7 @@ exports.loadFeed = function(req, res) {
       var c = items.length;
       while( c-- ) {
         // so we shouldn't need to pass the author sub document back with each..
-        items[i].author = undefined;
+        items[c].author = undefined;
       }
     }
     // and return
