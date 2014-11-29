@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+  Schema = mongoose.Schema,
+  moment = require('moment');
 
 /**
  * helper objects
@@ -65,7 +66,10 @@ var FeedSchema = new Schema({
 /**
  * Virtuals : not sure what Virtuals we might need?
  */
-
+// use moment for more pretty time stamp
+FeedSchema.virtual( 'moment' ).get(function() {
+	return moment(this.date).fromNow();
+});
 /**
  * Statics are like helper functions or something, nobody knows, maybe dragons
  */
