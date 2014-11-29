@@ -50,7 +50,7 @@ exports.article = function(req, res, next, id) {
 				.where('lng').gt(swlng)
 				.exec(function(err, places) {
 				if (err) {
-					return res.json(500, {
+					return res.status(500).json({
 						error: 'Cannot list the places'
 					});
 				}
@@ -62,20 +62,20 @@ exports.article = function(req, res, next, id) {
 			Place.find()
 				.exec(function(err, places) {
 				if (err) {
-					return res.json(500, {
+					return res.status(500).json({
 						error: 'Cannot list the places'
 					});
 				}
 				res.json(places);
 			});
 		} else {
-			console.log('looking for article id '+ id);
+			//console.log('looking for article id '+ id +' ( length '+ id.length +' )');
 			Place.load(id, function(err, place) {
 				if (err) return next(err);
 				if (!place) return next(new Error('Failed to load article place ' + id));
 				// else : its ok?
 				req.place = place;
-				console.log(place);
+				//console.log(place);
 				next();
 			});
 		}
@@ -92,7 +92,7 @@ exports.create = function(req, res) {
 	console.log(place);
   place.save(function(err) {
     if (err) {
-      return res.json(500, {
+      return res.status(500).json({
         error: 'Cannot save the place'
       });
     }
@@ -110,7 +110,7 @@ exports.update = function(req, res) {
 
   article.save(function(err) {
     if (err) {
-      return res.json(500, {
+      return res.status(500).json({
         error: 'Cannot update the article'
       });
     }
@@ -126,7 +126,7 @@ exports.destroy = function(req, res) {
 
   article.remove(function(err) {
     if (err) {
-      return res.json(500, {
+      return res.status(500).json({
         error: 'Cannot delete the article'
       });
     }
@@ -149,7 +149,7 @@ exports.show = function(req, res) {
 exports.all = function(req, res) {
   Place.find().exec(function(err, places) {
     if (err) {
-      return res.json(500, {
+      return res.status(500).json({
         error: 'Cannot list the places'
       });
     }
@@ -164,12 +164,30 @@ exports.all = function(req, res) {
  * full Feed list from the db?!
  * right now this just loads the first chunk, and we have no pagination yet
  */
-exports.fullFeed = function(req, res) {
-  //console.log('GET /feed ( articles.fullFeed )');
-  //console.log(req.params);
+exports.loadFeed = function(req, res) {
+  console.log('GET /feed ( articles.getFeed )');
+  console.log(req.params);
   
-  Feed.getFeed(0,0, function(err) {
-    return res.json(500, {
+  var id = '',
+      p = 0,
+      s = 0;
+  
+  if ( req.params.hasOwnProperty('id') ) {
+    id = req.params.id;
+    if ( id === 'all' ) {
+      id = '';
+    }
+  }
+  if ( req.params.hasOwnProperty('page') ) {
+    p = parseInt( req.params.page, 10 );
+  }
+  if ( req.params.hasOwnProperty('skip') ) {
+    s = parseInt( req.params.skip, 10 );
+  }
+  
+  console.log('fullFeed : getFeed /'+ id +'/'+ p +'/'+ s );
+  Feed.getFeed(id, p, s, function(err) {
+    return res.status(500).json({
       error: 'Cannot list Feed items'
     });
   }, function( items ) {
