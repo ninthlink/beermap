@@ -18,9 +18,8 @@ Articles.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   Articles.menus.add({
-    title: 'Beer Map',
+    title: 'Beer Maps',
     link: 'map',
-    menu: 'main',
     roles: [
       'anonymous',
       'authenticated'
@@ -29,7 +28,6 @@ Articles.register(function(app, auth, database) {
   Articles.menus.add({
     title: 'Beer News',
     link: 'latest feed',
-    menu: 'main',
     roles: [
       'anonymous',
       'authenticated'
