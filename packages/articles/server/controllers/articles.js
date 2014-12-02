@@ -1,4 +1,3 @@
-/*jshint plusplus:true*/
 'use strict';
 
 /**
@@ -195,7 +194,8 @@ exports.loadFeed = function(req, res) {
     if ( id !== '' ) {
       // in this case, we are returning items for a specific Place author already
       var c = items.length;
-      while( c-- ) {
+      while( c ) {
+        c -= 1;
         // so we shouldn't need to pass the author sub document back with each..
         items[c].author = undefined;
       }
