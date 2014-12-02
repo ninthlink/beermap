@@ -46,3 +46,16 @@ footer p {
 /*.ng-valid.ng-dirty{*/
     /*border-color:#78FA89;*/
 /*}*/
+
+.navbar {
+  min-height: 40px;
+}
+.navbar-nav.nav {
+  margin: 0;
+}
+.nav > li {
+  float: left;
+}
+.content {
+  margin-top: 40px;
+}
