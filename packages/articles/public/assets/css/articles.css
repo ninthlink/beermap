@@ -8,3 +8,14 @@ ul.articles li:not(:last-child) {
 .map-container { position: fixed; left: 0; right: 0; top: 40px; bottom: 0; z-index: 1; }
 .angular-google-map,
 .angular-google-map-container { width: 100%; height: 100% }
+
+.place-overlay {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  right: 0;
+  padding: 15px 15px 0;
+  box-shadow: 0 0 5px;
+}
