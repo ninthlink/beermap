@@ -132,6 +132,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
                 if ( oldhighlight_id === marker._id ) {
                   //marker.icon = icon_bluedot;
                   $rootScope.highlightPlace = marker;
+                  $scope.highlightPlaceHasImg = ( marker.twit.img !== '' );
                   //$scope.loadHighlightPlaceFeed();
                 }
                 
@@ -221,20 +222,11 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       
       // set up our click / mouse events?
       $scope.markerClick = function( result, event ) {
-        /*
-        if ( $rootScope.hasOwnProperty( 'highlightPlace' ) ) {
-          $rootScope.highlightPlace.icon = icon_reddot;
-        }
-        */
-        //var clickednum = -1;
         // can't figure out how to run a filter soooooooo
-        angular.forEach( $scope.markers, function( item, n ) {
-          if ( item.id === result.key ) {
-            //item.icon = icon_bluedot;
-            $rootScope.highlightPlace = item; //$scope.highlightPlace = 
-            //clickednum = n;
-          //} else {
-          //  item.icon = icon_reddot;
+        angular.forEach( $scope.markers, function( marker, n ) {
+          if ( marker.id === result.key ) {
+            $rootScope.highlightPlace = marker;
+            $scope.highlightPlaceHasImg = ( marker.twit.img !== '' ); 
           }
         });
         //console.log('clicked _id '+ result.key +' : '+ $rootScope.highlightPlace.nameFull);

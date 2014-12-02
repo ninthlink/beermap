@@ -7,7 +7,7 @@
     </div>
     <div class="place-overlay media" ng-show="highlightPlace">
       <!-- if this is showing, then highlightPlace = the place marker object that was clicked / shown -->
-      <a class="pull-left clickable" href="#!" ng-click="goBackToMap(highlightPlace);">
+      <a class="pull-left clickable" href="#!" ng-click="goBackToMap(highlightPlace);" ng-show="highlightPlaceHasImg">
         <img ng-src="{{highlightPlace.twit.img}}" alt="{{highlightPlace.name}}" style="width:32px;height:32px">
       </a>
       <div ng-hide="hideDistances" class="pull-right">
