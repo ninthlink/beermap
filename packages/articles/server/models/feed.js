@@ -163,29 +163,6 @@ FeedSchema.statics.saveNewTweet = function( twobj, author_id, callback ) {
     callback();
   });
 };
-// handler for tstream.on('delete' which sends a twitter deleteMessage object
-FeedSchema.statics.deleteTweetFromStream = function(deleteMessage) {
-  /*
-  deleteMessage = {
-    delete: {
-      status: {
-        id: 537386102920081400,
-        id_str: '537386102920081409',
-        user_id: 465999585,
-        user_id_str: '465999585'
-      },
-      timestamp_ms: '1416958749728'
-    }
-  };
-  */
-  var tw_id = deleteMessage.delete.status.id_str;
-  console.log('xxxx Twitter Stream delete '+ tw_id);
-  //console.log(deleteMessage);
-  this.deleteItem( tw_id, function() {
-    console.log(' ... '+ tw_id +' deleted');
-    // #todo : socket emit ?!
-  });
-};
 // given an origin_id, actually find & remove that Feed item
 FeedSchema.statics.deleteItem = function( id, callback ) {
   this.remove({ origin_id: id }, function(err) {

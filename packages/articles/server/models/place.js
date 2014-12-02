@@ -366,7 +366,28 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
           thisPlace.saveTweetIfMatch( tweet, thisPlace ); // what?!
         });
         // https://github.com/ttezel/twit#event-delete
-        tstream.on( 'delete', Feed.deleteTweetFromStream );
+        tstream.on( 'delete', function( deleteMessage ) {
+          /*
+          deleteMessage = {
+            delete: {
+              status: {
+                id: 537386102920081400,
+                id_str: '537386102920081409',
+                user_id: 465999585,
+                user_id_str: '465999585'
+              },
+              timestamp_ms: '1416958749728'
+            }
+          };
+          */
+          var tw_id = deleteMessage.delete.status.id_str;
+          console.log('xxxx Twitter Stream delete '+ tw_id);
+          //console.log(deleteMessage);
+          Feed.deleteItem( tw_id, function() {
+            console.log(' ... '+ tw_id +' deleted');
+            // #todo : socket emit ?!
+          });
+        });
         // https://github.com/ttezel/twit#event-error
         tstream.on( 'error', function(error) {
           console.log('??? Twitter Stream error ???');
