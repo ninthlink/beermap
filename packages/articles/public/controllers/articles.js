@@ -98,23 +98,21 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           var gmapd = $scope.map.control.getGMap();
           maps.event.trigger( gmapd, 'resize' );
         });
-        
+        // really initialize 400ms after gmap, which should be enough time
         setTimeout(function() {
           var gmapd = $scope.map.control.getGMap();
           // on home screen, add some map listener(s)
           $scope.refilterTimeout = null;
           $scope.refilter = function() {
             var gmapd = $scope.map.control.getGMap();
-            var bounds = gmapd.getBounds();
             // get the 2 boundary corners LatLng objects from the bounds
+            var bounds = gmapd.getBounds();
             // https://developers.google.com/maps/documentation/javascript/reference#LatLngBounds
             var ne = bounds.getNorthEast();
             var sw = bounds.getSouthWest();
-            // combine in to 1 object to send to the server
+            // combine in to 1 String to pass to server
             var bounds_corners = ne.toString() +','+ sw.toString();
-            //console.log(':: map bounds update ::');
-            //console.log(bounds_corners);
-            //console.log(':: querying Places now?! ::');
+            // and then query to find all Places within current bounds
             Places.query({
               articleId: bounds_corners
             }, function(newplaces) {
@@ -143,19 +141,17 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
               //console.log($scope.markers);
             });
           };
-          // listen when the center has manually been moved
-          $scope.mapMoveListener = maps.event.addListener(gmapd, 'center_changed', function() {
+          // throttle the refilter call so we don't call the server too much
+          $scope.refilterThrottle = function() {
             clearTimeout( $scope.refilterTimeout );
             // add throttled call to filter map markers in the area
             $scope.refilterTimeout = setTimeout( $scope.refilter, 200 );
-          });
-          $scope.mapZoomListener = maps.event.addListener(gmapd, 'zoom_changed', function() {
-            clearTimeout( $scope.refilterTimeout );
-            // add throttled call to filter map markers in the area
-            $scope.refilterTimeout = setTimeout( $scope.refilter, 200 );
-          });
+          };
+          // listen when the map center has manually been moved, or map zooms
+          $scope.mapMoveListener = maps.event.addListener( gmapd, 'center_changed', $scope.refilterThrottle );
+          $scope.mapZoomListener = maps.event.addListener( gmapd, 'zoom_changed', $scope.refilterThrottle );
           // initial check for markers in the area, too
-          $scope.refilterTimeout = setTimeout( $scope.refilter, 100 );
+          $scope.refilterThrottle();
           /*
           Places.query({
             articleId: 'findbad'
