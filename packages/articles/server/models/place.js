@@ -99,8 +99,7 @@ var PlaceSchema = new Schema({
 	}
 });
 /**
- * Virtuals are like helpers for doing some shortcuts / combinings
- * the first couple are more specifically for specific naming conventions gmap requires
+ * Virtuals are like quick helpers for doing some shortcuts / combinings
  */
 // map place.coords = { latitude, longitude }
 PlaceSchema.virtual( 'latitude' ).get(function() {
@@ -109,14 +108,6 @@ PlaceSchema.virtual( 'latitude' ).get(function() {
 PlaceSchema.virtual( 'longitude' ).get(function() {
 	return this.lng;
 });
-/*
-PlaceSchema.virtual( 'coords' ).get(function() {
-	return {
-		latitude: this.lat,
-		longitude: this.lng
-	};
-});
-*/
 // combine "City, State Zip"
 PlaceSchema.virtual( 'CSZ' ).get(function() {
   // only return something if the object actually has a city || state || zip
@@ -182,7 +173,7 @@ PlaceSchema.virtual( 'nameLongest' ).get(function() {
 	return oot;
 });
 /**
- * Statics are like helper functions or something, nobody knows, maybe dragons
+ * Statics are like more permanent helper functions
  */
 // findOne Place given an id & execute callback
 PlaceSchema.statics.load = function(id, cb) {
@@ -205,7 +196,7 @@ PlaceSchema.statics.findBySlug = function(slug, cb) {
   .exec(cb);
 };
 // help recurse step through results & update 1 at a time?
-PlaceSchema.statics.processTwitterUsersLookup = function(data) {
+PlaceSchema.statics.processTwitterUsersLookup = function( data, quiet ) {
   var thisPlace = this;
   if ( data.length > 0 ) {
     var p = data.shift();
@@ -219,8 +210,8 @@ PlaceSchema.statics.processTwitterUsersLookup = function(data) {
       'twit.img': p.profile_image_url_https
     }, {
       multi: true
-    }, function(err, numberAffected, rawResponse) {
-      //console.log('saved twitter user_id & user img for '+ numberAffected +' @'+ p.screen_name);
+    }, function(err, num, rawResponse) {
+      //console.log('saved user id & img for '+ num +' @'+ p.screen_name);
       // also save the latest status in our Feeds?!
       if ( p.hasOwnProperty('status') ) {
         //console.log('saving new status for '+ p.screen_name +' ...');
@@ -229,17 +220,19 @@ PlaceSchema.statics.processTwitterUsersLookup = function(data) {
           id_str: p.id_str,
           screen_name: p.screen_name
         };
-        thisPlace.saveTweetIfMatch( p.status, thisPlace, function() {
+        thisPlace.saveTweetIfMatch( p.status, thisPlace, quiet, function() {
           // and loop
-          thisPlace.processTwitterUsersLookup( data );
+          thisPlace.processTwitterUsersLookup( data, quiet );
         });
       } else {
         // no status, so skip and just go to saving next place?
         //console.log('no status to save for @'+ p.screen_name +' ...');
         // loop
-        thisPlace.processTwitterUsersLookup( data );
+        thisPlace.processTwitterUsersLookup( data, quiet );
       }
     });
+  } else {
+    console.log('<< Place.processTwitterUsersLookup loop complete >>');
   }
 };
 // check list of Places for any with twitter Names but not twitter user IDs
@@ -255,22 +248,24 @@ PlaceSchema.statics.populateMissingTwitterInfos = function( Twit ) {
       } else {
         if ( twitter_names.length > 0 ) {
           if ( twitter_names.length > 100 ) {
-            console.log('more than 100 places twitter names found. first 100 :');
+            console.log('OOPS found more than 100 Places twitter names...');
             twitter_names = twitter_names.slice(0,100);
           }
           
-          var names_str = twitter_names.join();
-          console.log('populate twitter infos for '+ twitter_names.length +' Places ...');
+          var lookup = {
+            screen_name: twitter_names.join()
+          };
+          console.log( 'populate twitter infos for '+ twitter_names.length );
           
           // GET call to /users/lookup to populate any missing user_names & IDs
-          Twit.get('users/lookup', { screen_name: names_str }, function(err, data, response) {
+          Twit.get('users/lookup', lookup, function(err, data, response) {
             if ( err ) {
               console.log('twit search err?');
               console.log(err);
             } else {
-              //console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' Places\' twitters : and then?');
-              // recursive call to see about inserting any new feed items for the results
-              thisPlace.processTwitterUsersLookup( data );
+              //console.log('*** TWIT SEARCH SUCCESS for '+ data.length );
+              // loop to insert any new Feed items from results, quietly
+              thisPlace.processTwitterUsersLookup( data, true );
             }
           });
         }
@@ -278,43 +273,60 @@ PlaceSchema.statics.populateMissingTwitterInfos = function( Twit ) {
     });
 };
 // only Save a Tweet if we have a Place with twit.name = tweet.user.screen_name
-PlaceSchema.statics.saveTweetIfMatch = function( tweet, thisPlace, callback ) {
-  // somehow this was bugging out til i added thisPlace arg..
-  console.log( 'TWEET : https://twitter.com/'+ tweet.user.screen_name +'/status/'+ tweet.id_str );
+PlaceSchema.statics.saveTweetIfMatch = function( tweet, thisPlace, quiet, cb ) {
+  if ( !quiet ) {
+    var twurl = 'https://twitter.com/';
+    twurl += tweet.user.screen_name +'/status/'+ tweet.id_str;
+    console.log( 'TWEET : '+ twurl );
+  }
   this.find({})
   .where('twit.name').equals( tweet.user.screen_name )
   .exec( function( err, matches ) {
     if ( err ) {
       console.log('err in finding matching twit.name?');
       console.log(err);
-      if ( callback ) {
-        // and then trigger callback anyways
-        callback();
+      if ( cb ) {
+        // and then trigger cb anyways
+        cb();
       }
     } else {
       if ( matches.length > 0 ) {
         // a match was found, so we're cool to save
-        var placematch_id = matches[0]._id;
-        console.log('Place(s) found matching : '+ tweet.user.screen_name +' : '+ placematch_id );
+        var pid = matches[0]._id;
+        if ( !quiet ) {
+          console.log('Place(s) match: '+ tweet.user.screen_name +' '+ pid );
+        }
         //console.log(matches[0]);
         
-        Feed.saveNewTweet( tweet, placematch_id, function() {
-          console.log('new Feed item saved to DB!');
-          console.log('***');
+        Feed.saveNewTweet( tweet, pid, function() {
+          if ( !quiet ) {
+            console.log('new Feed item saved to DB!');
+            console.log('***');
+          }
+          /*
           // #todo : socket emit notify?!
-          //io.sockets.emit('tweet', { screen_name: tweet.user.screen_name, id: tweet.id_str });
-          if ( callback ) {
-            callback();
+          io.sockets.emit('tweet', {
+            screen_name: tweet.user.screen_name,
+            id: tweet.id_str
+          });
+          */
+          if ( cb ) {
+            cb();
           }
         });
       } else {
-        // no match found...
-        console.log('no Place found matching @'+ tweet.user.screen_name + ' = no save.');
-        console.log('***');
-        // note : if we wanted to store # of Retweets, this is probably when that # should be incremented somehow
-        if ( callback ) {
-          // and then trigger callback anyways
-          callback();
+        // no match found = no save...
+        if ( !quiet ) {
+          console.log('no Place found matching @'+ tweet.user.screen_name );
+          console.log('***');
+        }
+        /**
+         * note : if we wanted to store # of Retweets or w/e..
+         * this is probably when that # should be incremented?
+         */
+        // and then trigger cb anyways
+        if ( cb ) {
+          cb();
         }
       }
     }
@@ -340,46 +352,53 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
         }
         
         var ids_str = twitter_ids.join();
-        console.log( 'refreshing info on '+ twitter_ids.length +' Places\' Twitters ...');
+        var lookup = {
+          user_id: ids_str
+        };
+        console.log( 'refreshing info on '+ twitter_ids.length +' twitters');
         
         /**
          * GET call to /users/lookup
          * populate any missing user_names & IDs
          * & initial svaes the latest tweet from each
          */
-        Twit.get('users/lookup', { user_id: ids_str }, function(err, data, response) {
+        Twit.get('users/lookup', lookup, function(err, data, response) {
           if ( err ) {
             console.log('twit search err?');
             console.log(err);
           } else {
-            //console.log('*** TWIT SEARCH SUCCESS! data for '+ data.length +' places twitter users : and then?');
-            // and process..
-            thisPlace.processTwitterUsersLookup( data );
+            //console.log('*** TWIT SEARCH SUCCESS for '+ data.length );
+            // and process, quietly at first..
+            var quiet = true;
+            thisPlace.processTwitterUsersLookup( data, quiet );
           }
         });
         
         // and STREAM
-        var tstream = Twit.stream( 'statuses/filter', { follow: ids_str } );
+        lookup = {
+          follow: ids_str
+        };
+        var tstream = Twit.stream( 'statuses/filter', lookup );
         // yea, thats really it. then just have to add the event listeners...
         // https://github.com/ttezel/twit#event-tweet
         tstream.on( 'tweet', function( tweet ) {
-          thisPlace.saveTweetIfMatch( tweet, thisPlace ); // what?!
+          // this was broke until passing thisPlace as an arg..
+          thisPlace.saveTweetIfMatch( tweet, thisPlace );
         });
-        // https://github.com/ttezel/twit#event-delete
+        /*
+        deleteMessage = {
+          delete: {
+            status: {
+              id: 537386102920081400,
+              id_str: '537386102920081409',
+              user_id: 465999585,
+              user_id_str: '465999585'
+            },
+            timestamp_ms: '1416958749728'
+          }
+        };
+        */
         tstream.on( 'delete', function( deleteMessage ) {
-          /*
-          deleteMessage = {
-            delete: {
-              status: {
-                id: 537386102920081400,
-                id_str: '537386102920081409',
-                user_id: 465999585,
-                user_id_str: '465999585'
-              },
-              timestamp_ms: '1416958749728'
-            }
-          };
-          */
           var tw_id = deleteMessage.delete.status.id_str;
           console.log('xxxx Twitter Stream delete '+ tw_id);
           //console.log(deleteMessage);
@@ -394,7 +413,11 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
           console.log(error);
         });
         
-        // #todo : cycle through the twitter_ids and make sure they are FOLLOWED and in the list?
+        /**
+         * #todo : cycle through the twitter_ids
+         * make sure they are FOLLOWED by sdbeermap
+         * and in the list?
+         */
       }
     }
   });
