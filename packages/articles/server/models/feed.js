@@ -10,19 +10,19 @@ var mongoose = require('mongoose'),
 // shorten our moment output
 moment.locale('en', {
   relativeTime : {
-      future: "in %s",
-      past:   "%s ago",
-      s:  "s",
-      m:  "1m",
-      mm: "%dm",
-      h:  "1h",
-      hh: "%dh",
-      d:  "1d",
-      dd: "%dd",
-      M:  "1 month",
-      MM: "%d months",
-      y:  "1 year",
-      yy: "%d years"
+    future: 'in %s',
+    past: '%s ago',
+    s: 's',
+    m: '1m',
+    mm: '%dm',
+    h: '1h',
+    hh: '%dh',
+    d: '1d',
+    dd: '%dd',
+    M: '1 month',
+    MM: '%d months',
+    y: '1 year',
+    yy: '%d years'
   }
 });
 /**
