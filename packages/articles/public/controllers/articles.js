@@ -79,11 +79,20 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       
       $scope.markers = [];
       
+      if ( $rootScope.hasOwnProperty('previousMapZoom') ) {
+        $scope.map.zoom = $rootScope.previousMapZoom;
+      }
+      if ( $rootScope.hasOwnProperty('previousMapCenter') ) {
+        $scope.map.center = $rootScope.previousMapCenter;
+      }
+      
       if ( $rootScope.hasOwnProperty('highlightPlace') ) {
         console.log('re-center map on highlight _id:'+ $rootScope.highlightPlace.id +' ' + $rootScope.highlightPlace.nameLongest);
         // re-center map at that place?
-        $scope.map.center.latitude = $rootScope.highlightPlace.latitude;
-        $scope.map.center.longitude = $rootScope.highlightPlace.longitude;
+        $scope.map.center = {
+          latitude: $rootScope.highlightPlace.latitude,
+          longitude: $rootScope.highlightPlace.longitude
+        };
       }
       //	Map Styles : not sure how to inject otherwise..
       $scope.styles = [{'featureType':'water','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':-78},{'lightness':67},{'visibility':'simplified'}]},{'featureType':'landscape','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'simplified'}]},{'featureType':'road','elementType':'geometry','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'simplified'}]},{'featureType':'poi','elementType':'all','stylers':[{'hue':'#ffffff'},{'saturation':-100},{'lightness':100},{'visibility':'off'}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'hue':'#e9ebed'},{'saturation':-90},{'lightness':-8},{'visibility':'simplified'}]},{'featureType':'transit','elementType':'all','stylers':[{'hue':'#e9ebed'},{'saturation':10},{'lightness':69},{'visibility':'on'}]},{'featureType':'administrative.locality','elementType':'all','stylers':[{'hue':'#2c2e33'},{'saturation':7},{'lightness':19},{'visibility':'on'}]},{'featureType':'road','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':31},{'visibility':'on'}]},{'featureType':'road.arterial','elementType':'labels','stylers':[{'hue':'#bbc0c4'},{'saturation':-93},{'lightness':-2},{'visibility':'simplified'}]}];
@@ -104,7 +113,6 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           // on home screen, add some map listener(s)
           var refilterTimeout = null;
           var refilter = function() {
-            var gmapd = $scope.map.control.getGMap();
             // get the 2 boundary corners LatLng objects from the bounds
             var bounds = gmapd.getBounds();
             // https://developers.google.com/maps/documentation/javascript/reference#LatLngBounds
@@ -147,11 +155,30 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             // add throttled call to filter map markers in the area
             refilterTimeout = setTimeout( refilter, 200 );
           };
-          // listen when the map center has manually been moved, or map zooms
-          $scope.mapMoveListener = maps.event.addListener( gmapd, 'center_changed', refilterThrottle );
-          $scope.mapZoomListener = maps.event.addListener( gmapd, 'zoom_changed', refilterThrottle );
+          // listen for map center/zoom : this returns an object but
+          maps.event.addListener( gmapd, 'center_changed', refilterThrottle );
+          maps.event.addListener( gmapd, 'zoom_changed', refilterThrottle );
           // initial check for markers in the area, too
           refilterThrottle();
+          
+          // listen to when we are leaving this View to go to a different one
+          $scope.$on( '$destroy', function() {
+            // wipe the refilterTimeout just in case
+            clearTimeout( refilterTimeout );
+            // wipe whatever the "on" highlightPlace may have been
+            delete $rootScope.highlightPlace;
+            // save the current map center
+            var mapcenter = gmapd.getCenter();
+            $rootScope.previousMapCenter = {
+              latitude: mapcenter.lat(),
+              longitude: mapcenter.lng(),
+            };
+            // save current map zoom too
+            $rootScope.previousMapZoom = gmapd.getZoom();
+            // wipe map event listeners too?
+            maps.event.clearListeners( gmapd );
+            // question : should we cache markers as we cache map settings?
+          });
         }, 400);
       });
       
