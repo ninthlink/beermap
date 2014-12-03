@@ -160,13 +160,20 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           maps.event.addListener( gmapd, 'zoom_changed', refilterThrottle );
           // initial check for markers in the area, too
           refilterThrottle();
-          
+          // add map click listener to close the highlight?
+          maps.event.addListener( gmapd, 'click', function( event ) {
+            console.log('clicked ::');
+            console.log(event);
+            // close the current highlight
+            $scope.unhighlight();
+            $scope.$apply();
+          });
           // listen to when we are leaving this View to go to a different one
           $scope.$on( '$destroy', function() {
             // wipe the refilterTimeout just in case
             clearTimeout( refilterTimeout );
             // wipe whatever the "on" highlightPlace may have been
-            delete $rootScope.highlightPlace;
+            $scope.unhighlight();
             // save the current map center
             var mapcenter = gmapd.getCenter();
             $rootScope.previousMapCenter = {
@@ -200,6 +207,11 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         mouseover: $scope.markerMouseOver,
         mouseout: $scope.markerMouseOut,
         */
+      };
+      
+      $scope.unhighlight = function() {
+        // remove the highlightPlace
+        delete $rootScope.highlightPlace;
       };
     };
 	
