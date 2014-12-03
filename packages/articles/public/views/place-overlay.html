@@ -1,0 +1,17 @@
+<div class="place-overlay media" ng-show="highlightPlace">
+  <!-- if this is showing, then highlightPlace = the place marker object that was clicked / shown -->
+  <a class="pull-left clickable" href="#!" ng-click="goBackToMap(highlightPlace);" ng-show="highlightPlaceHasImg">
+    <img ng-src="{{highlightPlace.twit.img}}" alt="{{highlightPlace.name}}" style="width:32px;height:32px">
+  </a>
+  <div ng-hide="hideDistances" class="pull-right">
+    <br />
+    <small><abbr class="distance" title="distance coming soon?">12 miles</abbr></small>
+  </div>
+  <div class="media-body">
+    <p>
+      <strong>{{highlightPlace.nameFull}} <small>{{highlightPlace.sublocation}}</small></strong><br />
+      <small>{{highlightPlace.fullAddr}}</small><br />
+      <span ng-show="highlightPlace.chk.growlers" class="fa fa-beer" title="Growler fills available"></span> <span ng-show="highlightPlace.chk.fams" class="fa fa-child" title="Family-friendly"></span> <span ng-show="highlightPlace.chk.dogs" class="fa fa-paw" title="Dog friendly"></span> <span ng-show="highlightPlace.chk.trucks" class="fa fa-truck" title="Food trucks available"></span> <span ng-show="highlightPlace.chk.foods" class="fa fa-cutlery" title="Food service available"></span>
+    </p>
+  </div>
+</div>
