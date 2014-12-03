@@ -152,68 +152,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           $scope.mapZoomListener = maps.event.addListener( gmapd, 'zoom_changed', $scope.refilterThrottle );
           // initial check for markers in the area, too
           $scope.refilterThrottle();
-          /*
-          Places.query({
-            articleId: 'findbad'
-          }, function(newplaces) {
-            //console.log('queried Places : got :');
-            //console.log(places);
-            var badmarkers = [];
-            
-            angular.forEach(newplaces, function( marker, k ) {
-              // markers with no lat/lng used to not have those props but now they just have lat = lng = 0
-              //if ( !marker.hasOwnProperty('lat') || !marker.hasOwnProperty('lng') ) {
-              if ( ( marker.lat === 0 ) && ( marker.lng === 0 ) ) {
-                badmarkers.push(marker);
-              }
-            });
-            $scope.badMarkers = badmarkers;
-            if ( badmarkers.length > 0 ) {
-              placeCheckStep();
-            }
-          });
-          */
         }, 400);
-        /*
-        var geocoder = new maps.Geocoder();
-        function placeCheckStep() {
-          setTimeout( function() {
-            if ( $scope.badMarkers.length > 0 ) {
-              var marker = $scope.badMarkers.shift();
-              var addr = marker.fullAddr;
-              if ( addr === ', ,  ' ) {
-                console.log('address totally blank for '+ marker.name +' '+ marker.sublocation);
-                // maybe do some sort of google place search based on the name info that we do have?!
-                
-                // and repeat
-                placeCheckStep();
-              } else {
-                console.log('geocoding for '+ marker.name + ' (which was missing its lat lng in the db) : ' + addr);
-                geocoder.geocode( { 'address': addr }, function(results, status) {
-                  if (status === maps.GeocoderStatus.OK) {
-                    var newlatlng = results[0].geometry.location;
-                    console.log(newlatlng.toString());
-                    marker.lat = parseFloat( newlatlng.lat() );
-                    marker.lng = parseFloat( newlatlng.lng() );
-                    marker.comment = 'latlng updated';
-                    
-                    marker.$update(function(response) {
-                      console.log('place saved?!');
-                      console.log(response);
-                      $scope.markers.push(response.place);
-                      // and repeat
-                      placeCheckStep();
-                    });
-                    console.log(marker);
-                  } else {
-                    console.log('Geocode was not successful for the following reason: ' + status);
-                  }
-                });
-              }
-            }
-          }, 200);
-        }
-        */
       });
       
       // set up our click / mouse events?
