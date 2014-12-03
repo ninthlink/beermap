@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.articles').controller('ArticlesController', ['$scope', '$rootScope', '$stateParams', '$location', '$window', 'Global', 'Articles', 'Places', 'Feeds', 'PlacesFromSpreadsheet', 'uiGmapGoogleMapApi',
-  function($scope, $rootScope, $stateParams, $location, $window, Global, Articles, Places, Feeds, PlacesFromSpreadsheet, GoogleMapApi ) {
+angular.module('mean.articles').controller('ArticlesController', ['$scope', '$rootScope', '$stateParams', '$location', '$window', '$sanitize', 'Global', 'Articles', 'Places', 'Feeds', 'PlacesFromSpreadsheet', 'uiGmapGoogleMapApi',
+  function($scope, $rootScope, $stateParams, $location, $window, $sanitize, Global, Articles, Places, Feeds, PlacesFromSpreadsheet, GoogleMapApi ) {
     $scope.global = Global;
     // map marker icons?!
     var icon_reddot = '/articles/assets/img/dot-red.png';
@@ -78,6 +78,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       $scope.dynamicMoveCtr = 0;
       
       $scope.markers = [];
+      $scope.loaded = false;
       
       if ( $rootScope.hasOwnProperty('previousMapZoom') ) {
         $scope.map.zoom = $rootScope.previousMapZoom;
@@ -139,12 +140,13 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
                   //marker.icon = icon_bluedot;
                   $rootScope.highlightPlace = marker;
                   $scope.highlightPlaceHasImg = ( marker.twit.img !== '' );
-                  //$scope.loadHighlightPlaceFeed();
+                  $scope.loadHighlightPlaceFeed();
                 }
                 
                 newmarkers.push(marker);
               });
               $scope.markers = newmarkers;
+              $scope.loaded = true;
               //console.log('-- markers : ');
               //console.log($scope.markers);
             });
@@ -154,6 +156,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             clearTimeout( refilterTimeout );
             // add throttled call to filter map markers in the area
             refilterTimeout = setTimeout( refilter, 200 );
+            // and unhighlight if there is one?
+            $scope.unhighlight();
           };
           // listen for map center/zoom : this returns an object but
           maps.event.addListener( gmapd, 'center_changed', refilterThrottle );
@@ -195,7 +199,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         angular.forEach( $scope.markers, function( marker, n ) {
           if ( marker.id === result.key ) {
             $rootScope.highlightPlace = marker;
-            $scope.highlightPlaceHasImg = ( marker.twit.img !== '' ); 
+            $scope.highlightPlaceHasImg = ( marker.twit.img !== '' );
+            $scope.loadHighlightPlaceFeed();
           }
         });
         //console.log('clicked _id '+ result.key +' : '+ $rootScope.highlightPlace.nameFull);
@@ -210,8 +215,10 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       };
       
       $scope.unhighlight = function() {
-        // remove the highlightPlace
-        delete $rootScope.highlightPlace;
+        if ( $scope.loaded ) {
+          // remove the highlightPlace
+          delete $rootScope.highlightPlace;
+        }
       };
     };
 	
@@ -243,10 +250,11 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $scope.newsLoaded = true;
       });
     };
-    /*
+    
     $scope.loadHighlightPlaceFeed = function() {
+      $rootScope.highlightPlace.newsLoading = true;
       Feeds.query({
-        '_id': $rootScope.highlightPlace._id
+        'articleId': $rootScope.highlightPlace._id
       }, function(items) {
         var news = [];
         angular.forEach(items, function( item, n ) {
@@ -259,11 +267,14 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           }
           news.push(item);
         });
-        
+        //console.log('Feed loaded?!');
+        //console.log(news);
+        $rootScope.highlightPlace.newsLoading = false;
         $rootScope.highlightPlace.newsFeed = news;
+        $rootScope.highlightPlace.noNews = !news.length;
       });
     };
-    */
+    
     $scope.goBackToMap = function( highlightPlace ) {
       $rootScope.highlightPlace = highlightPlace;
       $location.path('map');
