@@ -7,6 +7,24 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   moment = require('moment');
 
+// shorten our moment output
+moment.locale('en', {
+  relativeTime : {
+      future: "in %s",
+      past:   "%s ago",
+      s:  "s",
+      m:  "1m",
+      mm: "%dm",
+      h:  "1h",
+      hh: "%dh",
+      d:  "1d",
+      dd: "%dd",
+      M:  "1 month",
+      MM: "%d months",
+      y:  "1 year",
+      yy: "%d years"
+  }
+});
 /**
  * helper objects
  * since lots of Schema pieces seem to want same options
@@ -68,7 +86,7 @@ var FeedSchema = new Schema({
  */
 // use moment for more pretty time stamp
 FeedSchema.virtual( 'moment' ).get(function() {
-	return moment(this.date).fromNow();
+	return moment(this.date).fromNow(); //abbrev
 });
 /**
  * Statics are like helper functions or something, nobody knows, maybe dragons
