@@ -102,8 +102,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         setTimeout(function() {
           var gmapd = $scope.map.control.getGMap();
           // on home screen, add some map listener(s)
-          $scope.refilterTimeout = null;
-          $scope.refilter = function() {
+          var refilterTimeout = null;
+          var refilter = function() {
             var gmapd = $scope.map.control.getGMap();
             // get the 2 boundary corners LatLng objects from the bounds
             var bounds = gmapd.getBounds();
@@ -142,16 +142,16 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             });
           };
           // throttle the refilter call so we don't call the server too much
-          $scope.refilterThrottle = function() {
-            clearTimeout( $scope.refilterTimeout );
+          var refilterThrottle = function() {
+            clearTimeout( refilterTimeout );
             // add throttled call to filter map markers in the area
-            $scope.refilterTimeout = setTimeout( $scope.refilter, 200 );
+            refilterTimeout = setTimeout( refilter, 200 );
           };
           // listen when the map center has manually been moved, or map zooms
-          $scope.mapMoveListener = maps.event.addListener( gmapd, 'center_changed', $scope.refilterThrottle );
-          $scope.mapZoomListener = maps.event.addListener( gmapd, 'zoom_changed', $scope.refilterThrottle );
+          $scope.mapMoveListener = maps.event.addListener( gmapd, 'center_changed', refilterThrottle );
+          $scope.mapZoomListener = maps.event.addListener( gmapd, 'zoom_changed', refilterThrottle );
           // initial check for markers in the area, too
-          $scope.refilterThrottle();
+          refilterThrottle();
         }, 400);
       });
       
