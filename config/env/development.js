@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/mean-dev1',
+  db: 'mongodb://beermap:R4e3w2q1!@ds051110.mongolab.com:51110/beermap',
 	debug: 'true',
   mongoose: {
     debug: false
