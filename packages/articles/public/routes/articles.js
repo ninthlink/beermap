@@ -3,6 +3,7 @@
 //Setting up route
 angular.module('mean.articles').config(['$stateProvider',
   function($stateProvider) {
+    /*
     // Check if the user is connected
     var checkLoggedin = function($q, $timeout, $http, $location) {
       // Initialize a new promise
@@ -22,12 +23,12 @@ angular.module('mean.articles').config(['$stateProvider',
 
       return deferred.promise;
     };
-
+    */
     // states for my app
     $stateProvider
-      .state('all articles', {
-        url: '/articles',
-        templateUrl: 'articles/views/list.html',
+      .state('map', {
+        url: '/',
+        templateUrl: 'articles/views/map.html',
         resolve: {
           //loggedin: checkLoggedin
         }
@@ -39,9 +40,17 @@ angular.module('mean.articles').config(['$stateProvider',
           //loggedin: checkLoggedin
         }
       })
-      .state('map', {
-        url: '/',
-        templateUrl: 'articles/views/map.html',
+      .state('place by slug', {
+        url: '/places/:articleId',
+        templateUrl: 'articles/views/place-details.html',
+        resolve: {
+          //loggedin: checkLoggedin
+        }
+      });
+      /*
+      .state('all articles', {
+        url: '/articles',
+        templateUrl: 'articles/views/list.html',
         resolve: {
           //loggedin: checkLoggedin
         }
@@ -67,6 +76,7 @@ angular.module('mean.articles').config(['$stateProvider',
           loggedin: checkLoggedin
         }
       });
+      */
   }
 ])
 /**
