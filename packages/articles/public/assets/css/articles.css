@@ -21,4 +21,7 @@ ul.articles li:not(:last-child) {
 .place-overlay .panel-body p {
   margin: 0;
 }
+
+.media-img { max-width: 100%; height: auto }
+.media-thm { max-width: 35%; max-height: 80px }
 .clickable { cursor: pointer }
