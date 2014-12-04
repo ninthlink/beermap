@@ -293,6 +293,18 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       });
     };
     
+    $scope.placeDetails = function() {
+      Places.get({
+        articleId: $stateParams.articleId
+      }, function(place) {
+        $rootScope.highlightPlace = place;
+        console.log('loaded place details');
+        console.log($rootScope.highlightPlace);
+        $rootScope.highlightPlace.newsLoading = true;
+        $scope.loadHighlightPlaceFeed();
+      });
+    };
+    
     $scope.goBackToMap = function( highlightPlace ) {
       $rootScope.highlightPlace = highlightPlace;
       $location.path('map');

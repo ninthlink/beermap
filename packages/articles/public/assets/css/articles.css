@@ -24,4 +24,7 @@ ul.articles li:not(:last-child) {
 
 .media-img { max-width: 100%; height: auto }
 .media-thm { max-width: 35%; max-height: 80px }
+
+.backtomap { margin-right: 15px }
+
 .clickable { cursor: pointer }

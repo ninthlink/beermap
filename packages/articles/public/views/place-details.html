@@ -1,0 +1,52 @@
+<div class="row" data-ng-controller="ArticlesController" data-ng-init="placeDetails()">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a class="pull-left clickable backtomap" ng-click="goBackToMap(highlightPlace);"><span class="fa fa-arrow-left"></span></a>
+      <span class="pull-right">
+        <span ng-hide="hideDistances" class="distance" title="{{highlightPlace.fullAddr}}">12 miles</span>
+        <span class="fa fa-chevron-right"></span>
+      </span>
+      <span ng-bind-html="highlightPlace.name" class="name"></span>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <addr>
+            <strong><span ng-bind-html="highlightPlace.name" class="name"></span> <span ng-bind-html="highlightPlace.suffix" class="suffix"></span> <small ng-bind-html="highlightPlace.sublocation"></small></strong><br />
+            <span ng-bind-html="highlightPlace.addr"></span><br />
+            <span ng-bind-html="highlightPlace.CSZ"></span><br />
+            <span ng-show="highlightPlace.chk.growlers" class="fa fa-beer" title="Growler fills available"></span> <span ng-show="highlightPlace.chk.fams" class="fa fa-child" title="Family-friendly"></span> <span ng-show="highlightPlace.chk.dogs" class="fa fa-paw" title="Dog friendly"></span> <span ng-show="highlightPlace.chk.trucks" class="fa fa-truck" title="Food trucks available"></span> <span ng-show="highlightPlace.chk.foods" class="fa fa-cutlery" title="Food service available"></span> 
+          </addr>
+        </div>
+        <div class="col-sm-6">
+          <p>
+            <!-- can still clean this up more.. -->
+            <span ng-show="highlightPlace.url != ''"><span class="fa fa-globe" title="Website"></span> <a href="http://{{highlightPlace.url}}" target="_blank">{{highlightPlace.url}}</a><br /></span>
+            <span ng-show="highlightPlace.fb.url != ''"><span class="fa fa-facebook-square" title="Facebook"></span> <a href="https://{{highlightPlace.fb.url}}" target="_blank">{{highlightPlace.fb.url}}</a><br /></span>
+            <span ng-show="highlightPlace.twit.name != ''"><span class="fa fa-twitter" title="Twitter"></span> <a href="https://twitter.com/{{highlightPlace.twit.name}}" target="_blank">{{highlightPlace.twit.name}}</a><br /></span>
+            <span ng-show="highlightPlace.insta.name != ''"><span class="fa fa-instagram" title="Instagram"></span> <a href="http://instagram.com/{{highlightPlace.insta.name}}" target="_blank">{{highlightPlace.insta.name}}</a><br /></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- feed here -->
+    <div class="list-group">
+      <div class="list-group-item text-center" ng-show="highlightPlace.newsLoading">Loading News...</div>
+      <div class="list-group-item text-center" ng-show="highlightPlace.noNews">... no recent news ...</div>
+      <div ng-repeat="news in highlightPlace.newsFeed" class="list-group-item">
+        <div class="media">
+          <span class="pull-left">
+            <img ng-src="{{highlightPlace.twit.img}}" alt="{{highlightPlace.name}}" style="width:32px;height:32px">
+          </span>
+          <div class="media-body">
+            <p>
+              <strong ng-bind-html="highlightPlace.name"></strong> <small>&middot; <a ng-href="{{news.url}}" title="{{news.date}} via {{news.source}}" ng-bind-html="news.moment"></a></small><br />
+              <span ng-bind-html="news.body"></span><br />
+              <img ng-show="{{news.hasMedia}}" ng-src="{{news.img}}" alt="" class="media-img">
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
