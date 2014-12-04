@@ -69,8 +69,8 @@ exports.article = function(req, res, next, id) {
 				res.json(places);
 			});
 		} else {
-			//console.log('looking for article id '+ id +' ( length '+ id.length +' )');
-			Place.load(id, function(err, place) {
+			console.log('looking for article slug '+ id );
+			Place.findBySlug(id, function(err, place) {
 				if (err) return next(err);
 				if (!place) return next(new Error('Failed to load article place ' + id));
 				// else : its ok?
