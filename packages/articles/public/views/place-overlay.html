@@ -20,14 +20,16 @@
       <div ng-show="highlightPlace.noNews" class="media-body">
         <p><small>... no recent news ...</small></p>
       </div>
-      <div ng-repeat="news in highlightPlace.newsFeed" ng-show='$first'>
-        <div class="media-body">
-          <p>
-            <strong ng-bind-html="highlightPlace.name"></strong> <small>&middot; <a ng-href="{{news.url}}" title="{{news.date}} via {{news.source}}" ng-bind-html="news.moment"></a></small><br />
-            <img class="media-thm pull-right" ng-show="{{news.hasMedia}}" ng-src="{{news.img}}" alt="">
-            <span ng-bind-html="news.body"></span>
-            <!--img class="media-img" ng-src="{{news.img}}" ng-show="{{news.hasMedia}}" alt=""-->
-          </p>
+      <div ng-hide="highlightPlace.newsLoading">
+        <div ng-repeat="news in highlightPlace.newsFeed" ng-show='$first'>
+          <div class="media-body">
+            <p>
+              <strong ng-bind-html="highlightPlace.name"></strong> <small>&middot; <a ng-href="{{news.url}}" title="{{news.date}} via {{news.source}}" ng-bind-html="news.moment"></a></small><br />
+              <img class="media-thm pull-right" ng-show="{{news.hasMedia}}" ng-src="{{news.img}}" alt="">
+              <span ng-bind-html="news.body"></span>
+              <!--img class="media-img" ng-src="{{news.img}}" ng-show="{{news.hasMedia}}" alt=""-->
+            </p>
+          </div>
         </div>
       </div>
     </div>
