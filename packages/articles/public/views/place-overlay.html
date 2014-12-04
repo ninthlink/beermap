@@ -2,7 +2,7 @@
   <div class="panel-heading clickable" ng-click="goToDetails();">
     <span class="pull-right">
       <span ng-show="highlightPlace.chk.growlers" class="fa fa-beer" title="Growler fills available"></span> <span ng-show="highlightPlace.chk.fams" class="fa fa-child" title="Family-friendly"></span> <span ng-show="highlightPlace.chk.dogs" class="fa fa-paw" title="Dog friendly"></span> <span ng-show="highlightPlace.chk.trucks" class="fa fa-truck" title="Food trucks available"></span> <span ng-show="highlightPlace.chk.foods" class="fa fa-cutlery" title="Food service available"></span> 
-      <span ng-hide="hideDistances" class="distance" title="{{highlightPlace.fullAddr}}">12 miles</span>
+      <span ng-hide="hideDistances" class="distance" title="{{highlightPlace.fullAddr}}" ng-bind-html="highlightPlace.distance"></span>
       <span class="fa fa-chevron-right"></span>
     </span>
     <span ng-bind-html="highlightPlace.name" class="name"></span> <span ng-bind-html="highlightPlace.suffix" class="suffix"></span> <small ng-bind-html="highlightPlace.sublocation"></small>

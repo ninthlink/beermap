@@ -110,6 +110,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           var gmapd = $scope.map.control.getGMap();
           maps.event.trigger( gmapd, 'resize' );
         });
+        
+        $scope.distanceMatrixService = new maps.DistanceMatrixService();
         // really initialize 400ms after gmap, which should be enough time
         setTimeout(function() {
           var gmapd = $scope.map.control.getGMap();
@@ -135,6 +137,9 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
               //console.log('queried Places : got :');
               //console.log(places);
               var newmarkers = [];
+              var latlngs = [];
+              var morelatlngs = [];
+              var latlngloopcount = 0;
               angular.forEach(newplaces, function( marker, k ) {
                 // set our default icon here?!
                 marker.icon = icon_reddot;
@@ -144,15 +149,62 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
                   $scope.highlightPlaceHasImg = ( marker.twit.img !== '' );
                   $scope.loadHighlightPlaceFeed();
                 }
-                
                 newmarkers.push(marker);
+                // create LatLng object too for distance calculating
+                latlngs.push( new maps.LatLng( marker.latitude, marker.longitude ) );
               });
               $scope.markers = newmarkers;
               $scope.loaded = true;
               //console.log('-- markers : ');
               //console.log($scope.markers);
+              // recalculate distances too
+              if ( ( $rootScope.myCoords !== false ) && ( newmarkers.length > 0 ) ) {
+                var myLatLng = new maps.LatLng( $rootScope.myCoords.latitude, $rootScope.myCoords.longitude );
+                
+                if ( latlngs.length > 25 ) {
+                  // actually can only calc up to 25 distances at a time
+                  morelatlngs = latlngs.slice( 25 );
+                  latlngs = latlngs.slice( 0, 25 );
+                }
+                // set up as a quick little function so we can recurse loop
+                $scope.recalcDistances = function() {
+                  $scope.distanceMatrixService.getDistanceMatrix({
+                    origins: [ myLatLng ],
+                    destinations: latlngs,
+                    travelMode: maps.TravelMode.DRIVING,
+                    unitSystem: maps.UnitSystem.IMPERIAL,
+                    avoidHighways: false,
+                    avoidTolls: false
+                  }, function( response, status ) {
+                    if (status !== maps.DistanceMatrixStatus.OK) {
+                      console.log('Distance Matrix Error was: ' + status);
+                      $scope.hideDistances = true;
+                    } else {
+                      // success!
+                      angular.forEach( response.rows[0].elements, function( d, k ) {
+                        var ind = ( 25 * latlngloopcount ) + k;
+                        $scope.markers[ ind ].distance = d.distance.text;
+                      });
+                      $scope.hideDistances = false;
+                      // see about looping
+                      if ( morelatlngs.length > 0 ) {
+                        latlngs = morelatlngs.slice( 0, 25 );
+                        morelatlngs = morelatlngs.slice( 25 );
+                        latlngloopcount += 1;
+                        $scope.recalcDistances();
+                      }
+                    }
+                  });
+                };
+                // and fire it
+                $scope.recalcDistances();
+              } else {
+                // we don't have current user's location so hide all distances?
+                $scope.hideDistances = true;
+              }
             });
           };
+          
           // throttle the refilter call so we don't call the server too much
           var refilterThrottle = function() {
             clearTimeout( refilterTimeout );
