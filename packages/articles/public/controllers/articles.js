@@ -111,7 +111,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           maps.event.trigger( gmapd, 'resize' );
         });
         
-        $scope.distanceMatrixService = new maps.DistanceMatrixService();
+        $rootScope.distanceMatrixService = new maps.DistanceMatrixService();
         // really initialize 400ms after gmap, which should be enough time
         setTimeout(function() {
           var gmapd = $scope.map.control.getGMap();
@@ -168,7 +168,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
                 }
                 // set up as a quick little function so we can recurse loop
                 $scope.recalcDistances = function() {
-                  $scope.distanceMatrixService.getDistanceMatrix({
+                  $rootScope.distanceMatrixService.getDistanceMatrix({
                     origins: [ myLatLng ],
                     destinations: latlngs,
                     travelMode: maps.TravelMode.DRIVING,
@@ -227,26 +227,14 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             $scope.$apply();
           });
           // geolocation
-          function geo_success(position) {
-            $scope.$apply(function(){
-              $rootScope.myCoords = position.coords;
-            });
-            // clear the watchPosition at least for now
-            $window.navigator.geolocation.clearWatch($scope.geolocationwatchID);
-          }
-          function geo_error(err){
-            console.log('eee geolocation error');
-            console.log(err);
-            $rootScope.myCoords = false;
-          }
-          $scope.geolocationwatchID = $window.navigator.geolocation.watchPosition( geo_success, geo_error, { enableHighAccuracy: false });
+          $scope.getGeolocation();
 
           // listen to when we are leaving this View to go to a different one
           $scope.$on( '$destroy', function() {
             // wipe the refilterTimeout just in case
             clearTimeout( refilterTimeout );
             // wipe whatever the "on" highlightPlace may have been
-            $scope.unhighlight();
+            //$scope.unhighlight();
             // save the current map center
             var mapcenter = gmapd.getCenter();
             $rootScope.previousMapCenter = {
@@ -322,7 +310,11 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     };
     
     $scope.loadHighlightPlaceFeed = function() {
+      // wipe old info before we re query
+      delete $rootScope.highlightPlace.newsFeed;
+      delete $rootScope.highlightPlace.noNews;
       $rootScope.highlightPlace.newsLoading = true;
+      // re query
       Feeds.query({
         'articleId': $rootScope.highlightPlace._id
       }, function(items) {
@@ -345,19 +337,92 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       });
     };
     
+    $scope.getGeolocation = function() {
+      function geo_success(position) {
+        $scope.$apply(function(){
+          $rootScope.myCoords = position.coords;
+          $scope.$emit('geolocation set', position.coords);
+        });
+        // clear the watchPosition at least for now
+        $window.navigator.geolocation.clearWatch($scope.geolocationwatchID);
+      }
+      function geo_error(err){
+        console.log('eee geolocation error');
+        console.log(err);
+        $rootScope.myCoords = false;
+      }
+      $scope.geolocationwatchID = $window.navigator.geolocation.watchPosition( geo_success, geo_error, { enableHighAccuracy: false });
+    };
+    
+    $scope.loadHighlightDistance = function(maps) {
+      if ( $rootScope.hasOwnProperty('highlightPlace') ) {
+        if ( !$rootScope.highlightPlace.distance ) {
+          if ( $rootScope.myCoords !== false ) {
+            // recalc distance for this 1 place
+            var myLatLng = new maps.LatLng( $rootScope.myCoords.latitude, $rootScope.myCoords.longitude );
+            var dLatLng = new maps.LatLng( $rootScope.highlightPlace.latitude, $rootScope.highlightPlace.longitude );
+            $rootScope.distanceMatrixService.getDistanceMatrix({
+              origins: [ myLatLng ],
+              destinations: [ dLatLng ],
+              travelMode: maps.TravelMode.DRIVING,
+              unitSystem: maps.UnitSystem.IMPERIAL,
+              avoidHighways: false,
+              avoidTolls: false
+            }, function( response, status ) {
+              if (status !== maps.DistanceMatrixStatus.OK) {
+                console.log('Distance Matrix Error was: ' + status);
+                $scope.hideDistances = true;
+              } else {
+                // success!
+                //console.log('DISTANCE SUCCESS');
+                $rootScope.highlightPlace.distance = response.rows[0].elements[0].distance.text;
+                $scope.hideDistances = false;
+              }
+            });
+          }
+        }
+      }
+    };
+    
     $scope.placeDetails = function() {
       $scope.loaded = false;
-      Places.get({
-        articleId: $stateParams.articleId
-      }, function(place) {
-        $rootScope.highlightPlace = place;
-        //console.log('loaded place details');
-        //console.log($rootScope.highlightPlace);
-        $rootScope.highlightPlace.newsLoading = true;
-        $scope.loadHighlightPlaceFeed();
-        $scope.loaded = true;
+      var requery = true;
+      if ( $rootScope.hasOwnProperty('highlightPlace') ) {
+        if ( $rootScope.highlightPlace.slug === $stateParams.articleId ) {
+          // for example, coming from map overlay, we should be already all set
+          requery = false;
+        }
+      }
+      // in the event we need to (re)load / (re)calculate distance to place..
+      GoogleMapApi.then(function(maps) {
+        // need to wait for GoogleMaps to be ready..
+        $rootScope.distanceMatrixService = new maps.DistanceMatrixService();
+        // check distance after geolocation is there
+        $scope.$on('geolocation set', function(event, data) {
+          $scope.loadHighlightDistance( maps );
+        });
+        // only GET the details if we don't already have them
+        if ( requery ) {
+          Places.get({
+            articleId: $stateParams.articleId
+          }, function(place) {
+            $rootScope.highlightPlace = place;
+            $scope.loaded = true;
+            // load place's latest news feed too
+            $rootScope.highlightPlace.newsLoading = true;
+            $scope.loadHighlightPlaceFeed();
+            // check geoloc : will auto trigger the loadHighlightDistance call
+            $scope.getGeolocation();
+          });
+        } else {
+          $scope.loaded = true;
+          // reload news anyways just in case
+          $rootScope.highlightPlace.newsLoading = true;
+          $scope.loadHighlightPlaceFeed();
+          // check geoloc : will auto trigger the loadHighlightDistance call
+          $scope.getGeolocation();
+        }
       });
-      
       $scope.$on( '$destroy', function() {
         // when we leave this view, reset
         $scope.unhighlight();
