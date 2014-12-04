@@ -298,8 +298,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         articleId: $stateParams.articleId
       }, function(place) {
         $rootScope.highlightPlace = place;
-        console.log('loaded place details');
-        console.log($rootScope.highlightPlace);
+        //console.log('loaded place details');
+        //console.log($rootScope.highlightPlace);
         $rootScope.highlightPlace.newsLoading = true;
         $scope.loadHighlightPlaceFeed();
       });
@@ -308,6 +308,11 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     $scope.goBackToMap = function( highlightPlace ) {
       $rootScope.highlightPlace = highlightPlace;
       $location.path('map');
+      return false;
+    };
+    
+    $scope.goToDetails = function() {
+      $location.path('/places/'+ $rootScope.highlightPlace.slug);
       return false;
     };
   }
