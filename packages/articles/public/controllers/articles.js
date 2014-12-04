@@ -231,15 +231,15 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         mouseout: $scope.markerMouseOut,
         */
       };
-      
-      $scope.unhighlight = function() {
-        if ( $scope.loaded ) {
-          // remove the highlightPlace
-          delete $rootScope.highlightPlace;
-        }
-      };
     };
-	
+    
+    $scope.unhighlight = function() {
+      if ( $scope.loaded ) {
+        // remove the highlightPlace
+        delete $rootScope.highlightPlace;
+      }
+    };
+    
     $scope.findOne = function() {
       Articles.get({
         articleId: $stateParams.articleId
@@ -294,6 +294,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     };
     
     $scope.placeDetails = function() {
+      $scope.loaded = false;
       Places.get({
         articleId: $stateParams.articleId
       }, function(place) {
@@ -302,6 +303,12 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         //console.log($rootScope.highlightPlace);
         $rootScope.highlightPlace.newsLoading = true;
         $scope.loadHighlightPlaceFeed();
+        $scope.loaded = true;
+      });
+      
+      $scope.$on( '$destroy', function() {
+        // when we leave this view, reset
+        $scope.unhighlight();
       });
     };
     
