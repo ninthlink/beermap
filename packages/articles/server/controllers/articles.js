@@ -17,7 +17,7 @@ var mongoose = require('mongoose'),
  * or if its something else like a '(lat,lng),(lat,lng)' ...
  */
 exports.article = function(req, res, next, id) {
-	console.log('exports.article');
+	//console.log('exports.article');
 	if ( id.substr(0,1) === '(' ) {
 		//console.log('overloaded :: looking for bounds');
 		//console.log(id);
@@ -69,7 +69,7 @@ exports.article = function(req, res, next, id) {
 				res.json(places);
 			});
 		} else {
-			console.log('looking for article slug '+ id );
+			//console.log('looking for article slug '+ id );
 			Place.findBySlug(id, function(err, place) {
 				if (err) return next(err);
 				if (!place) return next(new Error('Failed to load article place ' + id));
@@ -206,11 +206,11 @@ exports.loadFeed = function(req, res) {
 };
 
 /**
- * Show a single Place
+ * return info to show a single Place
  */
 exports.placed = function(req, res) {
-	console.log('GET /articles/:id ' );
-	console.log(req.params);
+	//console.log('GET /articles/:id ' );
+	//console.log(req.params);
 	res.json(req.place);
 };
 
