@@ -5,8 +5,9 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     $scope.global = Global;
     // map marker icons?!
     var icon_reddot = '/articles/assets/img/dot-red.png';
-    //var icon_bluedot = '/articles/assets/img/dot-blue.png';
+    $scope.bluedot = '/articles/assets/img/dot-blue.png';
     $scope.hideDistances = true;
+    $rootScope.myCoords = false;
     
     $scope.hasAuthorization = function(article) {
       if (!article || !article.user) return false;
@@ -173,6 +174,21 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             $scope.unhighlight();
             $scope.$apply();
           });
+          // geolocation
+          function geo_success(position) {
+            $scope.$apply(function(){
+              $rootScope.myCoords = position.coords;
+            });
+            // clear the watchPosition at least for now
+            $window.navigator.geolocation.clearWatch($scope.geolocationwatchID);
+          }
+          function geo_error(err){
+            console.log('eee geolocation error');
+            console.log(err);
+            $rootScope.myCoords = false;
+          }
+          $scope.geolocationwatchID = $window.navigator.geolocation.watchPosition( geo_success, geo_error, { enableHighAccuracy: false });
+
           // listen to when we are leaving this View to go to a different one
           $scope.$on( '$destroy', function() {
             // wipe the refilterTimeout just in case
@@ -190,6 +206,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             // wipe map event listeners too?
             maps.event.clearListeners( gmapd );
             // question : should we cache markers as we cache map settings?
+            $window.navigator.geolocation.clearWatch($scope.geolocationwatchID);
           });
         }, 400);
       });

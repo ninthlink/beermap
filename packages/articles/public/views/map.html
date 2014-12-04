@@ -3,6 +3,7 @@
     <div class="map-container">
       <ui-gmap-google-map bounds="map.bounds" options="options" styles="styles" draggable="true" center="map.center" zoom="map.zoom" control="map.control">
         <ui-gmap-markers models="markers" coords="'self'" icon="'icon'" events="clickEventsObject" control="map.markerControl"></ui-gmap-markers>
+        <ui-gmap-marker idKey="'myLocation'" icon="bluedot" coords="myCoords"></ui-gmap-marker>
       </ui-gmap-google-map>
     </div>
     <ng-include src="'articles/views/place-overlay.html'"></ng-include>
