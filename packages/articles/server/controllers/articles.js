@@ -165,9 +165,6 @@ exports.all = function(req, res) {
  * right now this just loads the first chunk, and we have no pagination yet
  */
 exports.loadFeed = function(req, res) {
-  //console.log('GET /feed ( articles.getFeed )');
-  //console.log(req.params);
-  
   var id = '',
       p = 0,
       s = 0;
@@ -191,16 +188,7 @@ exports.loadFeed = function(req, res) {
       error: 'Cannot list Feed items'
     });
   }, function( items ) {
-    if ( id !== '' ) {
-      // in this case, we are returning items for a specific Place author already
-      var c = items.length;
-      while( c ) {
-        c -= 1;
-        // so we shouldn't need to pass the author sub document back with each..
-        items[c].author = undefined;
-      }
-    }
-    // and return
+    // just return items : preprocessing handled in Feed.getFeed
     res.json(items);
   });
 };
