@@ -29,6 +29,16 @@ ul.articles li:not(:last-child) {
 
 .clickable { cursor: pointer }
 
+.place-overlay .carousel-control {
+  background: none !important;
+  color: #000;
+  width: 30px;
+  cursor: pointer;
+}
+.place-overlay .carousel-indicators {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
   /* hide nav bar on place-details on mobile? */
   body.place-details .navbar.navbar-fixed-top { display: none }
