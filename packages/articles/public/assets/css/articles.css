@@ -28,3 +28,9 @@ ul.articles li:not(:last-child) {
 .backtomap { margin-right: 15px }
 
 .clickable { cursor: pointer }
+
+@media screen and (max-width: 767px) {
+  /* hide nav bar on place-details on mobile? */
+  body.place-details .navbar.navbar-fixed-top { display: none }
+  body.place-details .content { padding-top: 0 }
+}
