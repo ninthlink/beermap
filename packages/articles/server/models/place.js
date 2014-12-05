@@ -39,6 +39,11 @@ var PlaceSchema = new Schema({
     // make sure we cant have multiple Places with the same slug..
     unique: true
   },
+  // main location if there is one
+  main_loc: {
+    type: Schema.Types.ObjectId,
+    ref: 'Place'
+  },
   // some Booleans for checkboxes of amenities
   chk: {
 	  // growler fills
