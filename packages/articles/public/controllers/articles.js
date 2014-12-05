@@ -373,6 +373,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             // recalc distance for this 1 place
             var myLatLng = new maps.LatLng( $rootScope.myCoords.latitude, $rootScope.myCoords.longitude );
             var dLatLng = new maps.LatLng( $rootScope.highlightPlace.latitude, $rootScope.highlightPlace.longitude );
+            //console.log( 'calc distance from '+ myLatLng +' to '+ dLatLng );
             $rootScope.distanceMatrixService.getDistanceMatrix({
               origins: [ myLatLng ],
               destinations: [ dLatLng ],
@@ -412,6 +413,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $rootScope.distanceMatrixService = new maps.DistanceMatrixService();
         // check distance after geolocation is there
         $scope.$on('geolocation set', function(event, data) {
+          //console.log('geolocation set : load distance');
           $scope.loadHighlightDistance( maps );
         });
         // only GET the details if we don't already have them
