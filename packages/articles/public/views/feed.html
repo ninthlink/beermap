@@ -1,6 +1,6 @@
 <div class="row" data-ng-controller="ArticlesController" data-ng-init="loadFeed()">
   <div class="list-group">
-    <div class="list-group-item text-center" ng-hide="newsLoaded">Loading News...</div>
+    <div class="list-group-item text-center" ng-show="newsLoading">Loading News...</div>
     <div ng-repeat="news in newsFeed" class="list-group-item">
       <div class="media">
         <a class="pull-left clickable" ng-click="goBackToMap(news.author);">
@@ -8,7 +8,7 @@
         </a>
         <div class="media-body">
           <p>
-            <a class="pull-right clickable" ng-click="goBackToMap(news.author);"><small ng-hide="hideDistances">12 miles </small><span class="fa fa-chevron-right"></span></a>
+            <a class="pull-right clickable" ng-click="goBackToMap(news.author);"><span ng-hide="hideDistances" ng-bind-html="news.author.distance"></span> <span class="fa fa-chevron-right"></span></a>
             <a class="clickable" ng-click="goBackToMap(news.author);"><strong ng-bind-html="news.author.name"></strong></a> <small>&middot; <a ng-href="{{news.url}}" target="_blank" title="{{news.date}} via {{news.source}}" ng-bind-html="news.moment"></a></small><br />
             <span ng-bind-html="news.body"></span><br />
             <img ng-show="{{news.hasMedia}}" ng-src="{{news.img}}" alt="" class="media-img">

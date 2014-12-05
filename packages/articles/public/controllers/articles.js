@@ -301,7 +301,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     };
     
     $scope.loadFeed = function() {
-      $scope.newsLoaded = false;
+      $scope.newsLoading = true;
       $scope.newsFeed = [];
       Feeds.query(function(items) {
         var news = [];
@@ -317,7 +317,62 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         });
         
         $scope.newsFeed = news;
-        $scope.newsLoaded = true;
+        $scope.newsLoading = false;
+        $scope.noNews = !news.length;
+        // check distances?
+        //console.log('Feed loaded : check distances for..');
+        //console.log($scope.newsFeed);
+        if ( !$scope.noNews ) {
+          GoogleMapApi.then(function(maps) {
+            // need to wait for GoogleMaps to be ready..
+            $rootScope.distanceMatrixService = new maps.DistanceMatrixService();
+            // check distance after geolocation is there
+            $scope.$on('geolocation set', function(event, data) {
+              console.log('geolocation set : load distances?');
+              // with no pagination, we know 0 < # of items <= 20
+              if ( $rootScope.myCoords !== false ) {
+                // recalc distances
+                var myLatLng = new maps.LatLng( $rootScope.myCoords.latitude, $rootScope.myCoords.longitude );
+                var latlngs = [];
+                angular.forEach( $scope.newsFeed, function( item, n ) {
+                  // create LatLng object for distance calculating
+                  latlngs.push( new maps.LatLng( item.author.lat, item.author.lng ) );
+                });
+                console.log('check distances from '+ myLatLng +' to :');
+                console.log(latlngs);
+                /**
+                 * if we had pagination/infiniteScroll & more than 25 items
+                 * then would need something more like $scope.recalcDistances
+                 * from $scope.mainmap function above. but now, just
+                 */
+                $rootScope.distanceMatrixService.getDistanceMatrix({
+                  origins: [ myLatLng ],
+                  destinations: latlngs,
+                  travelMode: maps.TravelMode.DRIVING,
+                  unitSystem: maps.UnitSystem.IMPERIAL,
+                  avoidHighways: false,
+                  avoidTolls: false
+                }, function( response, status ) {
+                  console.log('DISTANCE MATRIX RESPONSE');
+                  console.log(response.rows[0].elements);
+                  if (status !== maps.DistanceMatrixStatus.OK) {
+                    console.log('Distance Matrix Error was: ' + status);
+                    $scope.hideDistances = true;
+                  } else {
+                    // success!
+                    angular.forEach( response.rows[0].elements, function( d, k ) {
+                      $scope.newsFeed[ k ].author.distance = d.distance.text;
+                    });
+                    $scope.hideDistances = false;
+                    $scope.$apply();
+                  }
+                });
+              }
+            });
+            // getGeolocation will trigger $on('geolocation set' above
+            $scope.getGeolocation();
+          });
+        }
       });
     };
     
