@@ -101,7 +101,7 @@ FeedSchema.statics.load = function(id, callback) {
   // and send it back
   .exec(callback);
 };
-// returns 10 Feed items from the db with page & skip args for paginations?
+// returns chunk of Feed items from the db with page & skip args for paginations?
 FeedSchema.statics.getFeed = function(author_id, page, skip, errorCallback, successCallback) {
   var items = [],
       perpage = 20,
