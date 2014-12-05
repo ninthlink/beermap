@@ -9,7 +9,7 @@
         <div class="media-body">
           <p>
             <a class="pull-right clickable" ng-click="goBackToMap(news.author);"><small ng-hide="hideDistances">12 miles </small><span class="fa fa-chevron-right"></span></a>
-            <a class="clickable" ng-click="goBackToMap(news.author);"><strong ng-bind-html="news.author.name"></strong></a> <small>&middot; <a ng-href="{{news.url}}" title="{{news.date}} via {{news.source}}" ng-bind-html="news.moment"></a></small><br />
+            <a class="clickable" ng-click="goBackToMap(news.author);"><strong ng-bind-html="news.author.name"></strong></a> <small>&middot; <a ng-href="{{news.url}}" target="_blank" title="{{news.date}} via {{news.source}}" ng-bind-html="news.moment"></a></small><br />
             <span ng-bind-html="news.body"></span><br />
             <img ng-show="{{news.hasMedia}}" ng-src="{{news.img}}" alt="" class="media-img">
           </p>

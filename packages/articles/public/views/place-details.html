@@ -43,7 +43,7 @@
           </span>
           <div class="media-body">
             <p>
-              <strong ng-bind-html="highlightPlace.name"></strong> <small>&middot; <a ng-href="{{news.url}}" title="{{news.date}} via {{news.source}}" ng-bind-html="news.moment"></a></small><br />
+              <strong ng-bind-html="highlightPlace.name"></strong> <small>&middot; <a ng-href="{{news.url}}" target="_blank" title="{{news.date}} via {{news.source}}" ng-bind-html="news.moment"></a></small><br />
               <span ng-bind-html="news.body"></span><br />
               <img ng-show="{{news.hasMedia}}" ng-src="{{news.img}}" alt="" class="media-img">
             </p>
