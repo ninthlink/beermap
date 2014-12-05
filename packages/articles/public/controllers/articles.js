@@ -382,8 +382,12 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       delete $rootScope.highlightPlace.noNews;
       $rootScope.highlightPlace.newsLoading = true;
       // re query
+      var query = $rootScope.highlightPlace._id;
+      if ( $rootScope.highlightPlace.hasOwnProperty('main_loc') ) {
+        query += ','+ $rootScope.highlightPlace.main_loc;
+      }
       Feeds.query({
-        'articleId': $rootScope.highlightPlace._id
+        'articleId': query
       }, function(items) {
         var news = [];
         angular.forEach(items, function( item, n ) {
