@@ -3,10 +3,10 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <a class="pull-left clickable backtomap" ng-click="goBackToMap(highlightPlace);"><span class="fa fa-arrow-left"></span></a>
-      <span class="pull-right">
+      <a href="https://www.google.com/maps/dir//{{highlightPlace.fullAddr}}" class="pull-right" target="_blank">
         <span ng-bind-html="highlightPlace.distance" title="{{highlightPlace.fullAddr}}"></span>
         <span class="fa fa-chevron-right"></span>
-      </span>
+      </a>
       <span ng-bind-html="highlightPlace.name" class="name"></span>
     </div>
     <div class="panel-body">
@@ -14,8 +14,8 @@
         <div class="col-sm-6">
           <addr>
             <strong><span ng-bind-html="highlightPlace.name" class="name"></span> <span ng-bind-html="highlightPlace.suffix" class="suffix"></span> <small ng-bind-html="highlightPlace.sublocation"></small></strong><br />
-            <span ng-bind-html="highlightPlace.addr"></span><br />
-            <span ng-bind-html="highlightPlace.CSZ"></span>
+            <a href="https://www.google.com/maps/dir//{{highlightPlace.fullAddr}}" target="_blank"><span ng-bind-html="highlightPlace.addr"></span><br />
+            <span ng-bind-html="highlightPlace.CSZ"></span></a>
           </addr><br />
           <span ng-show="highlightPlace.chk.growlers" class="fa fa-beer" title="Growler fills available"></span> <span ng-show="highlightPlace.chk.fams" class="fa fa-child" title="Family-friendly"></span> <span ng-show="highlightPlace.chk.dogs" class="fa fa-paw" title="Dog friendly"></span> <span ng-show="highlightPlace.chk.trucks" class="fa fa-truck" title="Food trucks available"></span> <span ng-show="highlightPlace.chk.foods" class="fa fa-cutlery" title="Food service available"></span>
           <br />
