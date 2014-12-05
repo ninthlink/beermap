@@ -106,65 +106,70 @@ FeedSchema.statics.getFeed = function(author_id, page, skip, errorCallback, succ
   var items = [],
       perpage = 20,
       start = (page * perpage) + (skip * 1),
-      feedFields = 'active author body date img origin_id source url',
-      authorFields = 'name suffix sublocation slug lat lng fb insta twit';
+      feedFields = 'active author body date img origin_id source url';
   
-  //console.log('Feed > getFeed /'+ id + '/'+ page + '/'+ skip +' = start at #'+ start);
-  // Query the db, using skip and limit to achieve page chunks
+  //console.log('getFeed /'+ id + '/'+ page + '/'+ skip +' = start '+ start);
+  // query the db, using skip and limit for page chunking
   var query = this.find({},feedFields,{skip: start, limit: perpage})
     .sort({date: 'desc'});
-  // if id is provided, only match on author
+  // either loading latest Feed for ALL authors, or just specific one(s)
   if ( author_id !== '' ) {
-    query = query.where('author').equals(author_id);
+    // if id is provided, only match on author(s)
+    if ( author_id.indexOf( ',' ) > 0 ) {
+      // multiple IDs : EXPLODE!
+      var author_ids = author_id.split( ',' );
+      query = query.where('author').in(author_ids);
+    } else {
+      // just matching against 1 author
+      query = query.where('author').equals(author_id);
+    }
+  } else {
+    // populate the Feed item's "author", but only with fields we need
+    var authorFields = 'name suffix sublocation slug lat lng fb insta twit';
+    query = query.populate( 'author', authorFields );
   }
-  // populate the Feed item's "author", but only with fields that we might need..
-  query
-    .populate('author', authorFields)
-    // and execute & callback
-    .exec(function(err,docs){
-      // If everything is cool...
-      if(err) {
-        errorCallback(err);
-      } else {
-        items = docs;  // We got tweets
-        items.forEach(function(tweet){
-          items.active = true; // Set them to active
-        });
-        // Pass them back to the specified callback
-        successCallback(items);
-      }
-    });
+  // execute & callback
+  query.exec(function(err,docs){
+    // everything is alright?
+    if(err) {
+      errorCallback(err);
+    } else {
+      // we got Feeds
+      items = docs;
+      // pass them back to the specified callback
+      successCallback(items);
+    }
+  });
 };
 // save a new Tweet as a Feed item in our DB
-FeedSchema.statics.saveNewTweet = function( twobj, author_id, callback ) {
+FeedSchema.statics.saveNewTweet = function( tw, author_id, callback ) {
   // should there be error checking here?
-  var tw_url = 'https://twitter.com/'+ twobj.user.screen_name +'/status/'+ twobj.id_str;
-  console.log( 'saving tweet '+ tw_url );
-  //console.log(twobj);
+  var tw_url = 'twitter.com/'+ tw.user.screen_name +'/status/'+ tw.id_str;
+  console.log( 'saving '+ tw_url );
   /**
    * check if the tweet has associated media with it
    * and if it does, & if the first media is a "photo",
    * then store that img src https URL in our new feed item
    */
   var img = '';
-  if ( twobj.entities.hasOwnProperty('media') ) {
+  if ( tw.entities.hasOwnProperty('media') ) {
     //console.log('-- media attached --');
-    //console.log(twobj.entities.media);
-    if ( twobj.entities.media.length > 0 ) {
-      if ( twobj.entities.media[0].type === 'photo' ) {
-        img = twobj.entities.media[0].media_url_https;
+    //console.log(tw.entities.media);
+    if ( tw.entities.media.length > 0 ) {
+      if ( tw.entities.media[0].type === 'photo' ) {
+        img = tw.entities.media[0].media_url_https;
       }
     }
   }
   // only save screen_name, don't care about name = display_name = full_name
   var newfeeditem = new this({
     author: author_id,
-    body: twobj.text,
-    date: twobj.created_at,
+    body: tw.text,
+    date: tw.created_at,
     img: img,
-    origin_id: twobj.id_str,
+    origin_id: tw.id_str,
     source: 'Twitter',
-    url: tw_url
+    url: 'https://'+ tw_url
   });
   // actually save to db
   newfeeditem.save(function(err) {
