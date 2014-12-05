@@ -8,12 +8,16 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     $scope.bluedot = '/articles/assets/img/dot-blue.png';
     $scope.hideDistances = true;
     $rootScope.myCoords = false;
-    
+    /**
+     * (outdated) check if user is able to access an Article?!
+     */
     $scope.hasAuthorization = function(article) {
       if (!article || !article.user) return false;
       return $scope.global.isAdmin || article.user._id === $scope.global.user._id;
     };
-
+    /**
+     * (outdated) create a new Article
+     */
     $scope.create = function(isValid) {
       if (isValid) {
         var article = new Articles({
@@ -30,7 +34,9 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $scope.submitted = true;
       }
     };
-
+    /**
+     * (outdated) delete/remove an Article
+     */
     $scope.remove = function(article) {
       if (article) {
         article.$remove(function(response) {
@@ -47,7 +53,9 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         });
       }
     };
-
+    /**
+     * (outdated) update an Article
+     */
     $scope.update = function(isValid) {
       if (isValid) {
         var article = $scope.article;
@@ -63,14 +71,18 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $scope.submitted = true;
       }
     };
-
+    /**
+     * (outdated) "find" articles, with a map. why?!
+     */
     $scope.find = function() {
       $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
       Articles.query(function(articles) {
         $scope.articles = articles;
       });
     };
-	
+    /**
+     * main function called by the main /public/views/map.html template
+     */
     $scope.mainmap = function() {
       $scope.uiRoute = 'map';
       $scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, bounds: {}, control: {}, markerControl: {} };
@@ -385,6 +397,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     };
     
     $scope.placeDetails = function() {
+      $rootScope.bodyClass = 'place-details';
       $scope.loaded = false;
       var requery = true;
       if ( $rootScope.hasOwnProperty('highlightPlace') ) {
@@ -426,6 +439,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       $scope.$on( '$destroy', function() {
         // when we leave this view, reset
         $scope.unhighlight();
+        // and remove our "place-details" body class..
+        $rootScope.bodyClass = '';
       });
     };
     
