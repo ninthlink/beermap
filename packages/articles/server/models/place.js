@@ -308,27 +308,18 @@ PlaceSchema.statics.saveTweetIfMatch = function( tweet, thisPlace, quiet, cb ) {
             console.log('new Feed item saved to DB!');
             console.log('***');
           }
-          /*
           // #todo : socket emit notify?!
-          io.sockets.emit('tweet', {
-            screen_name: tweet.user.screen_name,
-            id: tweet.id_str
-          });
-          */
           if ( cb ) {
             cb();
           }
         });
       } else {
-        // no match found = no save...
+        // no match found = no save
         if ( !quiet ) {
           console.log('no Place found matching @'+ tweet.user.screen_name );
           console.log('***');
         }
-        /**
-         * note : if we wanted to store # of Retweets or w/e..
-         * this is probably when that # should be incremented?
-         */
+        // but if we stored Retweets #, probably inc here
         // and then trigger cb anyways
         if ( cb ) {
           cb();
@@ -426,6 +417,71 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
       }
     }
   });
+};
+// recursive function to lookup Instagram user search 1 at a time
+PlaceSchema.statics.processInstagramUserSearch = function( Instagram, insta_names ) {
+  var thisPlace = this;
+  if ( insta_names.length > 0 ) {
+    // wonder if we need to rate limit this?
+    var user_name = insta_names.shift();
+    console.log( 'searching for Instagram user name '+ user_name );
+    Instagram.users.search({
+      q: user_name,
+      complete: function(data) {
+        console.log( 'iii Instagram.user.search returned');
+        //console.log( data );
+        if ( data.length > 0 ) {
+          // assume 1st result is best match?!
+          var p = data[0];
+          thisPlace.update({
+            // find all Places where insta.name == instagram object username
+            'insta.name': user_name
+          }, {
+            // update the user name just in case, like if the case changed
+            'insta.name': p.username,
+            // update insta.user_id appropriately
+            'insta.user_id': p.id
+          }, {
+            multi: true
+          }, function(err, num, rawResponse) {
+            console.log('saved id '+ p.id +' for '+ num +' @'+ p.username);
+            // loop
+            thisPlace.processInstagramUserSearch( Instagram, insta_names );
+          });
+        } else {
+          console.log( 'nnn no results for '+ user_name );
+          // loop anyways
+          thisPlace.processInstagramUserSearch( Instagram, insta_names );
+        }
+      }
+    });
+  }
+};
+// check list of Places for any with Instagram names but not user IDs
+PlaceSchema.statics.populateMissingInstagramInfos = function( Instagram ) {
+  var thisPlace = this;
+  thisPlace.find({})
+    .where('insta.name').ne('')
+    .where('insta.user_id').equals('')
+    .distinct('insta.name', function(err, insta_names) {
+      if ( err ) {
+        console.log('populateMissingInstagramInfos name search err ?');
+        console.log(err);
+      } else {
+        if ( insta_names.length > 0 ) {
+          /*
+          var lookup = {
+            screen_name: twitter_names.join()
+          };
+          */
+          console.log( 'look up Instagram infos for '+ insta_names.length );
+          console.log( insta_names );
+          console.log( '...' );
+          
+          thisPlace.processInstagramUserSearch( Instagram, insta_names );
+        }
+      }
+    });
 };
 // and "compile" our model, or something
 mongoose.model('Place', PlaceSchema);
