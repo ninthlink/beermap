@@ -17,6 +17,7 @@ var mean = require('meanio'),
   helpers = require('view-helpers'),
   flash = require('connect-flash'),
   twit = require('twit'),
+  Instagram = require('instagram-node-lib'),
   express = require('express'),
   socketio = require('socket.io'),
   http = require('http'),
@@ -25,8 +26,7 @@ var mean = require('meanio'),
   Feed = mongoose.model('Feed'),
   Place = mongoose.model('Place'),
   config = mean.loadConfig();
-  /*
-  */
+
 module.exports = function(app, passport, db) {
 
   app.set('showStackError', true);
@@ -110,15 +110,20 @@ module.exports = function(app, passport, db) {
   // Connect flash for flash messages
   app.use(flash());
   
-  // twit init ( still not sure here is the proper place.. )
+  // server-side twit init
   var t = new twit({
     consumer_key: config.twitter.clientID,
     consumer_secret: config.twitter.clientSecret,
     access_token: config.twitter.access_token,
     access_token_secret: config.twitter.access_token_secret
   });
-  // intialize Twitter stream for Places' twitters'
-  Place.initTwitterStream( t );
+  // initialize Twitter stream for Places' twitters'
+  //Place.initTwitterStream( t );
+  // server-side Instagram init
+  Instagram.set( 'client_id', config.instagram.clientID );
+  // initial Instagram lookup too
+  // already ran once, so we don't need to keep checking each time..
+  //Place.populateMissingInstagramInfos( Instagram );
   /*
   // example REST call to search all tweets with / from @BPBrewing
   t.get('search/tweets', { q: '@BPbrewing' }, function(err, data, response) {

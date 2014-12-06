@@ -15,11 +15,14 @@ module.exports = {
     callbackURL: 'http://localhost:3000/auth/facebook/callback'
   },
   twitter: {
-	access_token: '2876250307-65zni4ISglmnnjd6t03apDavCPdXgogrLSfqdsd',
-	access_token_secret: 'ztwKbIGmw02fQHg3MijVuO9HT2AzhEhpfteLRJLiaRtKc',
+    access_token: '2876250307-65zni4ISglmnnjd6t03apDavCPdXgogrLSfqdsd',
+    access_token_secret: 'ztwKbIGmw02fQHg3MijVuO9HT2AzhEhpfteLRJLiaRtKc',
     clientID: 'e0rBKc4xCzxgWoKO2UkfmMwgh',
     clientSecret: 'PO6dV0gtkzGHKiZIekM5FjYsnIBvdjAm95Ws5u1Li2temNSgpd',
     callbackURL: 'http://localhost:3000/auth/twitter/callback'
+  },
+  instagram: {
+    clientID: 'f67111e49d6043c3bf99622f6ae07e47',
   },
   github: {
     clientID: 'DEFAULT_APP_ID',
