@@ -118,12 +118,12 @@ module.exports = function(app, passport, db) {
     access_token_secret: config.twitter.access_token_secret
   });
   // initialize Twitter stream for Places' twitters'
-  //Place.initTwitterStream( t );
+  Place.initTwitterStream( t );
   // server-side Instagram init
   Instagram.set( 'client_id', config.instagram.clientID );
-  // initial Instagram lookup too
   // already ran once, so we don't need to keep checking each time..
   //Place.populateMissingInstagramInfos( Instagram );
+  // #todo : actual initInstagramStream ?
   /*
   // example REST call to search all tweets with / from @BPBrewing
   t.get('search/tweets', { q: '@BPbrewing' }, function(err, data, response) {
