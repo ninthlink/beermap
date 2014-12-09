@@ -22,7 +22,7 @@ module.exports = {
     callbackURL: 'http://localhost:3000/auth/twitter/callback'
   },
   instagram: {
-    clientID: 'f67111e49d6043c3bf99622f6ae07e47',
+    clientID: 'f67111e49d6043c3bf99622f6ae07e47'
   },
   github: {
     clientID: 'DEFAULT_APP_ID',
