@@ -1,5 +1,5 @@
 <div class="row" data-ng-controller="ArticlesController" data-ng-init="placeDetails()">
-  <!-- #todo : insert street view here... -->
+  <!-- #todo : insert street view here? -->
   <div class="panel panel-default">
     <div class="panel-heading">
       <a class="pull-left clickable backtomap" ng-click="goBackToMap(highlightPlace);"><span class="fa fa-arrow-left"></span></a>
@@ -12,23 +12,37 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-6">
-          <addr>
-            <strong><span ng-bind-html="highlightPlace.name" class="name"></span> <span ng-bind-html="highlightPlace.suffix" class="suffix"></span> <small ng-bind-html="highlightPlace.sublocation"></small></strong><br />
-            <a href="https://www.google.com/maps/dir//{{highlightPlace.fullAddr}}" target="_blank"><span ng-bind-html="highlightPlace.addr"></span><br />
-            <span ng-bind-html="highlightPlace.CSZ"></span></a><br />
-            <span class="fa fa-phone"></span> <a href="tel:{{highlightPlace.phoneNumber}}">{{highlightPlace.phone}}</a>
-          </addr><br />
-          <span ng-show="highlightPlace.chk.growlers" class="fa fa-beer" title="Growler fills available"></span> <span ng-show="highlightPlace.chk.fams" class="fa fa-child" title="Family-friendly"></span> <span ng-show="highlightPlace.chk.dogs" class="fa fa-paw" title="Dog friendly"></span> <span ng-show="highlightPlace.chk.trucks" class="fa fa-truck" title="Food trucks available"></span> <span ng-show="highlightPlace.chk.foods" class="fa fa-cutlery" title="Food service available"></span>
-          <br />
-          <br />
+          <div class="row">
+            <div class="col-xs-12">
+              <addr>
+                <strong><span ng-bind-html="highlightPlace.name" class="name"></span> <span ng-bind-html="highlightPlace.suffix" class="suffix"></span> <small ng-bind-html="highlightPlace.sublocation"></small></strong><br />
+                <span ng-bind-html="highlightPlace.addr"></span><br />
+                <span ng-bind-html="highlightPlace.CSZ"></span></a>
+              </addr>
+              <span ng-show="highlightPlace.chk.growlers || highlightPlace.chk.fams || highlightPlace.chk.dogs || highlightPlace.chk.trucks || highlightPlace.chk.foods">
+                <span ng-show="highlightPlace.chk.growlers" class="fa fa-beer" title="Growler fills available"></span> <span ng-show="highlightPlace.chk.fams" class="fa fa-child" title="Family-friendly"></span> <span ng-show="highlightPlace.chk.dogs" class="fa fa-paw" title="Dog friendly"></span> <span ng-show="highlightPlace.chk.trucks" class="fa fa-truck" title="Food trucks available"></span> <span ng-show="highlightPlace.chk.foods" class="fa fa-cutlery" title="Food service available"></span>
+                <br />
+              </span>
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div ng-class="{ 'btn-group': highlightPlace.phoneNumber }">
+                <a href="https://www.google.com/maps/dir//{{highlightPlace.fullAddr}}" class="btn btn-default" target="_blank">Get Directions</a>
+                <a href="tel:{{highlightPlace.phoneNumber}}" class="btn btn-default" ng-show="highlightPlace.phone !== ''">Call {{highlightPlace.phone}}</a>
+              </div>
+              <br ng-show="highlightPlace.phone !== ''" />
+              <br />
+            </div>
+          </div>
         </div>
         <div class="col-sm-6">
           <p>
-            <!-- can still clean this up more.. -->
-            <span ng-show="highlightPlace.url != ''"><span class="fa fa-globe" title="Website"></span> <a href="http://{{highlightPlace.url}}" target="_blank">{{highlightPlace.url}}</a><br /></span>
-            <span ng-show="highlightPlace.fb.url != ''"><span class="fa fa-facebook-square" title="Facebook"></span> <a href="https://facebook.com/{{highlightPlace.fb.url}}" target="_blank">{{highlightPlace.fb.url}}</a><br /></span>
-            <span ng-show="highlightPlace.twit.name != ''"><span class="fa fa-twitter" title="Twitter"></span> <a href="https://twitter.com/{{highlightPlace.twit.name}}" target="_blank">{{highlightPlace.twit.name}}</a><br /></span>
-            <span ng-show="highlightPlace.insta.name != ''"><span class="fa fa-instagram" title="Instagram"></span> <a href="http://instagram.com/{{highlightPlace.insta.name}}" target="_blank">{{highlightPlace.insta.name}}</a><br /></span>
+            <span ng-show="highlightPlace.url !== ''"><span class="fa fa-globe" title="Website"></span> <a href="http://{{highlightPlace.url}}" target="_blank">{{highlightPlace.url}}</a><br /></span>
+            <span ng-show="highlightPlace.fb.url !== ''"><span class="fa fa-facebook-square" title="Facebook"></span> <a href="https://facebook.com/{{highlightPlace.fb.url}}" target="_blank">{{highlightPlace.fb.url}}</a><br /></span>
+            <span ng-show="highlightPlace.twit.name !== ''"><span class="fa fa-twitter" title="Twitter"></span> <a href="https://twitter.com/{{highlightPlace.twit.name}}" target="_blank">{{highlightPlace.twit.name}}</a><br /></span>
+            <span ng-show="highlightPlace.insta.name !== ''"><span class="fa fa-instagram" title="Instagram"></span> <a href="http://instagram.com/{{highlightPlace.insta.name}}" target="_blank">{{highlightPlace.insta.name}}</a><br /></span>
           </p>
         </div>
       </div>
