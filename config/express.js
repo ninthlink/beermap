@@ -119,21 +119,8 @@ module.exports = function(app, passport, db) {
   });
   // initialize Twitter stream for Places' twitters'
   Place.initTwitterStream( t );
-  // server-side Instagram init
+  // server-side istagram-node-lib init
   Instagram.set( 'client_id', config.instagram.clientID );
-  // already ran once, so we don't need to keep checking each time..
+  // initialize Instagram.users.recent for all our Places' user_id's
   Place.initInstagramLookup( Instagram );
-  // #todo : actual initInstagramStream ?
-  /*
-  // example REST call to search all tweets with / from @BPBrewing
-  t.get('search/tweets', { q: '@BPbrewing' }, function(err, data, response) {
-	if ( err ) {
-		console.log('twit search err');
-		console.log(err);
-	} else {
-		console.log('TWIT SEARCH SUCCESS');
-		console.log(data);
-	}
-  });
-  */
 };
