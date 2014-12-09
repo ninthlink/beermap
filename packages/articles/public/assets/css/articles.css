@@ -1,13 +1,16 @@
-h1 {
-	text-align: center
+.map-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 40px;
+  bottom: 0;
+  z-index: 1;
 }
-ul.articles li:not(:last-child) {
-	border-bottom: 1px solid #ccc
-}
-
-.map-container { position: fixed; left: 0; right: 0; top: 40px; bottom: 0; z-index: 1; }
 .angular-google-map,
-.angular-google-map-container { width: 100%; height: 100% }
+.angular-google-map-container {
+  width: 100%;
+  height: 100%;
+}
 
 .place-overlay {
   border-radius: 0;
@@ -21,14 +24,20 @@ ul.articles li:not(:last-child) {
 .place-overlay .panel-body p {
   margin: 0;
 }
-
-.media-img { max-width: 100%; height: auto }
-.media-thm { max-width: 35%; max-height: 80px }
-
-.backtomap { margin-right: 15px }
-
-.clickable { cursor: pointer }
-
+.media-img {
+  max-width: 100%;
+  height: auto;
+}
+.media-thm {
+  max-width: 35%;
+  max-height: 80px;
+}
+.backtomap {
+  margin-right: 15px;
+}
+.clickable {
+  cursor: pointer;
+}
 .place-overlay .carousel-control {
   background: none !important;
   color: #000;
@@ -37,6 +46,10 @@ ul.articles li:not(:last-child) {
 }
 .place-overlay .carousel-indicators {
   display: none;
+}
+
+.place-details addr {
+  display: block;
 }
 
 @media screen and (max-width: 767px) {
