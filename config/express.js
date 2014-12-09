@@ -122,7 +122,7 @@ module.exports = function(app, passport, db) {
   // server-side Instagram init
   Instagram.set( 'client_id', config.instagram.clientID );
   // already ran once, so we don't need to keep checking each time..
-  //Place.populateMissingInstagramInfos( Instagram );
+  Place.initInstagramLookup( Instagram );
   // #todo : actual initInstagramStream ?
   /*
   // example REST call to search all tweets with / from @BPBrewing
