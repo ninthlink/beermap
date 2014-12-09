@@ -572,7 +572,7 @@ PlaceSchema.statics.processInstagramUsers = function( Instagram, user_ids, quiet
     }
   }
 };
-// gather all Places Instagram user IDs & start recent lookup & stream 1 by 1
+// gather all Places Instagram user IDs & start recent lookups & fake "stream"
 PlaceSchema.statics.initInstagramLookup = function( Instagram ) {
   var thisPlace = this;
   var quiet = true;
@@ -592,8 +592,10 @@ PlaceSchema.statics.initInstagramLookup = function( Instagram ) {
       }
     }
   });
-  // every 4 minutes ( 4 x 60 x 1000 ms ), loop again check for new posts?
-  setTimeout( function() { thisPlace.initInstagramLookup( Instagram ); }, 240000 );
+  // can't actually stream select users with Instagram API, so repeat in a bit
+  setTimeout( function() {
+    thisPlace.initInstagramLookup( Instagram );
+  }, 240000 );
 };
 // and "compile" our model, or something
 mongoose.model('Place', PlaceSchema);
