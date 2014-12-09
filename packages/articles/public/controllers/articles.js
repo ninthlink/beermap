@@ -299,7 +299,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $scope.article = article;
       });
     };
-    
+    // main function for /feed aka "latest feed" aka articles/views/feed.html
     $scope.loadFeed = function() {
       $scope.newsLoading = true;
       $scope.newsFeed = [];
@@ -319,7 +319,10 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $scope.newsFeed = news;
         $scope.newsLoading = false;
         $scope.noNews = !news.length;
+        $scope.loaded = !$scope.newsLoading;
+        // quick fix for BEER-49
         // check distances?
+        $scope.unhighlight();
         //console.log('Feed loaded : check distances for..');
         //console.log($scope.newsFeed);
         if ( !$scope.noNews ) {
