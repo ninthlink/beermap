@@ -180,10 +180,8 @@ PlaceSchema.virtual( 'nameLongest' ).get(function() {
 // phoneNumber = phone but just the number
 PlaceSchema.virtual( 'phoneNumber' ).get(function() {
   var oot = '';
-  if ( this.hasOwnProperty('phone') ) {
-    if ( this.phone !== '' ) {
-      oot = this.phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
-    }
+  if ( this.phone ) {
+    oot = this.phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
   }
   return oot;
 });
