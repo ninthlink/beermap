@@ -161,7 +161,6 @@ FeedSchema.statics.saveNewTweet = function( tw, author_id, callback ) {
       }
     }
   }
-  // only save screen_name, don't care about name = display_name = full_name
   var newfeeditem = new this({
     author: author_id,
     body: tw.text,
@@ -177,7 +176,7 @@ FeedSchema.statics.saveNewTweet = function( tw, author_id, callback ) {
       var emsg = 'Feed.saveNewTweet > save err';
       if ( err.code === 11000 ) {
         // this is the DUPLICATE KEY insert error, so eh
-        console.log(emsg +' > item with origin_id already exists : skip');
+        //console.log(emsg +' > item with origin_id already exists : skip');
       } else {
         console.log(emsg);
         console.log(err);
@@ -185,6 +184,62 @@ FeedSchema.statics.saveNewTweet = function( tw, author_id, callback ) {
     }
     callback();
   });
+};
+// save new Instagram post(s) as a Feed item(s) in our DB
+FeedSchema.statics.saveNewInstagrams = function( posts, author_id, callback ) {
+  var thisFeed = this;
+  if ( posts.length > 0 ) {
+    var insta = posts.pop();
+    // should there be error checking here?
+    var iurl = insta.link;
+    console.log( 'saving '+ iurl );
+    /**
+     * check if the tweet has associated media with it
+     * and if it does, & if the first media is a "photo",
+     * then store that img src https URL in our new feed item
+     */
+    var img = '';
+    if ( insta.hasOwnProperty('images') ) {
+      // more checks here?
+      img = insta.images.standard_resolution.url;
+    }
+    var txt = '';
+    if ( insta.hasOwnProperty('caption') ) {
+      // more checks here? sometimes Instagram posts don't have txt
+      txt = insta.caption.text;
+    }
+    var newfeeditem = new this({
+      author: author_id,
+      body: txt,
+      // convert timestamp to ms?
+      date: insta.created_time * 1000,
+      img: img,
+      origin_id: insta.id,
+      source: 'Instagram',
+      url: iurl
+    });
+    // actually save to db
+    newfeeditem.save(function(err) {
+      if ( err ) {
+        var emsg = 'Feed.saveNewInstagrams > save err';
+        if ( err.code === 11000 ) {
+          // this is the DUPLICATE KEY insert error, so eh
+          //console.log(emsg +' > item with origin_id already exists : skip');
+        } else {
+          console.log(emsg);
+          console.log(err);
+        }
+      }
+      // otherwise, we're good : successful save, no error
+      if ( posts.length > 0 ) {
+        // if we were passed in multiple posts, recurse
+        thisFeed.saveNewInstagrams( posts, author_id, callback );
+      } else {
+        // post(s) have saved, go for callback
+        callback();
+      }
+    });
+  }
 };
 // given an origin_id, actually find & remove that Feed item
 FeedSchema.statics.deleteItem = function( id, callback ) {
