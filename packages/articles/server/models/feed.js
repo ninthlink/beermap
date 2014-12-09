@@ -174,10 +174,12 @@ FeedSchema.statics.saveNewTweet = function( tw, author_id, callback ) {
   newfeeditem.save(function(err) {
     if ( err ) {
       var emsg = 'Feed.saveNewTweet > save err';
-      if ( err.code === 11000 ) {
-        // this is the DUPLICATE KEY insert error, so eh
+      if ( err.code !== 11000 ) {
+      /*
+        // 11000 is DUPLICATE KEY insert error
         //console.log(emsg +' > item with origin_id already exists : skip');
       } else {
+      */
         console.log(emsg);
         console.log(err);
       }
@@ -222,10 +224,12 @@ FeedSchema.statics.saveNewInstagrams = function( posts, author_id, callback ) {
     newfeeditem.save(function(err) {
       if ( err ) {
         var emsg = 'Feed.saveNewInstagrams > save err';
-        if ( err.code === 11000 ) {
-          // this is the DUPLICATE KEY insert error, so eh
+        if ( err.code !== 11000 ) {
+        /*
+          // 11000 is the DUPLICATE KEY insert error
           //console.log(emsg +' > item with origin_id already exists : skip');
         } else {
+        */
           console.log(emsg);
           console.log(err);
         }
