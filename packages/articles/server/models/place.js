@@ -177,6 +177,10 @@ PlaceSchema.virtual( 'nameLongest' ).get(function() {
   }
 	return oot;
 });
+// phoneNumber = phone but just the number
+PlaceSchema.virtual( 'phoneNumber' ).get(function() {
+  return this.phone.replace('(', '').replace(')', '').replace(/ /i, '').replace(/-/i, '');
+});
 /**
  * Statics are like more permanent helper functions
  */
