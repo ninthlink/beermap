@@ -331,7 +331,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             $rootScope.distanceMatrixService = new maps.DistanceMatrixService();
             // check distance after geolocation is there
             $scope.$on('geolocation set', function(event, data) {
-              console.log('geolocation set : load distances?');
+              //console.log('geolocation set : load distances?');
               // with no pagination, we know 0 < # of items <= 20
               if ( $rootScope.myCoords !== false ) {
                 // recalc distances
@@ -341,8 +341,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
                   // create LatLng object for distance calculating
                   latlngs.push( new maps.LatLng( item.author.lat, item.author.lng ) );
                 });
-                console.log('check distances from '+ myLatLng +' to :');
-                console.log(latlngs);
+                //console.log('check distances from '+ myLatLng +' to :');
+                //console.log(latlngs);
                 /**
                  * if we had pagination/infiniteScroll & more than 25 items
                  * then would need something more like $scope.recalcDistances
@@ -356,10 +356,10 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
                   avoidHighways: false,
                   avoidTolls: false
                 }, function( response, status ) {
-                  console.log('DISTANCE MATRIX RESPONSE');
-                  console.log(response.rows[0].elements);
+                  //console.log('DISTANCE MATRIX RESPONSE');
+                  //console.log(response.rows[0].elements);
                   if (status !== maps.DistanceMatrixStatus.OK) {
-                    console.log('Distance Matrix Error was: ' + status);
+                    console.log('gMaps Distance Matrix Error ' + status);
                     $scope.hideDistances = true;
                   } else {
                     // success!
