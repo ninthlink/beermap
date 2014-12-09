@@ -328,6 +328,63 @@ PlaceSchema.statics.saveTweetIfMatch = function( tweet, thisPlace, quiet, cb ) {
     }
   });
 };
+// only Save an Instagram post if we have a Place matching user.username
+PlaceSchema.statics.saveInstaPostsIfMatch = function( data, thisPlace, quiet, cb ) {
+  // unlike twitter, instagram could send multiple posts for a single user here
+  var c = data.length;
+  if ( c > 0 ) {
+    // first, find matching place based off first item
+    var insta = data.pop();
+    if ( !quiet ) {
+      var iurl = insta.link;
+      console.log( 'insta : '+ iurl );
+    }
+    this.find({})
+    .where('insta.name').equals( insta.user.username )
+    .exec( function( err, matches ) {
+      if ( err ) {
+        console.log('err in finding matching insta.name?');
+        console.log(err);
+        if ( cb ) {
+          // and then trigger cb anyways
+          cb();
+        }
+      } else {
+        if ( matches.length > 0 ) {
+          // a match was found, so we're cool to save
+          var pid = matches[0]._id;
+          if ( !quiet ) {
+            console.log('Place(s) match: '+ insta.user.username +' '+ pid );
+          }
+          // push the first (last) item we were matching against, back to data
+          data.push(insta);
+          // recursive loop to save 1 new Feed item at a time..
+          
+          Feed.saveNewInstagrams( data, pid, function() {
+            if ( !quiet ) {
+              console.log('new Feed item(s) saved to DB!');
+              console.log('***');
+            }
+            // #todo : socket emit notify?!
+            if ( cb ) {
+              cb();
+            }
+          });
+        } else {
+          // no match found = no save
+          if ( !quiet ) {
+            console.log('no Place found matching @'+ insta.user.screen_name );
+            console.log('***');
+          }
+          // and then trigger cb anyways
+          if ( cb ) {
+            cb();
+          }
+        }
+      }
+    });
+  }
+};
 // intialize Twitter stream for Places' twitters'
 PlaceSchema.statics.initTwitterStream = function( Twit ) {
   console.log('<< Place.initTwitterStream >>');
@@ -418,17 +475,17 @@ PlaceSchema.statics.initTwitterStream = function( Twit ) {
     }
   });
 };
-// recursive function to lookup Instagram user search 1 at a time
+// recursive lookup Instagram user search 1 at a time : not sold on function name
 PlaceSchema.statics.processInstagramUserSearch = function( Instagram, insta_names ) {
   var thisPlace = this;
   if ( insta_names.length > 0 ) {
-    // wonder if we need to rate limit this?
+    // Instagram limit is "5000 requests / hour", so should be ok w/o limit
     var user_name = insta_names.shift();
-    console.log( 'searching for Instagram user name '+ user_name );
+    //console.log( 'searching for Instagram user name '+ user_name );
     Instagram.users.search({
       q: user_name,
       complete: function(data) {
-        console.log( 'iii Instagram.user.search returned');
+        //console.log( 'iii Instagram.user.search returned');
         //console.log( data );
         if ( data.length > 0 ) {
           // assume 1st result is best match?!
@@ -449,7 +506,7 @@ PlaceSchema.statics.processInstagramUserSearch = function( Instagram, insta_name
             thisPlace.processInstagramUserSearch( Instagram, insta_names );
           });
         } else {
-          console.log( 'nnn no results for '+ user_name );
+          console.log( 'no Instagram results found for '+ user_name );
           // loop anyways
           thisPlace.processInstagramUserSearch( Instagram, insta_names );
         }
@@ -459,6 +516,7 @@ PlaceSchema.statics.processInstagramUserSearch = function( Instagram, insta_name
 };
 // check list of Places for any with Instagram names but not user IDs
 PlaceSchema.statics.populateMissingInstagramInfos = function( Instagram ) {
+  console.log('<<< PlaceSchema > populateMissingInstagramInfos >>>');
   var thisPlace = this;
   thisPlace.find({})
     .where('insta.name').ne('')
@@ -469,19 +527,73 @@ PlaceSchema.statics.populateMissingInstagramInfos = function( Instagram ) {
         console.log(err);
       } else {
         if ( insta_names.length > 0 ) {
-          /*
-          var lookup = {
-            screen_name: twitter_names.join()
-          };
-          */
-          console.log( 'look up Instagram infos for '+ insta_names.length );
-          console.log( insta_names );
-          console.log( '...' );
-          
+          // pass all names in, and it will look up 1 at a time..
           thisPlace.processInstagramUserSearch( Instagram, insta_names );
         }
       }
     });
+};
+
+// recursive GET user recent media & set up stream (eventually?)
+PlaceSchema.statics.processInstagramUsers = function( Instagram, user_ids, quiet ) {
+  var thisPlace = this;
+  if ( user_ids.length > 0 ) {
+    // Instagram limit is "5000 requests / hour", so should be ok w/o limit
+    var user_id = user_ids.shift();
+    // for GET users.recent, want media from 7 days, in seconds not ms
+    var min_timestamp = Math.floor( Date.now() / 1000 ) - 604800;
+    if ( !quiet ) {
+      console.log( 'searching for Instagram user '+ user_id );
+    }
+    // GET users.recent for the user
+    Instagram.users.recent({
+      user_id: user_id,
+      min_timestamp : min_timestamp,
+      complete: function(data) {
+        if ( !quiet ) {
+          console.log( 'iii Instagram.user.recent returned');
+          console.log( data );
+        }
+        // see about saving the recent Posts, and looping
+        if ( data.length > 0 ) {
+          thisPlace.saveInstaPostsIfMatch( data, thisPlace, quiet, function() {
+            // and THEN loop
+            thisPlace.processInstagramUsers( Instagram, user_ids, quiet );
+          });
+        } else {
+          // no recent posts, still loop to the next
+          thisPlace.processInstagramUsers( Instagram, user_ids, quiet );
+        }
+      }
+    });
+  } else {
+    if ( !quiet ) {
+      console.log('<<< PlaceSchema > processInstagramUsers loop DONE >>>');
+    }
+  }
+};
+// gather all Places Instagram user IDs & start recent lookup & stream 1 by 1
+PlaceSchema.statics.initInstagramLookup = function( Instagram ) {
+  var thisPlace = this;
+  var quiet = true;
+  if ( !quiet ) {
+    console.log('<<< PlaceSchema > initInstagramLookup >>>');
+  }
+  thisPlace.find({})
+  .where('insta.user_id').ne('')
+  .distinct('insta.user_id', function(err, user_ids) {
+    if ( err ) {
+      console.log('initInstagramLookup user_id search err ?');
+      console.log(err);
+    } else {
+      if ( user_ids.length > 0 ) {
+        // pass all names in, and it will look up 1 at a time..
+        thisPlace.processInstagramUsers( Instagram, user_ids, quiet );
+      }
+    }
+  });
+  // every 4 minutes ( 4 x 60 x 1000 ms ), loop again check for new posts?
+  setTimeout( function() { thisPlace.initInstagramLookup( Instagram ); }, 240000 );
 };
 // and "compile" our model, or something
 mongoose.model('Place', PlaceSchema);
