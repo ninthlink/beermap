@@ -74,7 +74,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     // main function called by the main /public/views/map.html template
     $scope.mainmap = function() {
       $scope.uiRoute = 'map';
-      $scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, bounds: {}, control: {}, markerControl: {} };
+      $scope.map = {center: {latitude: 32.93, longitude: -117.16 }, zoom: 10, bounds: {}, control: {}, markerControl: {} };
       $scope.options = { mapTypeControl: false, panControl: false, streetViewControl: false, zoomControl: false };//scrollwheel: false};
       $scope.coordsUpdates = 0;
       $scope.dynamicMoveCtr = 0;
