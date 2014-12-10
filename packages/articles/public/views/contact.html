@@ -1,0 +1,43 @@
+<div class="row" data-ng-controller="ArticlesController" data-ng-init="contactForm()">
+  <div class="col-xs-12">
+    <h2>Contact Us</h2>
+    <div class="row">
+      <div class="col-sm-8">
+        <p>Questions? Comments? High fives? Don't see your Brewery listed here? See it listed, but some info is incorrect? Let us know!</p>
+        <div class="alert alert-danger" ng-show="error !== ''" ng-bind-html="error"></div>
+        <div class="alert alert-success alert-dismissible" ng-show="message !== ''">
+          <button type="button" class="close" ng-click="message = ''"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          {{message}}
+        </div>
+        <form ng-submit="processContact()">
+          <div class="form-group">
+            <label for="name">Name*</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required ng-model="formData.name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email*</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="email@address.com" required ng-model="formData.email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message*</label>
+            <textarea class="form-control" rows="3" id="message" name="message" placeholder="Your message here" required ng-model="formData.message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success" ng-disabled="submitting"><span ng-hide="submitting">Submit</span><span ng-show="submitting">Submitting... <span class="fa fa-spinner fa-spin"></span></span></button> &nbsp; <small>*&nbsp;required fields</small>
+          <p><br /></p>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <addr>
+          <strong>Beer Maps</strong><br />
+          <span class="fa fa-globe"></span> <a href="http://beermap.herokuapp.com">http://beermap.herokuapp.com</a><br />
+          <span class="fa fa-github"></span> <a href="https://github.com/ninthlink/beermap" target="_blank">beermap</a><br />
+          <span class="fa fa-twitter"></span> <a href="https://twitter.com/sdbeermap" target="_blank">sdbeermap</a><br />
+          <span class="fa fa-phone"></span> <a href="tel:1-858-432-6277">(858) 432-6277</a><br />
+        </addr>
+      </div>
+    </div>
+    <hr />
+    <p><small><span class="text-info">Beer Maps is a product of the</span> <span class="clickable" ng-click="bear = !bear">Ninthlink Polar Bear Cave</span>. &copy;&nbsp;{{year}} <a href="http://www.ninthlink.com" target="_blank">Ninthlink, Inc</a>.</small></p>
+    <p ng-show="bear" style="margin:1em -15px 0"><img src="/bearcave.jpg" alt="The Ninthlink Polar Bear Cave" style="max-width:100%;height: auto;"></p>
+  </div>
+</div>

@@ -1,23 +1,20 @@
 'use strict';
 
-angular.module('mean.articles').controller('ArticlesController', ['$scope', '$rootScope', '$stateParams', '$location', '$window', 'Global', 'Articles', 'Places', 'Feeds', 'PlacesFromSpreadsheet', 'uiGmapGoogleMapApi',
-  function($scope, $rootScope, $stateParams, $location, $window, Global, Articles, Places, Feeds, PlacesFromSpreadsheet, GoogleMapApi ) {
+angular.module('mean.articles').controller('ArticlesController', ['$scope', '$rootScope', '$stateParams', '$location', '$window', '$http', 'Global', 'Articles', 'Places', 'Feeds', 'PlacesFromSpreadsheet', 'uiGmapGoogleMapApi',
+  function($scope, $rootScope, $stateParams, $location, $window, $http, Global, Articles, Places, Feeds, PlacesFromSpreadsheet, GoogleMapApi ) {
     $scope.global = Global;
     // map marker icons?!
     var icon_reddot = '/articles/assets/img/dot-red.png';
     $scope.bluedot = '/articles/assets/img/dot-blue.png';
     $scope.hideDistances = true;
     $rootScope.myCoords = false;
-    /**
-     * (outdated) check if user is able to access an Article?!
-     */
+    
+    // (outdated) check if user is able to access an Article?!
     $scope.hasAuthorization = function(article) {
       if (!article || !article.user) return false;
       return $scope.global.isAdmin || article.user._id === $scope.global.user._id;
     };
-    /**
-     * (outdated) create a new Article
-     */
+    // (outdated) create a new Article
     $scope.create = function(isValid) {
       if (isValid) {
         var article = new Articles({
@@ -34,9 +31,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $scope.submitted = true;
       }
     };
-    /**
-     * (outdated) delete/remove an Article
-     */
+    // (outdated) delete/remove an Article
     $scope.remove = function(article) {
       if (article) {
         article.$remove(function(response) {
@@ -53,9 +48,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         });
       }
     };
-    /**
-     * (outdated) update an Article
-     */
+    // (outdated) update an Article
     $scope.update = function(isValid) {
       if (isValid) {
         var article = $scope.article;
@@ -71,18 +64,14 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $scope.submitted = true;
       }
     };
-    /**
-     * (outdated) "find" articles, with a map. why?!
-     */
+    // (outdated) "find" articles, with a map. why?!
     $scope.find = function() {
       $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
       Articles.query(function(articles) {
         $scope.articles = articles;
       });
     };
-    /**
-     * main function called by the main /public/views/map.html template
-     */
+    // main function called by the main /public/views/map.html template
     $scope.mainmap = function() {
       $scope.uiRoute = 'map';
       $scope.map = {center: {latitude: 32.95, longitude: -117 }, zoom: 10, bounds: {}, control: {}, markerControl: {} };
@@ -258,7 +247,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             // wipe map event listeners too?
             maps.event.clearListeners( gmapd );
             // question : should we cache markers as we cache map settings?
-            $window.navigator.geolocation.clearWatch($scope.geolocationwatchID);
+            $window.navigator.geolocation.clearWatch($scope.geoWatch);
           });
         }, 400);
       });
@@ -284,14 +273,14 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         */
       };
     };
-    
+    // if a Place was set as $rootScope.highlightPlace, wipe it out
     $scope.unhighlight = function() {
       if ( $scope.loaded ) {
         // remove the highlightPlace
         delete $rootScope.highlightPlace;
       }
     };
-    
+    // find one article, given an articleId
     $scope.findOne = function() {
       Articles.get({
         articleId: $stateParams.articleId
@@ -378,7 +367,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         }
       });
     };
-    
+    // assuming $rootScope.highlightPlace = some Place, load that Feed
     $scope.loadHighlightPlaceFeed = function() {
       // wipe old info before we re query
       delete $rootScope.highlightPlace.newsFeed;
@@ -410,7 +399,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $rootScope.highlightPlace.noNews = !news.length;
       });
     };
-    
+    // trigger html5 browser geolocation & emit an event when its set
     $scope.getGeolocation = function() {
       function geo_success(position) {
         $scope.$apply(function(){
@@ -418,16 +407,21 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           $scope.$emit('geolocation set', position.coords);
         });
         // clear the watchPosition at least for now
-        $window.navigator.geolocation.clearWatch($scope.geolocationwatchID);
+        $window.navigator.geolocation.clearWatch($scope.geoWatch);
       }
       function geo_error(err){
         console.log('eee geolocation error');
         console.log(err);
         $rootScope.myCoords = false;
       }
-      $scope.geolocationwatchID = $window.navigator.geolocation.watchPosition( geo_success, geo_error, { enableHighAccuracy: false });
+      $scope.geoWatch = $window.navigator.geolocation.watchPosition(
+        geo_success,
+        geo_error,
+      {
+        enableHighAccuracy: false
+      });
     };
-    
+    // calculate distance from provided myCoords to the current highlightPlace
     $scope.loadHighlightDistance = function(maps) {
       if ( $rootScope.hasOwnProperty('highlightPlace') ) {
         if ( !$rootScope.highlightPlace.distance ) {
@@ -458,7 +452,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         }
       }
     };
-    
+    // main function for /place/{slug} to load a Place details view
     $scope.placeDetails = function() {
       $rootScope.bodyClass = 'place-details';
       $scope.loaded = false;
@@ -507,16 +501,50 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         $rootScope.bodyClass = '';
       });
     };
-    
+    // go back to the main "map" view, optionally with a Place overlay open
     $scope.goBackToMap = function( highlightPlace ) {
       $rootScope.highlightPlace = highlightPlace;
       $location.path('map');
       return false;
     };
-    
+    // redirect to Place details
     $scope.goToDetails = function() {
       $location.path('/places/'+ $rootScope.highlightPlace.slug);
       return false;
+    };
+    // main function for /contact setup
+    $scope.contactForm = function() {
+      // initialize formData
+      $scope.formData = {};
+      $scope.message = '';
+      $scope.error = '';
+      $scope.submitting = false;
+      $scope.bear = false;
+      $scope.year = new Date().getFullYear();
+      // contact form submit handler
+      $scope.processContact = function() {
+        $scope.error = '';
+        $scope.message = '';
+        $scope.submitting = true;
+        //console.log($scope.formData);
+        // #todo : front-side VALIDATION before sending?!
+        $http
+        .post('/contact', $scope.formData)
+        .success(function(data) {
+          //console.log(data);
+          if (data.err) {
+            // if not successful, bind error message to error
+            $scope.error = data.msg;
+          } else {
+            // if successful, bind success message to message
+            $scope.message = data.msg;
+            // and wipe formData?
+            $scope.formData = {};
+          }
+          // hide submitting after another slight delay
+          $scope.submitting = false;
+        });
+      };
     };
   }
 ]);
