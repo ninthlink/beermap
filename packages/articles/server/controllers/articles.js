@@ -7,7 +7,8 @@ var mongoose = require('mongoose'),
   //Article = mongoose.model('Article'),
   Place = mongoose.model('Place'),
   Feed = mongoose.model('Feed'),
-  _ = require('lodash');
+  _ = require('lodash'),
+  nodemailer = require('nodemailer');
 
 /**
  * Find article by id
@@ -231,4 +232,58 @@ exports.updatePlace = function(req, res) {
 			}
 		});
 	});
+};
+
+/**
+ * send a contact form submission
+ */
+exports.contact = function(req, res) {
+  // create reusable transporter object using SMTP transport
+  var transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+          user: 'sdbeermap@gmail.com',
+          pass: 'zwerijbermawlzgh'
+      }
+  });
+  
+  console.log('POST to contact with info..');
+  console.log(req.body);
+  
+  var fromname = req.body.name;
+  var fromemail = req.body.email;
+  var msg = req.body.message;
+  // #todo : VALIDATION OMG
+  var oktosend = true;
+  if ( oktosend ) {
+    // setup e-mail data with unicode symbols
+    var mailOpts = {
+        from: fromname +' &lt;'+ fromemail +'&gt;', // sender address
+        to: 'sdbeermap@gmail.com', // list of receivers
+        subject: 'Beer Maps : Contact', // Subject line
+        html: 'name : '+ fromname +'<br />email : '+ fromemail +'<br />message : '+ msg
+    };
+    
+    // send mail with defined transport object
+    transporter.sendMail(mailOpts, function(error, info){
+      if ( error ) {
+        console.log(error);
+        res.json({
+          msg: 'Error occured, message not sent.',
+          err: true
+        });
+      } else {
+        console.log('Message sent: ' + info.response);
+        res.json({
+          msg: 'Message sent! Thank you.',
+          err: false
+        });
+      }
+    });
+  } else {
+    res.json({
+      msg: 'Error occured, message not sent.',
+      err: true
+    });
+  }
 };
