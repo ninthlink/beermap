@@ -38,6 +38,9 @@
 .clickable {
   cursor: pointer;
 }
+.place-overlay .carousel {
+  padding: 15px 30px;
+}
 .place-overlay .carousel-control {
   background: none !important;
   color: #000;
@@ -47,7 +50,17 @@
 .place-overlay .carousel-indicators {
   display: none;
 }
-
+.place-overlay .carousel-control .glyphicon-chevron-left,
+.place-overlay .carousel-control .glyphicon-chevron-right,
+.place-overlay .carousel-control .icon-prev,
+.place-overlay .carousel-control .icon-next {
+  font-size: 16px;
+  line-height: 30px;
+  margin: -15px 0 0;
+  right: 0;
+  left: 0;
+  text-shadow: none;
+}
 .place-details addr {
   display: block;
 }

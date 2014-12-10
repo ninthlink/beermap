@@ -371,8 +371,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     $scope.loadHighlightPlaceFeed = function() {
       // wipe old info before we re query
       delete $rootScope.highlightPlace.newsFeed;
-      delete $rootScope.highlightPlace.noNews;
       $rootScope.highlightPlace.newsLoading = true;
+      $rootScope.highlightPlace.noNews = false;
       // re query
       var query = $rootScope.highlightPlace._id;
       if ( $rootScope.highlightPlace.hasOwnProperty('main_loc') ) {
@@ -381,25 +381,27 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       Feeds.query({
         'articleId': query
       }, function(items) {
-        var news = [];
-        angular.forEach(items, function( item, n ) {
-          item.bodyClass = 'media-body';
-          if ( item.img ) {
-            item.hasMedia = true;
-            item.bodyClass += ' has-media';
-          } else {
-            item.hasMedia = false;
-          }
-          news.push(item);
-        });
-        //console.log('Feed loaded?!');
-        //console.log(news);
-        $rootScope.highlightPlace.newsLoading = false;
-        $rootScope.highlightPlace.newsFeed = news;
-        $rootScope.highlightPlace.noNews = !news.length;
+        if ( items.length ) {
+          var news = [];
+          angular.forEach(items, function( item, n ) {
+            item.bodyClass = 'media-body';
+            if ( item.img ) {
+              item.hasMedia = true;
+              item.bodyClass += ' has-media';
+            } else {
+              item.hasMedia = false;
+            }
+            news.push(item);
+          });
+          $rootScope.highlightPlace.newsLoading = false;
+          $rootScope.highlightPlace.noNews = false;
+          $rootScope.highlightPlace.newsFeed = news;
+        } else {
+          $rootScope.highlightPlace.noNews = true;
+        }
       });
     };
-    // trigger html5 browser geolocation & emit an event when its set
+    // html5 browser geolocation & emit an event when its set
     $scope.getGeolocation = function() {
       function geo_success(position) {
         $scope.$apply(function(){

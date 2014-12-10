@@ -49,8 +49,10 @@
     </div>
     <!-- feed here -->
     <div class="list-group">
-      <div class="list-group-item text-center" ng-show="highlightPlace.newsLoading">Loading News...</div>
-      <div class="list-group-item text-center" ng-show="highlightPlace.noNews">... no recent news ...</div>
+      <div class="list-group-item text-center" ng-show="highlightPlace.newsLoading">
+        <span ng-hide="highlightPlace.noNews">Loading News...</span>
+        <span ng-show="highlightPlace.noNews">... no recent news ...</span>
+      </div>
       <div ng-repeat="news in highlightPlace.newsFeed" class="list-group-item">
         <div class="media">
           <span class="pull-left">
