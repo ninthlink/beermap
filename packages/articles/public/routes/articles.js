@@ -46,6 +46,13 @@ angular.module('mean.articles').config(['$stateProvider',
         resolve: {
           //loggedin: checkLoggedin
         }
+      })
+      .state('contact', {
+        url: '/contact',
+        templateUrl: 'articles/views/contact.html',
+        resolve: {
+          //loggedin: checkLoggedin
+        }
       });
       /*
       .state('all articles', {
