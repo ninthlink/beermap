@@ -23,7 +23,7 @@
             <textarea class="form-control" rows="3" id="message" name="message" placeholder="Your message here" required ng-model="formData.message"></textarea>
           </div>
           <button type="submit" class="btn btn-success" ng-disabled="submitting"><span ng-hide="submitting">Submit</span><span ng-show="submitting">Submitting... <span class="fa fa-spinner fa-spin"></span></span></button> &nbsp; <small>*&nbsp;required fields</small>
-          <p><br /></p>
+          <p class="hidden-sm hidden-md hidden-lg"><br /></p>
         </form>
       </div>
       <div class="col-sm-4">
@@ -37,7 +37,7 @@
       </div>
     </div>
     <hr />
-    <p><small><span class="text-info">Beer Maps is a product of the</span> <span class="clickable" ng-click="bear = !bear">Ninthlink Polar Bear Cave</span>. &copy;&nbsp;{{year}} <a href="http://www.ninthlink.com" target="_blank">Ninthlink, Inc</a>.</small></p>
-    <p ng-show="bear" style="margin:1em -15px 0"><img src="/bearcave.jpg" alt="The Ninthlink Polar Bear Cave" style="max-width:100%;height: auto;"></p>
+    <p ng-show="bear" style="margin:1em -15px"><img src="/bearcave.jpg" alt="The Ninthlink Polar Bear Cave" style="max-width:100%;height: auto;"></p>
+    <p><small><span class="text-info"><a href="http://beermap.herokuapp.com">Beer Maps</a> is a product of the</span> <span class="clickable" ng-click="bear = !bear">Ninthlink Polar Bear Cave</span>. &copy;&nbsp;{{year}} <a href="http://www.ninthlink.com" target="_blank">Ninthlink, Inc</a>.</small></p>
   </div>
 </div>
