@@ -3,9 +3,8 @@
 /*
  * Defining the Package
  */
-var Module = require('meanio').Module;
-
-var Articles = new Module('articles');
+var Module = require('meanio').Module,
+  Articles = new Module('articles');
 
 /*
  * All MEAN packages require registration
