@@ -17,7 +17,7 @@ for (var index in window.modules) {
 }
 
 // Default modules
-var modules = ['ngCookies', 'ngResource', 'ngSanitize', 'ui.bootstrap', 'ui.router', 'uiGmapgoogle-maps'];
+var modules = ['ngCookies', 'ngResource', 'ngSanitize', 'ui.bootstrap', 'ui.router', 'uiGmapgoogle-maps', 'angularMoment'];
 modules = modules.concat(packageModules);
 
 // Combined modules
