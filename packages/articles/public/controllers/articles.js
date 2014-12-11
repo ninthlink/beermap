@@ -9,6 +9,26 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     $scope.hideDistances = true;
     $rootScope.myCoords = false;
     
+    // moment.js fromNow formatting cleanup
+    $window.moment.locale('en', {
+      relativeTime : {
+        future: 'in %s',
+        past: '%s ago',
+        s: '%ds',
+        m: '1m',
+        mm: '%dm',
+        h: '1h',
+        hh: '%dh',
+        d: '1d',
+        dd: '%dd',
+        M: '1 month',
+        MM: '%d months',
+        y: '1 year',
+        yy: '%d years'
+      }
+    });
+    //$scope.mtime = new Date();
+      
     // (outdated) check if user is able to access an Article?!
     $scope.hasAuthorization = function(article) {
       if (!article || !article.user) return false;
