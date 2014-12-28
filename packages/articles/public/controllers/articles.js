@@ -95,7 +95,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     $scope.mainmap = function() {
       $scope.uiRoute = 'map';
       $scope.map = {center: {latitude: 32.93, longitude: -117.16 }, zoom: 10, bounds: {}, control: {}, markerControl: {} };
-      $scope.options = { mapTypeControl: false, panControl: false, streetViewControl: false, zoomControl: false };//scrollwheel: false};
+      $scope.options = { mapTypeControl: false, panControl: false, streetViewControl: true, zoomControl: false };//scrollwheel: false};
       $scope.coordsUpdates = 0;
       $scope.dynamicMoveCtr = 0;
       
@@ -450,11 +450,11 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           if ( $rootScope.myCoords !== false ) {
             // recalc distance for this 1 place
             var myLatLng = new maps.LatLng( $rootScope.myCoords.latitude, $rootScope.myCoords.longitude );
-            var dLatLng = new maps.LatLng( $rootScope.highlightPlace.latitude, $rootScope.highlightPlace.longitude );
-            //console.log( 'calc distance from '+ myLatLng +' to '+ dLatLng );
+            //$rootScope.dLatLng = new maps.LatLng( $rootScope.highlightPlace.latitude, $rootScope.highlightPlace.longitude );
+            
             $rootScope.distanceMatrixService.getDistanceMatrix({
               origins: [ myLatLng ],
-              destinations: [ dLatLng ],
+              destinations: [ $rootScope.dLatLng ],
               travelMode: maps.TravelMode.DRIVING,
               unitSystem: maps.UnitSystem.IMPERIAL,
               avoidHighways: false,
@@ -485,6 +485,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           requery = false;
         }
       }
+      $scope.streetViewLoading = true;
+      $scope.noStreetView = false;
       // in the event we need to (re)load / (re)calculate distance to place..
       GoogleMapApi.then(function(maps) {
         // need to wait for GoogleMaps to be ready..
@@ -494,6 +496,68 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
           //console.log('geolocation set : load distance');
           $scope.loadHighlightDistance( maps );
         });
+        
+        // STREET VIEW?!
+        $scope.onemorecheckok = true;
+        $scope.loadStreetView = function() {
+          $rootScope.streetViewService = new maps.StreetViewService();
+          $scope.panorama = new maps.StreetViewPanorama( document.getElementById( 'pano' ) );
+          
+          $rootScope.streetViewService.getPanoramaByLocation( $rootScope.dLatLng, 50, function( data, status ) {
+            $scope.streetViewLoading = false;
+            console.log('getPanoramaByLocation for ');
+            console.log($rootScope.dLatLng);
+            console.log(data);
+            if ( status === maps.StreetViewStatus.OK ) {
+              $scope.noStreetView = false;
+              $scope.panorama.setPano(data.location.pano);
+              // compute Angle difference between $rootScope.dLatLng & actual
+              var DEGREE_PER_RADIAN = 57.2957795;
+              var RADIAN_PER_DEGREE = 0.017453;
+         
+              var latdiff = $rootScope.dLatLng.lat() - data.location.latLng.lat();
+              var lngdiff = $rootScope.dLatLng.lng() - data.location.latLng.lng();
+              // We multiply lngdiff with cos(endLat), since the two points are very closeby,
+              // so we assume their cos values are approximately equal.
+              var yaw = Math.atan2(lngdiff * Math.cos($rootScope.dLatLng.lat() * RADIAN_PER_DEGREE), latdiff) * DEGREE_PER_RADIAN;
+              // make sure its just between 0 & 360
+              yaw = ( yaw >= 360 ) ? ( yaw - 360 ) : ( ( yaw < 0 ) ? ( yaw + 360 ) : yaw );
+              
+              $scope.panorama.setPov({
+                heading: yaw,
+                pitch: 0
+              });
+              $scope.panorama.setZoom(0);
+              $scope.panorama.setVisible(true);
+            } else {
+              $scope.panorama.setVisible(false);
+              // probably our lat&lng is wrong? try re-geocoding?!
+              if ( $scope.onemorecheckok === true ) {
+                $scope.onemorecheckok = false;
+                $scope.streetViewLoading = true;
+                var geocoder = new maps.Geocoder();
+                //console.log('no street view found at latlng');
+                //console.log($rootScope.dLatLng);
+                //console.log('trying to re-geocode..');
+                geocoder.geocode({ 'address': $rootScope.highlightPlace.fullAddr }, function( results, status ) {
+                  if (status == maps.GeocoderStatus.OK) {
+                    console.log('NEW GEOLOC UPDATE FOUND:');
+                    $rootScope.highlightPlace.latitude = results[0].geometry.location.lat();
+                    $rootScope.highlightPlace.longitude = results[0].geometry.location.lng();
+                    $rootScope.dLatLng = results[0].geometry.location;
+                    // and save for future too ?!
+                    $scope.loadStreetView();
+                  } else {
+                    console.log("Geocode was not successful for the following reason: " + status);
+                  }
+                });
+              } else {
+                $scope.noStreetView = true;
+              }
+            }
+          });
+        };
+        
         // only GET the details if we don't already have them
         if ( requery ) {
           Places.get({
@@ -504,18 +568,23 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
             // load place's latest news feed too
             $rootScope.highlightPlace.newsLoading = true;
             $scope.loadHighlightPlaceFeed();
+            $rootScope.dLatLng = new maps.LatLng( $rootScope.highlightPlace.latitude, $rootScope.highlightPlace.longitude );
             // check geoloc : will auto trigger the loadHighlightDistance call
             $scope.getGeolocation();
+            $scope.loadStreetView();
           });
         } else {
           $scope.loaded = true;
           // reload news anyways just in case
           $rootScope.highlightPlace.newsLoading = true;
           $scope.loadHighlightPlaceFeed();
+          $rootScope.dLatLng = new maps.LatLng( $rootScope.highlightPlace.latitude, $rootScope.highlightPlace.longitude );
           // check geoloc : will auto trigger the loadHighlightDistance call
           $scope.getGeolocation();
+          $scope.loadStreetView();
         }
       });
+      
       $scope.$on( '$destroy', function() {
         // when we leave this view, reset
         $scope.unhighlight();
@@ -569,4 +638,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
       };
     };
   }
-]);
+])
+.filter('escapequery', function() {
+  return window.encodeURIComponent;
+});
