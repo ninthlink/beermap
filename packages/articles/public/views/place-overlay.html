@@ -23,7 +23,7 @@
     </div>
   </div>
   <carousel ng-hide="highlightPlace.newsLoading" interval="myInterval">
-    <slide ng-repeat="news in highlightPlace.newsFeed" active="slide.active">
+    <slide ng-repeat="news in highlightPlace.newsFeed" active="slide.active" ng-swipe-right="next()" ng-swipe-left="prev()">
       <div class="media text-left">
         <a class="pull-left clickable" ng-click="goToDetails();" ng-show="highlightPlaceHasImg">
           <img ng-src="{{highlightPlace.twit.img}}" alt="{{highlightPlace.name}}" style="width:32px;height:32px">
