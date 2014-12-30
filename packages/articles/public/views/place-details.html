@@ -1,10 +1,8 @@
 <div class="row" data-ng-controller="ArticlesController" data-ng-init="placeDetails()">
-  <!-- #todo : insert street view here? -->
   <div id="pano">
     <div ng-show="streetViewLoading" class="pmsg">Street View Loading</div>
     <div ng-show="noStreetView" class="pmsg">No Street View found?</div>
   </div>
-  <!-- /streetview -->
   <div class="panel panel-default">
     <div class="panel-heading">
       <a class="pull-left clickable backtomap" ng-click="goBackToMap(highlightPlace);"><span class="fa fa-arrow-left"></span></a>
