@@ -108,10 +108,14 @@ var PlaceSchema = new Schema({
  */
 // map place.coords = { latitude, longitude }
 PlaceSchema.virtual( 'latitude' ).get(function() {
-	return this.lat;
+  if ( this.lat ) {
+    return this.lat;
+  }
 });
 PlaceSchema.virtual( 'longitude' ).get(function() {
-	return this.lng;
+  if ( this.lng ) {
+    return this.lng;
+  }
 });
 // combine "City, State Zip"
 PlaceSchema.virtual( 'CSZ' ).get(function() {
