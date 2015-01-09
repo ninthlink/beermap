@@ -71,7 +71,7 @@
   body.place-details .content { padding-top: 0 }
 }
 
-#pano {
+.pano {
   width: 100%;
   height: 200px;
   position: relative;
