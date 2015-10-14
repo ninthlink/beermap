@@ -1,0 +1,25 @@
+<template name="nav">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">
+        <!--img alt="UserAccounts" width="25" height="25" src="/imgs/ua-logo.png"-->
+        Logo
+      </a>
+      <!--
+      <ul class="right hide-on-med-and-down">
+        <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+        <li class="{{isActiveRoute regex='private'}}"><a href="{{pathFor 'private'}}">Private</a></li>
+        <li>{{> atNavButton }}</li>
+      </ul>
+      -->
+      <ul id="nav-mobile" class="right side-nav">
+        <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+        <!--
+        <li class="{{isActiveRoute regex='private'}}"><a href="{{pathFor 'private'}}">Private</a></li>
+        <li>{{> atNavButton }}</li>
+        -->
+      </ul>
+      <a class="button-collapse show-on-large" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+    </div>
+  </nav>
+</template>
